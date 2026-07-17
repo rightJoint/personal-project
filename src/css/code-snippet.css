@@ -1,0 +1,89 @@
+.code-snippet{
+    font-family: "Courier New";
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.2em;
+    background-color: rgba(25,25,50,1);
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+/*modal-scroll-->*/
+.code-snippet::-webkit-scrollbar {
+    height: 2px;
+}
+/* Track */
+.code-snippet::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 1px grey;
+    border-radius: 10px;
+}
+/* Handle */
+.code-snippet::-webkit-scrollbar-thumb{
+    background: aquamarine;
+    border-radius: 10px;
+}
+/* Handle on hover */
+.code-snippet::-webkit-scrollbar-thumb:hover{
+    background: #b30000;
+}
+.code-snippet ul{
+    padding: 0;
+    margin: 0;
+}
+.code-snippet ul li{
+    color: orange;
+    padding-left: 0;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    display: inline-block;
+    width: 100%;
+    list-style: none;
+}
+.code-snippet ul li.sp-1{
+    margin-left: 1em;
+}
+.code-snippet ul li.sp-2{
+    margin-left: 2em;
+}
+.code-snippet ul li.sp-3{
+    margin-left: 3em;
+}
+.code-snippet ul li.sp-4{
+    margin-left: 4em;
+}
+.code-snippet ul li.sp-5{
+    margin-left: 5em;
+}
+.code-snippet ul li.sp-6{
+    margin-left: 6em;
+}
+.code-snippet ul li.sp-7{
+    margin-left: 7em;
+}
+.code-snippet ul li.sp-8{
+    margin-left: 8em;
+}
+.code-snippet ul li.sp-9{
+    margin-left: 9em;
+}
+.code-snippet ul li.sp-10{
+    margin-left: 10em;
+}
+.code-comment{
+    font-family: "Times New Roman";
+    border: 1px solid black;
+}
+.note{
+    border-left: 5px solid darkorange;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    width:calc(100% - 0.4em);
+    text-align: left;
+    padding: 0.2em;
+}
+.img-block{
+    text-align: center;
+}
+.img-block img{
+    max-width: 90%;
+}

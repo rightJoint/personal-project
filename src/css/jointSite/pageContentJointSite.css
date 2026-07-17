@@ -1,0 +1,15 @@
+.pageContentJointSite section{
+    background-color: lightgoldenrodyellow;
+    padding: 0.5em;
+    text-align: left;
+    margin: 1em 0;
+    border: 1px solid gray;
+}
+
+.pageContentJointSite h2{
+    font-size: 1.2em;
+}
+.pageContentJointSite h4
+{
+    font-size: 1em;
+}

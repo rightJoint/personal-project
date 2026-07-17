@@ -5,14 +5,13 @@ namespace Src\Views\JointSite\Deploy;
 
 
 
-use Src\Views\TpViewSrc;
+use JointApp\Interfaces\LangFileInterface;
+use JointApp\Views\TpView;
 
-class TpView_JointSite_Deploy_OpenServer extends TpViewSrc
+
+class TpView_JointSite_Deploy_OpenServer extends TpView
 {
-    const LANG_FILE_NAME = 'Views_JointSite_Deploy_OpenServerTp';
-    const APPND_DIR = '/Views/JointSite/Deploy';
-
-    public static function renderView(\stdClass $langFile, \stdClass $viewData):string
+    public static function renderView(\stdClass $langFile, \stdClass $viewData, string $langSl = ''):string
     {
         return
             '<div class="pageContentJointSite">'.
@@ -82,5 +81,12 @@ class TpView_JointSite_Deploy_OpenServer extends TpViewSrc
             'pageContentJointSite' => '/css/jointSite/pageContentJointSite.css',
             'codesnippet' => '/css/code-snippet.css',
         ];
+    }
+
+    public static function loadViewLang(string $lang = 'ru'):LangFileInterface
+    {
+        $class_Name = 'Src\LangFiles\Views\JointSite\Deploy\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_Deploy_OpenServerTp';
+        $langFile = new $class_Name();
+        return $langFile;
     }
 }

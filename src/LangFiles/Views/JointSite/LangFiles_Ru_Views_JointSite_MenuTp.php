@@ -1,5 +1,8 @@
 <?php
 
+namespace Src\LangFiles\Views\JointSite;
+
+
 use JointApp\LangFiles\LangFiles_Ru_BaseLangFileTp;
 
 
@@ -7,7 +10,7 @@ class LangFiles_Ru_Views_JointSite_MenuTp extends LangFiles_Ru_BaseLangFileTp
 {
     public static function getLangFile(): \stdClass
     {
-        $langFile = new stdClass();
+        $langFile = new \stdClass();
 
         $links = array(
             'setup' => array(

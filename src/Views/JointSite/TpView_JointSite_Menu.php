@@ -5,13 +5,13 @@ namespace Src\Views\JointSite;
 
 
 
-use Src\Views\TpViewSrc;
+use JointApp\Interfaces\LangFileInterface;
 
-class TpView_JointSite_Menu extends TpViewSrc
+use JointApp\Views\TpView;
+
+
+class TpView_JointSite_Menu extends TpView
 {
-    const LANG_FILE_NAME = 'Views_JointSite_MenuTp';
-    const APPND_DIR = '/Views/JointSite';
-
     public static function renderView(\stdClass $viewLang, \stdClass $viewData, string $langSl = ''):string
     {
 
@@ -65,5 +65,12 @@ class TpView_JointSite_Menu extends TpViewSrc
             'googleapis' => '/js/googleapis.js',
             'jointSiteMenu' => '/js/jointSite/jointSiteMenu.js',
         ];
+    }
+
+    public static function loadViewLang(string $lang = 'ru'):LangFileInterface
+    {
+        $class_Name = 'Src\LangFiles\Views\JointSite\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_MenuTp';
+        $langFile = new $class_Name();
+        return $langFile;
     }
 }

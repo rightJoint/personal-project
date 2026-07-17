@@ -10,30 +10,15 @@ use JointApp\Interfaces\TemplateViewInterface;
 
 class TpView implements TemplateViewInterface
 {
-    const BASE_LANGFILES_DIR = 'C:/OSPanel/domains/personal-project.web/JointApp/LangFiles';
-    const APPND_DIR = '';
-    const LANG_FILE_NAME = 'BaseLangFileTp';
 
     public static function loadViewLang(string $lang = 'ru'):LangFileInterface
     {
-        if(!empty($lang)){
-            $viewLang =  ucfirst(strtolower($lang));
-        }
-        //default lang "ru"
-        else{
-            $viewLang =  'Ru';
-        }
-
-        require_once static::BASE_LANGFILES_DIR.static::APPND_DIR.'/LangFiles_'.$viewLang.'_'.static::LANG_FILE_NAME.'.php';
-
-        $class_Name = 'LangFiles_'.$viewLang.'_'.static::LANG_FILE_NAME;
-
+        $class_Name = 'JointApp\LangFiles\LangFiles_'.self::ucfirstLang($lang).'_'.'BaseLangFileTp';
         $langFile = new $class_Name();
-
         return $langFile;
     }
 
-    public static function renderView(\stdClass $viewLang, \stdClass $viewData):string
+    public static function renderView(\stdClass $viewLang, \stdClass $viewData, string $langSl = ''):string
     {
         return $viewLang->testPhrase;
     }
@@ -66,5 +51,16 @@ class TpView implements TemplateViewInterface
         }
 
         return $return;
+    }
+
+    protected static function ucfirstLang(string $lang = ''):string
+    {
+        if(!empty($lang)){
+            return  ucfirst(strtolower($lang));
+        }
+        //default lang "ru"
+        else{
+            return  'Ru';
+        }
     }
 }

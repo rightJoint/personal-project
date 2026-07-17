@@ -1,5 +1,8 @@
 <?php
 
+namespace Src\LangFiles\Views\JointSite;
+
+
 use JointApp\LangFiles\LangFiles_En_BaseLangFileTp;
 
 
@@ -7,7 +10,7 @@ class LangFiles_En_Views_JointSite_MenuTp extends LangFiles_En_BaseLangFileTp
 {
     public static function getLangFile(): \stdClass
     {
-        $langFile = new stdClass();
+        $langFile = new \stdClass();
 
         $links = array(
             'setup' => array(

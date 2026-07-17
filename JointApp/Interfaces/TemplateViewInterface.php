@@ -8,7 +8,7 @@ interface TemplateViewInterface
 {
     public static function loadViewLang(string $lang = 'ru'):LangFileInterface;
 
-    public static function renderView(\stdClass $viewLang, \stdClass $viewData):string;
+    public static function renderView(\stdClass $viewLang, \stdClass $viewData, string $langSl = ''):string;
 
     public static function getJS():array;
 

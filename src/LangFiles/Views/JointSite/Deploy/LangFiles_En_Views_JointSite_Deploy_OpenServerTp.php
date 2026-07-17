@@ -1,5 +1,8 @@
 <?php
 
+namespace Src\LangFiles\Views\JointSite\Deploy;
+
+
 use JointApp\Interfaces\LangFileInterface;
 
 class LangFiles_En_Views_JointSite_Deploy_OpenServerTp implements LangFileInterface

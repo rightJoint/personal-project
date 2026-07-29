@@ -6,16 +6,15 @@ namespace JointApp\Interfaces;
 
 interface TemplateViewInterface
 {
-    public static function loadViewLang(string $lang = 'ru'):LangFileInterface;
+    //must return langFile by default, any class
+    public static function loadViewLang(string $userLang = 'ru');
 
-    public static function renderView(\stdClass $viewLang, \stdClass $viewData, string $langSl = ''):string;
+    //return html code
+    public function renderView():string;
 
     public static function getJS():array;
 
     public static function getCss():array;
 
-    public static function printJs():string;
-
-    public static function printCss():string;
-
+    public function setLangFile($langFile);
 }

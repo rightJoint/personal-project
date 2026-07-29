@@ -1,0 +1,298 @@
+h1{
+    font-size: 1em;
+    color: orange;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    font-style: italic;
+    width: 100%;
+    white-space: pre-wrap;
+    display: inline-block;
+    font-family: 'Scada', sans-serif;
+}
+header{
+    background-color: rgba(25,25,50,1);
+    width: 100%;
+}
+header .headerCenter{
+    position: relative;
+    width: 100%;
+    max-width: 1366px;
+    display: inline-block;
+}
+header .h-caption{
+    width: 60%;
+    max-width: 1600px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+header .h-caption .imgBlock{
+    display: inline-block;
+    width: 25%;
+    vertical-align: middle;
+}
+header .h-caption .imgBlock img{
+    height: 4em;
+    width: 4em;
+    vertical-align: middle;
+}
+header .h-caption .textBlock{
+    width: 100%;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: left;
+}
+header .h-caption span.firmName{
+    color: white;
+    font-size: 1.3em;
+    display: inline-block;
+    width: 100%;
+    font-weight: bold;
+    border-bottom: 1px solid #ffffff;
+    font-family: Calibri;
+}
+/*<--header*/
+.menuBtn, .userBtn {
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+    width: 8%;
+    margin: 0.2em 6%;
+    max-width: 273px;
+    vertical-align: middle;
+    position: relative;
+
+}
+.hi-icon {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 0.2em;
+    height: 2.8em;
+    width: 2.8em;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+}
+.hi-icon:after {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: '';
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.hi-icon:before {
+    speak: none;
+    height: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    display: block;
+    -webkit-font-smoothing: antialiased;
+}
+.hi-icon-mobile.menu:before {
+    background-size: 100%;
+    z-index: 3;
+    position: relative;
+}
+.hi-icon-mobile:before {
+    content: "";
+    white-space: pre;
+    background-size: 70% 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+span.hi-text{
+    position: absolute;
+    left: 0;
+    top: 1.1em;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    display: none;
+    z-index: 2;
+    text-shadow: 1px 1px 1px black, 3px 3px 3px gray, -1px -1px 1px black, -2px -2px 2px gray;
+}
+/* Effect 1 */
+.hi-icon-effect-1 .hi-icon {
+    background: rgba(48,46,71,1);
+    -webkit-transition: background 0.2s, color 0.2s;
+    -moz-transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s;
+
+}
+.hi-icon-effect-1 .hi-icon:after {
+    z-index: 1;
+    top: -7px;
+    left: -7px;
+    padding: 7px;
+    box-shadow: 0 0 0 4px white;
+    -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+    -webkit-transform: scale(.8);
+    -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+    -moz-transform: scale(.8);
+    -ms-transform: scale(.8);
+    transition: transform 0.2s, opacity 0.2s;
+    transform: scale(.8);
+    opacity: 0;
+}
+/* Effect 1a */
+.hi-icon-effect-1a .hi-icon:hover {
+    background: rgba(255,255,255,1);
+    /*color: #41ab6b;*/
+}
+.hi-icon-effect-1a .hi-icon.menu:hover span.hi-text{
+    /*color: lime;*/
+    display: inline-block;
+    animation: center-animate2 1s ease infinite alternate;
+    -webkit-animation-fill-mode: forwards;
+    animation-iteration-count: 1
+
+}
+.hi-icon-effect-1a .hi-icon.order:hover span.hi-text{
+    /*color: lime;*/
+    display: inline-block;
+    animation: center-animate 1s ease infinite alternate;
+    -webkit-animation-fill-mode: forwards;
+    animation-iteration-count: 1
+
+}
+@keyframes center-animate {
+    0% { left: -30%;}
+    100%{ left: -90%;}
+
+}
+@keyframes center-animate2 {
+    0% { left: 30%;}
+    100%{ left: 90%;}
+}
+.hi-icon-effect-1a .hi-icon:hover:after {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+/*lang-panel-->*/
+.lang-panel{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 10%;
+}
+.lang-panel.mp{
+    width: 18%;
+}
+.lang-panel a.lang-cntrl{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 50%;
+    text-decoration: none;
+}
+.lang-panel a.lang-cntrl span{
+    color: white;
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+.lang-panel a.lang-cntrl.rus span{
+
+}
+.lang-panel a.lang-cntrl.en span{
+
+}
+
+.lang-panel a.lang-cntrl.active.rus{
+    background-color: rgba(255, 0, 0, 0.2);
+}
+.lang-panel a.lang-cntrl.active.en{
+    background-color: rgba(0, 255, 0, 0.2);
+}
+.lang-panel a.lang-cntrl.rus:hover{
+    background-color: rgba(255, 0, 0, 0.2);
+    text-shadow: 1px 0 0 white;
+}
+.lang-panel a.lang-cntrl.en:hover{
+    text-shadow: 0 -1px 0 white;
+    background-color: rgba(0, 255, 0, 0.2);
+}
+.lang-panel a.lang-cntrl.active span{
+    color: darkorange;
+}
+/*<--lang-panel*/
+
+/*media-->*/
+@media only screen and (max-width : 1366px){
+    h1{
+        width: 98%;
+        padding-right: 2%;
+    }
+}
+@media only screen and (max-width : 1024px){
+    header .h-caption .textBlock{
+        width: 100%;
+    }
+    .modal-line{
+        border-bottom: 1px dotted darkgray;
+    }
+    h1{
+        text-align: right;
+    }
+}
+@media only screen and (max-width : 1024px) and (orientation : portrait){
+    header .h-caption .textBlock span.firmName {
+        display: none;
+    }
+    h1{
+        font-size: 1.5em;
+        text-align: center;
+        width: 100%;
+        padding-right: 0;
+    }
+    header .h-caption .textBlock.landing h1{
+        font-size: 1.2em;
+        font-style: normal;
+    }
+    header .h-caption .imgBlock {
+        width: 100%;
+    }
+}
+@media only screen and (max-width : 960px) {
+    header .h-caption .textBlock span.firmName {
+        display: none;
+    }
+    header .h-caption .textBlock.landing span.firmName {
+        display: block;
+    }
+    h1{
+        font-size: 1.5em;
+        text-align: center;
+        width: 100%;
+        padding-right: 0;
+        font-weight: normal;
+    }
+    span.hi-text{
+        font-size: 1em;
+    }
+    .menuBtn, .userBtn{
+        width: 12%;
+        margin: 0.2em 4%;
+    }
+
+    .lang-panel a.lang-cntrl span{
+        display: inline-block;
+        position: relative;
+        top: 0.5em;
+    }
+}
+@media only screen and (max-width : 960px) and (orientation:portrait)  {
+    header .h-caption .textBlock.landing h1, header .h-caption .textBlock.landing span.firmName {
+        text-align: center;
+    }
+}

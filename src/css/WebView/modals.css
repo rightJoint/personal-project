@@ -1,0 +1,141 @@
+/*modal-->*/
+.modal{
+    visibility: hidden;
+}
+.overlay {
+    background-color: rgba(255, 255, 255, 0.8);
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 4;
+}
+.modal .contentBlock-frame{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+.modal .contentBlock-center{
+    z-index: 6;
+}
+.modal-left {
+    width: 70%;
+    display: inline-block;
+    background-color: rgba(25,25,50,1);
+    color: white;
+    float: left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+}
+.modal-right {
+    float: right;
+    width: 30%;
+    text-align: left;
+    display: inline-block;
+}
+.modal-right .modal-close{
+    height: 3em;
+    width: 3em;
+    display: inline-block;
+    background-size: 100% 100%;
+    cursor: pointer;
+    position: relative;
+    z-index: 20;
+}
+/*modal-line-->*/
+.modal-line{
+    width: 100%;
+    display: block;
+    border-bottom: 1px dotted silver;
+}
+
+.modal-line-text{
+    text-align: left;
+    width: 85%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 0.7em;
+}
+.modal-line-img{
+    display: inline-block;
+    width: 15%;
+}
+.modal-line-img img{
+    height: 1.8em;
+    width: 1.8em;
+    margin: 0.5em;
+    border-radius: 0.3em;
+}
+/*modal-line<--*/
+/*modal-scroll-->*/
+.modal-left::-webkit-scrollbar, .modal-right::-webkit-scrollbar {
+    width: 2px;
+}
+/* Track */
+.modal-left::-webkit-scrollbar-track, .modal-right::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+/* Handle */
+.modal-left::-webkit-scrollbar-thumb, .modal-right::-webkit-scrollbar-thumb {
+    background: aquamarine;
+    border-radius: 10px;
+}
+/* Handle on hover */
+.modal-left::-webkit-scrollbar-thumb:hover, .modal-right::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+}
+/*modal-scroll<--*/
+/*media-->*/
+@media only screen and (max-width : 1024px) and (orientation : portrait){
+    .modal-left, .modal-right{
+        width: 100%;
+    }
+    .modal-right{
+        float: left;
+        text-align: right;
+        background-color: rgba(25,25,50,1);
+        position: relative;
+    }
+    .modal-right .modal-close{
+        height: 2em;
+        width: 2em;
+        position: absolute;
+        right: 0.5em;
+        top: 0.5em;
+    }
+    .modal-left{
+        float: right;
+    }
+}
+/*media<--*/
+/*modal user-->*/
+.modal-line .mm-htl{
+    padding-left: 20%;
+
+}
+.modal-line .mm-htl a{
+    color: darkorange;
+    font-size: 1.2em;
+    display: inline-block;
+    padding-top: 0.2em;
+
+}
+.modal-line .mm-htl a img{
+    height: 1.5em;
+    width: 1.5em;
+    vertical-align: middle;
+}
+.modal-line .mm-htl p{
+    margin-top: 0.2em;
+    font-size: 0.8em;
+    color: gray;
+
+}
+/*modal user<--*/

@@ -4,23 +4,21 @@ namespace JointApp\Views;
 
 
 
-use JointApp\Interfaces\LangFileInterface;
 use JointApp\Interfaces\TemplateViewInterface;
 
 
 class TpView implements TemplateViewInterface
 {
+    protected $langFile;
 
-    public static function loadViewLang(string $lang = 'ru'):LangFileInterface
+    public static function loadViewLang(string $lang = 'ru')
     {
-        $class_Name = 'JointApp\LangFiles\LangFiles_'.self::ucfirstLang($lang).'_'.'BaseLangFileTp';
-        $langFile = new $class_Name();
-        return $langFile;
+        return new \stdClass();
     }
 
-    public static function renderView(\stdClass $viewLang, \stdClass $viewData, string $langSl = ''):string
+    public function renderView():string
     {
-        return $viewLang->testPhrase;
+        return '';
     }
 
     public static function getJS():array
@@ -31,6 +29,17 @@ class TpView implements TemplateViewInterface
     public static function getCss():array
     {
         return [];
+    }
+
+    protected static function ucfirstLang(string $lang = ''):string
+    {
+        if(!empty($lang)){
+            return  ucfirst(strtolower($lang));
+        }
+        //default lang "ru"
+        else{
+            return  'Ru';
+        }
     }
 
     public static function printJs():string
@@ -53,14 +62,13 @@ class TpView implements TemplateViewInterface
         return $return;
     }
 
-    protected static function ucfirstLang(string $lang = ''):string
+    public function getLangFile()
     {
-        if(!empty($lang)){
-            return  ucfirst(strtolower($lang));
-        }
-        //default lang "ru"
-        else{
-            return  'Ru';
-        }
+        return $this->langFile;
+    }
+
+    public function setLangFile($langFile)
+    {
+        $this->langFile = $langFile;
     }
 }

@@ -1,0 +1,64 @@
+
+.contentBlock-frame.dark.ft{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+footer{
+    background-color: rgba(25,25,50,1);
+    color: #ffffff;
+    padding: 0.2em 0;
+    height: 45px;
+}
+footer div, footer a, footer img{
+    display: inline-block;
+    vertical-align: middle;
+}
+.ft-service{
+    width: 20%;
+}
+.ft-center{
+    width: 60%;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.ft-center hr{
+    border: none;
+    position: absolute;
+    top: 0px;
+    height: 1px;
+    width: 100%;
+    background-color: #ffffff;
+}
+.ft-center span{
+    background: radial-gradient(ellipse ,
+    rgba(25,25,50,1), rgba(25,25,50,1), rgba(25,25,50,1), rgba(25,25,50,0.2), rgba(25,25,50,0.5));
+    position: relative;
+    z-index: 1;
+    padding: 0.2em 0;
+}
+.ft-right{
+    width: 20%;
+}
+
+footer .ft-right img{
+    height: 2em;
+    width: auto;
+    border:0;
+    max-height: 31px;
+    max-width: 88px;
+    margin: 0.2em;
+}
+
+
+footer .ft-right span{
+    cursor: pointer;
+}
+
+@media only screen and (max-width : 1200px) {
+    footer {
+        height: 2em;
+    }
+}

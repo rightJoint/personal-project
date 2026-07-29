@@ -16,6 +16,8 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
 
         $Ns = array(
           'Src\Views\JointSite\SiteView_JointSite',
+
+          'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy_OpenServer',
         );
 
         for($i=1; $i<=count($langSet); $i++){
@@ -37,6 +39,8 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
 
         $Ns = array(
             'Src\Views\JointSite\TpView_JointSite_Menu',
+
+            'Src\Views\JointSite\Deploy\TpView_JointSite_Deploy_OpenServer',
         );
 
         for($i=1; $i<=count($langSet); $i++){

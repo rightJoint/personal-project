@@ -1,11 +1,11 @@
 <?php
 
-namespace Src\LangFiles\Views\JointSite\Design;
+namespace Src\LangFiles\Views\JointSite\Design\View;
 
 
 use JointApp\Interfaces\LangFileInterface;
 
-class LangFiles_En_Views_JointSite_Design_TpViewTp implements LangFileInterface
+class LangFiles_En_V_JS_D_V_TpViewTp implements LangFileInterface
 {
     public static function getLangFile():\stdClass
     {

@@ -3,15 +3,11 @@
 namespace Src\LangFiles\Views\JointSite;
 
 
-use JointApp\LangFiles\LangFiles_En_BaseLangFileTp;
 
-
-class LangFiles_En_Views_JointSite_MenuTp extends LangFiles_En_BaseLangFileTp
+class LangFiles_En_Views_JointSite_Menu
 {
-    public static function getLangFile(): \stdClass
+    public static function getLinks():array
     {
-        $langFile = new \stdClass();
-
         $links = array(
             'setup' => array(
                 'title' => 'Deploy project',
@@ -39,8 +35,6 @@ class LangFiles_En_Views_JointSite_MenuTp extends LangFiles_En_BaseLangFileTp
             ),
         );
 
-        $langFile->httpLinks = $links;
-
-        return $langFile;
+        return $links;
     }
 }

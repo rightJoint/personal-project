@@ -5,31 +5,33 @@ namespace Src\Views\JointSite;
 
 
 
-use JointApp\Interfaces\LangFileInterface;
-
 use JointApp\Views\TpView;
 
 
 class TpView_JointSite_Menu extends TpView
 {
-    public static function renderView(\stdClass $viewLang, \stdClass $viewData, string $langSl = ''):string
+    public string $langSl = '';
+
+
+    public function renderView():string
     {
 
         $httpLinks = static::getHttpLinks();
+        $linksLang = $this->langFile::getLinks();
 
         return "<div class='joint-site-menu'>".
             '<ul>'.
-            '<li><a href="'.$langSl.$httpLinks['setup'].'" title="'.$viewLang->httpLinks['setup']['title'].'">'.$viewLang->httpLinks['setup']['text'].'</a>'.
+            '<li><a href="'.$this->langSl.$httpLinks['setup'].'" title="'.$linksLang['setup']['title'].'">'.$linksLang['setup']['text'].'</a>'.
             '<ul>'.
-            '<li><a href="'.$langSl.$httpLinks['setup_os'].'" title="'.$viewLang->httpLinks['setup_os']['title'].'">'.$viewLang->httpLinks['setup_os']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['setup_os'].'" title="'.$linksLang['setup_os']['title'].'">'.$linksLang['setup_os']['text'].'</a></li>'.
             '</ul>'.
             '</li>'.
-            '<li><a href="'.$langSl.$httpLinks['architecture'].'" title="'.$viewLang->httpLinks['architecture']['title'].'">'.$viewLang->httpLinks['architecture']['text'].'</a>'.
+            '<li><a href="'.$this->langSl.$httpLinks['architecture'].'" title="'.$linksLang['architecture']['title'].'">'.$linksLang['architecture']['text'].'</a>'.
             '<ul>'.
-            '<li><a href="'.$langSl.$httpLinks['architecture_view'].'" title="'.$viewLang->httpLinks['architecture_view']['title'].'">'.$viewLang->httpLinks['architecture_view']['text'].'</a>'.
+            '<li><a href="'.$this->langSl.$httpLinks['architecture_view'].'" title="'.$linksLang['architecture_view']['title'].'">'.$linksLang['architecture_view']['text'].'</a>'.
             '<ul>'.
-            '<li><a href="'.$langSl.$httpLinks['architecture_view_tp'].'" title="'.$viewLang->httpLinks['architecture_view_tp']['title'].'">'.$viewLang->httpLinks['architecture_view_tp']['text'].'</a></li>'.
-            '<li><a href="'.$langSl.$httpLinks['architecture_view_web'].'" title="'.$viewLang->httpLinks['architecture_view_web']['title'].'">'.$viewLang->httpLinks['architecture_view_web']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['architecture_view_tp'].'" title="'.$linksLang['architecture_view_tp']['title'].'">'.$linksLang['architecture_view_tp']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['architecture_view_web'].'" title="'.$linksLang['architecture_view_web']['title'].'">'.$linksLang['architecture_view_web']['text'].'</a></li>'.
             '</ul>'.
             '</li>'.
             '</ul>'.
@@ -55,7 +57,7 @@ class TpView_JointSite_Menu extends TpView
     public static function getCss():array
     {
         return [
-            'pageContentJointSite' => '/css/jointSite/jointSiteMenu.css',
+            'jointSiteMenu' => '/css/jointSite/jointSiteMenu.css',
         ];
     }
 
@@ -67,9 +69,9 @@ class TpView_JointSite_Menu extends TpView
         ];
     }
 
-    public static function loadViewLang(string $lang = 'ru'):LangFileInterface
+    public static function loadViewLang(string $lang = 'ru')
     {
-        $class_Name = 'Src\LangFiles\Views\JointSite\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_MenuTp';
+        $class_Name = 'Src\LangFiles\Views\JointSite\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_Menu';
         $langFile = new $class_Name();
         return $langFile;
     }

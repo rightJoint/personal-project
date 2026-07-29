@@ -3,15 +3,11 @@
 namespace Src\LangFiles\Views\JointSite;
 
 
-use JointApp\LangFiles\LangFiles_Ru_BaseLangFileTp;
 
-
-class LangFiles_Ru_Views_JointSite_MenuTp extends LangFiles_Ru_BaseLangFileTp
+class LangFiles_Ru_Views_JointSite_Menu
 {
-    public static function getLangFile(): \stdClass
+    public static function getLinks():array
     {
-        $langFile = new \stdClass();
-
         $links = array(
             'setup' => array(
                 'title' => 'Развернуть проект',
@@ -38,9 +34,6 @@ class LangFiles_Ru_Views_JointSite_MenuTp extends LangFiles_Ru_BaseLangFileTp
                 'text' => 'web вью',
             ),
         );
-
-        $langFile->httpLinks = $links;
-
-        return $langFile;
+        return $links;
     }
 }

@@ -23,13 +23,13 @@ class SiteView_JointSite_D_V_TpView extends SiteView_JointSite
 
     protected function putArticleTemplate()
     {
-        $this->tpSet->DeployOS = new TpView_JointSite_D_V_TpView();
+        $this->tpSet->TpView = new TpView_JointSite_D_V_TpView();
     }
 
-    protected function handleTpDeployOS(): string
+    protected function handleTpTpView(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->DeployOS->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->TpView->renderView().
             '</div></div></div>';
     }
 }

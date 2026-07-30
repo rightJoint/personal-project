@@ -5,18 +5,19 @@ namespace JointApp\Views;
 
 
 
+use JointApp\Interfaces\WebViewInterface;
 use JointApp\Views\SiteView\TpView_Footer;
 use JointApp\Views\SiteView\TpView_Head;
 use JointApp\Views\SiteView\TpView_Header;
 use JointApp\Views\SiteView\TpView_ModalMenu;
 use JointApp\Views\SiteView\TpView_ModalUser;
 
-class WebView
+class WebView implements WebViewInterface
 {
     public string $userLang = 'ru';
 
     protected \stdClass $tpSet;
-    public \stdClass $langFile;
+    protected \stdClass $langFile;
 
     protected $js = ['googleapis' => '/js/googleapis.js',];
     protected $css = ['webview' => '/css/WebView/webview.css',];
@@ -63,7 +64,7 @@ class WebView
     }
 
     //get all js from each tp-view
-    public function setUpJs()
+    public function setUpJs():void
     {
         $this->js_set = $this->js;
         foreach ($this->tpSet as $key => $val){
@@ -72,7 +73,7 @@ class WebView
     }
 
     //get all css from each tp-view
-    public function setUpCss()
+    public function setUpCss():void
     {
         $this->css_set = $this->css;
         foreach ($this->tpSet as $key => $val){
@@ -81,7 +82,7 @@ class WebView
     }
 
     //copy public params from this to template view params
-    public function updateTpData()
+    public function updateTpData():void
     {
         foreach ($this->tpSet as $key => $val){
             foreach ($this->tpSet->$key as $tPkey => $tPval){

@@ -8,6 +8,7 @@ use JointApp\Views\TpView;
 class TpView_Header extends TpView
 {
 
+    public string $uri_pq = '';
     public string $canonical_ref = '';
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
 
@@ -28,12 +29,12 @@ class TpView_Header extends TpView
         if ($this->langFile::LANG_LW == 'ru') {
             $headerText.= 'active ';
         }
-        $headerText.= 'rus" href="/ru'.$this->canonical_ref.'" title="'.$this->langFile::LANG_PANEL_TEXT_RU.'"><span>Рус</span></a>'.
+        $headerText.= 'rus" href="/ru'.$this->uri_pq.'" title="'.$this->langFile::LANG_PANEL_TEXT_RU.'"><span>Рус</span></a>'.
             '<a class="lang-cntrl ';
         if ($this->langFile::LANG_LW == 'en') {
             $headerText.= 'active ';
         }
-        $headerText.= 'en" href="/en'.$this->canonical_ref.'" title="'.$this->langFile::LANG_PANEL_TEXT_EN.'"><span>En</span></a>'.
+        $headerText.= 'en" href="/en'.$this->uri_pq.'" title="'.$this->langFile::LANG_PANEL_TEXT_EN.'"><span>En</span></a>'.
             '</div>';
         $headerText.= '<div class="menuBtn hi-icon-effect-1 hi-icon-effect-1a">'.
             '<span class="hi-icon hi-icon-mobile menu"><span class="hi-text">'.

@@ -15,6 +15,7 @@ use JointApp\Views\SiteView\TpView_ModalUser;
 class WebView implements WebViewInterface
 {
     public string $userLang = 'ru';
+    public string $uri_pq = '';
 
     protected \stdClass $tpSet;
     protected \stdClass $langFile;

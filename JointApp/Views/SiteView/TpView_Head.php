@@ -15,7 +15,7 @@ class TpView_Head extends TpView
     public string $userLang = 'ru';
     public string $langSl = '';
 
-    public string $canonical_ref = '';
+    public string $canonical = '';
 
     public $js_set = [];
     public $css_set = [];
@@ -42,7 +42,7 @@ class TpView_Head extends TpView
 
             //seo link canonical
             if($this->langSl == ''){
-                $headText .='<link rel="canonical" href="'.$this->siteName.'/'.$this->userLang.$this->canonical_ref.'" />';
+                $headText .='<link rel="canonical" href="'.$this->siteName.$this->canonical.'" />';
             }
 
         }

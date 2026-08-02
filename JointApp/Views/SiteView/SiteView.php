@@ -12,7 +12,7 @@ class SiteView extends WebView
     public string $siteName = 'http://personal-project.web';
     public string $shortcutIcon = '/img/siteLogo/favicon.png';
     public string $langSl = '';
-    public string $canonical_ref = '';
+    public string $canonical = '';
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
     public bool $modalMenuActive = false;
     public bool $userUserActive = false;

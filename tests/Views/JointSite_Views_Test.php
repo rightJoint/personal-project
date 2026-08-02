@@ -47,12 +47,31 @@ class JointSite_Views_Test extends PHPUnit\Framework\TestCase
         }
     }
 
+    public function testErrorsView():void
+    {
+        $langSet = ['ru', 'en'];
+
+        for($i=1; $i<=count($langSet); $i++){
+            $webView = new \JointApp\Views\ErrorsView();
+            $webView->userLang = $langSet[$i-1];
+            $webView->setUpLangFiles();
+            $webView->setUpCss();
+            $webView->setUpJs();
+            $webView->updateTpData();
+            $webView->mkWebPage();
+        }
+    }
+
     public function testWebViewTemplates():void
     {
         $langSet = ['ru', 'en'];
 
         for($i=1; $i<=count($langSet); $i++){
             $userLang = $langSet[$i-1];
+
+            $tpView_User = new \JointApp\Views\TpView_Errors();
+            $tpView_User->setLangFile($tpView_User->loadViewLang($userLang));
+            $tpView_User->renderView();
 
             $tpView_User = new TpView_ModalUser();
             $tpView_User->setLangFile($tpView_User->loadViewLang($userLang));

@@ -17,6 +17,7 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
         $Ns = array(
           'Src\Views\JointSite\SiteView_JointSite',
 
+          'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy',
           'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy_OpenServer',
           'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_TpView',
           'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_WebView',
@@ -43,6 +44,7 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
         $Ns = array(
             'Src\Views\JointSite\TpView_JointSite_Menu',
 
+            'Src\Views\JointSite\Deploy\TpView_JointSite_Deploy_Art',
             'Src\Views\JointSite\Deploy\TpView_JointSite_Deploy_OpenServer',
             'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_TpView',
             'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_WebView',

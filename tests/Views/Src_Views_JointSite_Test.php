@@ -15,15 +15,18 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
         $langSet = ['ru', 'en'];
 
         $Ns = array(
-          'Src\Views\JointSite\SiteView_JointSite',
+            'Src\Views\JointSite\SiteView_JointSite',
 
-          'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy',
-          'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy_OpenServer',
-          'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy_Hosting',
-          'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy_Migrations',
-          'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_TpView',
-          'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_WebView',
-          'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_SiteView',
+            'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy',
+            'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy_OpenServer',
+            'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy_Hosting',
+            'Src\Views\JointSite\Deploy\SiteView_JointSite_Deploy_Migrations',
+
+            'Src\Views\JointSite\Design\SiteView_JointSite_Arch',
+
+            'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_TpView',
+            'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_WebView',
+            'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_SiteView',
         );
 
         for($i=1; $i<=count($langSet); $i++){
@@ -50,6 +53,9 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
             'Src\Views\JointSite\Deploy\TpView_JointSite_Deploy_OpenServer',
             'Src\Views\JointSite\Deploy\TpView_JointSite_Deploy_Hosting',
             'Src\Views\JointSite\Deploy\TpView_JointSite_Deploy_Migrations',
+
+            'Src\Views\JointSite\Design\TpView_JointSite_Arch_Article',
+
             'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_TpView',
             'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_WebView',
             'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_SiteView',

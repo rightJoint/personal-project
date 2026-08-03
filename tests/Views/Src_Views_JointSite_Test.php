@@ -36,6 +36,8 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
             'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_SiteView',
 
             'Src\Views\JointSite\Controller\SiteView_JointSite_Controller_About',
+
+            'Src\Views\JointSite\User\SiteView_JointSite_User_About',
         );
 
         for($i=1; $i<=count($langSet); $i++){
@@ -78,6 +80,8 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
             'Src\Views\JointSite\TpView_JointSite_About',
 
             'Src\Views\JointSite\Controller\TpView_JointSite_Controller_About_Art',
+
+            'Src\Views\JointSite\User\TpView_JointSite_User_About_Art',
         );
 
         for($i=1; $i<=count($langSet); $i++){

@@ -8,7 +8,7 @@ namespace Src\Views\JointSite\Design;
 use JointApp\Views\TpView;
 
 
-class TpView_JointSite_Arch_Article extends TpView
+class TpView_JointSite_A_Lc_Article extends TpView
 {
     public string $langSl = '';
 
@@ -19,7 +19,7 @@ class TpView_JointSite_Arch_Article extends TpView
 
     public static function loadViewLang(string $lang = 'ru')
     {
-        $class_Name = 'Src\LangFiles\Views\JointSite\Design\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_A_Article';
+        $class_Name = 'Src\LangFiles\Views\JointSite\Design\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_A_Lc_Article';
         $langFile = new $class_Name();
         return $langFile;
     }

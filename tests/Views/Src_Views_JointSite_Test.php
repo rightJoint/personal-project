@@ -30,6 +30,7 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
 
             'Src\Views\JointSite\Model\SiteView_JointSite_Model_About',
 
+            'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_About',
             'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_TpView',
             'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_WebView',
             'Src\Views\JointSite\Design\View\SiteView_JointSite_D_V_SiteView',
@@ -68,6 +69,7 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
 
             'Src\Views\JointSite\Model\TpView_JointSite_Model_About_Art',
 
+            'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_About_Article',
             'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_TpView',
             'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_WebView',
             'Src\Views\JointSite\Design\View\TpView_JointSite_D_V_SiteView',

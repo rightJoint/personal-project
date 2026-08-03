@@ -63,7 +63,7 @@ class LangFiles_En_Views_JointSite_Menu
             ),
             'setup_hosting' => array(
                 'title' => 'Set up on hosting',
-                'text' => 'Hosting set uo',
+                'text' => 'Hosting set up',
             ),
             'setup_migrations' => array(
                 'title' => 'Make migrations',

@@ -33,6 +33,42 @@ class LangFiles_En_Views_JointSite_Menu
                 'title' => 'Web page view',
                 'text' => 'Web view',
             ),
+            'architecture_lc' => array(
+                'title' => 'request life circle',
+                'text' => 'Request',
+            ),
+            'architecture_app' => array(
+                'title' => 'App & components',
+                'text' => 'Application JointSite',
+            ),
+            'architecture_mvc' => array(
+                'title' => 'MVC pattern',
+                'text' => 'MVC',
+            ),
+            'architecture_model' => array(
+                'title' => 'App models',
+                'text' => 'Model',
+            ),
+            'controller' => array(
+                'title' => 'App controllers',
+                'text' => 'Controller',
+            ),
+            'user' => array(
+                'title' => 'App users',
+                'text' => 'User',
+            ),
+            'tests' => array(
+                'title' => 'Tests php-unit',
+                'text' => 'Tests',
+            ),
+            'setup_hosting' => array(
+                'title' => 'Set up on hosting',
+                'text' => 'Hosting set uo',
+            ),
+            'setup_migrations' => array(
+                'title' => 'Make migrations',
+                'text' => 'Migrations',
+            ),
         );
 
         return $links;

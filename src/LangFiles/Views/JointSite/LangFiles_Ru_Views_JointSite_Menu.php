@@ -33,6 +33,42 @@ class LangFiles_Ru_Views_JointSite_Menu
                 'title' => 'Вэб-страница',
                 'text' => 'web вью',
             ),
+            'architecture_lc' => array(
+                'title' => 'Жизненный цикл запроса',
+                'text' => 'Запрос',
+            ),
+            'architecture_app' => array(
+                'title' => 'Приложение и компоненты',
+                'text' => 'Приложение JointSite',
+            ),
+            'architecture_mvc' => array(
+                'title' => 'Паттерн MVC',
+                'text' => 'MVC',
+            ),
+            'architecture_model' => array(
+                'title' => 'Модели приложения',
+                'text' => 'Модель',
+            ),
+            'controller' => array(
+                'title' => 'Контроллеры приложения',
+                'text' => 'Контроллер',
+            ),
+            'user' => array(
+                'title' => 'Пользователи приложения',
+                'text' => 'Пользователь',
+            ),
+            'tests' => array(
+                'title' => 'Тесты php-unit',
+                'text' => 'Тесты',
+            ),
+            'setup_hosting' => array(
+                'title' => 'установка на хостинг',
+                'text' => 'Хостинг',
+            ),
+            'setup_migrations' => array(
+                'title' => 'Проведение миграция',
+                'text' => 'Миграции',
+            ),
         );
         return $links;
     }

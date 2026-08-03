@@ -51,8 +51,9 @@ class JointAppRequest extends ServerRequest
     {
         $uri = $this->getUri();
         $this->uri_lp = $uri->getPath();
+        $this->uri_lpq = $this->uri_lp;
         if($query = $uri->getQuery()){
-            $this->uri_lpq.=$this->uri_lp.'?'.$query;
+            $this->uri_lpq.= '?'.$query;
         }
         $this->routes = explode('/', $uri->getPath());
 

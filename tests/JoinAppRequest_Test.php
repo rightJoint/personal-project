@@ -24,6 +24,28 @@ class JoinAppRequest_Test extends PHPUnit\Framework\TestCase
 
         $factory = new ServerRequestFactory();
 
+        //fix no query case
+        $server['REQUEST_URI'] = '/ru/test/request/adapter';
+        $uri = new Uri($server['REQUEST_SCHEME'].'://'.$server['SERVER_NAME'].':'.$server['SERVER_PORT'].$server['REQUEST_URI']);
+        $request = $factory->createServerRequest($server['REQUEST_METHOD'], $uri, $server);
+        $jointApp_request = JointSite::requestAdapter($request);
+        $expected = array(
+            'uri_lpq' => '/ru/test/request/adapter',
+            'uri_pq' => '/test/request/adapter',
+            'routes' => ['', 'ru', 'test', 'request', 'adapter'],
+            'routes_ns' => ['', 'test', 'request', 'adapter'],
+            'userLang' => 'ru',
+            'langSl' => '/ru',
+            'canonical' => '',
+
+        );
+        $this->assertEquals($jointApp_request->uri_lpq, $expected['uri_lpq']);
+        $this->assertEquals($jointApp_request->uri_pq, $expected['uri_pq']);
+        $this->assertEquals($jointApp_request->routes, $expected['routes']);
+        $this->assertEquals($jointApp_request->routes_ns, $expected['routes_ns']);
+        $this->assertEquals($jointApp_request->langSl, $expected['langSl']);
+        $this->assertEquals($jointApp_request->canonical, $expected['canonical']);
+
         //ru lang
         $server['REQUEST_URI'] = '/ru/test/request/adapter?lang=ru&canonical=false';
         $uri = new Uri($server['REQUEST_SCHEME'].'://'.$server['SERVER_NAME'].':'.$server['SERVER_PORT'].$server['REQUEST_URI']);

@@ -9,7 +9,6 @@ class TpView_Header extends TpView
 {
 
     public string $uri_pq = '';
-    public string $canonical_ref = '';
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
 
 

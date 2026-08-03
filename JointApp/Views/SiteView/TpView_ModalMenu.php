@@ -10,7 +10,7 @@ class TpView_ModalMenu extends TpView
 {
 
     public bool $modalMenuActive = false;
-    public string $canonical_ref = '';
+    public string $uri_pq = '';
     public string $langSl = '';
 
 
@@ -38,30 +38,32 @@ class TpView_ModalMenu extends TpView
         if ($this->langFile::LANG_LW == 'ru') {
             $modalMenu.= 'active ';
         }
-        $modalMenu.= 'rus" href="/ru'.$this->canonical_ref.'" title="'.$this->langFile::LANG_PANEL_TEXT_RU.'"><span>Рус</span></a>'.
+        $modalMenu.= 'rus" href="/ru'.$this->uri_pq.'" title="'.$this->langFile::LANG_PANEL_TEXT_RU.'"><span>Рус</span></a>'.
             '<a class="lang-cntrl ';
         if ($this->langFile::LANG_LW == 'en') {
             $modalMenu.= 'active ';
         }
-        $modalMenu.= 'en" href="/en'.$this->canonical_ref.'" title="'.$this->langFile::LANG_PANEL_TEXT_EN.'"><span>En</span></a>'.
+        $modalMenu.= 'en" href="/en'.$this->uri_pq.'" title="'.$this->langFile::LANG_PANEL_TEXT_EN.'"><span>En</span></a>'.
             '</div>'.
             '<div class="mm-htl">';
         $mainPage_ref = '/';
         if($this->langSl){
             $mainPage_ref = $this->langSl;
         }
-        $modalMenu.= '<a href="'.$mainPage_ref.'" title="';
 
-        if (empty($routes_ns[1])) {
-            $modalMenu.= $this->langFile::DEFAULT_LINK_TITLE;
+        if ($this->uri_pq == '') {
+            $home_title = $this->langFile::DEFAULT_LINK_TITLE;
+            $home_text = $this->langFile::DEFAULT_LINK_TEXT;
         } else {
-            $modalMenu.= $this->langFile::HOME_LINK_TITLE;
+            $home_title = $this->langFile::HOME_LINK_TITLE;
+            $home_text = $this->langFile::HOME_LINK_TEXT;
         }
-        $modalMenu.= '">'.
+
+        $modalMenu.= '<a href="'.$mainPage_ref.'" title="'.$home_title.'">'.
             '<img src="/img/siteLogo/rightjoint-logo-150.png" alt="RJ-logo">' .
-            $this->langFile::HOME_LINK_TEXT.
+            $home_text.
             '</a>'.
-            '<p>'.$this->langFile::HOME_LINK_TITLE.'</p>'.
+            '<p>'.$home_title.'</p>'.
             '</div>'.
             '</div>';
 

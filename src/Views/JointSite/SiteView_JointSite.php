@@ -8,7 +8,7 @@ use JointApp\Views\SiteView\SiteView;
 
 class SiteView_JointSite extends SiteView
 {
-    public string $userLang = 'en';
+    public string $logo = '/img/popimg/menu-icon.png';
 
     protected function putCustomTemplates():void
     {
@@ -18,13 +18,20 @@ class SiteView_JointSite extends SiteView
 
     protected function putArticleTemplate()
     {
-
+        $this->tpSet->About = new TpView_JointSite_About();
     }
 
     protected function handleTpJointSiteMenu(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
             '<div class="contentBlock-wrap">'.$this->tpSet->JointSiteMenu->renderView().
+            '</div></div></div>';
+    }
+
+    protected function handleTpAbout(): string
+    {
+        return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
+            '<div class="contentBlock-wrap">'.$this->tpSet->About->renderView().
             '</div></div></div>';
     }
 

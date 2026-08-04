@@ -21,6 +21,7 @@ class TpView_JointSite_Menu extends TpView
 
         return "<div class='joint-site-menu'>".
             '<ul>'.
+            '<li><a href="'.$this->langSl.$httpLinks['JsHome'].'" title="'.$linksLang['JsHome']['title'].'"><img src="/img/siteLogo/favicon.png"></a>'.
             '<li><a href="'.$this->langSl.$httpLinks['setup'].'" title="'.$linksLang['setup']['title'].'">'.$linksLang['setup']['text'].'</a>'.
             '<ul>'.
             '<li><a href="'.$this->langSl.$httpLinks['setup_os'].'" title="'.$linksLang['setup_os']['title'].'">'.$linksLang['setup_os']['text'].'</a></li>'.
@@ -30,17 +31,20 @@ class TpView_JointSite_Menu extends TpView
             '</li>'.
             '<li><a href="'.$this->langSl.$httpLinks['architecture'].'" title="'.$linksLang['architecture']['title'].'">'.$linksLang['architecture']['text'].'</a>'.
             '<ul>'.
+            '<li><a href="'.$this->langSl.$httpLinks['directories'].'" title="'.$linksLang['directories']['title'].'">'.$linksLang['directories']['text'].'</a>'.
             '<li><a href="'.$this->langSl.$httpLinks['architecture_lc'].'" title="'.$linksLang['architecture_lc']['title'].'">'.$linksLang['architecture_lc']['text'].'</a>'.
             '<li><a href="'.$this->langSl.$httpLinks['architecture_app'].'" title="'.$linksLang['architecture_app']['title'].'">'.$linksLang['architecture_app']['text'].'</a>'.
             '<li><a href="'.$this->langSl.$httpLinks['architecture_mvc'].'" title="'.$linksLang['architecture_mvc']['title'].'">'.$linksLang['architecture_mvc']['text'].'</a>'.
             '</ul>'.
             '</li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['lang'].'" title="'.$linksLang['lang']['title'].'">'.$linksLang['lang']['text'].'</a>'.
             '<li><a href="'.$this->langSl.$httpLinks['architecture_model'].'" title="'.$linksLang['architecture_model']['title'].'">'.$linksLang['architecture_model']['text'].'</a>'.
             '<li>'.
             '<li><a href="'.$this->langSl.$httpLinks['architecture_view'].'" title="'.$linksLang['architecture_view']['title'].'">'.$linksLang['architecture_view']['text'].'</a>'.
             '<ul>'.
             '<li><a href="'.$this->langSl.$httpLinks['architecture_view_tp'].'" title="'.$linksLang['architecture_view_tp']['title'].'">'.$linksLang['architecture_view_tp']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['architecture_view_web'].'" title="'.$linksLang['architecture_view_web']['title'].'">'.$linksLang['architecture_view_web']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['siteview'].'" title="'.$linksLang['siteview']['title'].'">'.$linksLang['siteview']['text'].'</a></li>'.
             '</ul>'.
             '</li>'.
             '</li>'.
@@ -67,8 +71,12 @@ class TpView_JointSite_Menu extends TpView
             'controller' => '/jointsite/controller',
             'user' => '/jointsite/user',
             'tests' => '/jointsite/tests',
-            'setup_hosting' => '/jointsite/setup/hosting',
-            'setup_migrations' => '/jointsite/setup/migrations',
+            'setup_hosting' => '/jointsite/deploy/hosting',
+            'setup_migrations' => '/jointsite/deploy/migrations',
+            'directories' => '/jointsite/architecture/directories',
+            'siteview' => '/jointsite/view/siteview',
+            'lang' => '/jointsite/lang',
+            'JsHome' => '/jointsite',
         );
 
         return $httpLinks;

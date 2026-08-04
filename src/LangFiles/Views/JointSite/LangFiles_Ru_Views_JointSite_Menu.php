@@ -69,6 +69,22 @@ class LangFiles_Ru_Views_JointSite_Menu
                 'title' => 'Проведение миграция',
                 'text' => 'Миграции',
             ),
+            'directories' => array(
+                'title' => 'Основные папки проекта',
+                'text' => 'Директории',
+            ),
+            'siteview' => array(
+                'title' => 'Site-view',
+                'text' => 'Вьюшка сайта',
+            ),
+            'lang' => array(
+                'title' => 'Страницы на разных языках',
+                'text' => 'Языковые файлы',
+            ),
+            'JsHome' => array(
+                'title' => 'Приложение JointSite',
+                'text' => '',
+            ),
         );
         return $links;
     }

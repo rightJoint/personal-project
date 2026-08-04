@@ -69,6 +69,22 @@ class LangFiles_En_Views_JointSite_Menu
                 'title' => 'Make migrations',
                 'text' => 'Migrations',
             ),
+            'directories' => array(
+                'title' => 'Main folders of the project',
+                'text' => 'Directories',
+            ),
+            'siteview' => array(
+                'title' => 'Site-view',
+                'text' => 'What Site view is',
+            ),
+            'lang' => array(
+                'title' => 'web-pages in different languages',
+                'text' => 'Lang-files',
+            ),
+            'JsHome' => array(
+                'title' => 'JointSite app',
+                'text' => '',
+            ),
         );
 
         return $links;

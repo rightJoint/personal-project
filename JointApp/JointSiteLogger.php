@@ -11,7 +11,12 @@ class JointSiteLogger extends AbstractLogger
 {
     public $logger_context = ['test' => __CLASS__];
 
-    public JointAppResponse $jointAppResponse;
+    private JointAppResponse $response;
+
+    function __construct(JointAppResponse &$response)
+    {
+        $this->response = &$response;
+    }
 
     public function withContext(array $logger_context)
     {
@@ -38,7 +43,7 @@ class JointSiteLogger extends AbstractLogger
         };
 
         if($levelToCode($level) != 200){
-            $this->jointAppResponse = $this->jointAppResponse->withStatus($levelToCode($level), self::interpolate($message, $context));
+            $this->response = $this->response->withStatus($levelToCode($level), self::interpolate($message, $context));
         }
 
         $this->customLog($level, $message, $context, $levelToCode);
@@ -58,7 +63,7 @@ class JointSiteLogger extends AbstractLogger
     //redirect user when handle response
     public function redirect($location)
     {
-        $this->jointAppResponse->redirect($location);
+        $this->response->redirect($location);
     }
 
     public function logStartTime($context = null)
@@ -68,7 +73,7 @@ class JointSiteLogger extends AbstractLogger
         }else{
             $logContext = key($this->logger_context);
         }
-        $this->jointAppResponse->stopwatch[] = [$logContext => ['start' => microtime(true)]];
+        $this->response->stopwatch[] = [$logContext => ['start' => microtime(true)]];
     }
 
     public function logEndTime($context = null)
@@ -79,7 +84,7 @@ class JointSiteLogger extends AbstractLogger
             $logContext = key($context);
         }
 
-        $this->jointAppResponse->stopwatch[] = [$logContext => ['end' => microtime(true)]];
+        $this->response->stopwatch[] = [$logContext => ['end' => microtime(true)]];
     }
 
     //extended log cause to save $context fields
@@ -88,11 +93,11 @@ class JointSiteLogger extends AbstractLogger
 
         foreach ($context as $key => $val){
             if(is_array($val)){
-                $this->jointAppResponse->customLog[][$level] = '['.$levelToCode($level).'], thrown in '.$key.' with message "'.$message.'"'.
+                $this->response->customLog[][$level] = '['.$levelToCode($level).'], thrown in '.$key.' with message "'.$message.'"'.
                     ' reason not available '.
-                    'in JointAppResponse->customLog cause its array';
+                    'in response->customLog cause its array';
             }else{
-                $this->jointAppResponse->customLog[][$level] = '['.$levelToCode($level).'], thrown in '.$key.': '.$val.
+                $this->response->customLog[][$level] = '['.$levelToCode($level).'], thrown in '.$key.': '.$val.
                     ' with message "'.$message.'"';
             }
         }

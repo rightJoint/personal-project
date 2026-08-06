@@ -7,7 +7,7 @@ use JointApp\Views\TpView;
 
 class TpView_Header extends TpView
 {
-
+    public string $userLang = '';
     public string $uri_pq = '';
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
 
@@ -25,12 +25,12 @@ class TpView_Header extends TpView
             '<header><div class="headerCenter">';
         $headerText.= '<div class="lang-panel">'.
             '<a class="lang-cntrl ';
-        if ($this->langFile::LANG_LW == 'ru') {
+        if ($this->userLang == 'ru') {
             $headerText.= 'active ';
         }
         $headerText.= 'rus" href="/ru'.$this->uri_pq.'" title="'.$this->langFile::LANG_PANEL_TEXT_RU.'"><span>Рус</span></a>'.
             '<a class="lang-cntrl ';
-        if ($this->langFile::LANG_LW == 'en') {
+        if ($this->userLang == 'en') {
             $headerText.= 'active ';
         }
         $headerText.= 'en" href="/en'.$this->uri_pq.'" title="'.$this->langFile::LANG_PANEL_TEXT_EN.'"><span>En</span></a>'.

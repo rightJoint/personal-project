@@ -3,7 +3,9 @@
 namespace JointApp;
 
 
+use JointApp\Factories\ControllerFactory;
 use JointApp\Factories\FromRequestFactory;
+use JointApp\Factories\ModelFactory;
 use JointApp\Router\JointSiteRoute;
 use JointApp\Router\JointSiteRouteFinder;
 use Psr\Http\Message\ResponseInterface;
@@ -20,8 +22,9 @@ class JointSite implements RequestHandlerInterface
     private $context = ['App' => __CLASS__];
 
     private JointAppRequest $request;
-    private JointAppResponse $appResponse;
+    public JointAppResponse $response;
     private JointSiteRoute $route;
+    private JointSiteUser $user;
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -33,13 +36,14 @@ class JointSite implements RequestHandlerInterface
         $this->request = $request;
 
         //create response
-        $this->appResponse = new JointAppResponse();
+        $this->response = new JointAppResponse();
 
         //set app logger
-        $this->logger = new JointSiteLogger();
+        $this->logger = new JointSiteLogger($this->response);
         $this->logger->withContext($this->context);
-        $this->logger->jointAppResponse = &$this->appResponse;
         $this->logger->logStartTime($this->context);
+
+        $this->user = FromRequestFactory::ObjectFromRequest(new JointSiteUser(), $this->request);
 
         //set up route finder
         $routeFinder = new JointSiteRouteFinder();
@@ -51,55 +55,52 @@ class JointSite implements RequestHandlerInterface
         $this->route = $routeFinder->findRoute();
 
         //check router errors
-        if($this->appResponse->getStatusCode() == 200){
+        if($this->response->getStatusCode() == 200){
             $view = $this->execActions();
 
             //check controller action errors
-            if($this->appResponse->getStatusCode() == 200) {
+            if($this->response->getStatusCode() == 200) {
                 //web-pages
                 if ($this->route->responseFormat == 'text') {
                     //check redirect
-                    if(!$this->appResponse->redirect){
+                    if(!$this->response->redirect){
                         $view->setUpLangFiles();
                         $view->setUpJs();
                         $view->setUpCss();
                         $view->updateTpData();
-                        $this->appResponse->responseText = $view->mkWebPage();
+                        $this->response->responseText = $view->mkWebPage();
                     }
                 }
                 //json, api or ajax
                 else {
-                    $this->appResponse->responseJson = $view->getResponseJson();
+                    $this->response->responseJson = $view->getResponseJson();
                 }
             }
 
         }
         $this->logger->logEndTime($this->context);
 
-        return $this->appResponse;
+        return $this->response;
     }
 
     private function execActions()
     {
-        $this->route->modelName = 'JointApp\Models\Model_pdo';
         //set up model
-        $model = FromRequestFactory::ObjectFromRequest($this->route->modelName, $this->request);
-        $model->setUpLangFile();
-        $model->setLogger($this->logger);
+        $model = ModelFactory::ModelFromRequest($this->route->modelName, $this->request, $this->user, $this->logger);
 
         //set up view
-        $view_tmp = FromRequestFactory::ObjectFromRequest($this->route->viewName, $this->request);
+        $view_tmp = FromRequestFactory::ObjectFromRequest(new $this->route->viewName(), $this->request);
 
         //set up controller
-        $controller = FromRequestFactory::ObjectFromRequest($this->route->controllerName, $this->request);
+        $controller = ControllerFactory::ControllerFromRequest($this->route->controllerName, $this->request, $this->user, $this->logger);
         $controller->model = $model;
         $controller->view = $view_tmp;
 
         //check construct errors
-        if($this->appResponse->getStatusCode() == 200) {
+        if($this->response->getStatusCode() == 200) {
             foreach ($this->route->actionsList as $actionName => $actionParams) {
                 //check actions errors
-                if ($this->appResponse->getStatusCode() == 200) {
+                if ($this->response->getStatusCode() == 200) {
                     $controller->$actionName($actionParams);
                 }
             }
@@ -123,36 +124,36 @@ class JointSite implements RequestHandlerInterface
         return $jointAppRequest;
     }
 
-    public static function handleResponse(JointAppRequest $jointSiteRequest, JointAppResponse $jointAppResponse):void
+    public static function handleResponse(JointAppRequest $jointSiteRequest, JointAppResponse $response):void
     {
-        $logger = new JointSiteLogger();
-        if($jointAppResponse->getStatusCode() != 200){
+        $logger = new JointSiteLogger($response);
+        if($response->getStatusCode() != 200){
 
-            http_response_code($jointAppResponse->getStatusCode());
+            http_response_code($response->getStatusCode());
 
-            if($jointAppResponse->responseFormat == 'text'){
-                self::displayErr($jointSiteRequest, $jointAppResponse);
+            if($response->responseFormat == 'text'){
+                self::displayErr($jointSiteRequest, $response);
             }else{
                 header('Content-type: application/json; charset=utf-8');
                 echo json_encode(array('result' =>false,
-                    'log' => $jointAppResponse->getStatusCode().':'.$jointAppResponse->getReasonPhrase(),
+                    'log' => $response->getStatusCode().':'.$response->getReasonPhrase(),
                     'timestamp' => array('now' => date('Y-m-d H:i:s'),
                         'runTime:'=> $logger->calcRunTime())));
             }
         }else{
-            if($jointAppResponse->redirect){
-                header('Location: '.$jointAppResponse->redirect[0]);
+            if($response->redirect){
+                header('Location: '.$response->redirect[0]);
             }
-            elseif($jointAppResponse->responseFormat == 'text'){
-                echo $jointAppResponse->responseText.
+            elseif($response->responseFormat == 'text'){
+                echo $response->responseText.
                     '<script>$("body").after("<span style=\'color: silver; position: relative; bottom: 1.2em; left: 0,5em; '.
-                    ' display: block; height:0; width:0; font-size:0.7em;\'>'.$jointAppResponse->calcRuntime().'</span>")</script>';
-            }elseif($jointAppResponse->responseFormat == 'json'){
+                    ' display: block; height:0; width:0; font-size:0.7em;\'>'.$response->calcRuntime().'</span>")</script>';
+            }elseif($response->responseFormat == 'json'){
                 header('Content-type: application/json; charset=utf-8');
                 echo json_encode(
                     array(
                         'result' => true,
-                        'viewData' => $jointAppResponse->responseJson,
+                        'viewData' => $response->responseJson,
                         'timeStamp' => array(
                             'now' => date('Y-m-d H:i:s'),
                             'runTime' => $logger->calcRunTime(),
@@ -163,15 +164,17 @@ class JointSite implements RequestHandlerInterface
         }
     }
 
-    public static function displayErr(JointAppRequest $request, JointAppResponse $jointAppResponse)
+    public static function displayErr(JointAppRequest $request, JointAppResponse $response)
     {
-        $view = FromRequestFactory::ObjectFromRequest('JointApp\Views\ErrorsView', $request);
+        $namespace = 'JointApp\Views\ErrorsView';
+        $view = FromRequestFactory::ObjectFromRequest(new $namespace(), $request);
 
-        if($jointAppResponse->getStatusCode() == 403){
+        if($response->getStatusCode() == 403){
             $view->modalUserActive = true;
         }
-        $view->response_status_code = $jointAppResponse->getStatusCode();
-        $view->app_custom_log = $jointAppResponse->customLog;
+
+        $view->response_status_code = $response->getStatusCode();
+        $view->app_custom_log = $response->customLog;
 
         $view->setUpLangFiles();
         $view->setUpJs();

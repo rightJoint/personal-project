@@ -109,4 +109,19 @@ class Model_Pdo extends Model
 
         return $return;
     }
+
+    public function getLogMessage():string
+    {
+        return $this->log_message;
+    }
+
+    public function getServerStatus():bool
+    {
+        return $this->serverConnectStatus;
+    }
+
+    public function getDbStatus():bool
+    {
+        return $this->dbConnectStatus;
+    }
 }

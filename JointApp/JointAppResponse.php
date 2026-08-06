@@ -48,7 +48,14 @@ class JointAppResponse extends Response
             $keyStart = key($this->stopwatch[$firstEvent]);
             $keyEnd = key($this->stopwatch[$lastEvent]);
 
-            return $this->stopwatch[$lastEvent][$keyEnd]['end'] - $this->stopwatch[$firstEvent][$keyStart]['start'];
+            //case only one key
+            if(key_exists('end', $this->stopwatch[$lastEvent][$keyEnd])){
+                $endTime = $this->stopwatch[$lastEvent][$keyEnd]['end'];
+            }else{
+                $endTime = microtime(true);
+            }
+
+            return $endTime - $this->stopwatch[$firstEvent][$keyStart]['start'];
         }
         return 0;
     }

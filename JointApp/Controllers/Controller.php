@@ -14,7 +14,7 @@ class Controller
     public $model;
     public $view;
 
-    private $context = ['controller' => __CLASS__];
+    protected $context = ['controller' => __CLASS__];
 
     protected $langFile;
 
@@ -46,5 +46,14 @@ class Controller
     public function actionIndex()
     {
         $this->model->getData();
+    }
+
+    protected function updateViewParams()
+    {
+        foreach ($this->view as $prop => $value){
+            if(isset($this->$prop)){
+                $this->view->$prop = $this->$prop;
+            }
+        }
     }
 }

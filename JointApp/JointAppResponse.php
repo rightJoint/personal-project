@@ -38,24 +38,11 @@ class JointAppResponse extends Response
 
     public function calcRunTime(int $firstEvent = 0, int $lastEvent = 0):float
     {
-        if(isset($this->stopwatch)){
-            if($lastEvent == 0){
-                if(count($this->stopwatch)){
-                    $lastEvent = count($this->stopwatch) - 1;
-                }
-            }
-
-            $keyStart = key($this->stopwatch[$firstEvent]);
-            $keyEnd = key($this->stopwatch[$lastEvent]);
-
-            //case only one key
-            if(key_exists('end', $this->stopwatch[$lastEvent][$keyEnd])){
-                $endTime = $this->stopwatch[$lastEvent][$keyEnd]['end'];
-            }else{
-                $endTime = microtime(true);
-            }
-
-            return $endTime - $this->stopwatch[$firstEvent][$keyStart]['start'];
+        $count = count($this->stopwatch);
+        if($count > 1){
+            $fk = key($this->stopwatch[0]);
+            $lk = key($this->stopwatch[$count-1]);
+            return $this->stopwatch[$count-1][$lk] - $this->stopwatch[0][$fk];
         }
         return 0;
     }

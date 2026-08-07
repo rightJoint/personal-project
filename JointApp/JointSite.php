@@ -41,7 +41,7 @@ class JointSite implements RequestHandlerInterface
         //set app logger
         $this->logger = new JointSiteLogger($this->response);
         $this->logger->withContext($this->context);
-        $this->logger->logStartTime($this->context);
+        $this->logger->logTime('App start');
 
         $this->user = FromRequestFactory::ObjectFromRequest(new JointSiteUser(), $this->request);
 
@@ -78,7 +78,7 @@ class JointSite implements RequestHandlerInterface
             }
 
         }
-        $this->logger->logEndTime($this->context);
+        $this->logger->logTime('App end');
 
         return $this->response;
     }
@@ -138,7 +138,7 @@ class JointSite implements RequestHandlerInterface
                 echo json_encode(array('result' =>false,
                     'log' => $response->getStatusCode().':'.$response->getReasonPhrase(),
                     'timestamp' => array('now' => date('Y-m-d H:i:s'),
-                        'runTime:'=> $logger->calcRunTime())));
+                        'runTime:'=> $response->calcRunTime())));
             }
         }else{
             if($response->redirect){
@@ -156,7 +156,7 @@ class JointSite implements RequestHandlerInterface
                         'viewData' => $response->responseJson,
                         'timeStamp' => array(
                             'now' => date('Y-m-d H:i:s'),
-                            'runTime' => $logger->calcRunTime(),
+                            'runTime' => $response->calcRunTime(),
                         )
                     )
                 );

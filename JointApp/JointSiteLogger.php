@@ -66,25 +66,9 @@ class JointSiteLogger extends AbstractLogger
         $this->response->redirect($location);
     }
 
-    public function logStartTime($context = null)
+    public function logTime(string $context = 'mct')
     {
-        if(empty($context)){
-            $logContext = key($this->logger_context);
-        }else{
-            $logContext = key($this->logger_context);
-        }
-        $this->response->stopwatch[] = [$logContext => ['start' => microtime(true)]];
-    }
-
-    public function logEndTime($context = null)
-    {
-        if(empty($context)){
-            $logContext = key($this->logger_context);;
-        }else{
-            $logContext = key($context);
-        }
-
-        $this->response->stopwatch[] = [$logContext => ['end' => microtime(true)]];
+        $this->response->stopwatch[] =  [$context => microtime(true)];
     }
 
     //extended log cause to save $context fields

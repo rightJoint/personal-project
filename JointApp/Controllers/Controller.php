@@ -22,7 +22,9 @@ class Controller
 
     protected JointSiteUser $user;
 
-    function __construct(JointSiteUser $user, JointSiteLogger &$logger)
+    public $requestParams = [];
+
+    function __construct(JointSiteUser $user, JointSiteLogger &$logger, $controller_params = [])
     {
         $this->setLogger($logger);
         $this->user = $user;
@@ -31,6 +33,7 @@ class Controller
         if(!$this->checkAccessController()){
             $this->logger->warning('denied in checkAccessController', $this->context);
         }
+        $this->controllerFromParams($controller_params);
     }
 
     protected function checkAccessController():bool
@@ -48,11 +51,21 @@ class Controller
         $this->model->getData();
     }
 
-    protected function updateViewParams()
+    protected function updateViewParams(&$view)
     {
-        foreach ($this->view as $prop => $value){
+        foreach ($view as $prop => $value){
             if(isset($this->$prop)){
-                $this->view->$prop = $this->$prop;
+                $view->$prop = $this->$prop;
+            }
+        }
+    }
+
+    //pass some params on construct
+    protected function controllerFromParams($model_params = []):void
+    {
+        foreach ($model_params as $key => $val){
+            if(property_exists($this, $key)){
+                $this->$key = $val;
             }
         }
     }

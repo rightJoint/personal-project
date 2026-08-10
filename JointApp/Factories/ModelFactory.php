@@ -10,9 +10,10 @@ use JointApp\JointSiteUser;
 
 class ModelFactory extends FromRequestFactory
 {
-    public static function ModelFromRequest($namespace, JointAppRequest $request, JointSiteUser $user, JointSiteLogger $logger)
+    public static function ModelFromRequest($namespace, JointAppRequest $request, JointSiteUser $user,
+                                            JointSiteLogger $logger, $model_params = [])
     {
-        $object = new $namespace($user, $logger);
+        $object = new $namespace($user, $logger, $model_params);
 
         return self::ObjectFromRequest($object, $request);
     }

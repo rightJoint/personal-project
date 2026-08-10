@@ -11,7 +11,7 @@ class Model
 {
     use LoggerAwareTrait;
 
-    private $context = ['model' => __CLASS__];
+    protected $context = ['model' => __CLASS__];
 
     protected $langFile;
 
@@ -19,7 +19,7 @@ class Model
 
     protected JointSiteUser $user;
 
-    function __construct(JointSiteUser $user, JointSiteLogger &$logger)
+    function __construct(JointSiteUser &$user, JointSiteLogger &$logger, $model_params = [])
     {
         $this->setLogger($logger);
         $this->user = $user;
@@ -28,6 +28,8 @@ class Model
         if(!$this->checkAccessModel()){
             $this->logger->warning('denied in checkAccessModel', $this->context);
         }
+
+        $this->modelFromParams($model_params);
     }
 
     protected function checkAccessModel():bool
@@ -35,7 +37,7 @@ class Model
         return true;
     }
 
-    protected function setUpLangFile()
+    protected function setUpLangFile():void
     {
         $this->langFile = new \stdClass();
     }
@@ -43,5 +45,15 @@ class Model
     public function getData()
     {
 
+    }
+
+    //pass some params on construct
+    protected function modelFromParams($model_params = []):void
+    {
+        foreach ($model_params as $key => $val){
+            if(property_exists($this, $key)){
+                $this->$key = $val;
+            }
+        }
     }
 }

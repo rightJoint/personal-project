@@ -14,12 +14,15 @@ class RecordDetailView extends SiteView
     public string $processUri = '';
     public string $langSl = '';
 
-    public string $type = 'detail';
     public $action_log = [];
     public $viewFields = [];
     public $fieldAliases = [];
 
     public bool $robotNoIndex = true;
+
+    public string $pri_query = '?';
+    public string $type_of_view = 'detail';
+    public $editFields = [];
 
     protected function putCustomTemplates():void
     {
@@ -37,13 +40,23 @@ class RecordDetailView extends SiteView
 
     protected function replaceDefaultHeadLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_D_Head';
+        if($this->type_of_view == 'edit'){
+            $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_D_Head';
+        }else{
+            $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_Del_Head';
+        }
+
         return new $class_Name();
     }
 
     protected function replaceDefaultHeaderLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_D_Header';
+        if($this->type_of_view == 'edit'){
+            $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_D_Header';
+        }else{
+            $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_Del_Header';
+        }
+
         return new $class_Name();
     }
 }

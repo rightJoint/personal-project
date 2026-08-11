@@ -1,0 +1,57 @@
+<?php
+
+namespace JointApp\Views\Records;
+
+
+
+use JointApp\Views\SiteView\SiteView;
+
+class RecordEditView extends SiteView
+{
+    public string $h2 = '';
+    public string $processUri = '';
+    public string $pri_query = '?';
+
+    public array $editFields = [];
+    public $fieldAliases = [];
+
+    public bool $action_result = false;
+    public string $action_log = '';
+    public string $type_of_view = 'edit';
+
+    protected function putCustomTemplates():void
+    {
+        $this->tpSet->Edit = new TpView_Edit();
+    }
+
+    protected function handleTpEdit(): string
+    {
+        $return = '<div class="contentBlock-frame"><div class="contentBlock-center">'.
+            '<div class="contentBlock-wrap">'.
+            $this->tpSet->Edit->renderView().
+            '</div></div></div>';
+        return $return;
+    }
+
+    protected function replaceDefaultHeadLang()
+    {
+        if($this->type_of_view == 'edit'){
+            $class_Name = 'JointApp\LangFiles\Views\Records\Edit\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_E_Head';
+        }else{
+            $class_Name = 'JointApp\LangFiles\Views\Records\Edit\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_N_Head';
+        }
+
+        return new $class_Name();
+    }
+
+    protected function replaceDefaultHeaderLang()
+    {
+        if($this->type_of_view == 'edit'){
+            $class_Name = 'JointApp\LangFiles\Views\Records\Edit\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_E_Header';
+        }else{
+            $class_Name = 'JointApp\LangFiles\Views\Records\Edit\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_N_Header';
+        }
+
+        return new $class_Name();
+    }
+}

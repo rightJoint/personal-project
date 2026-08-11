@@ -24,7 +24,8 @@ class RecordListView extends SiteView
     public string $slave_req = '';
     public string $h2 = 'test';
 
-
+    public bool $robotNoIndex = true;
+    public string $logo = '/img/popimg/search-icon.png';
 
 
     protected function putCustomTemplates():void

@@ -37,4 +37,17 @@ class SiteView extends WebView
         '</body>'.
         '</html>';
     }
+    //get all js from each tp-view
+    protected function setUpJs():void
+    {
+        parent::setUpJs();
+        $this->tpSet->Head->js_set = $this->js_set;
+    }
+
+    //get all css from each tp-view
+    protected function setUpCss():void
+    {
+        parent::setUpCss();
+        $this->tpSet->Head->css_set = $this->css_set;
+    }
 }

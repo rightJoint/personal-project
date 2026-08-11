@@ -10,6 +10,7 @@ class TpView_Header extends TpView
     public string $userLang = '';
     public string $uri_pq = '';
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
+    public string $h1 = '';
 
 
     public static function loadViewLang(string $userLang = 'ru')
@@ -46,8 +47,14 @@ class TpView_Header extends TpView
             $headerText.= 'landing';
         }
 
+        if($this->h1){
+            $h1 = $this->langFile::H_1.' - '.$this->h1;
+        }else{
+            $h1 = $this->langFile::H_1;
+        }
+
         $headerText.= '"><span class="firmName">'.$this->langFile::SITE_NAME.'</span>'.
-            '<h1>'.$this->langFile::H_1.'</h1></div></div>';
+            '<h1>'.$h1.'</h1></div></div>';
         $header_add_styles = '<style>
         .hi-icon-mobile.menu:before {background-image: url('.$this->logo.');}
         .modal-right .modal-close{

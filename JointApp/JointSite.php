@@ -53,6 +53,7 @@ class JointSite implements RequestHandlerInterface
 
         //get route context (model, view, controller & actions list, response format)
         $this->route = $routeFinder->findRoute();
+        $this->response->responseFormat = $this->route->responseFormat;
 
         //check router errors
         if($this->response->getStatusCode() == 200){
@@ -64,16 +65,15 @@ class JointSite implements RequestHandlerInterface
                 if ($this->route->responseFormat == 'text') {
                     //check redirect
                     if(!$this->response->redirect){
-                        $view->setUpLangFiles();
-                        $view->setUpJs();
-                        $view->setUpCss();
+                        $view->handleViewParams();
                         $view->updateTpData();
+                        $view->setUpLangFiles();
                         $this->response->responseText = $view->mkWebPage();
                     }
                 }
                 //json, api or ajax
                 else {
-                    $this->response->responseJson = $view->getResponseJson();
+                    $this->response->responseJson = $view->responseJson;
                 }
             }
 
@@ -86,13 +86,15 @@ class JointSite implements RequestHandlerInterface
     private function execActions()
     {
         //set up model
-        $model = ModelFactory::ModelFromRequest($this->route->modelName, $this->request, $this->user, $this->logger);
+        $model = ModelFactory::ModelFromRequest($this->route->modelName, $this->request, $this->user,
+            $this->logger, $this->route->modelParams);
 
         //set up view
         $view_tmp = FromRequestFactory::ObjectFromRequest(new $this->route->viewName(), $this->request);
 
         //set up controller
-        $controller = ControllerFactory::ControllerFromRequest($this->route->controllerName, $this->request, $this->user, $this->logger);
+        $controller = ControllerFactory::ControllerFromRequest($this->route->controllerName, $this->request,
+            $this->user, $this->logger, $this->route->controllerParams);
         $controller->model = $model;
         $controller->view = $view_tmp;
 
@@ -124,13 +126,9 @@ class JointSite implements RequestHandlerInterface
         return $jointAppRequest;
     }
 
-    public static function handleResponse(JointAppRequest $jointSiteRequest, JointAppResponse $response):void
+    public static function handleResponse(JointAppRequest $jointSiteRequest, JointAppResponse &$response):void
     {
-        $logger = new JointSiteLogger($response);
         if($response->getStatusCode() != 200){
-
-            http_response_code($response->getStatusCode());
-
             if($response->responseFormat == 'text'){
                 self::displayErr($jointSiteRequest, $response);
             }else{

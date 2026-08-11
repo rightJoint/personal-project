@@ -5,6 +5,7 @@ namespace JointApp\Views\SiteView;
 
 
 use JointApp\Views\TpView;
+use Src\Views\Test\TpView_Test_Menu;
 
 class TpView_ModalMenu extends TpView
 {
@@ -12,6 +13,7 @@ class TpView_ModalMenu extends TpView
     public bool $modalMenuActive = false;
     public string $uri_pq = '';
     public string $langSl = '';
+    public string $userLang = 'ru';
 
 
     public static function loadViewLang(string $lang = 'ru')
@@ -65,11 +67,37 @@ class TpView_ModalMenu extends TpView
             '</a>'.
             '<p>'.$home_title.'</p>'.
             '</div>'.
-            '</div>';
+            '</div>'.
+            $this->modalMenuTests();
 
 
         $modalMenu.= '</div></div></div></div>';
         return $modalMenu;
+    }
+
+    public function modalMenuTests():string
+    {
+        $menu_lang = TpView_Test_Menu::loadViewLang($this->userLang);
+        $httpLinks = TpView_Test_Menu::getHttpLinks();
+        $linksLang = $menu_lang::getLinks();
+
+        return "<div class='joint-site-menu'>".
+            '<ul>'.
+            '<li><a href="'.$this->langSl.$httpLinks['TestHome'].'" title="'.$linksLang['TestHome']['title'].'"><img src="/img/siteLogo/favicon.png"></a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['connection'].'" title="'.$linksLang['connection']['title'].'">'.$linksLang['connection']['text'].'</a><li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['migrations'].'" title="'.$linksLang['migrations']['title'].'">'.$linksLang['migrations']['text'].'</a>'.
+            '<ul>'.
+            '<li><a href="'.$this->langSl.$httpLinks['createmigrationstables'].'" title="'.$linksLang['createmigrationstables']['title'].'">'.$linksLang['createmigrationstables']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['execnewmigrations'].'" title="'.$linksLang['execnewmigrations']['title'].'">'.$linksLang['execnewmigrations']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['migrationslist'].'" title="'.$linksLang['migrationslist']['title'].'">'.$linksLang['migrationslist']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['migrationslog'].'" title="'.$linksLang['migrationslog']['title'].'">'.$linksLang['migrationslog']['text'].'</a></li>'.
+            '</ul>'.
+            '</li>'.
+            '</li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['records'].'" title="'.$linksLang['records']['title'].'">'.$linksLang['records']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['tables'].'" title="'.$linksLang['tables']['title'].'">'.$linksLang['tables']['text'].'</a></li>'.
+            '</ul>'.
+            '</div>';
     }
 
     public static function getCss(): array

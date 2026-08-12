@@ -8,6 +8,7 @@ namespace JointApp\Router;
 use Psr\Log\LoggerAwareTrait;
 use Src\RoutesCollection\RoutesCollection_JointSite;
 use Src\RoutesCollection\RoutesCollection_Main;
+use Src\RoutesCollection\RoutesCollection_Test;
 
 
 class JointSiteRouteFinder
@@ -16,6 +17,7 @@ class JointSiteRouteFinder
 
     use RoutesCollection_Main;
     use RoutesCollection_JointSite;
+    use RoutesCollection_Test;
 
     private $context = ['RouteFinder' => __CLASS__];
 
@@ -38,6 +40,8 @@ class JointSiteRouteFinder
 
         $getRoute = strtolower($this->method).'Route_'.$routeName;
 
+        $returnRoute = new JointSiteRoute();
+
         if(method_exists('JointApp\Router\JointSiteRouteFinder', $getRoute)){
             if($returnRoute = call_user_func('JointApp\Router\JointSiteRouteFinder::'.$getRoute, $this->routes_ns)){
                 if(!empty($returnRoute->controllerName) and class_exists($returnRoute->controllerName)){
@@ -48,7 +52,6 @@ class JointSiteRouteFinder
                                     $this->logger->error('RouteFinder::'.$getRoute.' action \''.$aName.'\' not found', $this->context);
                                 }
                             }
-                            return $returnRoute;
                         }else{
                             $this->logger->error('RouteFinder::'.$getRoute.' view '.$returnRoute->viewName.' not found', $this->context);
                         }
@@ -58,14 +61,19 @@ class JointSiteRouteFinder
                 }else{
                     $this->logger->error('RouteFinder::'.$getRoute.' controller "'.$returnRoute->controllerName.'" not found', $this->context);
                 }
-                return $returnRoute;
             }else{
                 $this->logger->error('RouteFinder::'.$getRoute.' route not found', $this->context);
-                return new JointSiteRoute();
             }
         }else{
             $this->logger->error('RouteFinder::'.$getRoute.' method not exist', $this->context);
-            return new JointSiteRoute();
         }
+
+        if($returnRoute->responseFormat == 'text'){
+            $returnRoute->withAction('updateViewParams');
+        }else{
+            $returnRoute->withAction('updateResponseJson');
+        }
+
+        return $returnRoute;
     }
 }

@@ -13,7 +13,11 @@ class TpView_Grid extends TpView
     public string $langSl = '';
     public string $processUri = '';
 
-    public function renderView():string
+    protected $css = [
+            'listViewGrid' => '/css/records/listViewGrid.css',
+        ];
+
+    public function getResponseHtml():string
     {
         $return = '';
 
@@ -177,17 +181,9 @@ class TpView_Grid extends TpView
         return $return;
     }
 
-    public static function loadViewLang(string $lang = 'ru')
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\Records\List\LangFiles_'.self::ucfirstLang($lang).'_'. 'Views_R_L_Grid';
-        $langFile = new $class_Name();
-        return $langFile;
-    }
-
-    public static function getCss():array
-    {
-        return [
-            'listViewGrid' => '/css/records/listViewGrid.css',
-        ];
+        $class_Name = 'JointApp\LangFiles\Views\Records\List\LangFiles_'.self::ucfirstLang($this->userLang).'_'. 'Views_R_L_Grid';
+        return new $class_Name();
     }
 }

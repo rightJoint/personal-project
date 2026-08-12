@@ -23,8 +23,12 @@ class TpView_Edit extends TpView
     public string $action_log = '';
     public string $type_of_view = 'edit';
 
+    protected $css = [
+        'recordframe' => '/css/records/record-frame.css',
+    ];
 
-    public function renderView():string
+
+    public function getResponseHtml():string
     {
         $return = '<div class="record-frame '.$this->type_of_view.'">';
         if ($this->h2) {
@@ -62,12 +66,5 @@ class TpView_Edit extends TpView
         $return.='<a href="'.$this->processUri.'" title="list records"><img src="/img/popimg/search-icon.png">list</a>'.
             '</div>';
         return $return;
-    }
-
-    public static function getCss():array
-    {
-        return [
-            'recordframe' => '/css/records/record-frame.css',
-        ];
     }
 }

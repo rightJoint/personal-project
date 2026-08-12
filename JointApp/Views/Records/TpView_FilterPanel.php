@@ -12,7 +12,16 @@ class TpView_FilterPanel extends TpView
 
     public $searchFields = [];
 
-    public function renderView():string
+    protected $css = [
+        'recordForm' => '/css/records/record-form.css',
+    ];
+
+    protected $js = [
+        'recordForm' => '/js/records/records.js',
+    ];
+
+
+    public function getResponseHtml():string
     {
         $return = '<div class="contentBlock-frame"><div class="contentBlock-center">'.
             '<div class="contentBlock-wrap">'.
@@ -51,24 +60,9 @@ class TpView_FilterPanel extends TpView
         return $return;
     }
 
-    public static function loadViewLang(string $lang = 'ru')
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\Records\List\LangFiles_'.self::ucfirstLang($lang).'_'. 'Views_R_L_Filter';
-        $langFile = new $class_Name();
-        return $langFile;
-    }
-
-    public static function getCss():array
-    {
-        return [
-            'recordForm' => '/css/records/record-form.css',
-        ];
-    }
-
-    public static function getJs():array
-    {
-        return [
-            'recordForm' => '/js/records/records.js',
-        ];
+        $class_Name = 'JointApp\LangFiles\Views\Records\List\LangFiles_'.self::ucfirstLang($this->userLang).'_'. 'Views_R_L_Filter';
+        return new $class_Name();
     }
 }

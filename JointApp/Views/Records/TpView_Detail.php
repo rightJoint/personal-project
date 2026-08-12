@@ -11,6 +11,7 @@ class TpView_Detail extends TpView
     public string $h2 = '';
     public string $processUri = '';
     public string $langSl = '';
+    //detail or delete
     public string $type_of_view = 'detail';
     public $viewFields = [];
     public $fieldAliases = [];
@@ -18,7 +19,11 @@ class TpView_Detail extends TpView
     //delete view use editFields
     public $editFields = [];
 
-    public function renderView():string
+    protected $css = [
+        'recordframe' => '/css/records/record-frame.css',
+    ];
+
+    public function getResponseHtml():string
     {
         $return = '<div class="record-frame '.$this->type_of_view.'">';
         if ($this->h2) {
@@ -55,6 +60,7 @@ class TpView_Detail extends TpView
             $return.='<a href="'.$this->processUri.'/editview'.$this->pri_query.'" title="edit record"><img src="/img/popimg/edit-icon.png">edit</a>'.
                 '<a href="'.$this->processUri.'/deleteview'.$this->pri_query.'" title="delete record"><img src="/img/popimg/drop-icon.png">delete</a>';
         }else{
+
             $return.='<a href="'.$this->processUri.'/detailview'.$this->pri_query.'" title="detail record"><img src="/img/popimg/eye-icon.png">detail</a>'.
                 '<a href="'.$this->processUri.'/editview'.$this->pri_query.'" title="edit record"><img src="/img/popimg/edit-icon.png">edit</a>';
         }
@@ -63,12 +69,5 @@ class TpView_Detail extends TpView
             '<a href="'.$this->processUri.'" title="list records"><img src="/img/popimg/search-icon.png">list</a>'.
             '</div>';
         return $return;
-    }
-
-    public static function getCss():array
-    {
-        return [
-            'recordframe' => '/css/records/record-frame.css',
-        ];
     }
 }

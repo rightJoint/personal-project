@@ -39,7 +39,7 @@ class RecordEditView extends SiteView
     {
         $return = '<div class="contentBlock-frame"><div class="contentBlock-center">'.
             '<div class="contentBlock-wrap">'.
-            $this->tpSet->Edit->renderView().
+            $this->tpSet->Edit->getResponseHtml().
             '</div></div></div>';
         return $return;
     }

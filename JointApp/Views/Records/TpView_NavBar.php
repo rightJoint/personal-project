@@ -18,8 +18,12 @@ class TpView_NavBar extends TpView
 
     public $searchFields = [];
 
+    protected $css = [
+        'navBar' => '/css/records/nav-bar.css',
+    ];
 
-    public function renderView():string
+
+    public function getResponseHtml():string
     {
         $return_ajax = '<div class="navBar">'.
             '<div class="pagination">'.
@@ -78,18 +82,10 @@ class TpView_NavBar extends TpView
 
     }
 
-    public static function loadViewLang(string $lang = 'ru')
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\Records\List\LangFiles_'.self::ucfirstLang($lang).'_'. 'Views_R_L_NavBar';
-        $langFile = new $class_Name();
-        return $langFile;
-    }
-
-    public static function getCss():array
-    {
-        return [
-            'navBar' => '/css/records/nav-bar.css',
-        ];
+        $class_Name = 'JointApp\LangFiles\Views\Records\List\LangFiles_'.self::ucfirstLang($this->userLang).'_'. 'Views_R_L_NavBar';
+        return new $class_Name();
     }
 
     //public static function paginationPrint(\stdClass $langPg, $recordsCount, $curPage, $onPage, $length=2, $pag_length=2):string

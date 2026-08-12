@@ -46,14 +46,14 @@ class RecordListView extends SiteView
         if($this->h2){
             $return.= '<h2>'.$this->h2.'</h2>';
         }
-        $return.=$this->tpSet->Filter->renderView();
+        $return.=$this->tpSet->Filter->getResponseHtml();
         return $return;
     }
 
     protected function handleTpGrid(): string
     {
         return '<div class="list-view-grid">'.
-            $this->tpSet->Grid->renderView().
+            $this->tpSet->Grid->getResponseHtml().
             '</div>'.
             static::scriptListViewCrtlPannel($this->list_frame_id, $this->processUri, $this->slave_req).
             self::scriptSortBlock($this->list_frame_id).
@@ -65,7 +65,7 @@ class RecordListView extends SiteView
 
     protected function handleTpNavBar(): string
     {
-        return $this->tpSet->NavBar->renderView();
+        return $this->tpSet->NavBar->getResponseHtml();
     }
 
     protected function replaceDefaultHeadLang()

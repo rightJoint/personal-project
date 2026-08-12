@@ -14,6 +14,8 @@ class Controller
     public $model;
     public $view;
 
+    protected $responseJson = [];
+
     protected $context = ['controller' => __CLASS__];
 
     protected $langFile;
@@ -28,22 +30,27 @@ class Controller
     {
         $this->setLogger($logger);
         $this->user = $user;
-        $this->userLang = $user->userLang;
-        $this->setUpLangFile();
+        $this->setUpCustomLang($this->getDefaultLang());
         if(!$this->checkAccessController()){
             $this->logger->warning('denied in checkAccessController', $this->context);
         }
         $this->controllerFromParams($controller_params);
     }
 
+    //check user to get admission
     protected function checkAccessController():bool
     {
         return true;
     }
 
-    protected function setUpLangFile()
+    public function getDefaultLang()
     {
-        $this->langFile = new \stdClass();
+        return new \stdClass();
+    }
+
+    public function setUpCustomLang($langFile):void
+    {
+        $this->langFile = $langFile;
     }
 
     public function actionIndex()
@@ -51,13 +58,16 @@ class Controller
         $this->model->getData();
     }
 
-    protected function updateViewParams(&$view)
+    //automatically exec as final action when response format text
+    public function updateViewParams()
     {
-        foreach ($view as $prop => $value){
-            if(isset($this->$prop)){
-                $view->$prop = $this->$prop;
-            }
-        }
+        $this->setUpViewParams($this->view);
+    }
+
+    //automatically exec as final action when response format json
+    public function updateResponseJson()
+    {
+        $this->view->responseJson = $this->responseJson;
     }
 
     //pass some params on construct
@@ -69,4 +79,15 @@ class Controller
             }
         }
     }
+
+    //update some view params
+    protected function setUpViewParams(&$view)
+    {
+        foreach ($view as $prop => $value){
+            if(isset($this->$prop)){
+                $view->$prop = $this->$prop;
+            }
+        }
+    }
+
 }

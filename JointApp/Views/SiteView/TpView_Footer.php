@@ -11,13 +11,17 @@ class TpView_Footer extends TpView
 {
     public bool $robotNoIndex = false;
 
-    public static function loadViewLang(string $lang = 'ru')
+    protected $css = array(
+        'siteFooter' => '/css/WebView/site-footer.css',
+    );
+
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_Footer';
+        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Footer';
         return new $class_Name();
     }
 
-    public function renderView():string
+    public function getResponseHtml():string
     {
         $pageFooter = '<div class="contentBlock-frame dark ft"><div class="contentBlock-center">'.
             '<div class="contentBlock-wrap">'.
@@ -46,12 +50,5 @@ class TpView_Footer extends TpView
             '</footer>'.
             '</div></div></div>';
         return $pageFooter;
-    }
-
-    public static function getCss(): array
-    {
-        return array(
-            'siteFooter' => '/css/WebView/site-footer.css',
-        );
     }
 }

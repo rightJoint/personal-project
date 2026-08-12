@@ -12,13 +12,12 @@ use JointApp\Views\SiteView\TpView_Header;
 use JointApp\Views\SiteView\TpView_ModalMenu;
 use JointApp\Views\SiteView\TpView_ModalUser;
 
-class WebView implements WebViewInterface
+class WebView extends View
 {
     public string $userLang = 'ru';
     public string $uri_pq = '';
 
     protected \stdClass $tpSet;
-    protected \stdClass $langFile;
 
     protected $js = ['googleapis' => '/js/googleapis.js',];
     protected $css = ['webview' => '/css/WebView/webview.css',];
@@ -26,9 +25,18 @@ class WebView implements WebViewInterface
     public $js_set = [];
     public $css_set = [];
 
+    public string $h1 = '';
+
     public function __construct()
     {
         $this->setUpTemplates();
+    }
+
+    public function handleViewParams():void
+    {
+        $this->setUpCss();
+        $this->setUpJs();
+        $this->updateTpData();
     }
 
     private function setUpTemplates():void
@@ -49,41 +57,44 @@ class WebView implements WebViewInterface
     }
 
     //get all langFiles from each tp-view
-    public function setUpLangFiles():void
+    public function getDefaultLang()
     {
-        $this->langFile = new \stdClass();
+        $langFile = new \stdClass();
         foreach (get_object_vars($this->tpSet) as $key => $val){
             $replace = 'replaceDefault'.$key.'Lang';
             //put custom langFile into template view
             if(method_exists($this, $replace)){
                 $tpLang = $this->$replace();
             }else{
-                $tpLang = $this->tpSet->$key->loadViewLang($this->userLang);
+                $tpLang = $this->tpSet->$key->getDefaultLang();
             }
-            $this->langFile->$key = $tpLang;
+            $langFile->$key = $tpLang;
         }
+        return $langFile;
     }
 
     //get all js from each tp-view
-    public function setUpJs():void
+    protected function setUpJs():void
     {
         $this->js_set = $this->js;
         foreach ($this->tpSet as $key => $val){
             $this->js_set =array_merge($this->js_set, $this->tpSet->$key->getJs());
         }
+        $this->tpSet->Head->js_set = $this->js_set;
     }
 
     //get all css from each tp-view
-    public function setUpCss():void
+    protected function setUpCss():void
     {
         $this->css_set = $this->css;
         foreach ($this->tpSet as $key => $val){
             $this->css_set =array_merge($this->css_set, $this->tpSet->$key->getCss());
         }
+        $this->tpSet->Head->css_set = $this->css_set;
     }
 
     //copy public params from this to template view params
-    public function updateTpData():void
+    protected function updateTpData():void
     {
         foreach ($this->tpSet as $key => $val){
             foreach ($this->tpSet->$key as $tPkey => $tPval){
@@ -95,17 +106,17 @@ class WebView implements WebViewInterface
     }
 
     //glue html of each tp-view
-    public function mkWebPage():string
+    public function getResponseHtml():string
     {
         $html = '';
         foreach ($this->tpSet as $key => $val){
-            $this->tpSet->$key->setLangFile($this->langFile->$key);
+            $this->tpSet->$key->setUpCustomLang($this->langFile->$key);
             $method = 'handleTp'.$key;
             //handle custom tp-view
             if(method_exists($this, $method)){
                 $html .= $this->$method();
             }else{
-                $html .= $this->tpSet->$key->renderView();
+                $html .= $this->tpSet->$key->getResponseHtml();
             }
         }
         return $html;

@@ -24,11 +24,9 @@ class JointSite_Views_Test extends PHPUnit\Framework\TestCase
         for($i=1; $i<=count($langSet); $i++){
             $webView = new SiteView();
             $webView->userLang = $langSet[$i-1];
-            $webView->setUpLangFiles();
-            $webView->setUpCss();
-            $webView->setUpJs();
-            $webView->updateTpData();
-            $webView->mkWebPage();
+            $webView->handleViewParams();
+            $webView->setUpCustomLang($webView->getDefaultLang());
+            $webView->getResponseHtml();
         }
     }
 
@@ -39,11 +37,9 @@ class JointSite_Views_Test extends PHPUnit\Framework\TestCase
         for($i=1; $i<=count($langSet); $i++){
             $webView = new WebView();
             $webView->userLang = $langSet[$i-1];
-            $webView->setUpLangFiles();
-            $webView->setUpCss();
-            $webView->setUpJs();
-            $webView->updateTpData();
-            $webView->mkWebPage();
+            $webView->handleViewParams();
+            $webView->setUpCustomLang($webView->getDefaultLang());
+            $webView->getResponseHtml();
         }
     }
 
@@ -54,11 +50,9 @@ class JointSite_Views_Test extends PHPUnit\Framework\TestCase
         for($i=1; $i<=count($langSet); $i++){
             $webView = new \JointApp\Views\ErrorsView();
             $webView->userLang = $langSet[$i-1];
-            $webView->setUpLangFiles();
-            $webView->setUpCss();
-            $webView->setUpJs();
-            $webView->updateTpData();
-            $webView->mkWebPage();
+            $webView->handleViewParams();
+            $webView->setUpCustomLang($webView->getDefaultLang());
+            $webView->getResponseHtml();
         }
     }
 
@@ -69,33 +63,47 @@ class JointSite_Views_Test extends PHPUnit\Framework\TestCase
         for($i=1; $i<=count($langSet); $i++){
             $userLang = $langSet[$i-1];
 
-            $tpView_User = new \JointApp\Views\TpView_Errors();
-            $tpView_User->setLangFile($tpView_User->loadViewLang($userLang));
-            $tpView_User->renderView();
+            $tpView_Err = new \JointApp\Views\TpView_Errors();
+            $tpView_Err->userLang = $userLang;
+            $tpView_Err->handleViewParams();
+            $tpView_Err->setUpCustomLang($tpView_Err->getDefaultLang());
+            $tpView_Err->getResponseHtml();
 
             $tpView_User = new TpView_ModalUser();
-            $tpView_User->setLangFile($tpView_User->loadViewLang($userLang));
-            $tpView_User->renderView();
+            $tpView_User->userLang = $userLang;
+            $tpView_User->handleViewParams();
+            $tpView_User->setUpCustomLang($tpView_User->getDefaultLang());
+            $tpView_User->getResponseHtml();
 
             $tpView_Menu = new TpView_ModalMenu();
-            $tpView_Menu->setLangFile($tpView_Menu->loadViewLang($userLang));
-            $tpView_Menu->renderView();
+            $tpView_Menu->userLang = $userLang;
+            $tpView_Menu->handleViewParams();
+            $tpView_Menu->setUpCustomLang($tpView_Menu->getDefaultLang());
+            $tpView_Menu->getResponseHtml();
 
             $tpView_Footer = new TpView_Footer();
-            $tpView_Footer->setLangFile($tpView_Footer->loadViewLang($userLang));
-            $tpView_Footer->renderView();
+            $tpView_Footer->userLang = $userLang;
+            $tpView_Footer->handleViewParams();
+            $tpView_Footer->setUpCustomLang($tpView_Footer->getDefaultLang());
+            $tpView_Footer->getResponseHtml();
 
             $tpView_Header = new TpView_Header();
-            $tpView_Header->setLangFile($tpView_Header->loadViewLang($userLang));
-            $tpView_Header->renderView();
+            $tpView_Header->userLang = $userLang;
+            $tpView_Header->handleViewParams();
+            $tpView_Header->setUpCustomLang($tpView_Header->getDefaultLang());
+            $tpView_Header->getResponseHtml();
 
             $tpView_Head = new TpView_Head();
-            $tpView_Head->setLangFile($tpView_Head->loadViewLang($userLang));
-            $tpView_Head->renderView();
+            $tpView_Head->userLang = $userLang;
+            $tpView_Head->handleViewParams();
+            $tpView_Head->setUpCustomLang($tpView_Head->getDefaultLang());
+            $tpView_Head->getResponseHtml();
 
             $tpView = new \JointApp\Views\TpView();
-            $tpView->setLangFile($tpView->loadViewLang($userLang));
-            $tpView->renderView();
+            $tpView->userLang = $userLang;
+            $tpView->handleViewParams();
+            $tpView->setUpCustomLang($tpView->getDefaultLang());
+            $tpView->getResponseHtml();
         }
     }
 }

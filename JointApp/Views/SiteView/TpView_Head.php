@@ -21,13 +21,13 @@ class TpView_Head extends TpView
     public $css_set = [];
 
 
-    public static function loadViewLang(string $userLang = 'ru')
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($userLang).'_'.'Views_Head';
+        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Head';
         return new $class_Name();
     }
 
-    public function renderView():string
+    public function getResponseHtml():string
     {
         $headText = '<head>'.
             '<meta http-equiv="content-type" content="text/html"; charset="utf-8"/>'.

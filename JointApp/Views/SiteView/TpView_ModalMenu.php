@@ -12,18 +12,24 @@ class TpView_ModalMenu extends TpView
 
     public bool $modalMenuActive = false;
     public string $uri_pq = '';
-    public string $langSl = '';
-    public string $userLang = 'ru';
+
+    protected $css = array(
+        'modals' => '/css/WebView/modals.css',
+    );
+
+    protected $js = array(
+            'modals' => '/js/modals.js',
+        );
 
 
-    public static function loadViewLang(string $lang = 'ru')
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_ModalMenu';
+        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_ModalMenu';
         return new $class_Name();
     }
 
 
-    public function renderView():string
+    public function getResponseHtml():string
     {
         $active_modal_menu_style = null;
         if ($this->modalMenuActive) {
@@ -70,15 +76,17 @@ class TpView_ModalMenu extends TpView
             '</div>'.
             $this->modalMenuTests();
 
-
         $modalMenu.= '</div></div></div></div>';
         return $modalMenu;
     }
 
     public function modalMenuTests():string
     {
-        $menu_lang = TpView_Test_Menu::loadViewLang($this->userLang);
-        $httpLinks = TpView_Test_Menu::getHttpLinks();
+        $testMenu = new TpView_Test_Menu();
+        $testMenu->userLang = $this->userLang;
+
+        $menu_lang = $testMenu->getDefaultLang();
+        $httpLinks = $testMenu::getHttpLinks();
         $linksLang = $menu_lang::getLinks();
 
         return "<div class='joint-site-menu'>".
@@ -98,19 +106,5 @@ class TpView_ModalMenu extends TpView
             '<li><a href="'.$this->langSl.$httpLinks['tables'].'" title="'.$linksLang['tables']['title'].'">'.$linksLang['tables']['text'].'</a></li>'.
             '</ul>'.
             '</div>';
-    }
-
-    public static function getCss(): array
-    {
-        return array(
-            'modals' => '/css/WebView/modals.css',
-        );
-    }
-
-    public static function getJS(): array
-    {
-        return array(
-            'modals' => '/js/modals.js',
-        );
     }
 }

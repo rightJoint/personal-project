@@ -12,14 +12,18 @@ class TpView_Header extends TpView
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
     public string $h1 = '';
 
+    protected $css = array(
+        'siteHeader' => '/css/WebView/site-header.css',
+    );
 
-    public static function loadViewLang(string $userLang = 'ru')
+
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($userLang).'_'.'Views_Header';
+        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Header';
         return new $class_Name();
     }
 
-    public function renderView():string
+    public function getResponseHtml():string
     {
         $headerText= '<div class="contentBlock-frame dark"><div class="contentBlock-center">'.
             '<div class="contentBlock-wrap">'.
@@ -93,12 +97,5 @@ class TpView_Header extends TpView
         $headerText.='</div></header>'.'</div></div></div>'.$header_user_styles;
 
         return $headerText;
-    }
-
-    public static function getCss(): array
-    {
-        return array(
-            'siteHeader' => '/css/WebView/site-header.css',
-        );
     }
 }

@@ -23,17 +23,17 @@ class SiteView extends WebView
             '<html lang="'.$this->userLang.'">'.
             '<body>'.
             '<div class="page-wrap">'.
-            $this->tpSet->Header->renderView();
+            $this->tpSet->Header->getResponseHtml();
     }
 
     protected function handleTpFooter():string
     {
-        return $this->tpSet->Footer->renderView().'</div>';
+        return $this->tpSet->Footer->getResponseHtml().'</div>';
     }
 
     protected function handleTpModalUser():string
     {
-        return  $this->tpSet->ModalUser->renderView().
+        return  $this->tpSet->ModalUser->getResponseHtml().
         '</body>'.
         '</html>';
     }

@@ -10,13 +10,21 @@ class TpView_ModalUser extends TpView
 {
     public bool $userUserActive = false;
 
-    public static function loadViewLang(string $lang = 'ru')
+    protected $css = array(
+        'modals' => '/css/WebView/modals.css',
+    );
+
+    protected $js = array(
+        'modals' => '/js/modals.js',
+    );
+
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_ModalUser';
+        $class_Name = 'JointApp\LangFiles\Views\SiteView\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_ModalUser';
         return new $class_Name();
     }
 
-    public function renderView():string
+    public function getResponseHtml():string
     {
         $active_modal_menu_style = null;
 
@@ -34,19 +42,5 @@ class TpView_ModalUser extends TpView
 
         $modalMenu.= '</div></div></div></div>';
         return $modalMenu;
-    }
-
-    public static function getCss(): array
-    {
-        return array(
-            'modals' => '/css/WebView/modals.css',
-        );
-    }
-
-    public static function getJS(): array
-    {
-        return array(
-            'modals' => '/js/modals.js',
-        );
     }
 }

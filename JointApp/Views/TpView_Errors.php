@@ -9,13 +9,17 @@ class TpView_Errors extends TpView
     public int $response_status_code = 200;
     public $app_custom_log = [];
 
-    public static function loadViewLang(string $userLang = 'ru')
+    protected $css = [
+        'errors' => '/css/errors.css',
+    ];
+
+    public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\LangFiles_'.self::ucfirstLang($userLang).'_'.'Views_Errors_Page';
+        $class_Name = 'JointApp\LangFiles\Views\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Errors_Page';
         return new $class_Name();
     }
 
-    public function renderView():string
+    public function getResponseHtml():string
     {
         $html = '<div class="contentBlock-frame"><div class="contentBlock-center">'.
             '<div class="contentBlock-wrap">'.
@@ -57,12 +61,5 @@ class TpView_Errors extends TpView
         }
 
         return $return;
-    }
-
-    public static function getCss():array
-    {
-        return [
-            'errors' => '/css/errors.css',
-        ];
     }
 }

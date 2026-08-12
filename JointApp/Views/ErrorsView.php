@@ -35,7 +35,7 @@ class ErrorsView extends SiteView
     protected function handleTpErrors(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->Errors->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->Errors->getResponseHtml().
             '</div></div></div>';
     }
 }

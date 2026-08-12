@@ -10,10 +10,16 @@ use JointApp\Views\TpView;
 
 class TpView_JointSite_Menu extends TpView
 {
-    public string $langSl = '';
+    public $css = [
+        'jointSiteMenu' => '/css/jointSite/jointSiteMenu.css',
+    ];
 
+    public $js = [
+        'googleapis' => '/js/googleapis.js',
+        'jointSiteMenu' => '/js/jointSite/jointSiteMenu.js',
+    ];
 
-    public function renderView():string
+    public function getResponseHtml():string
     {
 
         $httpLinks = static::getHttpLinks();
@@ -82,25 +88,9 @@ class TpView_JointSite_Menu extends TpView
         return $httpLinks;
     }
 
-    public static function getCss():array
+    public function getDefaultLang()
     {
-        return [
-            'jointSiteMenu' => '/css/jointSite/jointSiteMenu.css',
-        ];
-    }
-
-    public static function getJS():array
-    {
-        return [
-            'googleapis' => '/js/googleapis.js',
-            'jointSiteMenu' => '/js/jointSite/jointSiteMenu.js',
-        ];
-    }
-
-    public static function loadViewLang(string $lang = 'ru')
-    {
-        $class_Name = 'Src\LangFiles\Views\JointSite\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_Menu';
-        $langFile = new $class_Name();
-        return $langFile;
+        $class_Name = 'Src\LangFiles\Views\JointSite\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_JointSite_Menu';
+        return new $class_Name();
     }
 }

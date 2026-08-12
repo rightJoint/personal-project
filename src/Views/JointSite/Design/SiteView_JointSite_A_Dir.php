@@ -28,9 +28,8 @@ class SiteView_JointSite_A_Dir extends SiteView_JointSite
 
     protected function handleTpDir(): string
     {
-
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">444'.$this->tpSet->Dir->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->Dir->getResponseHtml().
             '</div></div></div>';
     }
 }

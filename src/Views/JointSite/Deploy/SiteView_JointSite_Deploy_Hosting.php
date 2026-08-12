@@ -30,7 +30,7 @@ class SiteView_JointSite_Deploy_Hosting extends SiteView_JointSite
     protected function handleTpDeployHosting(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->DeployHosting->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->DeployHosting->getResponseHtml().
             '</div></div></div>';
     }
 }

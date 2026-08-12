@@ -30,7 +30,7 @@ class SiteView_JointSite_A_Mvc extends SiteView_JointSite
     {
 
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">444'.$this->tpSet->Mvc->renderView().
+            '<div class="contentBlock-wrap">444'.$this->tpSet->Mvc->getResponseHtml().
             '</div></div></div>';
     }
 }

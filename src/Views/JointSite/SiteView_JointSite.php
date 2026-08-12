@@ -24,14 +24,14 @@ class SiteView_JointSite extends SiteView
     protected function handleTpJointSiteMenu(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->JointSiteMenu->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->JointSiteMenu->getResponseHtml().
             '</div></div></div>';
     }
 
     protected function handleTpAbout(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->About->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->About->getResponseHtml().
             '</div></div></div>';
     }
 

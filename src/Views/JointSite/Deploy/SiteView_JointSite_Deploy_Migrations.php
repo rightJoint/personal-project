@@ -30,7 +30,7 @@ class SiteView_JointSite_Deploy_Migrations extends SiteView_JointSite
     protected function handleTpMigrations(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->Migrations->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->Migrations->getResponseHtml().
             '</div></div></div>';
     }
 }

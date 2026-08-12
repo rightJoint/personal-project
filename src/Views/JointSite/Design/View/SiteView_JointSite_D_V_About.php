@@ -29,7 +29,7 @@ class SiteView_JointSite_D_V_About extends SiteView_JointSite
     protected function handleTpAbout(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->About->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->About->getResponseHtml().
             '</div></div></div>';
     }
 }

@@ -30,7 +30,7 @@ class SiteView_JointSite_User_About extends SiteView_JointSite
     protected function handleTpUser(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">111'.$this->tpSet->User->renderView().
+            '<div class="contentBlock-wrap">111'.$this->tpSet->User->getResponseHtml().
             '</div></div></div>';
     }
 }

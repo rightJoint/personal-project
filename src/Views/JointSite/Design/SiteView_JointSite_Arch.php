@@ -29,7 +29,7 @@ class SiteView_JointSite_Arch extends SiteView_JointSite
     protected function handleTpSiteView(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">22222'.$this->tpSet->SiteView->renderView().
+            '<div class="contentBlock-wrap">22222'.$this->tpSet->SiteView->getResponseHtml().
             '</div></div></div>';
     }
 }

@@ -30,7 +30,7 @@ class SiteView_JointSite_Deploy_OpenServer extends SiteView_JointSite
     protected function handleTpDeployOS(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->DeployOS->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->DeployOS->getResponseHtml().
             '</div></div></div>';
     }
 }

@@ -30,7 +30,7 @@ class SiteView_JointSite_Tests_About extends SiteView_JointSite
     protected function handleTpTests(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">111'.$this->tpSet->Tests->renderView().
+            '<div class="contentBlock-wrap">111'.$this->tpSet->Tests->getResponseHtml().
             '</div></div></div>';
     }
 }

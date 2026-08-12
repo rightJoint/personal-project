@@ -12,14 +12,30 @@ class TpView_JointSite_A_App_Article extends TpView
 {
     public string $langSl = '';
 
-    public function renderView():string
+    protected $css = [
+        'pageContentJointSite' => '/css/jointSite/pageContentJointSite.css',
+        'codesnippet' => '/css/code-snippet.css',
+    ];
+
+    public function getResponseHtml():string
     {
-        return $this->langFile::H3;
+        return '<article class="pageContentJointSite">'.
+            '<section>'.
+            '<h3>'.$this->langFile::H3.'</h3>'.'</section>'.
+            '<h3>JointAppRequest</h3>'.
+            '<h4>Request adapter</h4>'.
+            '<h3>Router</h3>'.
+            '<h4>Route Finder</h4>'.
+            '<h3>JointSiteLogger</h3>'.
+            '<h3>JointAppResponse</h3>'.
+            '<h3></h3>'.
+            '<h3>Request handler</h3>'.
+            '</article>';
     }
 
-    public static function loadViewLang(string $lang = 'ru')
+    public function getDefaultLang()
     {
-        $class_Name = 'Src\LangFiles\Views\JointSite\Design\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_A_App_Article';
+        $class_Name = 'Src\LangFiles\Views\JointSite\Design\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_JointSite_A_App_Article';
         $langFile = new $class_Name();
         return $langFile;
     }

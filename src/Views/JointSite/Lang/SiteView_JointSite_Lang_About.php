@@ -30,7 +30,7 @@ class SiteView_JointSite_Lang_About extends SiteView_JointSite
     protected function handleTpLang(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">111'.$this->tpSet->Lang->renderView().
+            '<div class="contentBlock-wrap">111'.$this->tpSet->Lang->getResponseHtml().
             '</div></div></div>';
     }
 }

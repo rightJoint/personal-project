@@ -31,7 +31,7 @@ class SiteView_JointSite_Model_About extends SiteView_JointSite
     protected function handleTpModel(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">111'.$this->tpSet->Model->renderView().
+            '<div class="contentBlock-wrap">111'.$this->tpSet->Model->getResponseHtml().
             '</div></div></div>';
     }
 }

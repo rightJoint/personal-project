@@ -29,7 +29,7 @@ class SiteView_JointSite_D_V_TpView extends SiteView_JointSite
     protected function handleTpTpView(): string
     {
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->TpView->renderView().
+            '<div class="contentBlock-wrap">'.$this->tpSet->TpView->getResponseHtml().
             '</div></div></div>';
     }
 }

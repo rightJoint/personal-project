@@ -6,5 +6,5 @@ namespace Src\LangFiles\Views\JointSite;
 
 class LangFiles_Ru_Views_JointSite_About
 {
-    const H3 = 'about-stab-ru';
+    const H3 = 'О приложении';
 }

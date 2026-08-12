@@ -9,7 +9,12 @@ use JointApp\Views\TpView;
 
 class TpView_JointSite_D_V_TpView extends TpView
 {
-    public function renderView():string
+    protected $css = [
+        'pageContentJointSite' => '/css/jointSite/pageContentJointSite.css',
+        'codesnippet' => '/css/code-snippet.css',
+    ];
+
+    public function getResponseHtml():string
     {
         return
             '<article class="pageContentJointSite">'.
@@ -75,18 +80,9 @@ class TpView_JointSite_D_V_TpView extends TpView
             '</article>';
     }
 
-    public static function getCss():array
+    public function getDefaultLang()
     {
-        return [
-            'pageContentJointSite' => '/css/jointSite/pageContentJointSite.css',
-            'codesnippet' => '/css/code-snippet.css',
-        ];
-    }
-
-    public static function loadViewLang(string $lang = 'ru')
-    {
-        $class_Name = 'Src\LangFiles\Views\JointSite\Design\View\LangFiles_'.self::ucfirstLang($lang).'_V_JS_D_V_TV_Article';
-        $langFile = new $class_Name();
-        return $langFile;
+        $class_Name = 'Src\LangFiles\Views\JointSite\Design\View\LangFiles_'.self::ucfirstLang($this->userLang).'_V_JS_D_V_TV_Article';
+        return new $class_Name();
     }
 }

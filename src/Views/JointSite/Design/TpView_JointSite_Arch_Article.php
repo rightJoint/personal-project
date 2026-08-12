@@ -12,15 +12,14 @@ class TpView_JointSite_Arch_Article extends TpView
 {
     public string $langSl = '';
 
-    public function renderView():string
+    public function getResponseHtml():string
     {
         return $this->langFile::H3;
     }
 
-    public static function loadViewLang(string $lang = 'ru')
+    public function getDefaultLang()
     {
-        $class_Name = 'Src\LangFiles\Views\JointSite\Design\LangFiles_'.self::ucfirstLang($lang).'_'.'Views_JointSite_A_Article';
-        $langFile = new $class_Name();
-        return $langFile;
+        $class_Name = 'Src\LangFiles\Views\JointSite\Design\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_JointSite_A_Article';
+        return new $class_Name();
     }
 }

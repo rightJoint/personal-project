@@ -48,11 +48,9 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
             foreach ($Ns as $class){
                 $SiteView = new $class();
                 $SiteView->userLang = $langSet[$i-1];
-                $SiteView->setUpLangFiles();
-                $SiteView->setUpCss();
-                $SiteView->setUpJs();
-                $SiteView->updateTpData();
-                $SiteView->mkWebPage();
+                $SiteView->handleViewParams();
+                $SiteView->setUpCustomLang($SiteView->getDefaultLang());
+                $SiteView->getResponseHtml();
             }
         }
     }
@@ -96,8 +94,8 @@ class Src_Views_JointSite_Test extends PHPUnit\Framework\TestCase
             $userLang = $langSet[$i-1];
             foreach ($Ns as $class){
                 $tpView = new $class();
-                $tpView->setLangFile($tpView->loadViewLang($userLang));
-                $tpView->renderView();
+                $tpView->setUpCustomLang($tpView->getDefaultLang($userLang));
+                $tpView->getResponseHtml();
             }
         }
     }

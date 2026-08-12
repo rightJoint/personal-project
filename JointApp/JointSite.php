@@ -6,6 +6,7 @@ namespace JointApp;
 use JointApp\Factories\ControllerFactory;
 use JointApp\Factories\FromRequestFactory;
 use JointApp\Factories\ModelFactory;
+use JointApp\Interfaces\SiteViewInterface;
 use JointApp\Router\JointSiteRoute;
 use JointApp\Router\JointSiteRouteFinder;
 use Psr\Http\Message\ResponseInterface;
@@ -61,29 +62,27 @@ class JointSite implements RequestHandlerInterface
 
             //check controller action errors
             if($this->response->getStatusCode() == 200) {
-                //web-pages
+                //web-pages, with action updateViewParams
                 if ($this->route->responseFormat == 'text') {
                     //check redirect
                     if(!$this->response->redirect){
                         $view->handleViewParams();
-                        $view->updateTpData();
-                        $view->setUpLangFiles();
-                        $this->response->responseText = $view->mkWebPage();
+                        $view->setUpCustomLang($view->getDefaultLang());
+                        $this->response->responseText = $view->getResponseHtml();
                     }
                 }
-                //json, api or ajax
+                //json, api or ajax, with action updateResponseJson
                 else {
-                    $this->response->responseJson = $view->responseJson;
+                    $this->response->responseJson = $view->getResponseJson();
                 }
             }
-
         }
         $this->logger->logTime('App end');
 
         return $this->response;
     }
 
-    private function execActions()
+    private function execActions():SiteViewInterface
     {
         //set up model
         $model = ModelFactory::ModelFromRequest($this->route->modelName, $this->request, $this->user,
@@ -174,9 +173,8 @@ class JointSite implements RequestHandlerInterface
         $view->response_status_code = $response->getStatusCode();
         $view->app_custom_log = $response->customLog;
 
+        $view->handleViewParams();
         $view->setUpLangFiles();
-        $view->setUpJs();
-        $view->setUpCss();
         $view->updateTpData();
         echo $view->mkWebPage();
     }

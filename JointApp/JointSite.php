@@ -174,8 +174,7 @@ class JointSite implements RequestHandlerInterface
         $view->app_custom_log = $response->customLog;
 
         $view->handleViewParams();
-        $view->setUpLangFiles();
-        $view->updateTpData();
-        echo $view->mkWebPage();
+        $view->setUpCustomLang($view->getDefaultLang());
+        echo $view->getResponseHtml();
     }
 }

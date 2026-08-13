@@ -9,11 +9,13 @@ use JointApp\Views\TpView;
 class TpView_FilterPanel extends TpView
 {
     use HtmlInputsTrait;
+    public string $h2 = '';
+    public string $processUri = '';
 
     public $searchFields = [];
 
     protected $css = [
-        'recordForm' => '/css/records/record-form.css',
+        'recordForm' => '/css/records/record-frame.css',
     ];
 
     protected $js = [
@@ -23,10 +25,12 @@ class TpView_FilterPanel extends TpView
 
     public function getResponseHtml():string
     {
-        $return = '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.
-            '<div class="search_frame">'.
-            '<form class="filterForm" method="post">';
+        $return = '<div class="record-frame search">';
+        if ($this->h2) {
+            $return.= '<h2><a href="'.$this->langSl.$this->processUri.'">'.$this->h2.'</a></h2>';
+        }
+        $return.='<form class="filterForm" method="post">';
+
         if(count($this->searchFields)){
             foreach ($this->searchFields as $fieldName=>$fieldData){
                 if(isset($fieldData['search']) and $fieldData['search'] == true){
@@ -42,7 +46,7 @@ class TpView_FilterPanel extends TpView
             }
         }
 
-        $return.= '<div class="apply-line">';
+        $return.= '<div class="submit-line">';
         $return.= '<input type="button" class="applyFilterForm" '.
             'value="'.$this->langFile::CLEAR_BTN_TEXT.'" '.
             'onclick="clearSearchInputs()">'.
@@ -52,9 +56,6 @@ class TpView_FilterPanel extends TpView
             '</div>'.
             '<input type="hidden" name="applyFilterRec" value="1">'.
             '</form>'.
-            '</div>'.
-            '</div>'.
-            '</div>'.
             '</div>';
 
         return $return;

@@ -1,0 +1,107 @@
+.record-frame{
+    width: 100%;
+    text-align: left;
+    padding-bottom: 2em;
+}
+.record-frame.detail{
+    background-color: lightgray;
+}
+.record-frame.edit{
+    background-color: lightcyan;
+}
+.record-frame.search{
+    background-color: lightgoldenrodyellow;
+}
+.record-frame.new{
+    background-color: lightgreen;
+}
+.record-frame h2{
+    font-size: 1em;
+    background-color: midnightblue;
+    margin-top: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 2em;
+}
+.record-frame h2 a{
+    color: silver;
+}
+.record-frame .input-line{
+    vertical-align: top;
+    display: inline-block;
+    width: 48%;
+    margin: 0.2em 1%;
+    text-align: left;
+}
+.record-frame .input-line label{
+    color: midnightblue;
+    text-align: right;
+    width: 19%;
+    display: inline-block;
+    padding-right: 1%;
+    font-size: 0.8em;
+    font-family: "Mona Sans", system-ui, sans-serif;
+}
+
+.record-frame .input-line.wd100
+{
+    width: 98%;
+}
+.record-frame .input-line.wd100 label
+{
+    width: 98%;
+    text-align: left;
+}
+.record-nav{
+    width: 100%;
+    background-color: darkkhaki;
+    text-align: right;
+    margin-bottom: 2em;
+}
+.record-nav a{
+    margin-left: 1em;
+}
+.record-nav a img{
+    height: 1em;
+    width: 1em;
+    margin-right: 0.2em;
+}
+
+.record-frame form .submit-line{
+    width: 100%;
+    text-align: right;
+}
+
+.record-frame form .submit-line input[type=submit],
+.record-frame form .submit-line input[type=button]{
+    font-size: 0.8em;
+    margin-right: 1em;
+}
+
+.record-frame label.ro {
+    color: darkgray;
+}
+
+.record-frame label.idx {
+    text-decoration: underline;
+}
+
+.input-line input,
+.input-line textarea,
+.input-line select {
+    width: 78%;
+    display: inline-block;
+}
+.input-line.wd100
+{
+    width: 98%;
+}
+.input-line.wd100 label
+{
+    width: 98%;
+    text-align: left;
+}
+.input-line.wd100 input
+{
+    width: 98%;
+}

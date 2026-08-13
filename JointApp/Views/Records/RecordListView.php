@@ -43,9 +43,6 @@ class RecordListView extends SiteView
             '<div class="contentBlock-wrap">'.
             //open list_frame
             '<div class="list_frame" id="'.$this->list_frame_id.'">';
-        if($this->h2){
-            $return.= '<h2>'.$this->h2.'</h2>';
-        }
         $return.=$this->tpSet->Filter->getResponseHtml();
         return $return;
     }

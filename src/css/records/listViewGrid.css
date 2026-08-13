@@ -1,0 +1,24 @@
+.list-view-grid{
+    margin-bottom: 2em;
+    width: 100%;
+    overflow-x: scroll;
+
+}
+.list-view-grid table, .module-stat table{
+    width: 100%;
+}
+.list-view-grid table tr.fCaption td, .module-stat table tr.fCaption td{
+    background-color: midnightblue;
+    color: silver;
+
+}
+.list-view-grid table tr td, .module-stat table tr td{
+    background-color: whitesmoke;
+}
+.list-view-grid table td, .module-stat table td{
+    border: 1px solid silver;
+}
+.list-view-grid a.list-btn img{
+    height: 1.2em;
+    width: 1.2em;
+}

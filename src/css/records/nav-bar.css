@@ -1,0 +1,93 @@
+.navBar{
+    width: 100%;
+    margin: 0.2em 0;
+}
+/*>>pagination>>*/
+.pagination {
+    text-align: left;
+    width: 40%;
+    display: inline-block;
+    font-size: 0.9em;
+}
+.sort-block{
+    text-align: left;
+    width: 50%;
+    display: inline-block;
+    font-size: 0.9em;
+}
+.new-block{
+    text-align: right;
+    width: 10%;
+    display: inline-block;
+    font-size: 0.9em;
+}
+.pl_text {
+    text-align: right;
+    width: 50%;
+    margin-bottom: 1em;
+    display: inline-block;
+}
+.pagination span.p_btn {
+    color: darkorange;
+    cursor: pointer;
+    font-family: Serif;
+    text-decoration: none;
+}
+.pagination span.p_btn.prev::before {
+    content: "«";
+}
+.pagination span.p_btn.next::after {
+    content: "»";
+}
+.pagination span.p_btn.active {
+    color: darkgrey;
+    cursor: default;
+}
+span.p_num {
+    color: black;
+    padding: 0.2em;
+    font-size: 0.8em;
+    background-color: darkorange;
+    margin: 0.2em;
+    border-radius: 0.1em;
+    text-decoration: none;
+    cursor: pointer;
+}
+span.p_num.active {
+    font-size: 1em;
+    color: white;
+    background-color: darkgrey;
+    cursor: default;
+}
+.pl_text span {
+    color: gray;
+}
+span.found_label{
+    display: inline;
+    color: darkgreen;
+
+}
+span.found_label span{
+    font-weight: bold;
+    color: midnightblue;
+}
+/*<<pagination<<*/
+/*>>sort-block>>*/
+.list_frame .sort-block select{
+    font-size: 0.8em;
+    margin-right: 0.2em;
+}
+.list_frame .sort-block span.sortField{
+    margin-left: 0.5em;
+}
+/*>>sort-block>>*/
+/*>>apply-block>>*
+.search_frame .apply-block{
+    display: inline-block;
+    width: 19%;
+}*/
+.newRecLink{
+    font-style: italic;
+    color: firebrick;
+    font-weight: bold;
+}

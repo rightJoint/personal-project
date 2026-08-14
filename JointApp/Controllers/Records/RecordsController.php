@@ -4,6 +4,7 @@ namespace JointApp\Controllers\Records;
 
 
 use JointApp\Controllers\Controller;
+use JointApp\Interfaces\RecordsModelInterface;
 use JointApp\JointAppQueryBuilder;
 
 class RecordsController extends Controller

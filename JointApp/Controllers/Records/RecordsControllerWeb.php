@@ -26,10 +26,12 @@ class RecordsControllerWeb extends RecordsController
     {
         $this->type_of_view = 'detail';
         $this->h2 = $this->list_frame_id;
+        $this->prepareEditFields();
+        $this->updateEditFieldsFromRecord();
         $this->queryFromPriFields();
     }
 
-    public function htmlEditView()
+    public function htmlEditView():void
     {
         $this->h2 = $this->list_frame_id;
 

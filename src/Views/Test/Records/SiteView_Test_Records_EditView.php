@@ -4,10 +4,11 @@
 namespace Src\Views\Test\Records;
 
 
-use JointApp\Views\Records\RecordDetailView;
+
+use JointApp\Views\Records\RecordEditView;
 use Src\Views\Test\TpView_Test_Menu;
 
-class SiteView_Test_Records_DetailView extends RecordDetailView
+class SiteView_Test_Records_EditView extends RecordEditView
 {
     public array $tblList = [];
 

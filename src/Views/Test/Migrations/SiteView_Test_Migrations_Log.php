@@ -1,21 +1,17 @@
 <?php
 
-
-namespace Src\Views\Test\Records;
+namespace Src\Views\Test\Migrations;
 
 
 use JointApp\Views\Records\RecordListView;
 use Src\Views\Test\TpView_Test_Menu;
 
-class SiteView_Test_Records_ListView extends RecordListView
-{
-    public array $tblList = [];
-    public string $selectedTbl = '';
 
+class SiteView_Test_Migrations_Log extends RecordListView
+{
     protected function putCustomTemplates():void
     {
         $this->tpSet->TestMenu = new TpView_Test_Menu();
-        $this->tpSet->TS = new TpView_Test_Records_TblSelector();
         parent::putCustomTemplates();
     }
 
@@ -25,12 +21,4 @@ class SiteView_Test_Records_ListView extends RecordListView
             '<div class="contentBlock-wrap">'.$this->tpSet->TestMenu->getResponseHtml().
             '</div></div></div>';
     }
-
-    protected function handleTpTS(): string
-    {
-        return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$this->tpSet->TS->getResponseHtml().
-            '</div></div></div>';
-    }
-
 }

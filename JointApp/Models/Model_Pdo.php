@@ -2,6 +2,8 @@
 
 namespace JointApp\Models;
 
+use JointApp\JointSiteLogger;
+use JointApp\JointSiteUser;
 use Psr\Log;
 use JointApp\SettingsDb;
 
@@ -12,7 +14,7 @@ class Model_Pdo extends Model
 
     private \PDO $DB;
 
-    private $context = ['Model_Pdo' => __CLASS__];
+    protected $context = ['Model_Pdo' => __CLASS__];
 
     private bool $serverConnectStatus = false;
     private bool $dbConnectStatus = false;
@@ -20,8 +22,10 @@ class Model_Pdo extends Model
     //any text to log
     protected string $log_message = '';
 
-    function __construct()
+    function __construct(JointSiteUser &$user, JointSiteLogger &$logger, $model_params = [])
     {
+        parent::__construct($user,$logger, $model_params);
+
         try {
             $this->DB = new \PDO('mysql:host=' . SettingsDb::DB_HOST. ';',
                 SettingsDb::DB_USER, SettingsDb::DB_PW);
@@ -43,9 +47,9 @@ class Model_Pdo extends Model
             }catch (\Exception $e) {
                 $this->log_message = $e->getMessage();
                 if(SettingsDb::THROW_ERR_QUERY){
-                    $this->logger->info("query err: ".$this->log_message, $this->context);
-                }else{
                     $this->logger->alert("query err: ".$this->log_message, $this->context);
+                }else{
+                    $this->logger->info("query err: ".$this->log_message, $this->context);
                 }
             }
         }else{
@@ -66,10 +70,10 @@ class Model_Pdo extends Model
         return false;
     }
 
-    public function setUpLangFile()
+    protected function setUpLangFile():void
     {
         $class_Name = 'JointApp\LangFiles\Models\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'ModelPdo';
-        return new $class_Name();
+        $this->langFile = new $class_Name();
     }
 
     protected static function ucfirstLang(string $lang = ''):string
@@ -99,10 +103,8 @@ class Model_Pdo extends Model
         $return = array();
         if($res = $this->pdoQuery($selectQuery)){
             if($res->rowCount()){
-                $counter = 0;
                 while ($row = $res->fetch(\PDO::FETCH_ASSOC)){
-                    $return[$counter] = $row;
-                    $row_counter++;
+                    $return[] = $row;
                 }
             }
         }
@@ -123,5 +125,10 @@ class Model_Pdo extends Model
     public function getDbStatus():bool
     {
         return $this->dbConnectStatus;
+    }
+
+    public function getDbName():string
+    {
+        return SettingsDb::DB_NAME;
     }
 }

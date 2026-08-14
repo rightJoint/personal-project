@@ -3,6 +3,7 @@
 namespace JointApp\Controllers;
 
 
+use JointApp\Interfaces\SiteViewInterface;
 use JointApp\JointSiteLogger;
 use JointApp\JointSiteUser;
 use Psr\Log\LoggerAwareTrait;
@@ -12,7 +13,7 @@ class Controller
     use LoggerAwareTrait;
 
     public $model;
-    public $view;
+    public SiteViewInterface $view;
 
     protected $responseJson = [];
 

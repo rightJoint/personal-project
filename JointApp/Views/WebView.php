@@ -110,6 +110,7 @@ class WebView extends View
     {
         $html = '';
         foreach ($this->tpSet as $key => $val){
+            $this->tpSet->$key->handleViewParams();
             $this->tpSet->$key->setUpCustomLang($this->langFile->$key);
             $method = 'handleTp'.$key;
             //handle custom tp-view

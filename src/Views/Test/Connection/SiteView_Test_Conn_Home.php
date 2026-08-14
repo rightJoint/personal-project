@@ -4,6 +4,7 @@ namespace Src\Views\Test\Connection;
 
 
 use Src\Views\Test\SiteView_Test_Home;
+use Src\Views\Test\TpView_Test_Menu;
 
 
 class SiteView_Test_Conn_Home extends SiteView_Test_Home
@@ -13,9 +14,11 @@ class SiteView_Test_Conn_Home extends SiteView_Test_Home
     public string $reason = '';
     public string $create_log = '';
 
-    protected function putTestTemplate()
+
+    protected function putCustomTemplates():void
     {
-        $this->tpSet->Conn = new TpView_Test_Conn_Home();
+        $this->tpSet->TestMenu = new TpView_Test_Menu();
+        $this->tpSet->Home = new TpView_Test_Conn_Home();
     }
 
     protected function handleTpConn(): string

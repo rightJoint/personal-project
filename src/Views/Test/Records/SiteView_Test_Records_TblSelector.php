@@ -4,6 +4,8 @@ namespace Src\Views\Test\Records;
 
 
 use Src\Views\Test\SiteView_Test_Home;
+use Src\Views\Test\TpView_Test_Home;
+use Src\Views\Test\TpView_Test_Menu;
 
 class SiteView_Test_Records_TblSelector extends SiteView_Test_Home
 {
@@ -11,8 +13,10 @@ class SiteView_Test_Records_TblSelector extends SiteView_Test_Home
     public array $tblList = [];
     public string $selectedTbl = '';
 
-    protected function putTestTemplate()
+
+    protected function putCustomTemplates():void
     {
+        $this->tpSet->TestMenu = new TpView_Test_Menu();
         $this->tpSet->TS = new TpView_Test_Records_TblSelector();
     }
 

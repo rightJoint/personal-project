@@ -15,12 +15,6 @@ class SiteView_Test_Home extends SiteView
     protected function putCustomTemplates():void
     {
         $this->tpSet->TestMenu = new TpView_Test_Menu();
-        //$this->testMenu = &$this->tpSet->TestMenu;
-        $this->putTestTemplate();
-    }
-
-    protected function putTestTemplate()
-    {
         $this->tpSet->Home = new TpView_Test_Home();
     }
 

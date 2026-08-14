@@ -33,9 +33,6 @@ class TpView_Test_Home extends TpView
             '<li><a href="'.$this->langSl.$httpLinks['connection'].'" title="'.$linksLang['connection']['title'].'">'.$linksLang['connection']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['migrations'].'" title="'.$linksLang['migrations']['title'].'">'.$linksLang['migrations']['text'].'</a>'.
             '<ul>'.
-            '<li><a href="'.$this->langSl.$httpLinks['createmigrationstables'].'" title="'.$linksLang['createmigrationstables']['title'].'">'.$linksLang['createmigrationstables']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['execnewmigrations'].'" title="'.$linksLang['execnewmigrations']['title'].'">'.$linksLang['execnewmigrations']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['migrationslist'].'" title="'.$linksLang['migrationslist']['title'].'">'.$linksLang['migrationslist']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['migrationslog'].'" title="'.$linksLang['migrationslog']['title'].'">'.$linksLang['migrationslog']['text'].'</a></li>'.
             '</ul>'.
             //'</li>'.

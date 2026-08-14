@@ -3,11 +3,12 @@
 namespace Src\Controllers\Test;
 
 
+use JointApp\Controllers\Controller;
 use JointApp\Models\Model_Pdo;
 use JointApp\SettingsDb;
 
 
-class Controller_Test_Connection extends Controller_Test
+class Controller_Test_Connection extends Controller
 {
 
     public bool $serverConnectStatus = true;

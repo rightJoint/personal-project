@@ -53,6 +53,7 @@ class TpView_Detail extends TpView
                 '<div class="submit-line">'.$inputs.'<input type="submit" name="submitDeleteView" value="Delete"></div>'.
                 '</form>';
         }
+        $return.=$this->putCustomPanel();
         $return.= '</div>';
 
         $return.= '<div class="record-nav">';
@@ -69,5 +70,10 @@ class TpView_Detail extends TpView
             '<a href="'.$this->processUri.'" title="list records"><img src="/img/popimg/search-icon.png">list</a>'.
             '</div>';
         return $return;
+    }
+
+    protected function putCustomPanel():string
+    {
+        return '';
     }
 }

@@ -3,11 +3,12 @@
 namespace JointApp\Models;
 
 
+use JointApp\Interfaces\LangInterface;
 use JointApp\JointSiteLogger;
 use JointApp\JointSiteUser;
 use Psr\Log\LoggerAwareTrait;
 
-class Model
+class Model implements LangInterface
 {
     use LoggerAwareTrait;
 
@@ -24,7 +25,7 @@ class Model
         $this->setLogger($logger);
         $this->user = $user;
         $this->userLang = $user->userLang;
-        $this->setUpLangFile();
+        $this->langFile = $this->getDefaultLang();
         if(!$this->checkAccessModel()){
             $this->logger->warning('denied in checkAccessModel', $this->context);
         }
@@ -37,9 +38,14 @@ class Model
         return true;
     }
 
-    protected function setUpLangFile():void
+    public function getDefaultLang()
     {
-        $this->langFile = new \stdClass();
+        return new \stdClass();
+    }
+
+    public function setUpCustomLang($langFile):void
+    {
+        $this->langFile = $langFile;
     }
 
     public function getData()
@@ -54,6 +60,17 @@ class Model
             if(property_exists($this, $key)){
                 $this->$key = $val;
             }
+        }
+    }
+
+    protected static function ucfirstLang(string $lang = ''):string
+    {
+        if(!empty($lang)){
+            return  ucfirst(strtolower($lang));
+        }
+        //default lang "ru"
+        else{
+            return  'Ru';
         }
     }
 }

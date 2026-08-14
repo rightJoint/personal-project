@@ -3,12 +3,13 @@
 namespace JointApp\Controllers;
 
 
+use JointApp\Interfaces\LangInterface;
 use JointApp\Interfaces\SiteViewInterface;
 use JointApp\JointSiteLogger;
 use JointApp\JointSiteUser;
 use Psr\Log\LoggerAwareTrait;
 
-class Controller
+class Controller implements LangInterface
 {
     use LoggerAwareTrait;
 
@@ -31,7 +32,7 @@ class Controller
     {
         $this->setLogger($logger);
         $this->user = $user;
-        $this->setUpCustomLang($this->getDefaultLang());
+        $this->langFile = $this->getDefaultLang();
         if(!$this->checkAccessController()){
             $this->logger->warning('denied in checkAccessController', $this->context);
         }
@@ -88,6 +89,18 @@ class Controller
             if(isset($this->$prop)){
                 $view->$prop = $this->$prop;
             }
+        }
+    }
+
+
+    protected static function ucfirstLang(string $lang = ''):string
+    {
+        if(!empty($lang)){
+            return  ucfirst(strtolower($lang));
+        }
+        //default lang "ru"
+        else{
+            return  'Ru';
         }
     }
 

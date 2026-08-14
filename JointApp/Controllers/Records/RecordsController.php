@@ -36,6 +36,12 @@ class RecordsController extends Controller
     public string $submitEditForm = '';
     public string $submitDeleteView = '';
 
+    public function getDefaultLang()
+    {
+        $class_Name = 'JointApp\LangFiles\Controllers\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Controllers_Record';
+        return new $class_Name();
+    }
+
     public function actionIndex()
     {
         $this->actionList();

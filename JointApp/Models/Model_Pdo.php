@@ -70,21 +70,10 @@ class Model_Pdo extends Model
         return false;
     }
 
-    protected function setUpLangFile():void
+    function getDefaultLang()
     {
         $class_Name = 'JointApp\LangFiles\Models\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'ModelPdo';
-        $this->langFile = new $class_Name();
-    }
-
-    protected static function ucfirstLang(string $lang = ''):string
-    {
-        if(!empty($lang)){
-            return  ucfirst(strtolower($lang));
-        }
-        //default lang "ru"
-        else{
-            return  'Ru';
-        }
+        return new $class_Name();
     }
 
     public function createGUID():string

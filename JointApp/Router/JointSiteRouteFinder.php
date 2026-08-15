@@ -6,9 +6,10 @@ namespace JointApp\Router;
 
 
 use Psr\Log\LoggerAwareTrait;
+use Src\RoutesCollection\Api\RoutesCollection_Api;
 use Src\RoutesCollection\RoutesCollection_JointSite;
 use Src\RoutesCollection\RoutesCollection_Main;
-use Src\RoutesCollection\RoutesCollection_Test;
+use Src\RoutesCollection\Test\RoutesCollection_Test;
 
 
 class JointSiteRouteFinder
@@ -18,6 +19,7 @@ class JointSiteRouteFinder
     use RoutesCollection_Main;
     use RoutesCollection_JointSite;
     use RoutesCollection_Test;
+    use RoutesCollection_Api;
 
     private $context = ['RouteFinder' => __CLASS__];
 
@@ -68,6 +70,7 @@ class JointSiteRouteFinder
             $this->logger->error('RouteFinder::'.$getRoute.' method not exist', $this->context);
         }
 
+        //call to update view params automatically
         if($returnRoute->responseFormat == 'text'){
             $returnRoute->withAction('updateViewParams');
         }else{

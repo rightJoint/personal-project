@@ -11,6 +11,7 @@ trait RoutesCollection_Test
     use RoutesCollection_Test_Records;
     use RoutesCollection_Test_Migrations;
     use RoutesCollection_Test_Migrations_Log;
+    use RoutesCollection_Test_Tables;
 
     static function getRoute_Test($routes_ns):JointSiteRoute
     {
@@ -34,6 +35,9 @@ trait RoutesCollection_Test
             }else{
                 $route = self::getRoute_TestMigrations($routes_ns);
             }
+        }
+        elseif (strtolower($routes_ns[2]) == 'tables') {
+            $route = self::getRoute_TestTables($routes_ns);
         }
         return $route;
     }

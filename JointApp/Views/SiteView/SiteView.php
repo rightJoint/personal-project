@@ -15,7 +15,7 @@ class SiteView extends WebView
     public string $canonical = '';
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
     public bool $modalMenuActive = false;
-    public bool $userUserActive = false;
+    public bool $modalUserActive = false;
 
     protected function handleTpHeader():string
     {

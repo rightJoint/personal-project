@@ -1,0 +1,102 @@
+form.auth-form .modal-line-text label{
+    margin-right: 1em;
+    color: gray;
+}
+form.auth-form{
+    margin: 0;
+    padding: 0;
+}
+form.auth-form .modal-line-text img{
+    height: 1.6em;
+    width: 1.6em;
+    margin: 0 0.5em;
+}
+form.auth-form .modal-line-text{
+    text-align: right;
+    margin-bottom: 0.4em;
+}
+form.auth-form .modal-line-text a{
+    vertical-align: top;
+}
+
+form.auth-form .modal-line:not(:last-child){
+    border: none;
+}
+form.auth-form input[type=text],
+form.auth-form input[type=password],
+form.auth-form input[type=email],
+form.auth-form textarea {
+    background-color: transparent;
+    color: white;
+    width: 90%;
+    margin: 0 5%;
+    display: inline-block;
+    font-size: 1em;
+    padding: 0.2em;
+    border: 1px solid mediumaquamarine;
+    border-radius: 0.2em;
+    text-align: right;
+}
+form.auth-form .modal-line-text input[type=submit]{
+    font-size: 1em;
+    background-color: transparent;
+    border: 1px solid mediumaquamarine;
+    color: PowderBlue;
+    margin: 0.5em 5% 1em 2em;
+}
+form.auth-form .modal-line-text input[type=submit]:hover {
+    background-color: snow;
+    box-shadow: 5px -5px 5px gray;
+    color: rgb(25,25,50);
+}
+form.auth-form .modal-line{
+    position: relative;
+}
+form.auth-form .modal-line .modal-line-err{
+    position: absolute;
+    height: 1em;
+    width: 98%;
+    margin: 0 1%;
+    left: 0;
+    bottom: -0.2em;
+    font-size: 0.8em;
+    color: firebrick;
+}
+
+form.auth-form.disp-none{
+    display: none;
+}
+#siteSignIn, #siteSignUp{
+    color: lightblue;
+    text-decoration: none;
+    cursor: default;
+    margin-right: 0.5em;
+}
+form.auth-form a.title{
+    color: lightblue;
+}
+
+form.auth-form .modal-line-img.captcha img{
+    margin: 0;
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+}
+
+
+
+.modal-line.user-status{
+    margin-top: 1em;
+}
+.modal-line.user-status span.guest{
+    color: lightgray;
+    display: block;
+}
+.modal-line.user-status small{
+    color: darkgray;
+}
+.modal-line.user-status .modal-line-text{
+    margin-top: 0.4em;
+    padding-bottom: 0.5em;
+}
+

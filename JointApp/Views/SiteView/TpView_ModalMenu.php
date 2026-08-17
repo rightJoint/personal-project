@@ -89,22 +89,19 @@ class TpView_ModalMenu extends TpView
         $httpLinks = $testMenu::getHttpLinks();
         $linksLang = $menu_lang::getLinks();
 
-        return "<div class='joint-site-menu'>".
-            '<ul>'.
-            '<li><a href="'.$this->langSl.$httpLinks['TestHome'].'" title="'.$linksLang['TestHome']['title'].'"><img src="/img/siteLogo/favicon.png"></a></li>'.
+        return "<div class='modal-line test-menu'>".
+            '<div class="modal-line-img"><img src="/img/popimg/test-logo.png"></div>'.
+            '<div class="modal-line-text">'.
+            '<a href="/test">Tests</a>'.
+            '<sup>web tests</sup>'.
+            '<span class="opnSubMenu folded">показать</span>'.
+            '<ul style="display: none">'.
             '<li><a href="'.$this->langSl.$httpLinks['connection'].'" title="'.$linksLang['connection']['title'].'">'.$linksLang['connection']['text'].'</a><li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['migrations'].'" title="'.$linksLang['migrations']['title'].'">'.$linksLang['migrations']['text'].'</a>'.
-            '<ul>'.
-            '<li><a href="'.$this->langSl.$httpLinks['createmigrationstables'].'" title="'.$linksLang['createmigrationstables']['title'].'">'.$linksLang['createmigrationstables']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['execnewmigrations'].'" title="'.$linksLang['execnewmigrations']['title'].'">'.$linksLang['execnewmigrations']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['migrationslist'].'" title="'.$linksLang['migrationslist']['title'].'">'.$linksLang['migrationslist']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['migrationslog'].'" title="'.$linksLang['migrationslog']['title'].'">'.$linksLang['migrationslog']['text'].'</a></li>'.
-            '</ul>'.
-            '</li>'.
-            '</li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['migrations'].'" title="'.$linksLang['migrations']['title'].'">'.$linksLang['migrations']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['records'].'" title="'.$linksLang['records']['title'].'">'.$linksLang['records']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['tables'].'" title="'.$linksLang['tables']['title'].'">'.$linksLang['tables']['text'].'</a></li>'.
             '</ul>'.
+            '</div>'.
             '</div>';
     }
 }

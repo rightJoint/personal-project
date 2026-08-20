@@ -139,3 +139,36 @@
 
 }
 /*modal user<--*/
+.modal-line span.opnSubMenu{
+    float: right;
+    color: silver;
+    margin-right: 1em;
+    font-style: italic;
+}
+
+.modal-line sup{
+    color: silver;
+    font-style: italic;
+}
+.modal-line span.opnSubMenu::before{
+    content: "-";
+    margin-right: 1em;
+    cursor: pointer;
+}
+.modal-line span.opnSubMenu.folded::before{
+    content: "+";
+}
+
+.modal-line.test-menu a{
+    color: lightgreen;
+    text-decoration: none;
+}
+.modal-line.test-menu ul li a{
+    color: lightgray;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+.modal-line.test-menu ul li{
+    list-style: none;
+    margin-bottom: 0.4em;
+}

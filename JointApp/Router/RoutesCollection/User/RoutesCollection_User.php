@@ -16,6 +16,12 @@ trait RoutesCollection_User
             $route = self::getRoute_UserSignUp($routes_ns);
         }elseif(isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'signin'){
             $route = self::getRoute_UserSignIn($routes_ns);
+        }elseif(isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'quit'){
+            $route->withController('JointApp\Controllers\User\Controller_User_SignIn')
+                ->withModel('JointApp\Models\Model')
+                ->withView('JointApp\Views\View')
+                ->withAction('userQuit');
+            return $route;
         }
         return $route;
     }

@@ -4,7 +4,6 @@
 namespace JointApp\Controllers\User;
 
 
-use JointApp\Controllers\Controller;
 use JointApp\Controllers\ControllerWeb;
 
 class Controller_User_SignIn extends ControllerWeb

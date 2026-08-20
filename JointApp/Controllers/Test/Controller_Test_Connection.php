@@ -1,14 +1,14 @@
 <?php
 
-namespace Src\Controllers\Test;
+namespace JointApp\Controllers\Test;
 
 
-use JointApp\Controllers\Controller;
+use JointApp\Controllers\ControllerWeb;
 use JointApp\Models\Model_Pdo;
 use JointApp\SettingsDb;
 
 
-class Controller_Test_Connection extends Controller
+class Controller_Test_Connection extends ControllerWeb
 {
 
     public bool $serverConnectStatus = true;

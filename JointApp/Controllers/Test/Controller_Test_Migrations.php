@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Src\Controllers\Test;
+namespace JointApp\Controllers\Test;
 
 
 
@@ -118,12 +118,12 @@ class Controller_Test_Migrations extends RecordsControllerWeb
     {
         parent::htmlNewView();
 
-        $this->view->editFields['add_date']['curVal'] = date('Y-m-d H:i:s');
-        $this->view->editFields['add_date']['readonly'] = true;
-        $this->view->editFields['status']['curVal'] = 'new';
-        $this->view->editFields['status']['readonly'] = true;
-        $this->view->editFields['try_date']['readonly'] = true;
-        $this->view->editFields['migr_file']['readonly'] = true;
+        $this->editFields['add_date']['curVal'] = date('Y-m-d H:i:s');
+        $this->editFields['add_date']['readonly'] = true;
+        $this->editFields['status']['curVal'] = 'new';
+        $this->editFields['status']['readonly'] = true;
+        $this->editFields['try_date']['readonly'] = true;
+        $this->editFields['migr_file']['readonly'] = true;
     }
 
     public function prepareViewFields(): void
@@ -231,7 +231,7 @@ class Controller_Test_Migrations extends RecordsControllerWeb
                 $counter++;
                 $this->editFields[$fN]['format'] = 'text';
                 $this->editFields[$fN]['style'] = array(
-                    'class' => 'wd100',
+                    'class' => 'wd100 migration-command',
                 );
             }
         }
@@ -242,7 +242,7 @@ class Controller_Test_Migrations extends RecordsControllerWeb
                 'format' => 'text',
                 'custom' => 1,
                 'style'=> array(
-                    'class' => 'wd100',
+                    'class' => 'wd100 migration-command',
                 ),
             );
             $this->view->fieldAliases['cmd_'.$counter.'_new'] = 'cmd_'.$counter.'_new';
@@ -327,7 +327,7 @@ class Controller_Test_Migrations extends RecordsControllerWeb
         }
 
         if(!$this->checkLogTable()){
-            $query_text="111CREATE TABLE IF NOT EXISTS migrations_log(".
+            $query_text="CREATE TABLE IF NOT EXISTS migrations_log(".
                 "migration_log_id varchar(36) not null, ".
                 "migration_name varchar(256) not null, ".
                 "add_date datetime not null, ".
@@ -353,7 +353,7 @@ class Controller_Test_Migrations extends RecordsControllerWeb
     {
         if ($this->execOne) {
             if($this->requestParams['migration_name']){
-                $res = $this->model->execOne($this->requestParams['migration_name'].'sdsdsd');
+                $res = $this->model->execOne($this->requestParams['migration_name']);
                 if($res['result']){
                     $this->exec_one_log = 'execOne: Success';
                 }else{

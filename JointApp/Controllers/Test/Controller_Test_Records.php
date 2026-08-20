@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Src\Controllers\Test;
+namespace JointApp\Controllers\Test;
 
 
 

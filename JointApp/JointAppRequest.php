@@ -40,6 +40,9 @@ class JointAppRequest extends ServerRequest
     //????canonical page, langDefault and uri_p or empty
     public string $canonical = '';
 
+    //HTTP_REFERER
+    public string $http_referer = '';
+
 
     function __construct(string $method, $uri, array $headers = [], $body = null, string $version = '1.1', array $serverParams = [])
     {
@@ -57,6 +60,11 @@ class JointAppRequest extends ServerRequest
         }
         $this->routes = explode('/', $uri->getPath());
 
+        if(isset($this->getServerParams()['HTTP_REFERER'])){
+            $this->http_referer = $this->getServerParams()['HTTP_REFERER'];
+        }else{
+            $this->http_referer = $uri;
+        }
         $this->langDetector();
     }
 

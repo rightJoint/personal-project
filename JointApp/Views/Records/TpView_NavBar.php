@@ -47,7 +47,7 @@ class TpView_NavBar extends TpView
         $count_of = 0;
         $sortFields_options = null;
         foreach ($this->searchFields as $fieldName=>$fieldData){
-            if($fieldData['format'] != 'hidden'){
+            if($fieldData['format'] != 'hidden' and $fieldData['sort'] == 1){
                 $count_of++;
                 if($count_of == 1){
                     if(isset($fieldData['sortOrder']) and $fieldData['sortOrder'] == 'DESC'){

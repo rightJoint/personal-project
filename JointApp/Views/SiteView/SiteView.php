@@ -17,6 +17,29 @@ class SiteView extends WebView
     public bool $modalMenuActive = false;
     public bool $modalUserActive = false;
 
+
+    //signUp form
+    public bool $signUpFlag = false;
+    public string $signUpUserLogin = '';
+    public string $signUpUserPassword = '';
+    public string $signUpPasswordRepeat = '';
+    public bool $signUpErrLoginAccept = false;
+    public bool $signUpErrLoginReserved = false;
+    public bool $signUpErrPassAccept = false;
+    public bool $signUpErrPassMatch = false;
+    public bool $signUpErrCaptchaEmpty = false;
+    public bool $signUpErrCaptchaWrong = false;
+    public bool $signUpErrUnknown = true;
+    //signIn form
+    public bool $signInFlag = true;
+    public string $signInUserLogin = '';
+    public string $signInUserPassword = '';
+    public bool $signInErrNotFound = false;
+    public bool $signInErrBlackList = false;
+    public bool $signInErrLogin = false;
+    public bool $signInErrPass = false;
+    public bool $signInErrWrongPass = false;
+
     protected function handleTpHeader():string
     {
         return '<!DOCTYPE html>'.

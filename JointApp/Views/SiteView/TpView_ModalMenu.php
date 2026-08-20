@@ -5,7 +5,7 @@ namespace JointApp\Views\SiteView;
 
 
 use JointApp\Views\TpView;
-use Src\Views\Test\TpView_Test_Menu;
+use JointApp\Views\Test\TpView_Test_Menu;
 
 class TpView_ModalMenu extends TpView
 {

@@ -21,7 +21,7 @@ class TpView_ModalUser extends TpView
     public bool $signUpErrPassMatch = false;
     public bool $signUpErrCaptchaEmpty = false;
     public bool $signUpErrCaptchaWrong = false;
-    public bool $useSignUpCaptcha = true;
+    public bool $signUpErrUnknown = false;
 
     public bool $signInFlag = true;
     public string $signInUserLogin = '';

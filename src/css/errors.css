@@ -1,0 +1,54 @@
+.logger-errors.info, .logger-errors.notice, .logger-errors.debug{
+    width: calc(100% - 10px);
+    border: 5px solid red;
+    padding: 0.2em 0;
+}
+
+.logger-errors.info{
+    background-color: silver;
+}
+
+.logger-errors.notice{
+    background-color: lightblue;
+}
+
+.logger-errors.debug{
+    background-color: lightgreen;
+}
+
+.err-wrap{
+    background-color: rgb(25,25,50);
+    margin: 1em;
+    padding: 1em;
+    color: white;
+}
+.ew-warning{
+    display: inline-block;
+    border: 1px solid Maroon;
+    padding: 1em 2%;
+    color: Brown;
+    width: 96%;
+}
+span.ew-txt, span.ew-h{
+    display: inline-block;
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1em 0;
+    color: gray;
+}
+span.ew-code{
+    display: inline-block;
+    width: 100%;
+    font-size: 3em;
+    font-weight: bold;
+    color: silver;
+}
+.ew-detail{
+    text-align: left;
+    display: inline-block;
+    border: 1px solid darkgreen;
+    color: green;
+    padding: 1em 2%;
+    width: 96%;
+}

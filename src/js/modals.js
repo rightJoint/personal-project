@@ -10,8 +10,6 @@ $(document).ready(function() {
     $('.userBtn span, .userBtn img, span.feedback-title').click(function (e) {
         $('.modal.user, .modal.user .overlay').css({'opacity': 1, 'visibility': 'visible'});
     });
-
-    /*
     $(".modal-left span.opnSubMenu").click(function () {
         if($(this).hasClass("folded")){
 
@@ -23,7 +21,6 @@ $(document).ready(function() {
 
         }
     });
-*/
     /*goTop*/
     $("body").append("<img src='/img/goTop.png' class='toTop' onclick='goTop()'>");
     $(document).scroll(function () {
@@ -48,7 +45,8 @@ $(document).ready(function() {
         }
         lastScrollTop = st;
     });
-/*
+
+
     $("form.auth-form a.title").click(function (){
         if($(this).attr("href") == "#siteSignUp"){
             $("form.auth-form.signUp").removeClass("disp-none");
@@ -61,7 +59,6 @@ $(document).ready(function() {
 
     });
 
- */
 })
 
 var lastScrollTop = 0;

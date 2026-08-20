@@ -5,8 +5,9 @@ namespace JointApp\Controllers\User;
 
 
 use JointApp\Controllers\Controller;
+use JointApp\Controllers\ControllerWeb;
 
-class Controller_User_SignUp extends Controller
+class Controller_User_SignUp extends ControllerWeb
 {
     public bool $modalUserActive = false;
     public bool $signInFlag = false;

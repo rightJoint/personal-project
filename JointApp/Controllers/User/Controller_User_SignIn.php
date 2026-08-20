@@ -5,9 +5,12 @@ namespace JointApp\Controllers\User;
 
 
 use JointApp\Controllers\Controller;
+use JointApp\Controllers\ControllerWeb;
 
-class Controller_User_SignIn extends Controller
+class Controller_User_SignIn extends ControllerWeb
 {
+    public string $http_referer = '';
+
     public bool $modalUserActive = false;
     public bool $signInFlag = true;
     public bool $signUpFlag = false;
@@ -54,9 +57,7 @@ class Controller_User_SignIn extends Controller
             if(!$err) {
                 $this->user->withPassword($this->signInUserPassword);
                 if ($this->user->isAuth()) {
-                    //redirect
-                    echo 111;
-                    exit;
+                    $this->logger->redirect($this->http_referer);
                 } else {
                     if ($this->user->isBanned()) {
                         $this->signInErrBlackList = true;
@@ -81,5 +82,11 @@ class Controller_User_SignIn extends Controller
             return false;
         }
 
+    }
+
+    public function userQuit()
+    {
+        $this->user->quitUser();
+        $this->logger->redirect($this->http_referer);
     }
 }

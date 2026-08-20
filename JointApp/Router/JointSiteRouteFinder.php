@@ -5,11 +5,12 @@ namespace JointApp\Router;
 
 
 
+use JointApp\Router\RoutesCollection\User\RoutesCollection_User;
 use Psr\Log\LoggerAwareTrait;
-use Src\RoutesCollection\Api\RoutesCollection_Api;
-use Src\RoutesCollection\RoutesCollection_JointSite;
-use Src\RoutesCollection\RoutesCollection_Main;
-use Src\RoutesCollection\Test\RoutesCollection_Test;
+use JointApp\Router\RoutesCollection\Api\RoutesCollection_Api;
+use JointApp\Router\RoutesCollection\RoutesCollection_JointSite;
+use JointApp\Router\RoutesCollection\RoutesCollection_Main;
+use JointApp\Router\RoutesCollection\Test\RoutesCollection_Test;
 
 
 class JointSiteRouteFinder
@@ -20,6 +21,7 @@ class JointSiteRouteFinder
     use RoutesCollection_JointSite;
     use RoutesCollection_Test;
     use RoutesCollection_Api;
+    use RoutesCollection_User;
 
     private $context = ['RouteFinder' => __CLASS__];
 
@@ -71,10 +73,12 @@ class JointSiteRouteFinder
         }
 
         //call to update view params automatically
-        if($returnRoute->responseFormat == 'text'){
-            $returnRoute->withAction('updateViewParams');
-        }else{
-            $returnRoute->withAction('updateResponseJson');
+        if(!$this->logger->isRedirected()) {
+            if ($returnRoute->responseFormat == 'text') {
+                $returnRoute->withAction('updateViewParams');
+            } else {
+                $returnRoute->withAction('updateResponseJson');
+            }
         }
 
         return $returnRoute;

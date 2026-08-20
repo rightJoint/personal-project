@@ -4,11 +4,14 @@ namespace JointApp\Controllers\Records;
 
 
 
+use JointApp\Controllers\ControllerWebTrait;
 use JointApp\Views\Records\TpView_Grid;
 use JointApp\Views\Records\TpView_NavBar;
 
 class RecordsControllerWeb extends RecordsController
 {
+    use ControllerWebTrait;
+
     public string $list_frame_id = '';
     public string $h2 = '<-h2->';
     public string $pri_query = '?';
@@ -38,8 +41,16 @@ class RecordsControllerWeb extends RecordsController
         $this->h2 = $this->list_frame_id;
         $this->prepareEditFields();
         $this->updateModelPriKeysFromRequest();
+        //echo '<pre>';
+        //print_r($this->editFields);
+        //print_r($this->editFields);
+        //exit;
         if ($this->model->copyRecord()) {
+            //print_r($this->editFields);
+            //print_r($this->editFields);
+            //exit;
             $this->queryFromPriFields();
+
             $this->updateEditFieldsFromRecord();
         }else{
             $this->logger->emergency($this->model->getLogMessage(),

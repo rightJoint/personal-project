@@ -1,0 +1,11 @@
+.table-selector{
+    width: calc(100% - 0.4em - 2px);
+    border: 1px solid black;
+    padding: 0.2em;
+    background-color: goldenrod;
+    text-align: right;
+}
+
+.table-selector select {
+    font-size: 0.8em;
+}

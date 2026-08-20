@@ -1,0 +1,64 @@
+.migrations-panel{
+    border: 1px solid black;
+    font-size: 0.7em;
+    background-color: lightsteelblue;
+    display: table;
+    width: calc(100% - 2px);
+}
+
+.migrations-panel .server-db{
+    text-align: left;
+    display: table-cell;
+    /*width: calc(25% - 1px);*/
+    border-right: 1px solid black;
+    vertical-align: middle;
+    padding-left: 0.2em;
+}
+
+.migrations-panel .tables{
+    text-align: left;
+    display: table-cell;
+    /*width: calc(25% - 1px);*/
+    border-right: 1px solid black;
+    vertical-align: middle;
+    padding-left: 0.2em;
+}
+
+.migrations-panel .migrations-glob{
+    display: table-cell;
+    /*width: calc(25% - 1px);*/
+    border-right: 1px solid black;
+    vertical-align: middle;
+}
+
+.migrations-panel .exec{
+    display: table-cell;
+    /*width: 25%;*/
+    vertical-align: middle;
+}
+
+.migrations-panel form{
+    margin: 0;
+    padding: 0;
+}
+.migrations-panel input[type=submit]{
+    margin: 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+}
+.migrations-panel span.status{
+    text-decoration: underline;
+}
+.migrations-panel span.status.ok{
+    color: green;
+}
+.migrations-panel span.status.fail{
+    color: firebrick;
+}
+
+.migrations-panel .tables .tables-status{
+    display: inline-block;
+}
+.migrations-panel .tables .tables-create{
+    display: inline-block;
+}

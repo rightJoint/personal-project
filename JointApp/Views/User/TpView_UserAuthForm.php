@@ -20,7 +20,8 @@ class TpView_UserAuthForm extends TpView
     public bool $signUpErrPassMatch = false;
     public bool $signUpErrCaptchaEmpty = false;
     public bool $signUpErrCaptchaWrong = false;
-    public bool $useSignUpCaptcha = true;
+    public bool $useSignUpCaptcha = true;//optional
+    public bool $signUpErrUnknown = true;
 
     public bool $signInFlag = true;
     public string $signInUserLogin = '';
@@ -42,13 +43,7 @@ class TpView_UserAuthForm extends TpView
 
     public function getResponseHtml():string
     {
-        $return = '';
-        if($this->signInFlag){
-
-        }
-        $return.= $this->htmlSignInForm().$this->htmlSignUpForm();
-
-        return $return;
+        return $this->htmlSignInForm().$this->htmlSignUpForm();
     }
 
     private function htmlSignUpForm():string
@@ -132,6 +127,13 @@ class TpView_UserAuthForm extends TpView
             }
             $return.='</div>';
         }
+
+        if($this->signUpErrUnknown){
+            $return.= '<div class="modal-line"><div class="modal-line-err">'.
+                $this->langFile::AUTH_SU_ERR_UNKNOWN.
+                '</div></div>';
+        }
+
         $return.=
             '<div class="modal-line">'.
             '<div class="modal-line-text">'.
@@ -196,6 +198,7 @@ class TpView_UserAuthForm extends TpView
             $return.= '<div class="modal-line-err">'.
                 $this->langFile::AUTH_SI_ERR_PASS_ACCEPT.'</div>';
         }
+
         if($this->signInErrWrongPass){
             $return.= '<div class="modal-line-err">'.
                 $this->langFile::AUTH_SI_ERR_WRONG_LP.'</div>';

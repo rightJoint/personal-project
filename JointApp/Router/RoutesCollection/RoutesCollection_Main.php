@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Src\RoutesCollection;
+namespace JointApp\Router\RoutesCollection;
 
 use JointApp\Router\JointSiteRoute;
 
@@ -12,10 +12,10 @@ trait RoutesCollection_Main
         $route = new JointSiteRoute();
 
         $route
-            ->withController('JointApp\Controllers\Controller')
+            ->withController('JointApp\Controllers\ControllerWeb')
             ->withModel('JointApp\Models\Model')
             ->withAction('actionIndex')
-            ->withView('Src\Views\JointSite\SiteView_JointSite');
+            ->withView('JointApp\Views\JointSite\SiteView_JointSite');
 
         return $route;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\RoutesCollection\Test;
+namespace JointApp\Router\RoutesCollection\Test;
 
 use JointApp\Router\JointSiteRoute;
 
@@ -12,10 +12,10 @@ trait RoutesCollection_Test_Connection
         //GET: test/connection
         if (empty($routes_ns[3])) {
             $route
-                ->withController('Src\Controllers\Test\Controller_Test_Connection')
+                ->withController('JointApp\Controllers\Test\Controller_Test_Connection')
                 ->withAction('actionIndex')
                 ->withModel('JointApp\Models\Model')
-                ->withView('Src\Views\Test\Connection\SiteView_Test_Conn_Home');
+                ->withView('JointApp\Views\Test\Connection\SiteView_Test_Conn_Home');
         }
         return $route;
     }
@@ -26,10 +26,10 @@ trait RoutesCollection_Test_Connection
         //GET: test/connection
         if (empty($routes_ns[3])) {
             $route
-                ->withController('Src\Controllers\Test\Controller_Test_Connection')
+                ->withController('JointApp\Controllers\Test\Controller_Test_Connection')
                 ->withAction('actionCreateDatabase')
                 ->withModel('JointApp\Models\Model')
-                ->withView('Src\Views\Test\Connection\SiteView_Test_Conn_Home');
+                ->withView('JointApp\Views\Test\Connection\SiteView_Test_Conn_Home');
         }
         return $route;
     }

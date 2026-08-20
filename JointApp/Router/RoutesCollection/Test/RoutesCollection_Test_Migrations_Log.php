@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\RoutesCollection\Test;
+namespace JointApp\Router\RoutesCollection\Test;
 
 use JointApp\Router\JointSiteRoute;
 
@@ -10,27 +10,27 @@ trait RoutesCollection_Test_Migrations_Log
     {
         $route = new JointSiteRoute();
         $route
-            ->withController('Src\Controllers\Test\Controller_Test_Log')
+            ->withController('JointApp\Controllers\Test\Controller_Test_Log')
             ->withModel('JointApp\Models\Migrations\Model_MigrationsLog');
         if(!isset($routes_ns[4]) or $routes_ns[4] == 'listview'){
             $route
                 ->withAction('actionIndex')
                 ->withAction('htmlListView')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log');
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log');
 
         }elseif ($routes_ns[4] == 'detailview'){
             $route->withAction('actionDetail')
                 ->withAction('htmlDetailView')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log_DetailView');
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log_DetailView');
         }elseif ($routes_ns[4] == 'editview'){
             $route->withAction('htmlEditView')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log_EditView');
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log_EditView');
         }elseif ($routes_ns[4] == 'newview'){
             $route->withAction('htmlNewView')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log_EditView');
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log_EditView');
         }elseif ($routes_ns[4] == 'deleteview'){
             $route->withAction('htmlDeleteView')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log_DetailView');
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log_DetailView');
         }
 
         return $route;
@@ -39,30 +39,30 @@ trait RoutesCollection_Test_Migrations_Log
     static function postRoute_MigrationsLog($routes_ns):JointSiteRoute
     {
         $route = (new JointSiteRoute())
-            ->withController("Src\Controllers\Test\Controller_Test_Log")
+            ->withController("JointApp\Controllers\Test\Controller_Test_Log")
             ->withModel('JointApp\Models\Migrations\Model_MigrationsLog');
 
         if (!isset($routes_ns[4]) or $routes_ns[4] == 'listview') {
             $route
                 ->withAction('applyFilterView')
                 //->withAction('getViewSelectTblPanel')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log')
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log')
                 ->responseFormat('json');
         }
         elseif ($routes_ns[4] == 'editview') {
             $route->withAction('actionEdit')
                 ->withAction('htmlEditView')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log_EditView');
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log_EditView');
         }
         elseif ($routes_ns[4] == 'deleteview') {
             $route->withAction('actionDelete')
                 ->withAction('postDeleteView')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log_DetailView');
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log_DetailView');
         }
         elseif ($routes_ns[4] == 'newview') {
             $route
                 ->withAction('postNewView')
-                ->withView('Src\Views\Test\Migrations\SiteView_Test_Migrations_Log_EditView');
+                ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_Log_EditView');
         }
         return $route;
     }

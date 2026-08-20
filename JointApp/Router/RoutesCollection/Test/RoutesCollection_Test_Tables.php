@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\RoutesCollection\Test;
+namespace JointApp\Router\RoutesCollection\Test;
 
 use JointApp\Router\JointSiteRoute;
 
@@ -9,55 +9,55 @@ trait RoutesCollection_Test_Tables
     public static function getRoute_TestTables($routes_ns):JointSiteRoute
     {
         $route = (new JointSiteRoute())
-            ->withController('Src\Controllers\Test\Controller_Test_Tables')
-            ->withModel('Src\Models\Test\Model_Test_Tables');
+            ->withController('JointApp\Controllers\Test\Controller_Test_Tables')
+            ->withModel('JointApp\Models\Test\Model_Test_Tables');
 
         if(!isset($routes_ns[3])){
             $route
                 ->withAction('actionIndex')
-                ->withView('Src\Views\Test\Tables\SiteView_Test_Tables');
+                ->withView('JointApp\Views\Test\Tables\SiteView_Test_Tables');
         }
         elseif (strtolower($routes_ns[3]) == 'clear'){
             $route
                 ->withAction('actionClearTable')
                 ->responseFormat('json')
-                ->withView('Src\Views\Test\Tables\TpView_Test_Tables');
+                ->withView('JointApp\Views\Test\Tables\TpView_Test_Tables');
         }
         elseif (strtolower($routes_ns[3]) == 'download'){
             $route
                 ->withAction('actionDownloadTable')
                 ->responseFormat('json')
-                ->withView('Src\Views\Test\Tables\TpView_Test_Tables');
+                ->withView('JointApp\Views\Test\Tables\TpView_Test_Tables');
         }
         elseif (strtolower($routes_ns[3]) == 'drop'){
             $route
                 ->withAction('actionDropTable')
                 ->responseFormat('json')
-                ->withView('Src\Views\Test\Tables\TpView_Test_Tables');
+                ->withView('JointApp\Views\Test\Tables\TpView_Test_Tables');
         }
         elseif (strtolower($routes_ns[3]) == 'create'){
             $route
                 ->withAction('actionCreateTable')
                 ->responseFormat('json')
-                ->withView('Src\Views\Test\Tables\TpView_Test_Tables');
+                ->withView('JointApp\Views\Test\Tables\TpView_Test_Tables');
         }
         elseif (strtolower($routes_ns[3]) == 'upload'){
             $route
                 ->withAction('actionUploadTable')
                 ->responseFormat('json')
-                ->withView('Src\Views\Test\Tables\TpView_Test_Tables');
+                ->withView('JointApp\Views\Test\Tables\TpView_Test_Tables');
         }
         elseif (strtolower($routes_ns[3]) == 'uploadall'){
             $route
                 ->withAction('actionUploadAll')
                 ->responseFormat('json')
-                ->withView('Src\Views\Test\Tables\TpView_Test_Tables');
+                ->withView('JointApp\Views\Test\Tables\TpView_Test_Tables');
         }
 
         elseif (strtolower($routes_ns[3]) == 'refreshtables'){
             $route
                 ->withAction('actionRefreshTables')
-                ->withView('Src\Views\Test\Tables\TpView_Test_Tables')
+                ->withView('JointApp\Views\Test\Tables\TpView_Test_Tables')
                 ->responseFormat('json');
         }
         return $route;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\RoutesCollection\Test;
+namespace JointApp\Router\RoutesCollection\Test;
 
 use JointApp\Router\JointSiteRoute;
 
@@ -18,10 +18,10 @@ trait RoutesCollection_Test
         $route = new JointSiteRoute();
         if(empty($routes_ns[2])) {
             $route
-                ->withController('JointApp\Controllers\Controller')
+                ->withController('JointApp\Controllers\ControllerWeb')
                 ->withAction('actionIndex')
                 ->withModel('JointApp\Models\Model')
-                ->withView('Src\Views\Test\SiteView_Test_Home');
+                ->withView('JointApp\Views\Test\SiteView_Test_Home');
         }
         elseif (strtolower($routes_ns[2]) == 'connection') {
             $route = self::getRoute_TestConnection($routes_ns);

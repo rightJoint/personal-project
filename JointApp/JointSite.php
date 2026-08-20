@@ -44,7 +44,9 @@ class JointSite implements RequestHandlerInterface
         $this->logger->withContext($this->context);
         $this->logger->logTime('App start');
 
-        $this->user = FromRequestFactory::ObjectFromRequest(new JointSiteUser(), $this->request);
+        //set up user
+        $this->user = new JointSiteUser($this->logger, $this->request->userLang);
+        $this->user->fromSession();
 
         //set up route finder
         $routeFinder = new JointSiteRouteFinder();

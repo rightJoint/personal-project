@@ -51,8 +51,8 @@ class HtmlInputView implements HtmlInputViewInterface
 
     public function htmlLineStyle():void
     {
-        if(isset($this->fieldOptions['style']['class']) and $this->fieldOptions['style']['class'] == 'wd100'){
-            $this->line_class = 'wd100';
+        if(isset($this->fieldOptions['style']['class'])){
+            $this->line_class = $this->fieldOptions['style']['class'];
         }
     }
 

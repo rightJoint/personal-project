@@ -24,7 +24,7 @@ class Model implements LangInterface
     {
         $this->setLogger($logger);
         $this->user = $user;
-        $this->userLang = $user->userLang;
+        $this->userLang = $user->getUserLang();
         $this->langFile = $this->getDefaultLang();
         if(!$this->checkAccessModel()){
             $this->logger->warning('denied in checkAccessModel', $this->context);

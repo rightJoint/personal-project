@@ -4,7 +4,6 @@ namespace JointApp\Controllers\Records;
 
 
 use JointApp\Controllers\Controller;
-use JointApp\Interfaces\RecordsModelInterface;
 use JointApp\JointAppQueryBuilder;
 
 class RecordsController extends Controller
@@ -105,6 +104,8 @@ class RecordsController extends Controller
                 $this->action_log = $this->model->getLogMessage();
                 $this->action_result = false;
             }
+        }else{
+            $this->logger->error('actionEdit, submit flag required', $this->context);
         }
     }
 
@@ -122,6 +123,8 @@ class RecordsController extends Controller
                     $this->action_result = false;
                     $this->action_log = $this->model->getLogMessage();
                 }
+            }else{
+                $this->action_log = 'actionNew err: xxx';
             }
         }
     }
@@ -141,6 +144,8 @@ class RecordsController extends Controller
             } else {
                 $this->logger->error($this->model->getLogMessage(), $this->context);
             }
+        }else{
+            $this->logger->error('actionDelete, submit flag required', $this->context);
         }
     }
 
@@ -336,10 +341,10 @@ class RecordsController extends Controller
                 }elseif($fData['format']=='checkbox' or $fData['format']=='tinyint'){
                     if($this->requestParams[$fName] == 'on'){
                         $qBuilder->where.=$useTableName.'.'.$useFieldName.'=true and ';
-                        $this->model->record[$fName]['curVal'] = 1;
+                        //$this->model->record[$fName]['curVal'] = 1;
                     }else{
                         $qBuilder->where.=$useTableName.'.'.$useFieldName.'=false and ';
-                        $this->model->record[$fName]['curVal'] = 0;
+                        //$this->model->record[$fName]['curVal'] = 0;
                     }
                 }elseif($fData['format']=='int'){
                     $qBuilder->where.=$useTableName.'.'.$useFieldName.' = '.$this->requestParams[$fName].' and ';

@@ -60,12 +60,6 @@ class Controller implements LangInterface
         $this->model->getData();
     }
 
-    //automatically exec as final action when response format text
-    public function updateViewParams()
-    {
-        $this->setUpViewParams($this->view);
-    }
-
     //automatically exec as final action when response format json
     public function updateResponseJson()
     {
@@ -81,17 +75,6 @@ class Controller implements LangInterface
             }
         }
     }
-
-    //update some view params
-    protected function setUpViewParams(&$view)
-    {
-        foreach ($view as $prop => $value){
-            if(isset($this->$prop)){
-                $view->$prop = $this->$prop;
-            }
-        }
-    }
-
 
     protected static function ucfirstLang(string $lang = ''):string
     {

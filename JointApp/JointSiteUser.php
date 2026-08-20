@@ -18,7 +18,6 @@ class JointSiteUser
     private string $login = '';
     private bool $isAuth = false;
     private bool $isValid = false;
-    private string $validBy = '';
     private bool $isAdmin = false;
 
     private string $userLang = 'ru';
@@ -47,7 +46,7 @@ class JointSiteUser
     {
         if($this->login_tmp) {
             if (self::checkUserPassword($password)) {
-                $qry = 'select user_id, alias, pw_hash, avatar, blackList, followed_by from users where user_id = "' . $this->login_tmp . 'qq"';
+                $qry = 'select user_id, alias, pw_hash, avatar, blackList, followed_by from users where login = "' . $this->login_tmp . '"';
                 if ($res = $this->pdoQuery($qry)) {
                     if($res->rowCount() == 1){
                         $row = $res->fetch(\PDO::FETCH_ASSOC);
@@ -56,8 +55,12 @@ class JointSiteUser
                             if(!$this->blackList){
                                 $this->user_id = $row['user_id'];
                                 $this->alias = $row['alias'];
-                                $this->avatar = $row['avatar'];
-                                $this->followed_by = $row['followed_by'];
+                                if($row['avatar']){
+                                    $this->avatar = $row['avatar'];
+                                }
+                                if($row['followed_by']){
+                                    $this->followed_by = $row['followed_by'];
+                                }
                             }
                             $this->isAuth = true;
                             $this->saveSession();
@@ -79,7 +82,6 @@ class JointSiteUser
         $this->login = '';
         $this->isAuth = false;
         $this->isValid = false;
-        $this->validBy = '';
         $this->isAdmin = false;
         unset($_SESSION['user']);
     }
@@ -87,11 +89,12 @@ class JointSiteUser
     public function fromSession()
     {
         if(isset($_SESSION['user'])){
-            $this->user_id = $_SESSION['user_id'];
-            $this->alias = $_SESSION['alias'];
-            $this->followed_by = $_SESSION['followed_by'];
-            $this->blackList = $_SESSION['blackList'];
-            $this->avatar = $_SESSION['avatar'];
+            $this->user_id = $_SESSION['user']['user_id'];
+            $this->alias = $_SESSION['user']['alias'];
+            $this->followed_by = $_SESSION['user']['followed_by'];
+            $this->blackList = $_SESSION['user']['blackList'];
+            $this->avatar = $_SESSION['user']['avatar'];
+            $this->isAuth = true;
         }
     }
 
@@ -103,6 +106,7 @@ class JointSiteUser
             'followed_by' => $this->followed_by,
             'blackList' => $this->blackList,
             'avatar' => $this->avatar,
+            '$followed_by' => $this->followed_by,
         ];
     }
 
@@ -146,5 +150,50 @@ class JointSiteUser
     public function getUserLang():string
     {
         return $this->userLang;
+    }
+
+    public function getId():string
+    {
+        return $this->user_id;
+    }
+
+    public function getLogin():string
+    {
+        return $this->login;
+    }
+
+    public function getAlias():string
+    {
+        return $this->alias;
+    }
+
+    public function getAvatar():string
+    {
+        return $this->avatar;
+    }
+
+    public function isBanned():bool
+    {
+        return $this->blackList;
+    }
+
+    public function isAuth():bool
+    {
+        return $this->isAuth;
+    }
+
+    public function isValid():bool
+    {
+        return $this->isValid;
+    }
+
+    public function isAdmin():bool
+    {
+        return $this->isAdmin;
+    }
+
+    public function getFollowedBy():bool
+    {
+        return $this->followed_by;
     }
 }

@@ -6,9 +6,22 @@ namespace JointApp\Views\SiteView;
 
 use JointApp\Views\TpView;
 use JointApp\Views\User\TpView_UserAuthForm;
+use JointApp\Views\User\TpView_UserMenu;
 
 class TpView_ModalUser extends TpView
 {
+    //user info
+    public string $u_user_id = '';
+    public string $u_alias = '';
+    public bool $u_blackList = false;
+    public string $u_followed_by = '';
+    public string $u_avatar = '';
+    public string $u_login = '';
+    public bool $u_isAuth = false;
+    public bool $u_isValid = false;
+    public bool $u_isAdmin = false;
+
+
     public bool $modalUserActive = false;
 
     public bool $signUpFlag = false;
@@ -48,20 +61,33 @@ class TpView_ModalUser extends TpView
 
 
     private TpView_UserAuthForm $tpAuthForm;
+    private TpView_UserMenu $tpUserMenu;
 
     public function __construct()
     {
+        $this->tpUserMenu = new TpView_UserMenu();
         $this->tpAuthForm = new TpView_UserAuthForm();
     }
 
     public function handleViewParams(): void
     {
-        foreach ($this->tpAuthForm as $key => $val){
-            if(isset($this->$key)){
-                $this->tpAuthForm->$key = $this->$key;
+        if($this->u_isAuth){
+            //update user menu
+            foreach ($this->tpUserMenu as $key => $val){
+                if(isset($this->$key)){
+                    $this->tpUserMenu->$key = $this->$key;
+                }
             }
+            $this->tpUserMenu->handleViewParams();
+        }else{
+            //update auth forms
+            foreach ($this->tpAuthForm as $key => $val){
+                if(isset($this->$key)){
+                    $this->tpAuthForm->$key = $this->$key;
+                }
+            }
+            $this->tpAuthForm->handleViewParams();
         }
-        $this->tpAuthForm->handleViewParams();
     }
 
     public function getCss(): array
@@ -77,16 +103,28 @@ class TpView_ModalUser extends TpView
             $active_modal_menu_style = 'style="opacity: 1; visibility: visible"';
         }
 
-        $modalMenu = '<div class="modal user" '.$active_modal_menu_style.'>'.
+        $return = '<div class="modal user" '.$active_modal_menu_style.'>'.
             '<div class="overlay" '.$active_modal_menu_style.'></div><div class="contentBlock-frame">'.
             '<div class="contentBlock-center"><div class="modal-right"><div class="modal-close"></div>'.
-            '</div><div class="modal-left">'.
-            $this->htmlUserAuthForm().
+            '</div><div class="modal-left">';
+        if($this->u_isAuth){
+            $return.=$this->htmlUserMenu();
+        }else{
+            $return.=$this->htmlUserAuthForm();
+        }
+        $return.='</div>'.
             '</div>'.
-            '</div>';
+            '</div></div></div></div>';
+        return $return;
+    }
 
-        $modalMenu.= '</div></div></div></div>';
-        return $modalMenu;
+    protected function htmlUserMenu():string
+    {
+        $this->tpUserMenu->handleViewParams();
+        $this->tpUserMenu->userLang = $this->userLang;
+        $this->tpUserMenu->setUpCustomLang($this->tpUserMenu->getDefaultLang());
+
+        return $this->tpUserMenu->getResponseHtml();
     }
 
     protected function htmlUserAuthForm():string

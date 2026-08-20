@@ -100,3 +100,12 @@ form.auth-form .modal-line-img.captcha img{
     padding-bottom: 0.5em;
 }
 
+.modal-line.user-status .modal-line-text a.u-alias{
+    color: darkgoldenrod;
+    margin-left: 0.5em;
+}
+.modal-line.user-status .modal-line-text a.u-quit{
+    color: firebrick;
+    margin-left: 1em;
+}
+

@@ -17,6 +17,16 @@ class SiteView extends WebView
     public bool $modalMenuActive = false;
     public bool $modalUserActive = false;
 
+    //user info
+    public string $u_user_id = '';
+    public string $u_alias = '';
+    public bool $u_blackList = false;
+    public string $u_followed_by = '';
+    public string $u_avatar = '';
+    public string $u_login = '';
+    public bool $u_isAuth = false;
+    public bool $u_isValid = false;
+    public bool $u_isAdmin = false;
 
     //signUp form
     public bool $signUpFlag = false;
@@ -39,6 +49,7 @@ class SiteView extends WebView
     public bool $signInErrLogin = false;
     public bool $signInErrPass = false;
     public bool $signInErrWrongPass = false;
+
 
     protected function handleTpHeader():string
     {

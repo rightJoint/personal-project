@@ -175,11 +175,10 @@ class Model_Migrations extends RecordsModel
                                 $return['log'][] = 'result: SUCCESS';
                             }else{
                                 $return['log'][] = 'result: FAIL';
-                                echo 'xxx';
-                                exit;
+
                                 //foreach ($this->DB->errorInfo() as $err_num => $err_info){
                                     //?????????????????//
-                                    $err_info = str_replace(array('\r\n', '\r', '\n', '"', "'"), '',  $err_info);
+                                    $err_info = str_replace(array('\r\n', '\r', '\n', '"', "'"), '',  $this->log_message);
                                     $return['log'][] = $err_info;
                                 //}
                                 $count_fail++;
@@ -227,10 +226,7 @@ class Model_Migrations extends RecordsModel
 
         $migration_log->record['migration_log']['curVal'] = json_encode($return, true);
 
-        if(!$migration_log->insertRecord()){
-
-            echo $migration_log->log_message;
-        }
+        $migration_log->insertRecord();
 
         return $return;
 
@@ -282,7 +278,6 @@ class Model_Migrations extends RecordsModel
                 $commands = $this->parseSqlFile($this->docRoot.'/migrations/'.
                     $this->record['migration_name']['curVal']);
                 foreach ($commands as $c_num => $c_data){
-
                     $cmd_field_name = 'cmd_'.$c_num.'_'.$c_data['type'];
                     $fieldAliases = array(
                         'en' => 'command No: '.$c_num.', type: '.$c_data['type'],
@@ -320,13 +315,26 @@ class Model_Migrations extends RecordsModel
     protected function updateCustomFields():bool
     {
         $commands = $this->commandsContent();
-
-        if((isset($this->record['commands']['curVal']) and
-                $this->record['commands']['curVal'] != $commands)){
+        if(((isset($this->record['commands']['curVal']) and
+                $this->record['commands']['curVal'] != $commands))
+            or (!isset($this->record['commands']['curVal']) and !empty($commands))){
             file_put_contents($this->docRoot.'/migrations/'.$this->record['migration_name']['curVal'], $commands);
             $this->log_message .= 'update migration file success';
+
+            $this->updateMigrFile();
         }
         return true;
+    }
+
+    private function updateMigrFile()
+    {
+        if(!$this->record['migr_file']['curVal']){
+            $migrations = new RecordsModel($this->user, $this->logger, ['tableName' => 'migrations']);
+            $migrations->record['migration_name']['curVal'] = $this->record['migration_name']['curVal'];
+            $migrations->copyRecord();
+            $migrations->record['migr_file']['curVal'] = 1;
+            $migrations->updateRecord();
+        }
     }
 
     private function commandsContent():string
@@ -342,17 +350,5 @@ class Model_Migrations extends RecordsModel
             }
         }
         return $commands;
-    }
-
-    protected function insertCustomFields()
-    {
-        if(!file_exists($this->docRoot.'/migrations/'.$this->record['migration_name']['curVal'])){
-            $commands = $this->commandsContent();
-            file_put_contents($this->docRoot.'/migrations/'.$this->record['migration_name']['curVal'], $commands);
-            $this->log_message .= 'create migration file success';
-            return true;
-        }else{
-            return true;
-        }
     }
 }

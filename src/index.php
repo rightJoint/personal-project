@@ -7,6 +7,8 @@ use JointFramework\Http\ServerRequestFactory;
 use JointApp\JointSite;
 use JointApp\JointAppMiddleware;
 
+session_start();
+
 $uri = new Uri($_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']);
 
 //create server request from server params

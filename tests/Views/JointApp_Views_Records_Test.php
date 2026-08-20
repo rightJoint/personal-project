@@ -1,9 +1,9 @@
 <?php
-//php ./vendor/bin/phpunit tests/Views/JointSite_Views_Records_Test.php
+//php ./vendor/bin/phpunit tests/Views/JointApp_Views_Records_Test.php
 
 
 
-class JointSite_Views_Records_Test extends PHPUnit\Framework\TestCase
+class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {

@@ -1,5 +1,5 @@
 <?php
-//php ./vendor/bin/phpunit tests/Views/JointSite_Views_Test.php
+//php ./vendor/bin/phpunit tests/Views/JointApp_Views_Test.php
 
 use JointApp\Views\SiteView\TpView_Head;
 use JointApp\Views\SiteView\TpView_Header;
@@ -10,7 +10,7 @@ use JointApp\Views\WebView;
 use JointApp\Views\SiteView\SiteView;
 
 
-class JointSite_Views_Test extends PHPUnit\Framework\TestCase
+class JointApp_Views_Test extends PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {

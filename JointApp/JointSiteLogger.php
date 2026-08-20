@@ -86,4 +86,12 @@ class JointSiteLogger extends AbstractLogger
             }
         }
     }
+
+    public function isRedirected():bool
+    {
+        if($this->response->redirect){
+            return true;
+        }
+        return false;
+    }
 }

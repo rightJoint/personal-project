@@ -283,7 +283,8 @@ class RecordsModel extends Model_Pdo
         return true;
     }
 
-    function deleteRecord(){
+    function deleteRecord():bool
+    {
 
         foreach ($this->record as $fieldName => $fieldOptions){
             if($fieldOptions["format"] == "file" and $fieldOptions["file_options"]["load_dir"]){

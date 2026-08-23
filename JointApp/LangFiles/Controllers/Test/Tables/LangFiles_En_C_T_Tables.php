@@ -1,5 +1,5 @@
 <?php
-namespace JointApp\LangFiles\Controllers\Test;
+namespace JointApp\LangFiles\Controllers\Test\Tables;
 
 
 use JointApp\LangFiles\Controllers\LangFiles_Ru_Controllers_Record;

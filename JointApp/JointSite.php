@@ -100,10 +100,11 @@ class JointSite implements RequestHandlerInterface
         $controller->view = $view_tmp;
 
         //check construct errors
-        if($this->response->getStatusCode() == 200) {
-            foreach ($this->route->actionsList as $actionName => $actionParams) {
-                //check actions errors
-                if ($this->response->getStatusCode() == 200) {
+        foreach ($this->route->actionsList as $actionName => $actionParams) {
+            //check actions errors
+            if ($this->response->getStatusCode() == 200) {
+                //stop doing actions if already redirected
+                if(!$this->logger->isRedirected()){
                     $controller->$actionName($actionParams);
                 }
             }

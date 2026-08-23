@@ -73,12 +73,10 @@ class JointSiteRouteFinder
         }
 
         //call to update view params automatically
-        if(!$this->logger->isRedirected()) {
-            if ($returnRoute->responseFormat == 'text') {
-                $returnRoute->withAction('updateViewParams');
-            } else {
-                $returnRoute->withAction('updateResponseJson');
-            }
+        if ($returnRoute->responseFormat == 'text') {
+            $returnRoute->withAction('updateViewParams');
+        } else {
+            $returnRoute->withAction('updateResponseJson');
         }
 
         return $returnRoute;

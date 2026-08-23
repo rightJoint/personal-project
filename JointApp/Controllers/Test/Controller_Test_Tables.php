@@ -16,7 +16,7 @@ class Controller_Test_Tables extends ControllerWeb
 
     public function getDefaultLang()
     {
-        $class_Name = 'JointApp\LangFiles\Controllers\Test\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'C_T_Tables';
+        $class_Name = 'JointApp\LangFiles\Controllers\Test\Tables\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'C_T_Tables';
         return new $class_Name();
     }
 

@@ -30,7 +30,9 @@ class SiteView_Blog_Main extends SiteView
 
     public function handleTpBlogTable():string
     {
-        return '<div class="blog-art-list">'.$this->tpSet->BlogTable->getResponseHtml().'</div>';
+        return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
+            '<div class="contentBlock-wrap">'.'<div class="blog-art-list">'.$this->tpSet->BlogTable->getResponseHtml().'</div>'.
+            '</div></div></div>';
     }
 
     public function setUpJs():void

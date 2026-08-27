@@ -30,7 +30,7 @@ $(document).ready(function() {
             $("img.toTop").css("display", "none");
         } else {
             // upscroll code
-            if ($(this).scrollTop() > $(window).height()) {
+            if ($(this).scrollTop() > screen.height) {
                 if($("img.toTop").is(":visible")==false){
                     var timerInterval = setTimeout(function() {
                         $("img.toTop").css("display", "none");

@@ -1,0 +1,62 @@
+<?php
+
+
+namespace JointApp\Views\Siteman;
+
+
+use http\Exception\BadUrlException;
+use JointApp\Views\TpView;
+use PhpParser\Node\Stmt\Switch_;
+
+class TpView_Siteman_SubMenu extends TpView
+{
+    public string $list_frame_id = '';
+
+    public $css = ['sm-sub-menu' => '/css/siteman/sm-sub-menu.css'];
+
+    public function getResponseHtml(): string
+    {
+        $links = self::getHttpLinks($this->list_frame_id);
+        $texts = $this->langFile::getLinks();
+
+
+
+        $return = '<div class="sm-sub-menu">';
+        foreach ($links as $key => $ref){
+            $return .= '<a href="'.$ref.'" title="'.$texts[$key]['title'].'">'.$texts[$key]['text'].'</a>';
+        }
+
+
+        $return .='</div>';
+        return $return;
+    }
+
+    public function getDefaultLang()
+    {
+        switch ($this->list_frame_id)
+        {
+            case 'sitemap':
+                $class_Name = 'JointApp\LangFiles\Views\Siteman\Sitemap\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Sm_Sitemap_SubMenu';
+                break;
+            case 'users':
+                $class_Name = 'JointApp\LangFiles\Views\Siteman\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Siteman_ModulesMenu';
+                break;
+            default:
+                $class_Name = 'JointApp\LangFiles\Views\Siteman\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Siteman_ModulesMenu';
+        }
+
+        return new $class_Name();
+    }
+
+    public static function getHttpLinks(string $subMenuModule):array
+    {
+        $subMenuLinks = [
+            'sitemap' => [
+                'home' => '/siteman/sitemap',
+                'create' => '/siteman/sitemap/update',
+            ],
+        ];
+
+        return $subMenuLinks[$subMenuModule];
+    }
+}

@@ -1,0 +1,11 @@
+.sm-main-menu{
+    background-color: lightgoldenrodyellow;
+    text-align: left;
+    margin-top: 1em;
+    padding: 0.5em 0;
+}
+
+.sm-main-menu a{
+    color: midnightblue;
+    margin-right: 1em;
+}

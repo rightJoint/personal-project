@@ -21,7 +21,7 @@ class TpView_UserAuthForm extends TpView
     public bool $signUpErrCaptchaEmpty = false;
     public bool $signUpErrCaptchaWrong = false;
     public bool $useSignUpCaptcha = true;//optional
-    public bool $signUpErrUnknown = true;
+    public bool $signUpErrUnknown = false;
 
     public bool $signInFlag = true;
     public string $signInUserLogin = '';

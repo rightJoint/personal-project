@@ -4,6 +4,7 @@
 namespace JointApp\Views\SiteView;
 
 
+use JointApp\Views\Siteman\TpView_Siteman_ModulesMenu;
 use JointApp\Views\TpView;
 use JointApp\Views\Test\TpView_Test_Menu;
 
@@ -18,8 +19,8 @@ class TpView_ModalMenu extends TpView
     );
 
     protected $js = array(
-            'modals' => '/js/modals.js',
-        );
+        'modals' => '/js/modals.js',
+    );
 
 
     public function getDefaultLang()
@@ -74,13 +75,14 @@ class TpView_ModalMenu extends TpView
             '<p>'.$home_title.'</p>'.
             '</div>'.
             '</div>'.
-            $this->modalMenuTests();
+            $this->modalMenuTests().
+            $this->modalMenuSitenam();
 
         $modalMenu.= '</div></div></div></div>';
         return $modalMenu;
     }
 
-    public function modalMenuTests():string
+    private function modalMenuTests():string
     {
         $testMenu = new TpView_Test_Menu();
         $testMenu->userLang = $this->userLang;
@@ -96,7 +98,7 @@ class TpView_ModalMenu extends TpView
             '<sup>web tests</sup>'.
             '<span class="opnSubMenu folded">показать</span>'.
             '<ul style="display: none">'.
-            '<li><a href="'.$this->langSl.$httpLinks['connection'].'" title="'.$linksLang['connection']['title'].'">'.$linksLang['connection']['text'].'</a><li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['connection'].'" title="'.$linksLang['connection']['title'].'">'.$linksLang['connection']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['migrations'].'" title="'.$linksLang['migrations']['title'].'">'.$linksLang['migrations']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['records'].'" title="'.$linksLang['records']['title'].'">'.$linksLang['records']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['tables'].'" title="'.$linksLang['tables']['title'].'">'.$linksLang['tables']['text'].'</a></li>'.
@@ -104,4 +106,29 @@ class TpView_ModalMenu extends TpView
             '</div>'.
             '</div>';
     }
+
+    private function modalMenuSitenam():string
+    {
+        $sitemanMenu = new TpView_Siteman_ModulesMenu();
+        $sitemanMenu->userLang = $this->userLang;
+
+        $menu_lang = $sitemanMenu->getDefaultLang();
+        $httpLinks = $sitemanMenu::getHttpLinks();
+        $linksLang = $menu_lang::getLinks();
+
+        return "<div class='modal-line'>".
+            '<div class="modal-line-img"><img src="/img/popimg/test-logo.png"></div>'.
+            '<div class="modal-line-text">'.
+            '<a href="'.$httpLinks['home'].'" title="'.$linksLang['home']['title'].'">'.$linksLang['home']['text'].'</a>'.
+            '<sup>siteman</sup>'.
+            '<span class="opnSubMenu folded">показать</span>'.
+            '<ul style="display: none">'.
+            '<li><a href="'.$httpLinks['users'].'" title="'.$linksLang['users']['title'].'">'.$linksLang['users']['text'].'</a></li>'.
+            '<li><a href="'.$httpLinks['sitemap'].'" title="'.$linksLang['sitemap']['title'].'">'.$linksLang['sitemap']['text'].'</a></li>'.
+            '</ul>'.
+            '</div>'.
+            '</div>';
+
+    }
+
 }

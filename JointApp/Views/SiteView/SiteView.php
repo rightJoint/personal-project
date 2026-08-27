@@ -39,7 +39,7 @@ class SiteView extends WebView
     public bool $signUpErrPassMatch = false;
     public bool $signUpErrCaptchaEmpty = false;
     public bool $signUpErrCaptchaWrong = false;
-    public bool $signUpErrUnknown = true;
+    public bool $signUpErrUnknown = false;
     //signIn form
     public bool $signInFlag = true;
     public string $signInUserLogin = '';

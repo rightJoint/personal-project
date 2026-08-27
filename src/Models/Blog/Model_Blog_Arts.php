@@ -15,8 +15,8 @@ class Model_Blog_Arts extends Model_Pdo
             'art_id, '.
             'artCat, '.
             'artRef, '.
-            'artName_'.$this->langLw.' as artName, '.
-            'artMeta_'.$this->langLw.' as artMeta, '.
+            'artName_'.$this->userLang.' as artName, '.
+            'artMeta_'.$this->userLang.' as artMeta, '.
             'artImg, '.
             'activeFlag, '.
             'indexFlag, '.
@@ -44,7 +44,7 @@ class Model_Blog_Arts extends Model_Pdo
         $qBuilder->select(
             'blogAtrTags.art_id, '.
             'blogAtrTags.tag_id, '.
-            'blogTags.tag_'.$this->langLw.' as tagName'
+            'blogTags.tag_'.$this->userLang.' as tagName'
         )
             ->from('blogAtrTags')
             ->join(

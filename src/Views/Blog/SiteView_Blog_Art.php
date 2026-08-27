@@ -9,18 +9,22 @@ use JointApp\Views\SiteView\SiteView;
 
 class SiteView_Blog_Art extends SiteView
 {
+    public string $artRef = '';
+
+    public string $h1 = 'wedwedwe';
+
     public string $logo = '/img/popimg/blog-logo.png';
     public string $shortcutIcon = '/img/popimg/blog-icon.png';
 
-    const ART_COVERS = '/userdata/blog/covers';
 
+    //article row from database
     public $artRow = [];
+    //articles' tags
     public $artTags = [];
 
     public string $commentP_id = '';
     public string $formCommentsContent = '';
     public string $formCommentsErr = '';
-    public string $artRef = '';
     public array $listComments = [];
     public int $countComments = 0;
 
@@ -30,12 +34,56 @@ class SiteView_Blog_Art extends SiteView
     public string $sort = 'new-first';
     public string $viewtype = 'tree';
 
-    public static function loadLangView(string $docRoot = __DIR__, string $viewLang = 'ru', $loads = []): LangWebViewInterface
+
+
+
+
+
+    protected function replaceDefaultHeadLang()
     {
-        $lang = 'LangFiles_' . self::langNs($viewLang) . '_Views_BlogArts';
-        $loads[] = [$lang => $docRoot . '/LangFiles/Views/Blog/' . $lang];
-        return parent::loadLangView($docRoot, $viewLang, $loads);
+        $class_Name = 'Src\LangFiles\Views\Blog\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_Blog_Head';
+        return new $class_Name();
     }
+
+    protected function replaceDefaultHeaderLang()
+    {
+        $class_Name = 'Src\LangFiles\Views\Blog\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_Blog_Header';
+        return new $class_Name();
+    }
+
+
+    protected function putCustomTemplates(): void
+    {
+        $this->tpSet->ArtHeader = new TpView_Blog_Art_Header();
+        $this->tpSet->ArtInfoBar = new TpView_Blog_Art_InfoBar();
+        $this->putArticleTemplate();
+        $this->tpSet->ArtComments = new TpView_Blog_Art_Comments();
+    }
+
+    public function putArticleTemplate():void
+    {
+
+    }
+
+    public function handleTpArtHeader():string
+    {
+        return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
+            '<div class="contentBlock-wrap">'.
+
+
+            '<div class="blog-container">'.
+            $this->tpSet->ArtHeader->getResponseHtml();
+    }
+
+    public function handleTpArtComments():string
+    {
+        return $this->tpSet->ArtComments->getResponseHtml().
+            '</div>'.
+            '</div>'.
+            '</div>'.
+            '</div>';
+    }
+
 
     public function addViewParams(callable $addViewParams)
     {
@@ -68,6 +116,19 @@ class SiteView_Blog_Art extends SiteView
                 'title' => $this->artRow['artName'],
                 'description' => $this->artRow['artMeta']]
         );
+    }
+
+    public function setUpCss():void
+    {
+        $this->css['blog-art-content'] = '/css/blog/blog-art-content.css';
+        $this->css['blog-art-comments'] = '/css/blog/blog-art-comments.css';
+        parent::setUpCss();;
+    }
+
+    public function setUpJs():void
+    {
+        $this->js['preloader'] = '/js/Elegant-Loading-Indicator-jQuery-Preloader/src/js/jquery.preloader.min.js';
+        parent::setUpJs();
     }
 
     public static function addStyleLinks(callable $addStyleLinks): void
@@ -104,36 +165,25 @@ class SiteView_Blog_Art extends SiteView
         $filterParams->sort = $viewParams->sort;
         $filterParams->viewtype = $viewParams->viewtype;
 
-        $artTags = '';
 
-        for ($i=0; $i<count($viewParams->artTags); $i++){
-            $artTags.='<span class="tag-value">'.$viewParams->artTags[$i].'</span>';
-        }
 
         $pageContent =
-            '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.
-            '<div class="blog-container">'.
-            '<div class="blog-header">'.
-            '<div class="blog-header-meta"><h2>'.$viewParams->artRow['artMeta'].'</h2></div>'.
-            '<div class="blog-header-img"><img src="'.self::ART_COVERS.'/'.$viewParams->artRow['artImg'].'"></div>'.
-            '</div>'.
-            '<div class="blog-info">'.
-            '<div class="blog-info-dates">'.
-            '<span class="b-em-container">'.$langPageContent->artHeader->created.':</span>'.
-            '<span class="b-em-value">'.$viewParams->artRow['pubDate'].'</span>';
-        if(!empty($viewParams->artRow['refreshDate'])){
-            $pageContent.='<span class="b-em-container">'.$langPageContent->artHeader->refresh.':</span>'.
-                '<span class="b-em-value">'.$viewParams->artRow['refreshDate'].'</span>';
-        }
-        $pageContent.='</div>'.
-            '<div class="blog-info-tags">'.
-            '<span class="b-em-container">'.$langPageContent->artHeader->tags.':</span>'.
-            $artTags.'</div>'.
-            '</div>'.
+
+            //tpView_Blog_art_header
+
+            //tpView_Blog_art_info_bar
+
+
+
             '<div class="art-content">'.
             static::printArtContent($langPageContent->langArtContent, $viewParams, $langPageContent->langLw).
             '</div>'.
+
+
+
+
+
+
             '<div class="art-comments">';
         if(!$viewParams->artRow['commentsFlag']){
             $pageContent.='<h3>'.$langPageContent->commentsH3.'</h3>'.

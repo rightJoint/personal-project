@@ -7,7 +7,9 @@ namespace Src\Controllers\Blog;
 use JointApp\Controllers\ControllerWeb;
 use JointApp\Factories\ModelFactory;
 use JointApp\JointAppQueryBuilder;
+use JointApp\Models\RecordsModel;
 use JointApp\Views\Records\RecordListView;
+use Src\Models\Blog\Model_Blog_Comments;
 
 class Controller_Blog_Arts extends ControllerWeb
 {
@@ -210,7 +212,8 @@ class Controller_Blog_Arts extends ControllerWeb
     public function listComments():array
     {
         $factory = new ModelFactory();
-        $comments = $factory::createFromExistModel('Src\Models\Blog\Model_Blog_Comments', $this->model);
+        //$comments = $factory::createFromExistModel('Src\Models\Blog\Model_Blog_Comments', $this->model);
+        $comments = new Model_Blog_Comments($this->user, $this->logger);
 
         $qBuilder = $this->commentsSearchQuery();
         if($this->viewtype == 'tree'){
@@ -225,7 +228,8 @@ class Controller_Blog_Arts extends ControllerWeb
     public function countComments():int
     {
         $factory = new ModelFactory();
-        $comments = $factory::createFromExistModel('Src\Models\Blog\Model_Blog_Comments', $this->model);
+        //$comments = $factory::createFromExistModel('Src\Models\Blog\Model_Blog_Comments', $this->model);
+        $comments = new Model_Blog_Comments($this->user, $this->logger);
 
         $qBuilder = new JointAppQueryBuilder();
         $qBuilder->where('blogArts.art_id = "'.$this->artRow['art_id'].'"');

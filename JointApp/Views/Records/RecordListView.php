@@ -27,6 +27,8 @@ class RecordListView extends SiteView
     public bool $robotNoIndex = true;
     public string $logo = '/img/popimg/search-icon.png';
 
+    public $fieldAliases = [];
+
 
     protected function putCustomTemplates():void
     {

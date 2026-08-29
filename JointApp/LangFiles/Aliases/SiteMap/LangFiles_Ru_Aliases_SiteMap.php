@@ -1,5 +1,7 @@
 <?php
 
+namespace JointApp\LangFiles\Aliases\SiteMap;
+
 
 class LangFiles_Ru_Aliases_SiteMap
 {

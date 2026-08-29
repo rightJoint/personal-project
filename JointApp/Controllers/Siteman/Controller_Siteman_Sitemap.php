@@ -6,9 +6,22 @@ namespace JointApp\Controllers\Siteman;
 
 
 use JointApp\Controllers\Records\RecordsControllerWeb;
+use JointApp\JointSiteLogger;
+use JointApp\JointSiteUser;
 
 class Controller_Siteman_Sitemap extends RecordsControllerWeb
 {
+    public $fieldAliases = [];
+
+    public function __construct(JointSiteUser $user, JointSiteLogger &$logger, $controller_params = [])
+    {
+        parent::__construct($user, $logger, $controller_params);
+
+        $class_Name = 'JointApp\LangFiles\Aliases\SiteMap\LangFiles_'.$this->ucfirstLang($this->userLang).'_Aliases_SiteMap';
+        $aliases = new $class_Name();
+
+        $this->fieldAliases = $aliases->fieldAliases;
+    }
 
     public string $list_frame_id = 'sitemap';
 

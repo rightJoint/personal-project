@@ -12,6 +12,7 @@ class TpView_Grid extends TpView
     public $listFields = [];
     public string $langSl = '';
     public string $processUri = '';
+    public $fieldAliases = [];
 
     protected $css = [
             'listViewGrid' => '/css/records/listViewGrid.css',
@@ -33,7 +34,7 @@ class TpView_Grid extends TpView
                 $return.='>';
                 if ($fieldName == 'btnEdit'){
                     $return.= $this->langFile::EDIT_BTN_TEXT;
-                }elseif ($return == 'btnDelete'){
+                }elseif ($fieldName == 'btnDelete'){
                     $return.= $this->langFile::DELETE_BTN_TEXT;
                 }elseif ($fieldName == 'btnDetail'){
                     $return.= $this->langFile::UPDATE_BTN_TEXT;

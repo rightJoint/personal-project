@@ -10,7 +10,6 @@ class Controller_User_SignIn extends ControllerWeb
 {
     public string $http_referer = '';
 
-    public bool $modalUserActive = false;
     public bool $signInFlag = true;
     public bool $signUpFlag = false;
 
@@ -22,42 +21,39 @@ class Controller_User_SignIn extends ControllerWeb
     public bool $signInErrPass = false;
     public bool $signInErrWrongPass = false;
 
-    public function actionIndex()
-    {
-        $this->modalUserActive = true;
-
-    }
+    public bool $hasSignInErrors = false;
 
     public function actionSignIn()
     {
         if(isset($this->requestParams['auth_signIn'])){
-            $err = false;
+            $this->hasSignInErrors = false;
             if(isset($this->requestParams['signInLogin'])){
                 $this->signInUserLogin = $this->requestParams['signInLogin'];
                 if(!$this->user->withLogin($this->signInUserLogin)){
                     $this->signInErrLogin = true;
-                    $err = true;
+                    $this->hasSignInErrors = true;
                 }
             }else{
                 $this->signInErrLogin = true;
-                $err = true;
+                $this->hasSignInErrors = true;
             }
             if(isset($this->requestParams['signInPassword'])){
                 $this->signInUserPassword = $this->requestParams['signInPassword'];
                 if(!$this->user::checkUserPassword($this->signInUserPassword)){
                     $this->signInErrPass = true;
-                    $err = true;
+                    $this->hasSignInErrors = true;
                 }
             }else{
                 $this->signInErrPass = true;
-                $err = true;
+                $this->hasSignInErrors = true;
             }
 
-            if(!$err) {
+            if(!$this->hasSignInErrors) {
                 $this->user->withPassword($this->signInUserPassword);
                 if ($this->user->isAuth()) {
                     $this->logger->redirect($this->http_referer);
                 } else {
+                    $this->hasSignInErrors = true;
                     if ($this->user->isBanned()) {
                         $this->signInErrBlackList = true;
                     } else {
@@ -66,7 +62,6 @@ class Controller_User_SignIn extends ControllerWeb
                 }
             }
         }
-        $this->modalUserActive = true;
     }
 
     private function createUser(string $login, string $password):bool

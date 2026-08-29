@@ -32,12 +32,12 @@ class TpView_UserMenu extends TpView
         }
         $return .='</div>'.
             '<div class="modal-line-text">Вы: <a href="/pp" title="personal page" class="u-alias">'.$this->u_alias.'</a>'.
-            '<sup><a href="/user/quit" title="quit account" class="u-quit">quit</a></sup>'.
+            '<sup><a href="/user/quit" title="quit account" class="u-quit">'.$this->langFile::USER_MENU_QUIT_ACCOUNT.'</a></sup>'.
             '<div><small>';
         if($this->u_isValid){
-            $return .='your account is validated';
+            $return .= $this->langFile::USER_MENU_NOT_VALID;
         }else{
-            $return .='Your account istn validated';
+            $return .= $this->langFile::USER_MENU_IS_VALID;
         }
         $return .='</small></div></div>'.
             '</div>'.
@@ -48,4 +48,11 @@ class TpView_UserMenu extends TpView
 
         return $return;
     }
+
+    public function getDefaultLang()
+    {
+        $class_Name = 'JointApp\LangFiles\Views\User\LangFiles_'.self::ucfirstLang($this->userLang).'_Views_User_Menu';
+        return new $class_Name();
+    }
+
 }

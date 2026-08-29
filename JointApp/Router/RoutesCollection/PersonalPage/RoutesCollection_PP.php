@@ -13,7 +13,7 @@ trait RoutesCollection_PP
         $route = new JointSiteRoute();
         $route->withModel('JointApp\Models\Model')
             ->withController('JointApp\Controllers\PersonalPage\Controller_PP')
-            ->withView('JointApp\Views\SiteView\SiteView');
+            ->withView('JointApp\Views\PersonalPage\SiteView_PP_Home');
 
         return $route;
     }

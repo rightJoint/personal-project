@@ -1,0 +1,9 @@
+CREATE TABLE `robots_dt` (
+	`disallow` VARCHAR(128) NOT NULL COLLATE 'utf8_unicode_ci',
+	`use_flag` TINYINT(1) NULL DEFAULT NULL,
+	`date_created` DATETIME NULL DEFAULT NULL,
+	`created_by` VARCHAR(36) NOT NULL COLLATE 'utf8_unicode_ci',
+	PRIMARY KEY (`maploc`) USING BTREE
+)
+COLLATE='utf8_unicode_ci'
+ENGINE=MyISAM;

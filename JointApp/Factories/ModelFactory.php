@@ -14,6 +14,7 @@ class ModelFactory extends FromRequestFactory
                                             JointSiteLogger $logger, $model_params = [])
     {
         $object = new $namespace($user, $logger, $model_params);
+        $object->files = $request->getUploadedFiles();
 
         return self::ObjectFromRequest($object, $request);
     }

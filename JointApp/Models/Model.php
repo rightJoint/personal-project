@@ -20,6 +20,8 @@ class Model implements LangInterface
 
     protected JointSiteUser $user;
 
+    public $files;
+
     function __construct(JointSiteUser &$user, JointSiteLogger &$logger, $model_params = [])
     {
         $this->setLogger($logger);

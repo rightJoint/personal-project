@@ -6,6 +6,7 @@ namespace JointApp\Models;
 use JointApp\JointAppQueryBuilder;
 use JointApp\JointSiteLogger;
 use JointApp\JointSiteUser;
+use JointApp\SettingsEnv;
 
 class RecordsModel extends Model_Pdo
 {
@@ -334,10 +335,10 @@ class RecordsModel extends Model_Pdo
                     $upload_dir.= $f_expd[$i]."/";
                 }
 
-                if(!is_dir($this->docRoot.$upload_dir)){
-                    mkdir($this->docRoot.$upload_dir, 0777, true);
+                if(!is_dir(SettingsEnv::DOC_ROOT.$upload_dir)){
+                    mkdir(SettingsEnv::DOC_ROOT.$upload_dir, 0777, true);
                 }
-                $file->moveTo($this->docRoot.$imgLink);
+                $file->moveTo(SettingsEnv::DOC_ROOT.$imgLink);
                 return true;
             }else{
                 $this->log_message .= $this->langFile->file_err["mvf_err_extension"].": ".$file_extension."; ";
@@ -360,14 +361,13 @@ class RecordsModel extends Model_Pdo
     function deleteRecordFetchFile($field_name)
     {
         if(isset($this->record[$field_name]["fetchVal"])){
-
             $fileLink = $this->linkFromReplaces($field_name, "fetchVal");
             $upload_dir = null;
             $f_expd = explode("/", $fileLink);
             for($i = 0; $i < count($f_expd)-1; $i++){
                 $upload_dir.= $f_expd[$i]."/";
             }
-            if(@unlink($this->docRoot.$fileLink)){
+            if(@unlink(SettingsEnv::DOC_ROOT.$fileLink)){
                 return true;
             }else{
                 $this->log_message .= $this->langFile->file_err["unlink_err"];

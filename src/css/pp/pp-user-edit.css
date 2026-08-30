@@ -1,0 +1,30 @@
+form.pp-user-edit{
+    text-align: left;
+    margin: 1em 0;
+    padding: 1em;
+}
+form.pp-user-edit .input-line{
+    display: inline-block;
+    width: 100%;
+    margin: 0.2em 0;
+    font-size: 0.8em;
+}
+form.pp-user-edit .submit-line{
+    width: 20em;
+    margin: 1em 0;
+    text-align: right;
+}
+form.pp-user-edit .input-line input[type=text],
+form.pp-user-edit .input-line input[type=date]{
+    width: 20em;
+}
+
+form.pp-user-edit label{
+    width: 5em;
+    display: inline-block;
+}
+
+form.pp-user-edit img.avatar{
+    height: 1.5em;
+    width: 1.5em;
+}

@@ -26,7 +26,7 @@ class TpView_UserMenu extends TpView
         $return = '<div class="modal-line user-status">'.
             '<div class="modal-line-img">';
         if($this->u_avatar){
-            $return .='<img src="'.SettingsEnv::USER_AVATARS_DIR.'/'.$this->u_avatar.'.jpg">';
+            $return .='<img src="'.SettingsEnv::USER_AVATARS_DIR.'/'.$this->u_avatar.'">';
         }else{
             $return .='<img src="/img/popimg/user-logo.png">';
         }

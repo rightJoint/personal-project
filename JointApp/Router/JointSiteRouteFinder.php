@@ -14,6 +14,7 @@ use JointApp\Router\RoutesCollection\RoutesCollection_JointSite;
 use JointApp\Router\RoutesCollection\RoutesCollection_Main;
 use JointApp\Router\RoutesCollection\Test\RoutesCollection_Test;
 use Src\RoutesCollection\Blog\RoutesCollection_Blog;
+use Src\RoutesCollection\Blog\RoutesCollection_Siteman_Blog;
 
 
 class JointSiteRouteFinder
@@ -28,6 +29,7 @@ class JointSiteRouteFinder
     use RoutesCollection_Blog;
     use RoutesCollection_Siteman;
     use RoutesCollection_PP;
+    use RoutesCollection_Siteman_Blog;
 
     private $context = ['RouteFinder' => __CLASS__];
 

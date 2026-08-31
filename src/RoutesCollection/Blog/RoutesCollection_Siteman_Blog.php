@@ -7,23 +7,17 @@ use JointApp\Router\JointSiteRoute;
 
 trait RoutesCollection_Siteman_Blog
 {
-    static function getRoute_SitemanBlog($routes_ns):JointSiteRoute
-    {
+    use RoutesCollection_Siteman_Blog_ArtTags;
+    use RoutesCollection_Siteman_Blog_Cats;
+    use RoutesCollection_Siteman_Blog_Comments;
+    use RoutesCollection_Siteman_Blog_Tags;
 
-    }
-
-    static function postRoute_SitemanBlog($routes_ns):JointSiteRoute
-    {
-
-    }
-
-    /*
     static function getRoute_SitemanBlog($routes_ns):JointSiteRoute
     {
         $route = new JointSiteRoute();
         $route
-            ->withController('JointApp\Controllers\Siteman\Controller_Siteman_Robots')
-            ->withModel('JointApp\Models\Siteman\Model_Siteman_Robots');
+            ->withController('Src\Controllers\Blog\Controller_Siteman_Blog')
+            ->withModel('Src\Models\Blog\Model_Siteman_Blog');
 
         if(!isset($routes_ns[3]) or $routes_ns[3] == 'listview'){
             $route
@@ -45,9 +39,22 @@ trait RoutesCollection_Siteman_Blog
         }elseif ($routes_ns[3] == 'deleteview'){
             $route->withAction('htmlDeleteView')
                 ->withView('JointApp\Views\Siteman\SitemanDetailView');
-        }elseif ($routes_ns[3] == 'update'){
-            $route->withAction('robotsUpdate')
-                ->withView('JointApp\Views\Siteman\Robots\SiteView_Siteman_Robots_Update');
+        }
+        //get art tags
+        elseif ($routes_ns[3] == 'blogatrtags'){
+            $route = self::getRoute_SitemanBlogArtTags($routes_ns);
+        }
+        //get cats
+        elseif ($routes_ns[3] == 'blogcats'){
+            $route = self::getRoute_SitemanBlogCats($routes_ns);
+        }
+        //get comments
+        elseif ($routes_ns[3] == 'blogcomments'){
+            $route = self::getRoute_SitemanBlogComments($routes_ns);
+        }
+        //get blogtags
+        elseif ($routes_ns[3] == 'blogtags'){
+            $route = self::getRoute_SitemanBlogTags($routes_ns);
         }
 
         return $route;
@@ -56,8 +63,8 @@ trait RoutesCollection_Siteman_Blog
     static function postRoute_SitemanBlog($routes_ns):JointSiteRoute
     {
         $route = (new JointSiteRoute())
-            ->withController('JointApp\Controllers\Siteman\Controller_Siteman_Robots')
-            ->withModel('JointApp\Models\Siteman\Model_Siteman_Robots');
+            ->withController('Src\Controllers\Blog\Controller_Siteman_Blog')
+            ->withModel('Src\Models\Blog\Model_Siteman_Blog');
 
         if (!isset($routes_ns[3]) or $routes_ns[3] == 'listview') {
             $route
@@ -83,7 +90,22 @@ trait RoutesCollection_Siteman_Blog
                 ->withAction('postNewView')
                 ->withView('JointApp\Views\Siteman\SitemanEditView');
         }
+        //post art tags
+        elseif ($routes_ns[3] == 'blogatrtags'){
+            $route = self::postRoute_SitemanBlogArtTags($routes_ns);
+        }
+        //post cats
+        elseif ($routes_ns[3] == 'blogcats'){
+            $route = self::postRoute_SitemanBlogCats($routes_ns);
+        }
+        //post comments
+        elseif ($routes_ns[3] == 'blogcomments'){
+            $route = self::postRoute_SitemanBlogComments($routes_ns);
+        }
+        //post tags
+        elseif ($routes_ns[3] == 'blogtags'){
+            $route = self::postRoute_SitemanBlogTags($routes_ns);
+        }
         return $route;
     }
-    */
 }

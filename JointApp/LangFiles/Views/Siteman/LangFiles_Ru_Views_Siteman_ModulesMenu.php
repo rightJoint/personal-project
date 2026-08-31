@@ -25,6 +25,10 @@ class LangFiles_Ru_Views_Siteman_ModulesMenu
                 'title' => 'Не индексировать страницы',
                 'text' => 'Роботс',
             ),
+            'blog' => array(
+                'title' => 'Управление блогом',
+                'text' => 'Блог',
+            ),
         );
     }
 }

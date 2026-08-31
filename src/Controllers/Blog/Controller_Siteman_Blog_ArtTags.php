@@ -1,0 +1,144 @@
+<?php
+
+
+namespace Src\Controllers\Blog;
+
+
+use JointApp\Controllers\Records\RecordsControllerWeb;
+
+class Controller_Siteman_Blog_ArtTags extends RecordsControllerWeb
+{
+    public string $processUri = '/siteman/blog/blogatrtags';
+    public string $list_frame_id = 'blogArtsTags';
+
+    public function prepareEditFields(): void
+    {
+
+        $this->editFields = array(
+            'tag_id' => array(
+                'format' => 'select',
+                'curVal' => '',
+                'pri' => 1,
+                'filling' => $this->fillTagsList(),
+            ),
+            'art_id' => array(
+                'format' => 'select',
+                'curVal' => '',
+                'filling' => $this->fillArtsList(),
+                'pri' => 1,
+            ),
+            'created_by' => array(
+                'format' => 'varchar',
+                'curVal' => '',
+            ),
+        );
+    }
+
+    public function fillTagsList():array
+    {
+        $findTags = 'select tag_id, tag_'.$this->userLang.' as tagName from blogTags order by tag_'.$this->userLang;
+        $return = array(
+            '' => '',
+        );
+        $res = $this->model->pdoQuery($findTags);
+        if($res->rowCount() > 0){
+            while ($row = $res->fetch(\PDO::FETCH_ASSOC)){
+                $return[$row['tag_id']] = $row['tagName'];
+            }
+        }
+        return $return;
+    }
+
+    public function fillArtsList():array
+    {
+        $findArts = 'select art_id, artName_'.$this->userLang.' as artName from blogArts order by artName_'.$this->userLang;
+        $return = array(
+            '' => '',
+        );
+        $res = $this->model->pdoQuery($findArts);
+        if($res->rowCount() > 0){
+            while ($row = $res->fetch(\PDO::FETCH_ASSOC)){
+                $return[$row['art_id']] = $row['artName'];
+            }
+        }
+        return $return;
+    }
+
+    public function prepareSearchFields(): void
+    {
+        $this->searchFields = array(
+            'tag_id' => array(
+                'format' => 'hidden',
+                'search' => 1,
+                'sort' => 1,
+                'curVal' => null,
+            ),
+            'art_id' => array(
+                'format' => 'hidden',
+                'search' => 1,
+                'sort' => 1,
+                'curVal' => null,
+            ),
+            'created_by' => array(
+                'format' => 'hidden',
+                'search' => 0,
+                'sort' => 0,
+                'curVal' => null,
+            ),
+
+            'artName' => array(
+                'format' => 'varchar',
+                'search' => 1,
+                'sort' => 1,
+                'group_by_field' => 'artName',
+                'use_table_name' => '',
+                'curVal' => null,
+            ),
+            'tagName' => array(
+                'format' => 'varchar',
+                'search' => 1,
+                'sort' => 1,
+                'group_by_field' => 'tagName',
+                'curVal' => null,
+            ),
+        );
+    }
+
+    public function prepareListFields(): void
+    {
+
+        $this->listFields = array(
+            'btnDetail' => array(
+                'replaces' => ['tag_id', 'art_id'],
+                'format' => 'link',
+                'url' => 'tag_id=tag_id&art_id=art_id',
+            ),
+            'btnEdit' => array(
+                'replaces' => ['tag_id', 'art_id'],
+                'format' => 'link',
+                'url' => 'tag_id=tag_id&art_id=art_id',
+            ),
+            'btnDelete' => array(
+                'replaces' => ['tag_id', 'art_id'],
+                'format' => 'link',
+                'url' => 'tag_id=tag_id&art_id=art_id',
+            ),
+            'tag_id' => array(
+                'format' => 'hidden',
+            ),
+            'art_id' => array(
+                'format' => 'hidden',
+            ),
+            'created_by' => array(
+                'format' => 'hidden',
+            ),
+            'artName' => array(
+                'format' => 'varchar',
+            ),
+            'tagName' => array(
+                'format' => 'varchar',
+            ),
+        );
+    }
+
+}

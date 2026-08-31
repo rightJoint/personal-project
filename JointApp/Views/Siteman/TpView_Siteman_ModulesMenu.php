@@ -24,6 +24,7 @@ class TpView_Siteman_ModulesMenu extends TpView
             '<a href="'.$links['users'].'" title="'.$texts['users']['title'].'">'.$texts['users']['text'].'</a>'.
             '<a href="'.$links['sitemap'].'" title="'.$texts['sitemap']['title'].'">'.$texts['sitemap']['text'].'</a>'.
             '<a href="'.$links['robots'].'" title="'.$texts['robots']['title'].'">'.$texts['robots']['text'].'</a>'.
+            '<a href="'.$links['blog'].'" title="'.$texts['blog']['title'].'">'.$texts['blog']['text'].'</a>'.
             '</div>';
         return $return;
     }
@@ -41,6 +42,7 @@ class TpView_Siteman_ModulesMenu extends TpView
             'users' => '/siteman/users',
             'sitemap' => '/siteman/sitemap',
             'robots' => '/siteman/robots',
+            'blog' => '/siteman/blog',
         ];
     }
 }

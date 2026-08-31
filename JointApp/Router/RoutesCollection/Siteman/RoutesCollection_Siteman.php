@@ -36,6 +36,10 @@ trait RoutesCollection_Siteman
         elseif (strtolower($routes_ns[2]) == 'users'){
             return self::getRoute_SitemanUsers($routes_ns);
         }
+        //siteman/blog
+        elseif (strtolower($routes_ns[2]) == 'blog'){
+            return self::getRoute_SitemanBlog($routes_ns);
+        }
     }
 
     static function postRoute_Siteman($routes_ns):JointSiteRoute
@@ -48,6 +52,10 @@ trait RoutesCollection_Siteman
         //siteman/users
         elseif (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'users'){
             return self::postRoute_SitemanUsers($routes_ns);
+        }
+        //siteman/blog
+        elseif (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'blog'){
+            return self::postRoute_SitemanBlog($routes_ns);
         }
     }
 }

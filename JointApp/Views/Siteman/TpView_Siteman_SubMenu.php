@@ -19,14 +19,10 @@ class TpView_Siteman_SubMenu extends TpView
         $links = self::getHttpLinks($this->list_frame_id);
         $texts = $this->langFile::getLinks();
 
-
-
         $return = '<div class="sm-sub-menu">';
         foreach ($links as $key => $ref){
             $return .= '<a href="'.$ref.'" title="'.$texts[$key]['title'].'">'.$texts[$key]['text'].'</a>';
         }
-
-
         $return .='</div>';
         return $return;
     }
@@ -44,6 +40,9 @@ class TpView_Siteman_SubMenu extends TpView
             case 'robots':
                 $class_Name = 'JointApp\LangFiles\Views\Siteman\Robots\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Sm_Robots_SubMenu';
                 break;
+            case 'blogArts' or 'blogArtsTags' or 'blogcats' or 'blogcomments':
+                $class_Name = 'Src\LangFiles\Views\Blog\Siteman\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Sm_Blog_SubMenu';
+                break;
             default:
                 $class_Name = 'JointApp\LangFiles\Views\Siteman\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Siteman_ModulesMenu';
         }
@@ -53,6 +52,15 @@ class TpView_Siteman_SubMenu extends TpView
 
     public static function getHttpLinks(string $subMenuModule):array
     {
+        $blog_links = [
+            'home' => '/siteman/blog',
+            'blogAtrTags' => '/siteman/blog/blogatrtags',
+            'blogCats' => '/siteman/blog/blogcats',
+            'blogComments' => '/siteman/blog/blogcomments',
+            'blogTags' => '/siteman/blog/blogtags',
+            'blogCommentsLikes' => '/siteman/blog/blogcommentslikes',
+        ];
+
         $subMenuLinks = [
             'sitemap' => [
                 'home' => '/siteman/sitemap',
@@ -65,6 +73,11 @@ class TpView_Siteman_SubMenu extends TpView
             'users' => [
                 'home' => '/siteman/users',
             ],
+            'blogArts' => $blog_links,
+            'blogcats' => $blog_links,
+            'blogArtsTags' => $blog_links,
+            'blogcomments' => $blog_links,
+            'blogtags' => $blog_links,
         ];
 
         return $subMenuLinks[$subMenuModule];

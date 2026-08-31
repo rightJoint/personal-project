@@ -1,7 +1,7 @@
 <?php
 
 
-namespace JointApp\Controllers\Components;
+namespace JointApp\Controllers\Siteman;
 
 
 use JointApp\Controllers\Records\RecordsControllerWeb;
@@ -9,10 +9,8 @@ use JointApp\Controllers\Records\RecordsControllerWeb;
 class Controller_Siteman_Users extends RecordsControllerWeb
 {
 
-    public string $moduleName = 'users';
-
+    public string $list_frame_id = 'users';
     public string $processUri = '/siteman/users';
-
 
     public function prepareSearchFields(): void
     {
@@ -21,89 +19,51 @@ class Controller_Siteman_Users extends RecordsControllerWeb
                 'format' => 'varchar',
                 'search' => 1,
                 'sort' => 1,
+                'curVal' => null,
             ),
-            'accLogin' => array(
+            'login' => array(
                 'format' => 'varchar',
                 'search' => 1,
                 'sort' => 1,
+                'curVal' => null,
             ),
-            'accAlias' => array(
+            'alias' => array(
                 'format' => 'varchar',
                 'search' => 1,
                 'sort' => 1,
+                'curVal' => null,
             ),
-            /*'pw_hash' => array(
-                'format' => 'varchar',
-                'search' => 1,
-                'sort' => 1,
-            ),
-            'vldCode' => array(
-                'format' => 'varchar',
-                'search' => 1,
-                'sort' => 1,
-            ),*/
             'regDate' => array(
                 'format' => 'datetime',
                 'search' => 1,
                 'sort' => 1,
-            ),
-            'netWork' => array(
-                'format' => 'varchar',
-                'search' => 1,
-                'sort' => 1,
-            ),
-            'validDate' => array(
-                'format' => 'datetime',
-                'search' => 1,
-                'sort' => 1,
-            ),/*
-            'photoLink' => array(
-                'format' => 'varchar',
-                'search' => 1,
-                'sort' => 1,
-            ),*/
-            'eMail' => array(
-                'format' => 'varchar',
-                'search' => 1,
-                'sort' => 1,
+                'curVal' => null,
             ),
             'birthDay' => array(
                 'format' => 'date',
                 'search' => 1,
                 'sort' => 1,
-            ),
-            'socProf' => array(
-                'format' => 'varchar',
-                'search' => 1,
-                'sort' => 1,
+                'curVal' => null,
             ),
             'blackList' => array(
                 'format' => 'tinyint',
                 'search' => 1,
                 'sort' => 1,
+                'curVal' => null,
             ),
-            'created_by' => array(
+            'followed_by' => array(
                 'format' => 'varchar',
                 'search' => 1,
                 'sort' => 1,
-            ),
-            'is_admin' => array(
-                'format' => 'tinyint',
-                'search' => 1,
-                'sort' => 1,
-            ),
-            'send_ntf' => array(
-                'format' => 'tinyint',
-                'search' => 1,
-                'sort' => 1,
+                'curVal' => null,
             ),
             'pref_lang' => array(
                 'format' => 'varchar',
                 'search' => 1,
                 'sort' => 1,
+                'curVal' => null,
             ),
         );
-
     }
 
     public function prepareListFields(): void
@@ -128,54 +88,23 @@ class Controller_Siteman_Users extends RecordsControllerWeb
                 'format' => 'varchar',
                 'max_length' => 5,
             ),
-            'accLogin' => array(
+            'login' => array(
                 'format' => 'varchar',
             ),
-            'accAlias' => array(
+            'alias' => array(
                 'format' => 'varchar',
             ),
-            //'pw_hash' => array(
-            //    'format' => 'varchar',
-            //),
-            //'vldCode' => array(
-            //    'format' => 'varchar',
-            //    'max_length' => 10,
-            //),
             'regDate' => array(
                 'format' => 'datetime',
-            ),
-            'netWork' => array(
-                'format' => 'varchar',
-            ),
-            'validDate' => array(
-                'format' => 'datetime',
-            ),
-            'photoLink' => array(
-                'format' => 'varchar',
-            ),
-            'eMail' => array(
-                'format' => 'varchar',
             ),
             'birthDay' => array(
                 'format' => 'date',
             ),
-            'socProf' => array(
-                'format' => 'varchar',
-            ),
             'blackList' => array(
                 'format' => 'tinyint',
             ),
-            //'created_by' => array(
-            //    'format' => 'varchar',
-            //),
-            'created_user' => array(
+            'followed_by' => array(
                 'format' => 'varchar',
-            ),
-            'is_admin' => array(
-                'format' => 'tinyint',
-            ),
-            'send_ntf' => array(
-                'format' => 'tinyint',
             ),
             'pref_lang' => array(
                 'format' => 'varchar',

@@ -1,18 +1,18 @@
 <?php
 
-namespace JointApp\Router\RoutesCollection\Siteman\SiteMap;
+namespace JointApp\Router\RoutesCollection\Siteman\Users;
 
 
 use JointApp\Router\JointSiteRoute;
 
 trait RoutesCollection_Siteman_Users
 {
-    static function getRoute_SitemanSiteMap($routes_ns):JointSiteRoute
+    static function getRoute_SitemanUsers($routes_ns):JointSiteRoute
     {
         $route = new JointSiteRoute();
         $route
-            ->withController('JointApp\Controllers\Siteman\Controller_Siteman_Sitemap')
-            ->withModel('JointApp\Models\Siteman\Model_Siteman_Sitemap');
+            ->withController('JointApp\Controllers\Siteman\Controller_Siteman_Users')
+            ->withModel('JointApp\Models\Siteman\Model_Siteman_Users');
 
         if(!isset($routes_ns[3]) or $routes_ns[3] == 'listview'){
             $route
@@ -34,24 +34,20 @@ trait RoutesCollection_Siteman_Users
         }elseif ($routes_ns[3] == 'deleteview'){
             $route->withAction('htmlDeleteView')
                 ->withView('JointApp\Views\Siteman\SitemanDetailView');
-        }elseif ($routes_ns[3] == 'update'){
-            $route->withAction('siteMapUpdate')
-                ->withView('JointApp\Views\Siteman\SiteMap\SiteView_Siteman_Sitemap_Update');
         }
 
         return $route;
     }
 
-    static function postRoute_SitemanSiteMap($routes_ns):JointSiteRoute
+    static function postRoute_SitemanUsers($routes_ns):JointSiteRoute
     {
         $route = (new JointSiteRoute())
-            ->withController('JointApp\Controllers\Siteman\Controller_Siteman_Sitemap')
-            ->withModel('JointApp\Models\Siteman\Model_Siteman_Sitemap');
+            ->withController('JointApp\Controllers\Siteman\Controller_Siteman_Users')
+            ->withModel('JointApp\Models\Siteman\Model_Siteman_Users');
 
         if (!isset($routes_ns[3]) or $routes_ns[3] == 'listview') {
             $route
                 ->withAction('applyFilterView')
-                //->withAction('getViewSelectTblPanel')
                 ->withView('JointApp\Views\Siteman\SitemanListView')
                 ->responseFormat('json');
         }

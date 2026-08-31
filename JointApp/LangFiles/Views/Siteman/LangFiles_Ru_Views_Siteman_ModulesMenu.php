@@ -21,6 +21,10 @@ class LangFiles_Ru_Views_Siteman_ModulesMenu
                 'title' => 'Создать карту сайта',
                 'text' => 'Карта сайта',
             ),
+            'robots' => array(
+                'title' => 'Не индексировать страницы',
+                'text' => 'Роботс',
+            ),
         );
     }
 }

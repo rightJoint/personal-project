@@ -4,11 +4,13 @@ namespace JointApp\Router\RoutesCollection\Siteman;
 
 
 use JointApp\Router\JointSiteRoute;
+use JointApp\Router\RoutesCollection\Siteman\Robots\RoutesCollection_Siteman_Robots;
 use JointApp\Router\RoutesCollection\Siteman\SiteMap\RoutesCollection_Siteman_SiteMap;
 
 trait RoutesCollection_Siteman
 {
     use RoutesCollection_Siteman_SiteMap;
+    use RoutesCollection_Siteman_Robots;
 
     static function getRoute_Siteman($routes_ns):JointSiteRoute
     {
@@ -24,6 +26,9 @@ trait RoutesCollection_Siteman
         //siteman/sitemap
         elseif (strtolower($routes_ns[2]) == 'sitemap'){
             return self::getRoute_SitemanSiteMap($routes_ns);
+        }//siteman/sitemap
+        elseif (strtolower($routes_ns[2]) == 'robots'){
+            return self::getRoute_SitemanRobots($routes_ns);
         }
     }
 
@@ -31,6 +36,8 @@ trait RoutesCollection_Siteman
     {
         if (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'sitemap'){
             return self::postRoute_SitemanSiteMap($routes_ns);
+        }elseif (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'robots'){
+            return self::postRoute_SitemanRobots($routes_ns);
         }
     }
 }

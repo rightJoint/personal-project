@@ -10,6 +10,7 @@ use JointApp\Views\SiteView\SiteView;
 class SiteView_Siteman_Sitemap_Update extends SiteView
 {
     public string $list_frame_id = '';
+    public bool $robotNoIndex = true;
 
     protected function putCustomTemplates():void
     {
@@ -31,5 +32,17 @@ class SiteView_Siteman_Sitemap_Update extends SiteView
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
             '<div class="contentBlock-wrap">'.$this->tpSet->SubMenu->getResponseHtml().
             '</div></div></div>';
+    }
+
+    protected function replaceDefaultHeadLang()
+    {
+        $class_Name = 'JointApp\LangFiles\Views\Siteman\Sitemap\LangFiles_'.$this->ucfirstLang($this->userLang).'_Views_Sm_Sitemap_Head';
+        return new $class_Name();
+    }
+
+    protected function replaceDefaultHeaderLang()
+    {
+        $class_Name = 'JointApp\LangFiles\Views\Siteman\Sitemap\LangFiles_'.$this->ucfirstLang($this->userLang).'_Views_Sm_Sitemap_Header';
+        return new $class_Name();
     }
 }

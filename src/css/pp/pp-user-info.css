@@ -1,0 +1,34 @@
+.pp-user-info{
+    margin: 2em 0;
+}
+
+.pp-user-info .pp-user-info-img{
+
+    display: inline-block;
+    width: 30%;
+}
+
+.pp-user-info .pp-user-info-img img{
+    height: 5em;
+    width: 5em;
+    border-radius: 2.5em;
+}
+.pp-user-info .pp-user-info-text{
+    display: inline-block;
+    width: 70%;
+    text-align: left;
+    vertical-align: top;
+    color: midnightblue;
+    font-size: 0.8em;
+}
+.pp-user-info .pp-user-info-text .pp-user-info-text-line{
+    display: inline-block;
+    width: 100%;
+    margin: 0.2em 0;
+}
+.pp-user-info span.pp-label{
+    font-size: 0.8em;
+    color: darkgray;
+    width: 10em;
+    display: inline-block;
+}

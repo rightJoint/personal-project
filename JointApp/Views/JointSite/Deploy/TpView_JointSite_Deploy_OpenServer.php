@@ -73,6 +73,7 @@ class TpView_JointSite_Deploy_OpenServer extends TpView
             '<ul>'.
             '<li>mklink /d "C:\OSPanel\domains\personal-project.web\src\vendor" "C:\OSPanel\domains\personal-project.web\vendor"</li>'.
             '<li>mklink /d "C:\OSPanel\domains\personal-project.web\src\fonts" "C:\OSPanel\domains\personal-project.web\fonts"</li>'.
+            '<li>mklink /d "C:\OSPanel\domains\personal-project.web\src\migrations" "C:\OSPanel\domains\personal-project.web\migrations"</li>'.
             '</ul>'.
             '</div>'.
             '<p>'.$this->langFile::P5.'</p>'.

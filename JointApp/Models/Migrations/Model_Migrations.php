@@ -6,12 +6,11 @@ namespace JointApp\Models\Migrations;
 
 use JointApp\JointAppQueryBuilder;
 use JointApp\Models\RecordsModel;
+use JointApp\SettingsEnv;
 
 class Model_Migrations extends RecordsModel
 {
     public string $tableName = 'migrations';
-
-    public string $docRoot = 'C:/OSPanel/domains/personal-project.web';
 
     function getRecordStructure()
     {
@@ -61,7 +60,7 @@ class Model_Migrations extends RecordsModel
         /*find all .sql -files in PATH_TO_MIGRATIONS
         and then put into migrations table if trey arent there
         */
-        foreach (glob($this->docRoot.'/migrations/*.sql') as $mirgation_file) {
+        foreach (glob(SettingsEnv::DOC_ROOT.'/migrations/*.sql') as $mirgation_file) {
             $this->record['migration_name']['curVal'] = basename($mirgation_file);
             if(!$this->copyRecord()){
                 $this->record['status']['curVal'] = 'new';
@@ -164,7 +163,7 @@ class Model_Migrations extends RecordsModel
         $this->record['migration_name']['curVal'] = $file_name;
         if($this->copyRecord()){
             if($this->record['status']['curVal'] == 'new' or $this->record['status']['curVal'] == 'fail' ){
-                if($commands = $this->parseSqlFile($this->docRoot.'/migrations/'.$file_name)){
+                if($commands = $this->parseSqlFile(SettingsEnv::DOC_ROOT.'/migrations/'.$file_name)){
                     $return['log'][] = 'Exec file '.$file_name;
                     $commands_count = count($commands);
                     if($commands_count){
@@ -274,9 +273,9 @@ class Model_Migrations extends RecordsModel
     function copyCustomFields():bool
     {
         if($this->record['migration_name']['curVal'] ){
-            if(file_exists($this->docRoot.'/migrations/'.
+            if(file_exists(SettingsEnv::DOC_ROOT.'/migrations/'.
                 $this->record['migration_name']['curVal'])){
-                $commands = $this->parseSqlFile($this->docRoot.'/migrations/'.
+                $commands = $this->parseSqlFile(SettingsEnv::DOC_ROOT.'/migrations/'.
                     $this->record['migration_name']['curVal']);
                 foreach ($commands as $c_num => $c_data){
                     $cmd_field_name = 'cmd_'.$c_num.'_'.$c_data['type'];
@@ -319,7 +318,7 @@ class Model_Migrations extends RecordsModel
         if(((isset($this->record['commands']['curVal']) and
                 $this->record['commands']['curVal'] != $commands))
             or (!isset($this->record['commands']['curVal']) and !empty($commands))){
-            file_put_contents($this->docRoot.'/migrations/'.$this->record['migration_name']['curVal'], $commands);
+            file_put_contents(SettingsEnv::DOC_ROOT.'/migrations/'.$this->record['migration_name']['curVal'], $commands);
             $this->log_message .= 'update migration file success';
 
             $this->updateMigrFile();

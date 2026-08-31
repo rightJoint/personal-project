@@ -52,6 +52,7 @@ class JointSiteUser
                         $row = $res->fetch(\PDO::FETCH_ASSOC);
                         if (password_verify($password, $row['pw_hash'])) {
                             $this->blackList = $row['blackList'];
+                            $this->login = $this->login_tmp;
                             if(!$this->blackList){
                                 $this->user_id = $row['user_id'];
                                 $this->alias = $row['alias'];
@@ -91,6 +92,7 @@ class JointSiteUser
         if(isset($_SESSION['user'])){
             $this->user_id = $_SESSION['user']['user_id'];
             $this->alias = $_SESSION['user']['alias'];
+            $this->login = $_SESSION['user']['login'];
             $this->followed_by = $_SESSION['user']['followed_by'];
             $this->blackList = $_SESSION['user']['blackList'];
             $this->avatar = $_SESSION['user']['avatar'];
@@ -103,10 +105,10 @@ class JointSiteUser
         $_SESSION['user'] = [
             'user_id' => $this->user_id,
             'alias' => $this->alias,
+            'login' => $this->login,
             'followed_by' => $this->followed_by,
             'blackList' => $this->blackList,
             'avatar' => $this->avatar,
-            '$followed_by' => $this->followed_by,
         ];
     }
 

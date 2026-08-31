@@ -1,0 +1,11 @@
+.sm-sub-menu{
+    background-color: lightsteelblue;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.sm-sub-menu a{
+    color: midnightblue;
+    margin-right: 1em;
+}

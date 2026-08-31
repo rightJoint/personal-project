@@ -5,6 +5,8 @@ namespace JointApp\Router;
 
 
 
+use JointApp\Router\RoutesCollection\PersonalPage\RoutesCollection_PP;
+use JointApp\Router\RoutesCollection\Siteman\RoutesCollection_Siteman;
 use JointApp\Router\RoutesCollection\User\RoutesCollection_User;
 use Psr\Log\LoggerAwareTrait;
 use JointApp\Router\RoutesCollection\Api\RoutesCollection_Api;
@@ -24,6 +26,8 @@ class JointSiteRouteFinder
     use RoutesCollection_Api;
     use RoutesCollection_User;
     use RoutesCollection_Blog;
+    use RoutesCollection_Siteman;
+    use RoutesCollection_PP;
 
     private $context = ['RouteFinder' => __CLASS__];
 

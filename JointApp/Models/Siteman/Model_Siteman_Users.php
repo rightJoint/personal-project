@@ -1,7 +1,7 @@
 <?php
 
 
-namespace JointApp\Models\Components;
+namespace JointApp\Models\Siteman;
 
 
 use JointApp\JointAppQueryBuilder;
@@ -20,11 +20,11 @@ class Model_Siteman_Users extends RecordsModel
                 'format' => 'varchar',
                 'custom' => false,
             ),
-            'accLogin' => array(
+            'login' => array(
                 'format' => 'varchar',
                 'custom' => false,
             ),
-            'accAlias' => array(
+            'alias' => array(
                 'format' => 'varchar',
                 'custom' => false,
             ),
@@ -32,27 +32,11 @@ class Model_Siteman_Users extends RecordsModel
                 'format' => 'varchar',
                 'custom' => false,
             ),
-            'vldCode' => array(
-                'format' => 'varchar',
-                'custom' => false,
-            ),
             'regDate' => array(
                 'format' => 'datetime',
                 'custom' => false,
             ),
-            'netWork' => array(
-                'format' => 'varchar',
-                'custom' => false,
-            ),
-            'validDate' => array(
-                'format' => 'datetime',
-                'custom' => false,
-            ),
-            'photoLink' => array(
-                'format' => 'varchar',
-                'custom' => false,
-            ),
-            'eMail' => array(
+            'avatar' => array(
                 'format' => 'varchar',
                 'custom' => false,
             ),
@@ -60,33 +44,17 @@ class Model_Siteman_Users extends RecordsModel
                 'format' => 'date',
                 'custom' => false,
             ),
-            'socProf' => array(
-                'format' => 'varchar',
-                'custom' => false,
-            ),
             'blackList' => array(
                 'format' => 'tinyint',
                 'custom' => false,
             ),
-            'created_by' => array(
+            'followed_by' => array(
                 'format' => 'varchar',
-                'custom' => false,
-            ),
-            'is_admin' => array(
-                'format' => 'tinyint',
-                'custom' => false,
-            ),
-            'send_ntf' => array(
-                'format' => 'tinyint',
                 'custom' => false,
             ),
             'pref_lang' => array(
                 'format' => 'varchar',
                 'custom' => false,
-            ),
-            'created_user' => array(
-                'format' => 'varchar',
-                'custom' => true,
             ),
         );
     }
@@ -94,19 +62,13 @@ class Model_Siteman_Users extends RecordsModel
     public function listRecords(JointAppQueryBuilder $qBuilder): array
     {
 
-        $qBuilder->select = 'users_dt.user_id, users_dt.accLogin, users_dt.accAlias, users_dt.pw_hash, users_dt.vldCode, '.
-            'users_dt.regDate, users_dt.netWork, users_dt.validDate, users_dt.photoLink, users_dt.eMail, '.
-            'users_dt.birthDay, users_dt.socProf, users_dt.blackList, '.
-            'users_dt.created_by, users_dt.is_admin, users_dt.send_ntf, users_dt.pref_lang, createdUser_dt.accAlias as created_user';
-
-
+        $qBuilder->select = 'users.user_id, users.login, users.alias, users.pw_hash, '.
+            'users.regDate, users.avatar, '.
+            'users.birthDay, users.blackList, '.
+            'users.followed_by, users.pref_lang';
 
         $qBuilder
-            ->from($this->tableName)
-        ->join('left join users_dt createdUser_dt on '.$this->tableName.'.created_by = createdUser_dt.user_id');
-        //echo $qBuilder->buildQuery();
-        //exit;
-
+            ->from($this->tableName);
 
         return $this->fetchToArray($qBuilder->buildQuery());
     }

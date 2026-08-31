@@ -39,7 +39,7 @@ class TpView_Siteman_SubMenu extends TpView
                 $class_Name = 'JointApp\LangFiles\Views\Siteman\Sitemap\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Sm_Sitemap_SubMenu';
                 break;
             case 'users':
-                $class_Name = 'JointApp\LangFiles\Views\Siteman\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Siteman_ModulesMenu';
+                $class_Name = 'JointApp\LangFiles\Views\Siteman\Users\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Sm_Users_SubMenu';
                 break;
             case 'robots':
                 $class_Name = 'JointApp\LangFiles\Views\Siteman\Robots\LangFiles_'.self::ucfirstLang($this->userLang).'_'.'Views_Sm_Robots_SubMenu';
@@ -61,6 +61,9 @@ class TpView_Siteman_SubMenu extends TpView
             'robots' => [
                 'home' => '/siteman/robots',
                 'create' => '/siteman/robots/update',
+            ],
+            'users' => [
+                'home' => '/siteman/users',
             ],
         ];
 

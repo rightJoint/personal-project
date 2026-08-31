@@ -28,3 +28,7 @@ form.pp-user-edit img.avatar{
     height: 1.5em;
     width: 1.5em;
 }
+form.pp-user-edit .pp-err-line{
+    color: firebrick;
+    font-size: 0.8em;
+}

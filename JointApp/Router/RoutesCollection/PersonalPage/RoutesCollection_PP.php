@@ -20,6 +20,8 @@ trait RoutesCollection_PP
         }elseif($routes_ns[2] == 'edit'){
             $route->withView('JointApp\Views\PersonalPage\SiteView_PP_Edit')
                 ->withAction('getUserInfo');
+        }elseif($routes_ns[2] == 'changepassword'){
+            $route->withView('JointApp\Views\PersonalPage\SiteView_PP_Pass');
         }
 
         return $route;
@@ -34,8 +36,12 @@ trait RoutesCollection_PP
         if(isset($routes_ns[2]) and ($routes_ns[2] == 'edit')){
             $route->withView('JointApp\Views\PersonalPage\SiteView_PP_Edit')
             ->withAction('editUserInfo')
-            ->withAction('getUserInfo');
+            ->withAction('updateParamsFromModel');
+        }elseif(isset($routes_ns[2]) and ($routes_ns[2] == 'changepassword')){
+            $route->withView('JointApp\Views\PersonalPage\SiteView_PP_Pass')
+                ->withAction('changeUserPassword');
         }
+
 
         return $route;
     }

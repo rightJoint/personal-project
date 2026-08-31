@@ -80,4 +80,12 @@ class Model_PP_UserInfo extends RecordsModel
             ),
         ];
     }
+
+    public function checkUserAlias(string $alias):bool
+    {
+        if (preg_match('/^[A-Za-zА-Яа-я]{1}[0-9a-zA-Zа-яА-Я-._]{2,15}$/imsiu', $alias) == 0){
+            return false;
+        }
+        return true;
+    }
 }

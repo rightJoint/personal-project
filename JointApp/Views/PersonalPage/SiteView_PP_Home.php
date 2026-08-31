@@ -7,6 +7,8 @@ use JointApp\Views\SiteView\SiteView;
 
 class SiteView_PP_Home extends SiteView
 {
+    public bool $robotNoIndex = true;
+
     //user info
     public string $pp_user_id = '';
     public string $pp_login = '';

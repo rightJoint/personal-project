@@ -7,6 +7,8 @@ use JointApp\Views\SiteView\SiteView;
 
 class SiteView_PP_Edit extends SiteView
 {
+    public bool $robotNoIndex = true;
+
     //user info
     public string $pp_user_id = '';
     public string $pp_login = '';
@@ -17,7 +19,8 @@ class SiteView_PP_Edit extends SiteView
     public string $pp_followed_by_id = '';
     public string $pp_pref_lang = 'ru';
     public string $pp_birthDay = '';
-
+    public bool $errAlias = false;
+    public bool $pp_update_info_susses = false;
 
     protected function putCustomTemplates():void
     {

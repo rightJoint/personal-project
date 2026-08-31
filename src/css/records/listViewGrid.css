@@ -22,3 +22,7 @@
     height: 1.2em;
     width: 1.2em;
 }
+.list-view-grid img.cell-img{
+    height: 2em;
+    width: 2em;
+}

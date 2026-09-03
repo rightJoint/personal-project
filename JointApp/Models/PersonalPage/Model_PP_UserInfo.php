@@ -3,6 +3,7 @@
 namespace JointApp\Models\PersonalPage;
 
 
+use JointApp\JointAppQueryBuilder;
 use JointApp\Models\RecordsModel;
 use JointApp\SettingsEnv;
 
@@ -78,6 +79,11 @@ class Model_PP_UserInfo extends RecordsModel
                 'format' => 'varchar',
                 'custom' =>false,
             ),
+            'followed_by_name' => Array
+            (
+                'format' => 'varchar',
+                'custom' => true,
+            ),
         ];
     }
 
@@ -87,5 +93,19 @@ class Model_PP_UserInfo extends RecordsModel
             return false;
         }
         return true;
+    }
+
+    protected function copyCustomFields(): bool
+    {
+        if($this->record['followed_by']['curVal']){
+            $qBuilder = new JointAppQueryBuilder();
+            $qBuilder->select('alias')->from('users')->where('user_id="'.$this->record['followed_by']['curVal'].'"');
+            $res = $this->fetchToArray($qBuilder->buildQuery());
+            if(count($res)==1){
+                $this->record['followed_by_name']['curVal'] = $res[0]['alias'];
+                return true;
+            }
+        }
+        return false;
     }
 }

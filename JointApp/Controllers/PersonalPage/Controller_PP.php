@@ -19,6 +19,7 @@ class Controller_PP extends ControllerWeb
     public string $pp_birthDay = '';
     public bool $errAlias = false;
     public bool $pp_update_info_susses = false;
+    public string $pp_followed_by_name = '';
 
     //change user password
     public string $pp_cur_pass = '';
@@ -83,6 +84,7 @@ class Controller_PP extends ControllerWeb
             $this->pp_followed_by_id = $this->model->record['followed_by']['curVal'];
         }
         $this->pp_pref_lang = $this->model->record['pref_lang']['curVal'];
+        $this->pp_followed_by_name = $this->model->record['followed_by_name']['curVal'];
     }
 
     public function changeUserPassword():void

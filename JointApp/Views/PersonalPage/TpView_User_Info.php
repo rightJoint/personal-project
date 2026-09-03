@@ -18,6 +18,7 @@ class TpView_User_Info extends TpView
     public string $pp_followed_by_id = '';
     public string $pp_pref_lang = 'ru';
     public string $pp_birthDay = '';
+    public string $pp_followed_by_name = '';
 
 
     public $css = ['pp-user-info' => '/css/pp/pp-user-info.css'];
@@ -38,8 +39,8 @@ class TpView_User_Info extends TpView
 
 
         if($this->pp_followed_by_id){
-            $followed_txt = $this->pp_followed_by_id;
-            $small_f = 'your account is validated';
+            $followed_txt = '<a href="'.$this->langSl.'/userinfo/'.$this->pp_followed_by_id.'">'.$this->pp_followed_by_name.'</a> ';
+            $small_f = 'your account has been validated';
         }else{
             $small_f = 'your account isnt validated';
             $followed_txt = '-';

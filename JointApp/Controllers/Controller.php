@@ -67,9 +67,9 @@ class Controller implements LangInterface
     }
 
     //pass some params on construct
-    protected function controllerFromParams($model_params = []):void
+    protected function controllerFromParams($controller_params = []):void
     {
-        foreach ($model_params as $key => $val){
+        foreach ($controller_params as $key => $val){
             if(property_exists($this, $key)){
                 $this->$key = $val;
             }

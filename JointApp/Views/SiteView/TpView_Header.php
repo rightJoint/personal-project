@@ -2,6 +2,7 @@
 namespace JointApp\Views\SiteView;
 
 
+use JointApp\SettingsEnv;
 use JointApp\Views\TpView;
 
 
@@ -11,6 +12,17 @@ class TpView_Header extends TpView
     public string $uri_pq = '';
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
     public string $h1 = '';
+
+    //user info
+    public string $u_user_id = '';
+    public string $u_alias = '';
+    public bool $u_blackList = false;
+    public string $u_followed_by = '';
+    public string $u_avatar = '';
+    public string $u_login = '';
+    public bool $u_isAuth = false;
+    public bool $u_isValid = false;
+    public bool $u_isAdmin = false;
 
     protected $css = array(
         'siteHeader' => '/css/WebView/site-header.css',
@@ -73,24 +85,29 @@ class TpView_Header extends TpView
 
         $headerText.= $header_add_styles;
 
-        $headerText.= '<div class="userBtn hi-icon-effect-1 hi-icon-effect-1a">'.
-            '<span class="hi-icon hi-icon-mobile order ';
-        if(isset($_SESSION['basket']['total']) and $_SESSION['basket']['total']>0){
-            $headerText.= 'buy';
+        if($this->u_isAuth){
+            $user_btn_text = $this->langFile::USER_PROF_TXT;
+        }else{
+            $user_btn_text = $this->langFile::USER_SIGN_TXT;
         }
-        $headerText.= '"><span class="hi-text">'.
-            $this->langFile::USER_BTN_TXT.
+        if($this->u_avatar){
+            $user_btn_img = SettingsEnv::USER_AVATARS_DIR.'/'.$this->u_avatar;
+        }else{
+            $user_btn_img = '/img/popimg/user-logo.png';
+        }
+
+
+        $headerText.= '<div class="userBtn hi-icon-effect-1 hi-icon-effect-1a">'.
+            '<span class="hi-icon hi-icon-mobile user"><span class="hi-text">'.
+            $user_btn_text.
             '</span></span>'.
             '</div>';
 
         $header_user_styles = '<style>
-            .hi-icon-mobile.order:before {
-    background-image: url("/img/popimg/user-logo.png");
+            .hi-icon-mobile.user:before {
+    background-image: url("'.$user_btn_img.'");
     z-index: 3;
     position: relative;
-}
-.hi-icon-mobile.order.buy:before {
-    background-image: url("/img/Services/money.png");
 }
             </style>';
 

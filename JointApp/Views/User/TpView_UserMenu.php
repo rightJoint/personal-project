@@ -31,7 +31,7 @@ class TpView_UserMenu extends TpView
             $return .='<img src="/img/popimg/user-logo.png">';
         }
         $return .='</div>'.
-            '<div class="modal-line-text">Вы: <a href="/pp" title="personal page" class="u-alias">'.$this->u_alias.'</a>'.
+            '<div class="modal-line-text">'.$this->langFile::USER_MENU_UPN.': <a href="'.$this->langSl.'/pp" title="personal page" class="u-alias">'.$this->u_alias.'</a>'.
             '<sup><a href="/user/quit" title="quit account" class="u-quit">'.$this->langFile::USER_MENU_QUIT_ACCOUNT.'</a></sup>'.
             '<div><small>';
         if($this->u_isValid){
@@ -40,11 +40,11 @@ class TpView_UserMenu extends TpView
             $return .= $this->langFile::USER_MENU_IS_VALID;
         }
         $return .='</small></div></div>'.
-            '</div>'.
-            '<div class="modal-line">'.
-            '<div class="modal-line-img"><img src="/img/popimg/test-logo.png"></div>'.
-            '<div class="modal-line-text">Сменить пароль</div>'.
             '</div>';
+            //'<div class="modal-line">'.
+            //'<div class="modal-line-img"><img src="/img/popimg/test-logo.png"></div>'.
+            //'<div class="modal-line-text">Сменить пароль</div>'.
+            //'</div>';
 
         return $return;
     }

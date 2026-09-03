@@ -98,7 +98,7 @@ trait RoutesCollection_Test_Migrations
                 ->withAction('htmlListView')
                 ->withView('JointApp\Views\Test\Migrations\SiteView_Test_Migrations_List');
         }
-        elseif ($routes_ns[3] == 'execNew') {
+        elseif (strtolower($routes_ns[3]) == 'execnew') {
             $route
                 ->withAction('actionExecNew')
                 ->withAction('actionCheckStatus')

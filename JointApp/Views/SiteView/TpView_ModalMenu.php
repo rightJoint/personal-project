@@ -94,7 +94,7 @@ class TpView_ModalMenu extends TpView
         return "<div class='modal-line test-menu'>".
             '<div class="modal-line-img"><img src="/img/popimg/test-logo.png"></div>'.
             '<div class="modal-line-text">'.
-            '<a href="/test">Tests</a>'.
+            '<a href="'.$this->langSl.'/test">Tests</a>'.
             '<sup>web tests</sup>'.
             '<span class="opnSubMenu folded">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
             '<ul style="display: none">'.

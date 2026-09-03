@@ -61,6 +61,7 @@ class JointSiteUser
                                 }
                                 if($row['followed_by']){
                                     $this->followed_by = $row['followed_by'];
+                                    $this->isValid = true;
                                 }
                             }
                             $this->isAuth = true;
@@ -97,6 +98,7 @@ class JointSiteUser
             $this->blackList = $_SESSION['user']['blackList'];
             $this->avatar = $_SESSION['user']['avatar'];
             $this->isAuth = true;
+            $this->isValid = $_SESSION['user']['isValid'];
         }
     }
 
@@ -109,6 +111,7 @@ class JointSiteUser
             'followed_by' => $this->followed_by,
             'blackList' => $this->blackList,
             'avatar' => $this->avatar,
+            'isValid' => $this->isValid,
         ];
     }
 

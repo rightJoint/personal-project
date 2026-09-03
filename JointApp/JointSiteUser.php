@@ -63,6 +63,10 @@ class JointSiteUser
                                     $this->followed_by = $row['followed_by'];
                                     $this->isValid = true;
                                 }
+                                //is admin user
+                                if($this->user_id == '1AB4C7D7-5315-4C9E-9F33-E1B250491589'){
+                                    $this->isAdmin = true;
+                                }
                             }
                             $this->isAuth = true;
                             $this->saveSession();

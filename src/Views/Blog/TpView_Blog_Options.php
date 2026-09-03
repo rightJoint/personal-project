@@ -4,6 +4,7 @@
 namespace Src\Views\Blog;
 
 
+use JointApp\Views\Records\TpView_Pagination;
 use JointApp\Views\TpView;
 
 class TpView_Blog_Options extends TpView
@@ -22,12 +23,19 @@ class TpView_Blog_Options extends TpView
 
     public function getResponseHtml(): string
     {
+        $pagination = new TpView_Pagination();
+        $pagination->setUpCustomLang($pagination->getDefaultLang());
+        $pagination->userLang = $this->userLang;
+        $pagination->count = $this->blogCountArts;
+        $pagination->curPage = $this->curPage;
+        $pagination->onPage = $this->onPage;
+
         return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
         '<div class="contentBlock-wrap">'.
         '<div class="blog-options">'.
         $this->printCountArts().
         '<div class="blog-pagination">'.
-        $this->paginationPrint().
+            $pagination->getResponseHtml().
         '</div>'.
         $this->printSortBlock().
         $this->printViewOptionsBlock().
@@ -41,66 +49,6 @@ class TpView_Blog_Options extends TpView
             '<span id="blog-count-arts">'.$this->blogCountArts.'</span></div>';
 
         return $return;
-    }
-
-    public function paginationPrint():string
-    {
-        $length = 2;        //optional: count cells in table row
-        $pag_length = 2;    //optional:
-        if(round($this->blogCountArts/$this->onPage) - $this->blogCountArts/$this->onPage < 0){
-            $page_count = round($this->blogCountArts/$this->onPage) + 1;
-        }else{
-            $page_count =  round($this->blogCountArts/$this->onPage);
-        }
-
-        $p_add_num_start = 0;
-
-        if($this->curPage - $pag_length < 1){
-            $p_add_num_start = $pag_length - $this->curPage +1;
-        }
-
-        $end_p_num = $this->curPage + $pag_length + $p_add_num_start;
-        if($end_p_num > $page_count){
-            $end_p_num = $page_count;
-        }
-
-        $start_p_num = $this->curPage - $pag_length + $p_add_num_start;
-        if($end_p_num - $pag_length*2  < $start_p_num){
-            $start_p_num = $end_p_num - $pag_length*2;
-        }
-        if($start_p_num < 1){
-            $start_p_num = 1;
-        }
-        $page_list = null;
-        for ($i = $start_p_num; $i <= $end_p_num; $i++){
-            if ($this->curPage == $i){
-                $page_list .= '<span class = "p_num active" page="'.$i.'">'.$i.'</span>';
-            }else{
-                if($i == 1){
-                    $page_list .= '<span class = "p_num" page="'.$i.'" '.
-                        '>'.$i.'</span>';
-                }else{
-                    $page_list .= '<span class = "p_num" page="'.$i.'" '.
-                        '>'.$i.'</span>';
-                }
-            }
-        }
-
-        if($this->curPage < $page_count){
-            $btn_nex = '<span class="p_btn next" page="'.($this->curPage+1).'" '.
-                '>'.$this->langFile::PG_NEXT.'</span>';
-        }else {
-            $btn_nex = '<span class="p_btn next active" page="'.$this->curPage.'">'.$this->langFile::PG_NEXT.'</span>';
-        }
-
-        if ($this->curPage > 1){
-            $btn_pre = '<span class="p_btn prev" page="'.($this->curPage-1).'" '.
-                '>'.$this->langFile::PG_BACK.'</span>';
-        }else {
-            $btn_pre = '<span class="p_btn prev active" page="'.$this->curPage.'">'.$this->langFile::PG_BACK.'</span>';
-        }
-
-        return $btn_pre.$page_list.$btn_nex;
     }
 
     private function printSortBlock():string

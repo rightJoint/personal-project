@@ -99,6 +99,7 @@ trait RoutesCollection_Blog
     {
         $route = new JointSiteRoute();
         if (isset($routes_ns[2]) and $routes_ns[2] == 'filter') {
+            //????????
             $route
                 ->withController('Src\Controllers\Blog\Controller_Blog')
                 ->withModel('Src\Models\Blog\Model_Blog',)
@@ -111,7 +112,7 @@ trait RoutesCollection_Blog
                 ->withController('Src\Controllers\Blog\Controller_Blog_Arts')
                 ->withModel('Src\Models\Blog\Model_Blog_Arts',)
                 ->withAction('filterComments')
-                ->withView('Src\Views\Blog\View_Blog_Art')
+                ->withView('Src\Views\Blog\TpView_Blog_Art_Comments')
                 ->responseFormat('json');
         }
         elseif (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'article') {
@@ -121,7 +122,7 @@ trait RoutesCollection_Blog
                     ->withModel('Src\Models\Blog\Model_Blog_Arts',)
                     ->withAction('postComment')
                     ->withAction('actionIndex');
-                if (strtolower($routes_ns[3]) == 'joint-pass') {
+                /*if (strtolower($routes_ns[3]) == 'joint-pass') {
                     $route->withView('Src\Views\Blog\IT\View_Blog_IT_JointPass');
                 } elseif (strtolower($routes_ns[3]) == 'right-joint-updated') {
                     $route->withView('Src\Views\Blog\IT\View_Blog_IT_RightJointUpdated');
@@ -129,9 +130,9 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\IT\View_Blog_IT_PhpStormResetTrial');
                 } elseif (strtolower($routes_ns[3]) == 'polygraph-exam') {
                     $route->withView('Src\Views\Blog\Job\View_Blog_Job_Polygrath');
-                } else {
-                    $route->withView('Src\Views\Blog\View_Blog_Art');
-                }
+                } else {*/
+                    $route->withView('Src\Views\Blog\SiteView_Blog_Art');
+               // }
             }
         }
         return $route;

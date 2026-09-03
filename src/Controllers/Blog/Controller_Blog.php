@@ -20,39 +20,14 @@ class Controller_Blog extends ControllerWeb
     public string $sortOrder = 'DESC';
     public int $onPage = 4;
     public int $inRow = 2;
+    public string $filterCat = '';
 
     public array $filterCats = [];
 
-    private function blogFilterRequest()
-    {
-        if(isset($this->requestParams['blog-in-row']) and !empty($this->requestParams['blog-in-row'])){
-            $this->inRow = $this->requestParams['blog-in-row'];
-        }
-        if(isset($this->requestParams['blog-on-page']) and !empty($this->requestParams['blog-on-page'])){
-            $this->onPage = $this->requestParams['blog-on-page'];
-        }
-        if(isset($this->requestParams['blog-sort-order']) and !empty($this->requestParams['blog-sort-order'])){
-            $this->sortOrder = $this->requestParams['blog-sort-order'];
-        }
-        if(isset($this->requestParams['blog-sort-field']) and !empty($this->requestParams['blog-sort-field'])){
-            $this->sortField = $this->requestParams['blog-sort-field'];
-        }
-        if(isset($this->requestParams['blog-cur-page']) and !empty($this->requestParams['blog-cur-page'])){
-            $this->curPage = $this->requestParams['blog-cur-page'];
-        }
-        if(isset($this->requestParams['blog-filter-artName']) and !empty($this->requestParams['blog-filter-artName'])){
-            $this->filterArtName = $this->requestParams['blog-filter-artName'];
-        }
-        if(isset($this->requestParams['blog-filter-cat']) and !empty($this->requestParams['blog-filter-cat'])){
-            $this->filterCat = $this->requestParams['blog-filter-cat'];
-        }
-    }
-
     public function actionIndex()
     {
-        $this->blogFilterRequest();
-
         $qBuilder = $this->blogSearchQuery();
+
         $this->artsList = $this->model->listRecords($qBuilder);
 
         $qBuilderCount = clone $qBuilder;
@@ -62,7 +37,6 @@ class Controller_Blog extends ControllerWeb
 
         $this->blogCountArts = $this->model->countRecords($qBuilderCount);
         $this->filterCats = $this->fillFilterCats();
-
     }
 
     public function blogSearchQuery():JointAppQueryBuilder
@@ -93,12 +67,13 @@ class Controller_Blog extends ControllerWeb
     public function actionFilter()
     {
         $arr = [];
-        $this->blogFilterRequest();
 
         $qBuilder = $this->blogSearchQuery();
+
         $tpView_table = new TpView_Blog_Table();
         $tpView_table->setUpCustomLang($tpView_table->getDefaultLang());
         $tpView_table->artsList = $this->model->listRecords($qBuilder);
+
         $tpView_table->inRow = $this->inRow;
 
         $arr['listView'] = $tpView_table->getResponseHtml();
@@ -115,9 +90,7 @@ class Controller_Blog extends ControllerWeb
 
         $this->blogCountArts = $this->model->countRecords($qBuilderCount);
 
-        $tpView_options->blogCountArts = $this->model->countRecords($qBuilderCount);
-        $tpView_options->onPage = $this->onPage;
-        $tpView_options->curPage = $this->curPage;
+        $this->setUpViewParams($tpView_options);
 
         $arr['blogCountArts'] = $tpView_options->blogCountArts;
 

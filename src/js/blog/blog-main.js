@@ -31,19 +31,15 @@ function filterBlog()
     });
 
     $.post(langSl+"/blog/filter",
-        "filterBlog=y&"+
-        "blog-filter-cat="+$("#blog-filter-cat").val()+"&"+
-        "blog-filter-artName="+$("#blog-filter-artName").val()+"&"+
-        "blog-cur-page="+$(".blog-pagination span.active").attr("page")+"&"+
-        "blog-sort-field="+$("#blog-sort-field").val()+"&"+
-        "blog-sort-order="+$("#blog-sort-order").val()+"&"+
-        "blog-on-page="+$("#blog-on-page").val()+"&"+
-        "blog-in-row="+$("#blog-in-row").val(),
+        "filterCat="+$("#blog-filter-cat").val()+"&"+
+        "filterArtName="+$("#blog-filter-artName").val()+"&"+
+        "curPage="+$(".blog-pagination span.active").attr("page")+"&"+
+        "sortField="+$("#blog-sort-field").val()+"&"+
+        "sortOrder="+$("#blog-sort-order").val()+"&"+
+        "onPage="+$("#blog-on-page").val()+"&"+
+        "inRow="+$("#blog-in-row").val(),
         function (data) {
-            console.log(data);
-
         if(data.result == true){
-            console.log(data);
             $('.blog-art-list').html(data.viewData.listView);
             $('#blog-count-arts').html(data.viewData.blogCountArts);
             $('.blog-pagination').html(data.viewData.pg);

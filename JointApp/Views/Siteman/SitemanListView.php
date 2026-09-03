@@ -9,6 +9,8 @@ use JointApp\Views\Records\RecordListView;
 
 class SitemanListView extends RecordListView
 {
+    public string $list_frame_id = 'users';
+
     protected function putCustomTemplates():void
     {
         $this->tpSet->ModulesMenu = new TpView_Siteman_ModulesMenu();

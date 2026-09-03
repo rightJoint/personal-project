@@ -33,4 +33,6 @@ class LangFiles_Ru_Views_AuthForm
     const AUTH_SI_SUBMIT = 'войти';
     const AUTH_SI_SIL = 'Регистрация на сайте';
 
+    const AUTH_GUEST_NAME = 'Вы Гость';
+    const AUTH_GUEST_WARN = 'Вам могут быть недоступны некоторые ресурсы этого сайта';
 }

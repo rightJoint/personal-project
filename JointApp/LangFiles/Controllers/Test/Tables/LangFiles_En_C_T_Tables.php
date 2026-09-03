@@ -2,32 +2,32 @@
 namespace JointApp\LangFiles\Controllers\Test\Tables;
 
 
-use JointApp\LangFiles\Controllers\LangFiles_Ru_Controllers_Record;
+use JointApp\LangFiles\Controllers\LangFiles_En_Controllers_Record;
 
-class LangFiles_En_C_T_Tables extends LangFiles_Ru_Controllers_Record
+class LangFiles_En_C_T_Tables extends LangFiles_En_Controllers_Record
 {
-    const TEST_TBL_TBL = 'Таблица';
-    const TEST_RES_FAIL = 'Неудачно';
-    const TEST_ACT_ACT = 'Действие';
-    const TEST_OPT_OPT = 'Опции';
-    const TEST_RUN_TIME = 'Время';
+    const TEST_TBL_TBL = 'Table';
+    const TEST_RES_FAIL = 'Fail';
+    const TEST_ACT_ACT = 'Action';
+    const TEST_OPT_OPT = 'Options';
+    const TEST_RUN_TIME = 'Time';
 
     public function actionName($action):string
     {
         if($action == 'clear'){
-            return 'Очистить';
+            return 'Clear';
         }elseif ($action == 'download'){
-            return 'Загрузить';
+            return 'Download';
         }elseif ($action == 'drop'){
-            return 'Удалить';
+            return 'Drop';
         }elseif ($action == 'create'){
-            return 'Создать';
+            return 'Create';
         }elseif ($action == 'upLoad'){
-            return 'Выгрузить';
+            return 'UpLoad';
         }elseif ($action == 'upLoadAll'){
-            return 'Выгрузить все';
+            return 'Upload all';
         }elseif ($action == 'refreshTables'){
-            return 'Обновить';
+            return 'Refresh';
         }
     }
 }

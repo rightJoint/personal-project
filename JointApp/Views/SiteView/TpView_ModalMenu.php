@@ -96,7 +96,7 @@ class TpView_ModalMenu extends TpView
             '<div class="modal-line-text">'.
             '<a href="/test">Tests</a>'.
             '<sup>web tests</sup>'.
-            '<span class="opnSubMenu folded">показать</span>'.
+            '<span class="opnSubMenu folded">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
             '<ul style="display: none">'.
             '<li><a href="'.$this->langSl.$httpLinks['connection'].'" title="'.$linksLang['connection']['title'].'">'.$linksLang['connection']['text'].'</a></li>'.
             '<li><a href="'.$this->langSl.$httpLinks['migrations'].'" title="'.$linksLang['migrations']['title'].'">'.$linksLang['migrations']['text'].'</a></li>'.
@@ -116,15 +116,16 @@ class TpView_ModalMenu extends TpView
         $httpLinks = $sitemanMenu::getHttpLinks();
         $linksLang = $menu_lang::getLinks();
 
-        return "<div class='modal-line'>".
-            '<div class="modal-line-img"><img src="/img/popimg/test-logo.png"></div>'.
+        return "<div class='modal-line siteman-menu'>".
+            '<div class="modal-line-img"><img src="/img/popimg/module-logo.png"></div>'.
             '<div class="modal-line-text">'.
             '<a href="'.$httpLinks['home'].'" title="'.$linksLang['home']['title'].'">'.$linksLang['home']['text'].'</a>'.
             '<sup>siteman</sup>'.
-            '<span class="opnSubMenu folded">показать</span>'.
+            '<span class="opnSubMenu folded">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
             '<ul style="display: none">'.
-            '<li><a href="'.$httpLinks['users'].'" title="'.$linksLang['users']['title'].'">'.$linksLang['users']['text'].'</a></li>'.
-            '<li><a href="'.$httpLinks['sitemap'].'" title="'.$linksLang['sitemap']['title'].'">'.$linksLang['sitemap']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['users'].'" title="'.$linksLang['users']['title'].'">'.$linksLang['users']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['sitemap'].'" title="'.$linksLang['sitemap']['title'].'">'.$linksLang['sitemap']['text'].'</a></li>'.
+            '<li><a href="'.$this->langSl.$httpLinks['robots'].'" title="'.$linksLang['robots']['title'].'">'.$linksLang['robots']['text'].'</a></li>'.
             '</ul>'.
             '</div>'.
             '</div>';

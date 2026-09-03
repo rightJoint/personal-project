@@ -6,30 +6,33 @@ namespace JointApp\LangFiles\Views\SiteView\AuthForm;
 
 class LangFiles_En_Views_AuthForm
 {
-    const AUTH_SU_TITLE = 'Регистрация на сайте';
-    const AUTH_SU_LOGIN_PS = 'Придумайте логин';
-    const AUTH_SU_PASS_PS = 'пароль';
-    const AUTH_SU_PASSRP_PS = 'повторите пароль';
-    const AUTH_SU_CAP = 'код с картинки';
-    const AUTH_SU_SUBMIT = 'зарегистрировать';
-    const AUTH_SU_SIL = 'Вход на сайт';
+    const AUTH_SU_TITLE = 'Sing up';
+    const AUTH_SU_LOGIN_PS = 'make up your login';
+    const AUTH_SU_PASS_PS = 'password';
+    const AUTH_SU_PASSRP_PS = 'repeat password';
+    const AUTH_SU_CAP = 'Captcha code';
+    const AUTH_SU_SUBMIT = 'Sing up';
+    const AUTH_SU_SIL = 'Sign In';
 
-    const AUTH_SU_ERR_PASS_MATCH = 'Пароли не совпадают';
-    const AUTH_SU_ERR_LOGIN_ACCEPT = 'Недопустимый логин';
-    const AUTH_SU_ERR_LOGIN_RESERVED = 'Логин зарезервирован';
-    const AUTH_SU_ERR_PASS_ACCEPT = 'Недопустимый пароль';
-    const AUTH_SU_ERR_CAPTCHA_EMPTY = 'Код не введен';
-    const AUTH_SU_ERR_CAPTCHA_WRONG = 'Неправильный код';
-    const AUTH_SU_ERR_UNKNOWN = 'Неизвестная ошибка';
+    const AUTH_SU_ERR_PASS_MATCH = 'Pass doesnt match';
+    const AUTH_SU_ERR_LOGIN_ACCEPT = 'Login unacceptable';
+    const AUTH_SU_ERR_LOGIN_RESERVED = 'Login reserved';
+    const AUTH_SU_ERR_PASS_ACCEPT = 'Pass unacceptable';
+    const AUTH_SU_ERR_CAPTCHA_EMPTY = 'Captcha code is empty';
+    const AUTH_SU_ERR_CAPTCHA_WRONG = 'Wrong captcha code';
+    const AUTH_SU_ERR_UNKNOWN = 'Unknown err';
 
-    const AUTH_SI_TITLE = 'Вход на сайт';
-    const AUTH_SI_LOGIN_PS = 'Ваш логин';
-    const AUTH_SI_PASS_PS = 'пароль';
-    const AUTH_SI_ERR_LOGIN_NOTFOUND = 'Логин не найден';
-    const AUTH_SI_ERR_LOGIN_BLL = 'Логин в черном списке';
-    const AUTH_SI_ERR_LOGIN_ACCEPT = 'Недопустимый логин';
-    const AUTH_SI_ERR_PASS_ACCEPT = 'Недопустимый пароль';
-    const AUTH_SI_ERR_WRONG_LP = 'Неправильный логин или пароль';
-    const AUTH_SI_SUBMIT = 'войти';
-    const AUTH_SI_SIL = 'Регистрация на сайте';
+    const AUTH_SI_TITLE = 'Sign In';
+    const AUTH_SI_LOGIN_PS = 'Your login';
+    const AUTH_SI_PASS_PS = 'password';
+    const AUTH_SI_ERR_LOGIN_NOTFOUND = 'Unknown login';
+    const AUTH_SI_ERR_LOGIN_BLL = 'Login is banned';
+    const AUTH_SI_ERR_LOGIN_ACCEPT = 'Login unacceptable';
+    const AUTH_SI_ERR_PASS_ACCEPT = 'Pass unacceptable';
+    const AUTH_SI_ERR_WRONG_LP = 'Wrong login or password';
+    const AUTH_SI_SUBMIT = 'Sign In';
+    const AUTH_SI_SIL = 'Sign Up';
+
+    const AUTH_GUEST_NAME = 'You are the guest';
+    const AUTH_GUEST_WARN = 'You may not have access to some resources on this site';
 }

@@ -10,7 +10,7 @@ use PhpParser\Node\Stmt\Switch_;
 
 class TpView_Siteman_SubMenu extends TpView
 {
-    public string $list_frame_id = '';
+    public string $list_frame_id = 'users';
 
     public $css = ['sm-sub-menu' => '/css/siteman/sm-sub-menu.css'];
 

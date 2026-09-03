@@ -11,4 +11,5 @@ class LangFiles_Ru_Views_ModalMenu
     const DEFAULT_LINK_TITLE = 'Персональный сайт';
     const LANG_PANEL_TEXT_RU = 'смотреть на русском';
     const LANG_PANEL_TEXT_EN = 'view in english';
+    const MODAL_MENU_SU_TEXT = 'Открыть';
 }

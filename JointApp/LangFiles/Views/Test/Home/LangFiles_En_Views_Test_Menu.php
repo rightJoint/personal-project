@@ -10,28 +10,28 @@ class LangFiles_En_Views_Test_Menu
     {
         $links = array(
             'TestHome' => array(
-                'text' => 'Web-тесты',
-                'title' => 'Создание базы данных, проведение миграция, CRUD таблицы и записи',
+                'text' => 'Web-tests',
+                'title' => 'Create database, make migrations, CRUD tables and records',
             ),
             'migrations' => array(
-                'text' => 'миграции',
-                'title' => 'создание, контроль проведения минраций',
+                'text' => 'Migrations',
+                'title' => 'Create, make and log migrations',
             ),
             'connection' => array(
-                'text' => 'Статус Sql-сервера',
-                'title' => 'создание, контроль проведения минраций',
+                'text' => 'Sql-status',
+                'title' => 'Create database, sql-server status',
             ),
             'migrationslog' => array(
                 'text' => 'migrationsLog',
-                'title' => 'создание, контроль проведения минраций',
+                'title' => 'Logs migrations',
             ),
             'records' => array(
-                'text' => 'записи в таблицах',
-                'title' => 'структура записи берется из базы данных',
+                'text' => 'Records',
+                'title' => 'CRUD records',
             ),
             'tables' => array(
-                'text' => 'таблицы',
-                'title' => 'работа с таблицами',
+                'text' => 'Tables',
+                'title' => 'CRUD tables',
             ),
         );
 

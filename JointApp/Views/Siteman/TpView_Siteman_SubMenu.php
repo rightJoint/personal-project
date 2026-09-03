@@ -23,7 +23,7 @@ class TpView_Siteman_SubMenu extends TpView
 
         $return = '<div class="sm-sub-menu">';
         foreach ($links as $key => $ref){
-            $return .= '<a href="'.$ref.'" title="'.$texts[$key]['title'].'">'.$texts[$key]['text'].'</a>';
+            $return .= '<a href="'.$this->langSl.$ref.'" title="'.$texts[$key]['title'].'">'.$texts[$key]['text'].'</a>';
         }
 
 

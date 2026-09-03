@@ -35,9 +35,9 @@ class TpView_UserMenu extends TpView
             '<sup><a href="/user/quit" title="quit account" class="u-quit">'.$this->langFile::USER_MENU_QUIT_ACCOUNT.'</a></sup>'.
             '<div><small>';
         if($this->u_isValid){
-            $return .= $this->langFile::USER_MENU_NOT_VALID;
-        }else{
             $return .= $this->langFile::USER_MENU_IS_VALID;
+        }else{
+            $return .= $this->langFile::USER_MENU_NOT_VALID;
         }
         $return .='</small></div></div>'.
             '</div>';

@@ -8,6 +8,7 @@ namespace JointApp\Router;
 use JointApp\Router\RoutesCollection\PersonalPage\RoutesCollection_PP;
 use JointApp\Router\RoutesCollection\Siteman\RoutesCollection_Siteman;
 use JointApp\Router\RoutesCollection\User\RoutesCollection_User;
+use JointApp\Router\RoutesCollection\UserInfo\RoutesCollection_UserInfo;
 use Psr\Log\LoggerAwareTrait;
 use JointApp\Router\RoutesCollection\Api\RoutesCollection_Api;
 use JointApp\Router\RoutesCollection\RoutesCollection_JointSite;
@@ -26,6 +27,7 @@ class JointSiteRouteFinder
     use RoutesCollection_User;
     use RoutesCollection_Siteman;
     use RoutesCollection_PP;
+    use RoutesCollection_UserInfo;
 
     private $context = ['RouteFinder' => __CLASS__];
 

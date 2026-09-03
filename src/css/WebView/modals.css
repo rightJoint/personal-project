@@ -158,7 +158,7 @@
 .modal-line span.opnSubMenu.folded::before{
     content: "+";
 }
-
+/*test menu-->*/
 .modal-line.test-menu a{
     color: lightgreen;
     text-decoration: none;
@@ -172,3 +172,19 @@
     list-style: none;
     margin-bottom: 0.4em;
 }
+/*<--test menu*/
+/*siteman menu-->*/
+.modal-line.siteman-menu a{
+    color: lightblue;
+    text-decoration: none;
+}
+.modal-line.siteman-menu ul li a{
+    color: lightgray;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+.modal-line.siteman-menu ul li{
+    list-style: none;
+    margin-bottom: 0.4em;
+}
+/*<--siteman menu*/

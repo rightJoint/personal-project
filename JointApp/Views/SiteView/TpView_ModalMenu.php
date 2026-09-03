@@ -119,7 +119,7 @@ class TpView_ModalMenu extends TpView
         return "<div class='modal-line siteman-menu'>".
             '<div class="modal-line-img"><img src="/img/popimg/module-logo.png"></div>'.
             '<div class="modal-line-text">'.
-            '<a href="'.$httpLinks['home'].'" title="'.$linksLang['home']['title'].'">'.$linksLang['home']['text'].'</a>'.
+            '<a href="'.$this->langSl.$httpLinks['home'].'" title="'.$linksLang['home']['title'].'">'.$linksLang['home']['text'].'</a>'.
             '<sup>siteman</sup>'.
             '<span class="opnSubMenu folded">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
             '<ul style="display: none">'.

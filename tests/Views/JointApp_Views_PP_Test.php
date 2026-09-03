@@ -1,9 +1,9 @@
 <?php
-//php ./vendor/bin/phpunit tests/Views/JointApp_Views_Records_Test.php
+//php ./vendor/bin/phpunit tests/Views/JointApp_Views_PP_Test.php
 
 
 
-class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
+class JointApp_Views_PP_Test extends PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {
@@ -15,9 +15,9 @@ class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
         $langSet = ['ru', 'en'];
 
         $Ns = array(
-            'JointApp\Views\Records\RecordListView',
-            'JointApp\Views\Records\RecordDetailView',
-            'JointApp\Views\Records\RecordEditView',
+            'JointApp\Views\PersonalPage\SiteView_PP_Edit',
+            'JointApp\Views\PersonalPage\SiteView_PP_Home',
+            'JointApp\Views\PersonalPage\SiteView_PP_Pass',
         );
 
         for($i=1; $i<=count($langSet); $i++){
@@ -36,20 +36,18 @@ class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
         $langSet = ['ru', 'en'];
 
         $Ns = array(
-            'JointApp\Views\Records\TpView_Detail',
-
-            'JointApp\Views\Records\TpView_Edit',
-            'JointApp\Views\Records\TpView_FilterPanel',
-            'JointApp\Views\Records\TpView_Grid',
-            'JointApp\Views\Records\TpView_NavBar',
-            'JointApp\Views\Records\TpView_Pagination',
+            'JointApp\Views\PersonalPage\TpView_PP_Edit',
+            'JointApp\Views\PersonalPage\TpView_PP_Pass',
+            'JointApp\Views\PersonalPage\TpView_PP_UserMenu',
+            'JointApp\Views\PersonalPage\TpView_User_Info',
         );
 
         for($i=1; $i<=count($langSet); $i++){
             $userLang = $langSet[$i-1];
             foreach ($Ns as $class){
                 $tpView = new $class();
-                $tpView->setUpCustomLang($tpView->getDefaultLang($userLang));
+                $tpView->handleViewParams();
+                $tpView->setUpCustomLang($tpView->getDefaultLang());
                 $tpView->getResponseHtml();
             }
         }

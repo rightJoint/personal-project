@@ -1,9 +1,9 @@
 <?php
-//php ./vendor/bin/phpunit tests/Views/JointApp_Views_Records_Test.php
+//php ./vendor/bin/phpunit tests/Views/JointApp_Views_Siteman_Test.php
 
 
 
-class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
+class JointApp_Views_Siteman_Test extends PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {
@@ -15,9 +15,12 @@ class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
         $langSet = ['ru', 'en'];
 
         $Ns = array(
-            'JointApp\Views\Records\RecordListView',
-            'JointApp\Views\Records\RecordDetailView',
-            'JointApp\Views\Records\RecordEditView',
+            'JointApp\Views\Siteman\Robots\SiteView_Siteman_Robots_Update',
+            'JointApp\Views\Siteman\Sitemap\SiteView_Siteman_Sitemap_Update',
+            'JointApp\Views\Siteman\SitemanDetailView',
+            'JointApp\Views\Siteman\SitemanEditView',
+            'JointApp\Views\Siteman\SitemanListView',
+            'JointApp\Views\Siteman\SiteView_Siteman_Main',
         );
 
         for($i=1; $i<=count($langSet); $i++){
@@ -36,20 +39,18 @@ class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
         $langSet = ['ru', 'en'];
 
         $Ns = array(
-            'JointApp\Views\Records\TpView_Detail',
-
-            'JointApp\Views\Records\TpView_Edit',
-            'JointApp\Views\Records\TpView_FilterPanel',
-            'JointApp\Views\Records\TpView_Grid',
-            'JointApp\Views\Records\TpView_NavBar',
-            'JointApp\Views\Records\TpView_Pagination',
+            'JointApp\Views\Siteman\Robots\TpView_Siteman_Robots_Update',
+            'JointApp\Views\Siteman\Sitemap\TpView_Siteman_Sitemap_Update',
+            'JointApp\Views\Siteman\TpView_Siteman_ModulesMenu',
+            'JointApp\Views\Siteman\TpView_Siteman_SubMenu',
         );
 
         for($i=1; $i<=count($langSet); $i++){
             $userLang = $langSet[$i-1];
             foreach ($Ns as $class){
                 $tpView = new $class();
-                $tpView->setUpCustomLang($tpView->getDefaultLang($userLang));
+                $tpView->handleViewParams();
+                $tpView->setUpCustomLang($tpView->getDefaultLang());
                 $tpView->getResponseHtml();
             }
         }

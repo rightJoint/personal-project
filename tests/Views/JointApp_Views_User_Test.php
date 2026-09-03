@@ -1,9 +1,9 @@
 <?php
-//php ./vendor/bin/phpunit tests/Views/JointApp_Views_Records_Test.php
+//php ./vendor/bin/phpunit tests/Views/JointApp_Views_User_Test.php
 
 
 
-class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
+class JointApp_Views_User_Test extends PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {
@@ -15,9 +15,8 @@ class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
         $langSet = ['ru', 'en'];
 
         $Ns = array(
-            'JointApp\Views\Records\RecordListView',
-            'JointApp\Views\Records\RecordDetailView',
-            'JointApp\Views\Records\RecordEditView',
+            'JointApp\Views\User\SiteView_User_SignIn',
+            'JointApp\Views\User\SiteView_User_SignUp',
         );
 
         for($i=1; $i<=count($langSet); $i++){
@@ -36,20 +35,18 @@ class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
         $langSet = ['ru', 'en'];
 
         $Ns = array(
-            'JointApp\Views\Records\TpView_Detail',
-
-            'JointApp\Views\Records\TpView_Edit',
-            'JointApp\Views\Records\TpView_FilterPanel',
-            'JointApp\Views\Records\TpView_Grid',
-            'JointApp\Views\Records\TpView_NavBar',
-            'JointApp\Views\Records\TpView_Pagination',
+            'JointApp\Views\User\TpView_User_SignIn',
+            'JointApp\Views\User\TpView_User_SignUp',
+            'JointApp\Views\User\TpView_UserAuthForm',
+            'JointApp\Views\User\TpView_UserMenu',
         );
 
         for($i=1; $i<=count($langSet); $i++){
             $userLang = $langSet[$i-1];
             foreach ($Ns as $class){
                 $tpView = new $class();
-                $tpView->setUpCustomLang($tpView->getDefaultLang($userLang));
+                $tpView->handleViewParams();
+                $tpView->setUpCustomLang($tpView->getDefaultLang());
                 $tpView->getResponseHtml();
             }
         }

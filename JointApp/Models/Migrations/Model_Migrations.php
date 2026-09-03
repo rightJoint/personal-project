@@ -97,6 +97,7 @@ class Model_Migrations extends RecordsModel
     {
         $acceptable_queries = array(
             'insert' => 'insert ',
+            'insert_upper' => 'INSERT ',
             'update' => 'update ',
             'update_upper' => 'UPDATE ',
             'delete' => 'delete ',
@@ -270,7 +271,7 @@ class Model_Migrations extends RecordsModel
         return $exec_new_result;
     }
 
-    function copyCustomFields():bool
+    protected function copyCustomFields():bool
     {
         if($this->record['migration_name']['curVal'] ){
             if(file_exists(SettingsEnv::DOC_ROOT.'/migrations/'.

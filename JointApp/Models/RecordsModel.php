@@ -156,7 +156,7 @@ class RecordsModel extends Model_Pdo
         return false;
     }
 
-    function copyCustomFields():bool
+    protected function copyCustomFields():bool
     {
         return true;
     }

@@ -26,9 +26,9 @@ class TpView_PP_UserMenu extends TpView
         $return = '<div class="contentBlock-frame"><div class="contentBlock-center">'.
             '<div class="contentBlock-wrap">'.
             '<div class="pp-user-menu">'.
-            '<a href="'.$httpLinks['info'].'" title="'.$linksTexts['info']['title'].'">'.$linksTexts['info']['text'].'</a>'.
-            '<a href="'.$httpLinks['edit'].'" title="'.$linksTexts['edit']['title'].'">'.$linksTexts['edit']['text'].'</a>'.
-            '<a href="'.$httpLinks['changepassword'].'" title="'.$linksTexts['changepassword']['title'].'">'.$linksTexts['changepassword']['text'].'</a>'.
+            '<a href="'.$this->langSl.$httpLinks['info'].'" title="'.$linksTexts['info']['title'].'">'.$linksTexts['info']['text'].'</a>'.
+            '<a href="'.$this->langSl.$httpLinks['edit'].'" title="'.$linksTexts['edit']['title'].'">'.$linksTexts['edit']['text'].'</a>'.
+            '<a href="'.$this->langSl.$httpLinks['changepassword'].'" title="'.$linksTexts['changepassword']['title'].'">'.$linksTexts['changepassword']['text'].'</a>'.
             '</div>'.
             '</div></div></div>';
 

@@ -15,6 +15,7 @@ use JointApp\Views\SiteView\TpView_ModalUser;
 class WebView extends View
 {
     public string $userLang = 'ru';
+    public string $langSl = '';
     public string $uri_pq = '';
 
     protected \stdClass $tpSet;
@@ -108,7 +109,7 @@ class WebView extends View
     //glue html of each tp-view
     public function getResponseHtml():string
     {
-        $html = '';
+        $html = '<script>var langSl="'.$this->langSl.'"</script>';
         foreach ($this->tpSet as $key => $val){
             $this->tpSet->$key->handleViewParams();
             $this->tpSet->$key->setUpCustomLang($this->langFile->$key);

@@ -154,7 +154,7 @@ span.hi-text{
     animation-iteration-count: 1
 
 }
-.hi-icon-effect-1a .hi-icon.order:hover span.hi-text{
+.hi-icon-effect-1a .hi-icon.user:hover span.hi-text{
     /*color: lime;*/
     display: inline-block;
     animation: center-animate 1s ease infinite alternate;

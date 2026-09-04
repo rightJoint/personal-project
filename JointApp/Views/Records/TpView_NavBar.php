@@ -27,9 +27,8 @@ class TpView_NavBar extends TpView
     {
         $return_ajax = '<div class="navBar">'.
             '<div class="pagination">'.
-            self::paginationPrint();
-
-        $return_ajax.= '</div>'.
+            $this->paginationPrint().
+            '</div>'.
             '<div class="sort-block">'.
             '<span class="found_label">'.$this->langFile::LIST_BY.': </span>'.
             '<select name="onPage">';
@@ -82,71 +81,21 @@ class TpView_NavBar extends TpView
 
     }
 
+    public function paginationPrint():string
+    {
+        $pagination = new TpView_Pagination();
+        $pagination->setUpCustomLang($pagination->getDefaultLang());
+        $pagination->userLang = $this->userLang;
+        $pagination->count = $this->listCount;
+        $pagination->curPage = $this->curPage;
+        $pagination->onPage = $this->onPage;
+        return '<span class="found_label">'.$this->langFile::PG_FOUND_LABEL.
+            ': <span>'.$this->listCount.'</span></span>'.$pagination->getResponseHtml();
+    }
+
     public function getDefaultLang()
     {
         $class_Name = 'JointApp\LangFiles\Views\Records\List\LangFiles_'.self::ucfirstLang($this->userLang).'_'. 'Views_R_L_NavBar';
         return new $class_Name();
-    }
-
-    //public static function paginationPrint(\stdClass $langPg, $recordsCount, $curPage, $onPage, $length=2, $pag_length=2):string
-    public function paginationPrint():string
-    {
-        $length = 2;        //optional: count cells in table row
-        $pag_length = 2;    //optional:
-        if(round($this->listCount/$this->onPage) - $this->listCount/$this->onPage < 0){
-            $page_count = round($this->listCount/$this->onPage) + 1;
-        }else{
-            $page_count =  round($this->listCount/$this->onPage);
-        }
-
-        $p_add_num_start = 0;
-
-        if($this->curPage - $pag_length < 1){
-            $p_add_num_start = $pag_length - $this->curPage +1;
-        }
-
-        $end_p_num = $this->curPage + $pag_length + $p_add_num_start;
-        if($end_p_num > $page_count){
-            $end_p_num = $page_count;
-        }
-
-        $start_p_num = $this->curPage - $pag_length + $p_add_num_start;
-        if($end_p_num - $pag_length*2  < $start_p_num){
-            $start_p_num = $end_p_num - $pag_length*2;
-        }
-        if($start_p_num < 1){
-            $start_p_num = 1;
-        }
-        $page_list = null;
-        for ($i = $start_p_num; $i <= $end_p_num; $i++){
-            if ($this->curPage == $i){
-                $page_list .= '<span class = "p_num active" page="'.$i.'">'.$i.'</span>';
-            }else{
-                if($i == 1){
-                    $page_list .= '<span class = "p_num" page="'.$i.'" '.
-                        '>'.$i.'</span>';
-                }else{
-                    $page_list .= '<span class = "p_num" page="'.$i.'" '.
-                        '>'.$i.'</span>';
-                }
-            }
-        }
-
-        if($this->curPage < $page_count){
-            $btn_nex = '<span class="p_btn next" page="'.($this->curPage+1).'" '.
-                '>'.$this->langFile::PG_NEXT.'</span>';
-        }else {
-            $btn_nex = '<span class="p_btn next active" page="'.$this->curPage.'">'.$this->langFile::PG_NEXT.'</span>';
-        }
-
-        if ($this->curPage > 1){
-            $btn_pre = '<span class="p_btn prev" page="'.($this->curPage-1).'" '.
-                '>'.$this->langFile::PG_BACK.'</span>';
-        }else {
-            $btn_pre = '<span class="p_btn prev active" page="'.$this->curPage.'">'.$this->langFile::PG_BACK.'</span>';
-        }
-
-        return '<span class="found_label">'.$this->langFile::FOUND_LABEL.
-            ': <span>'.$this->listCount.'</span></span>'.$btn_pre.$page_list.$btn_nex;
     }
 }

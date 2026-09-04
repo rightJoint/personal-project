@@ -61,6 +61,11 @@ class JointSiteUser
                                 }
                                 if($row['followed_by']){
                                     $this->followed_by = $row['followed_by'];
+                                    $this->isValid = true;
+                                }
+                                //is admin user
+                                if($this->user_id == '1AB4C7D7-5315-4C9E-9F33-E1B250491589'){
+                                    $this->isAdmin = true;
                                 }
                             }
                             $this->isAuth = true;
@@ -97,6 +102,7 @@ class JointSiteUser
             $this->blackList = $_SESSION['user']['blackList'];
             $this->avatar = $_SESSION['user']['avatar'];
             $this->isAuth = true;
+            $this->isValid = $_SESSION['user']['isValid'];
         }
     }
 
@@ -109,6 +115,7 @@ class JointSiteUser
             'followed_by' => $this->followed_by,
             'blackList' => $this->blackList,
             'avatar' => $this->avatar,
+            'isValid' => $this->isValid,
         ];
     }
 

@@ -10,7 +10,7 @@ use PhpParser\Node\Stmt\Switch_;
 
 class TpView_Siteman_SubMenu extends TpView
 {
-    public string $list_frame_id = '';
+    public string $list_frame_id = 'users';
 
     public $css = ['sm-sub-menu' => '/css/siteman/sm-sub-menu.css'];
 
@@ -21,7 +21,7 @@ class TpView_Siteman_SubMenu extends TpView
 
         $return = '<div class="sm-sub-menu">';
         foreach ($links as $key => $ref){
-            $return .= '<a href="'.$ref.'" title="'.$texts[$key]['title'].'">'.$texts[$key]['text'].'</a>';
+            $return .= '<a href="'.$this->langSl.$ref.'" title="'.$texts[$key]['title'].'">'.$texts[$key]['text'].'</a>';
         }
         $return .='</div>';
         return $return;

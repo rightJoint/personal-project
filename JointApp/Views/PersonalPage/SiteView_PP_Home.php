@@ -19,6 +19,7 @@ class SiteView_PP_Home extends SiteView
     public string $pp_followed_by_id = '';
     public string $pp_pref_lang = 'ru';
     public string $pp_birthDay = '';
+    public string $pp_followed_by_name = '';
 
     protected function putCustomTemplates():void
     {

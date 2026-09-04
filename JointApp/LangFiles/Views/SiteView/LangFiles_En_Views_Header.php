@@ -10,6 +10,7 @@ class LangFiles_En_Views_Header
     public const LANG_PANEL_TEXT_EN = 'смотреть на английском';
     public const MENU_BTN_TEXT = 'Menu';
     public const H_1 = 'Personal project';
-    public const USER_BTN_TXT = 'SignIn';
+    public const USER_SIGN_TXT = 'SignIn';
+    public const USER_PROF_TXT = 'Profile';
 
 }

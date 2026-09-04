@@ -225,7 +225,8 @@ class TpView_UserAuthForm extends TpView
             '<div class="modal-line-img">'.
             '<img src="/img/popimg/user-logo.png">'.
             '</div>'.
-            '<div class="modal-line-text"><span class="guest">Вы гость</span><small>Вам могут быть недоступны некоторые ресурсы этого сайта</small></div>'.
+            '<div class="modal-line-text"><span class="guest">'.$this->langFile::AUTH_GUEST_NAME.'</span>'.
+            '<small>'.$this->langFile::AUTH_GUEST_WARN.'</small></div>'.
             '</div>';
 
         return $return;

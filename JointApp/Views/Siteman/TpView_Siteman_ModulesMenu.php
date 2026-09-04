@@ -20,11 +20,11 @@ class TpView_Siteman_ModulesMenu extends TpView
 
 
         $return = '<div class="sm-main-menu">'.
-            '<a href="'.$links['home'].'" title="'.$texts['home']['title'].'">'.$texts['home']['text'].'</a>'.
-            '<a href="'.$links['users'].'" title="'.$texts['users']['title'].'">'.$texts['users']['text'].'</a>'.
-            '<a href="'.$links['sitemap'].'" title="'.$texts['sitemap']['title'].'">'.$texts['sitemap']['text'].'</a>'.
-            '<a href="'.$links['robots'].'" title="'.$texts['robots']['title'].'">'.$texts['robots']['text'].'</a>'.
-            '<a href="'.$links['blog'].'" title="'.$texts['blog']['title'].'">'.$texts['blog']['text'].'</a>'.
+            '<a href="'.$this->langSl.$links['home'].'" title="'.$texts['home']['title'].'">'.$texts['home']['text'].'</a>'.
+            '<a href="'.$this->langSl.$links['users'].'" title="'.$texts['users']['title'].'">'.$texts['users']['text'].'</a>'.
+            '<a href="'.$this->langSl.$links['sitemap'].'" title="'.$texts['sitemap']['title'].'">'.$texts['sitemap']['text'].'</a>'.
+            '<a href="'.$this->langSl.$links['robots'].'" title="'.$texts['robots']['title'].'">'.$texts['robots']['text'].'</a>'.
+            '<a href="'.$this->langSl.$links['blog'].'" title="'.$texts['blog']['title'].'">'.$texts['blog']['text'].'</a>'.
             '</div>';
         return $return;
     }

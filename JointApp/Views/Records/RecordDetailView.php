@@ -51,7 +51,7 @@ class RecordDetailView extends SiteView
 
     protected function replaceDefaultHeadLang()
     {
-        if($this->type_of_view == 'edit'){
+        if($this->type_of_view == 'detail'){
             $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_D_Head';
         }else{
             $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_Del_Head';
@@ -62,7 +62,7 @@ class RecordDetailView extends SiteView
 
     protected function replaceDefaultHeaderLang()
     {
-        if($this->type_of_view == 'edit'){
+        if($this->type_of_view == 'detail'){
             $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_D_Header';
         }else{
             $class_Name = 'JointApp\LangFiles\Views\Records\Detail\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_R_Del_Header';

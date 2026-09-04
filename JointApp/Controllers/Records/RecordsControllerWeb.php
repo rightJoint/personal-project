@@ -41,16 +41,8 @@ class RecordsControllerWeb extends RecordsController
         $this->h2 = $this->list_frame_id;
         $this->prepareEditFields();
         $this->updateModelPriKeysFromRequest();
-        //echo '<pre>';
-        //print_r($this->editFields);
-        //print_r($this->editFields);
-        //exit;
         if ($this->model->copyRecord()) {
-            //print_r($this->editFields);
-            //print_r($this->editFields);
-            //exit;
             $this->queryFromPriFields();
-
             $this->updateEditFieldsFromRecord();
         }else{
             $this->logger->emergency($this->model->getLogMessage(),

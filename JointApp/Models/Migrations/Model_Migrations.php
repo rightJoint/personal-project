@@ -97,6 +97,7 @@ class Model_Migrations extends RecordsModel
     {
         $acceptable_queries = array(
             'insert' => 'insert ',
+            'insert_upper' => 'INSERT ',
             'update' => 'update ',
             'update_upper' => 'UPDATE ',
             'delete' => 'delete ',
@@ -177,9 +178,9 @@ class Model_Migrations extends RecordsModel
                                 $return['log'][] = 'result: FAIL';
 
                                 //foreach ($this->DB->errorInfo() as $err_num => $err_info){
-                                    //?????????????????//
-                                    $err_info = str_replace(array('\r\n', '\r', '\n', '"', "'"), '',  $this->log_message);
-                                    $return['log'][] = $err_info;
+                                //?????????????????//
+                                $err_info = str_replace(array('\r\n', '\r', '\n', '"', "'"), '',  $this->log_message);
+                                $return['log'][] = $err_info;
                                 //}
                                 $count_fail++;
                             }
@@ -232,7 +233,7 @@ class Model_Migrations extends RecordsModel
 
     }
 
-    function exec_new_migrations():array
+    function execNew():array
     {
         $exec_new_result = array(
             'result' => false,
@@ -240,37 +241,35 @@ class Model_Migrations extends RecordsModel
             'count_success' => 0,
         );
 
-        if($this->checkMigrationsTables()){
-            $this->globMigrationFiles();
+        $this->globMigrationFiles();
 
-            $qBuilder = new JointAppQueryBuilder();
-            $qBuilder
-                ->where('status in ("new", "fail")')
-                ->order('migration_name');
+        $qBuilder = new JointAppQueryBuilder();
+        $qBuilder
+            ->where('status in ("new", "fail")')
+            ->order('migration_name');
 
-            $list_migr = $this->listRecords($qBuilder);
+        $list_migr = $this->listRecords($qBuilder);
 
-            if($exec_new_result['count_total'] = count($list_migr)){
-                foreach ($list_migr as $migr_num => $migr_data){
-                    $this->record['migration_name']['curVal'] = $migr_data['migration_name'];
-                    $migr_result = $this->execOne($migr_data['migration_name']);
-                    $exec_new_result['result'] = $migr_result['result'];
-                    if($migr_result['result']){
-                        $exec_new_result['count_success']++;
-                    }else{
-                        break;
-                    }
+        if($exec_new_result['count_total'] = count($list_migr)){
+            foreach ($list_migr as $migr_num => $migr_data){
+                $this->record['migration_name']['curVal'] = $migr_data['migration_name'];
+                $migr_result = $this->execOne($migr_data['migration_name']);
+                $exec_new_result['result'] = $migr_result['result'];
+                if($migr_result['result']){
+                    $exec_new_result['count_success']++;
+                }else{
+                    break;
                 }
-            }else{
-                //no new of fail migration
-                $exec_new_result['result'] = true;
             }
+        }else {
+            //no new of fail migration
+            $exec_new_result['result'] = true;
         }
 
         return $exec_new_result;
     }
 
-    function copyCustomFields():bool
+    protected function copyCustomFields():bool
     {
         if($this->record['migration_name']['curVal'] ){
             if(file_exists(SettingsEnv::DOC_ROOT.'/migrations/'.

@@ -9,7 +9,7 @@ use JointApp\Views\Test\TpView_Test_Menu;
 
 class SitemanDetailView extends RecordDetailView
 {
-    public string $list_frame_id = '';
+    public string $list_frame_id = 'users';
 
     protected function putCustomTemplates():void
     {

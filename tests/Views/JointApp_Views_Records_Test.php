@@ -42,6 +42,7 @@ class JointApp_Views_Records_Test extends PHPUnit\Framework\TestCase
             'JointApp\Views\Records\TpView_FilterPanel',
             'JointApp\Views\Records\TpView_Grid',
             'JointApp\Views\Records\TpView_NavBar',
+            'JointApp\Views\Records\TpView_Pagination',
         );
 
         for($i=1; $i<=count($langSet); $i++){

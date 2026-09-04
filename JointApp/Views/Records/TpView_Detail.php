@@ -58,16 +58,16 @@ class TpView_Detail extends TpView
 
         $return.= '<div class="record-nav">';
         if($this->type_of_view == 'detail'){
-            $return.='<a href="'.$this->processUri.'/editview'.$this->pri_query.'" title="edit record"><img src="/img/popimg/edit-icon.png">edit</a>'.
-                '<a href="'.$this->processUri.'/deleteview'.$this->pri_query.'" title="delete record"><img src="/img/popimg/drop-icon.png">delete</a>';
+            $return.='<a href="'.$this->langSl.$this->processUri.'/editview'.$this->pri_query.'" title="edit record"><img src="/img/popimg/edit-icon.png">edit</a>'.
+                '<a href="'.$this->langSl.$this->processUri.'/deleteview'.$this->pri_query.'" title="delete record"><img src="/img/popimg/drop-icon.png">delete</a>';
         }else{
 
-            $return.='<a href="'.$this->processUri.'/detailview'.$this->pri_query.'" title="detail record"><img src="/img/popimg/eye-icon.png">detail</a>'.
-                '<a href="'.$this->processUri.'/editview'.$this->pri_query.'" title="edit record"><img src="/img/popimg/edit-icon.png">edit</a>';
+            $return.='<a href="'.$this->langSl.$this->processUri.'/detailview'.$this->pri_query.'" title="detail record"><img src="/img/popimg/eye-icon.png">detail</a>'.
+                '<a href="'.$this->langSl.$this->processUri.'/editview'.$this->pri_query.'" title="edit record"><img src="/img/popimg/edit-icon.png">edit</a>';
         }
 
-        $return.='<a href="'.$this->processUri.'/newview" title="new record"><img src="/img/popimg/create-icon.png">New</a>'.
-            '<a href="'.$this->processUri.'" title="list records"><img src="/img/popimg/search-icon.png">list</a>'.
+        $return.='<a href="'.$this->langSl.$this->processUri.'/newview" title="new record"><img src="/img/popimg/create-icon.png">New</a>'.
+            '<a href="'.$this->langSl.$this->processUri.'" title="list records"><img src="/img/popimg/search-icon.png">list</a>'.
             '</div>';
         return $return;
     }

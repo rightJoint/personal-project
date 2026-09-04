@@ -10,7 +10,7 @@ use JointApp\Views\Test\TpView_Test_Menu;
 
 class SitemanEditView extends RecordEditView
 {
-    public string $list_frame_id = '';
+    public string $list_frame_id = 'users';
 
     protected function putCustomTemplates():void
     {

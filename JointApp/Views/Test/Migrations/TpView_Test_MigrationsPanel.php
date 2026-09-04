@@ -119,7 +119,7 @@ class TpView_Test_MigrationsPanel extends TpView
             $return .= '<div class="exec">';
             $return.='<div class="migrations-new">'.$this->new_migr_count.' new migrations</div>' .
                 '<div class="migrations-new">' .
-                '<form method="post" action="'.$this->processUri.'/exec">' .
+                '<form method="post" action="'.$this->processUri.'/execnew">' .
                 '<input type="submit" name="ExecNew" value="Exec">' .
                 '</form>' .
                 '</div>';

@@ -364,4 +364,9 @@ class Controller_Test_Migrations extends RecordsControllerWeb
             }
         }
     }
+
+    public function actionExecNew():void
+    {
+        $result = $this->model->execNew();
+    }
 }

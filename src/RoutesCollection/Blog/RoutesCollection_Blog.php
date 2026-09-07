@@ -99,11 +99,17 @@ trait RoutesCollection_Blog
     {
         $route = new JointSiteRoute();
         if (isset($routes_ns[2]) and $routes_ns[2] == 'filter') {
-            //????????
             $route
                 ->withController('Src\Controllers\Blog\Controller_Blog')
                 ->withModel('Src\Models\Blog\Model_Blog',)
                 ->withAction('actionFilter')
+                ->withView('Src\Views\Blog\SiteView_Blog_Main')
+                ->responseFormat('json');
+        }elseif (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'filterhome'){
+            $route
+                ->withController('Src\Controllers\Blog\Controller_Blog')
+                ->withModel('Src\Models\Blog\Model_Blog',)
+                ->withAction('actionFilterHome')
                 ->withView('Src\Views\Blog\SiteView_Blog_Main')
                 ->responseFormat('json');
         }

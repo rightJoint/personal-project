@@ -60,8 +60,7 @@ class TpView_Blog_Table extends TpView
             $len_cnt++;
         }
 
-        return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.$return.'</div></div></div>';
+        return $return;
 
     }
 

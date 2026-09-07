@@ -12,10 +12,10 @@ trait RoutesCollection_Main
         $route = new JointSiteRoute();
 
         $route
-            ->withController('JointApp\Controllers\ControllerWeb')
-            ->withModel('JointApp\Models\Model')
+            ->withController('Src\Controllers\Blog\Controller_Blog')
+            ->withModel('Src\Models\Blog\Model_Blog',)
             ->withAction('actionIndex')
-            ->withView('JointApp\Views\JointSite\SiteView_JointSite');
+            ->withView('Src\Views\Blog\HomePage\SiteView_Blog_HomePage');
 
         return $route;
 

@@ -66,17 +66,10 @@ class Controller_Blog extends ControllerWeb
 
     public function actionFilter()
     {
-        $arr = [];
 
-        $qBuilder = $this->blogSearchQuery();
+        $qBuilder = $this->actionFilterHome();
 
-        $tpView_table = new TpView_Blog_Table();
-        $tpView_table->setUpCustomLang($tpView_table->getDefaultLang());
-        $tpView_table->artsList = $this->model->listRecords($qBuilder);
 
-        $tpView_table->inRow = $this->inRow;
-
-        $arr['listView'] = $tpView_table->getResponseHtml();
 
         $tpView_options = new TpView_Blog_Options();
         $tpView_options->setUpCustomLang($tpView_options->getDefaultLang());
@@ -92,7 +85,7 @@ class Controller_Blog extends ControllerWeb
 
         $this->setUpViewParams($tpView_options);
 
-        $arr['blogCountArts'] = $tpView_options->blogCountArts;
+        $this->responseJson['blogCountArts'] = $tpView_options->blogCountArts;
 
         $pagination = new TpView_Pagination();
         $pagination->setUpCustomLang($pagination->getDefaultLang());
@@ -101,9 +94,22 @@ class Controller_Blog extends ControllerWeb
         $pagination->curPage = $this->curPage;
         $pagination->onPage = $this->onPage;
 
-        $arr['pg'] = $pagination->getResponseHtml();
+        $this->responseJson['pg'] = $pagination->getResponseHtml();
+    }
 
-        $this->responseJson = $arr;
+    public function actionFilterHome():JointAppQueryBuilder
+    {
+        $qBuilder = $this->blogSearchQuery();
+
+        $tpView_table = new TpView_Blog_Table();
+        $tpView_table->setUpCustomLang($tpView_table->getDefaultLang());
+        $tpView_table->artsList = $this->model->listRecords($qBuilder);
+
+        $tpView_table->inRow = $this->inRow;
+
+        $this->responseJson['listView'] = $tpView_table->getResponseHtml();
+
+        return $qBuilder;
     }
 
     public function fillFilterCats():array

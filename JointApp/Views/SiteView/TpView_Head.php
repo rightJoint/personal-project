@@ -17,6 +17,9 @@ class TpView_Head extends TpView
 
     public string $canonical = '';
 
+    public string $h1 = '';
+    public string $metaDescription = '';
+
     public $js_set = [];
     public $css_set = [];
 
@@ -29,10 +32,20 @@ class TpView_Head extends TpView
 
     public function getResponseHtml():string
     {
+        if($this->metaDescription){
+            if($this->langFile::META_DESCRIPTION){
+                $metaDescription = $this->langFile::META_DESCRIPTION.' - '.$this->metaDescription;
+            }else{
+                $metaDescription =$this->metaDescription;
+            }
+        }else{
+            $metaDescription = $this->langFile::META_DESCRIPTION;
+        }
+
         $headText = '<head>'.
             '<meta http-equiv="content-type" content="text/html"; charset="utf-8"/>'.
             '<meta name="viewport" content="width=device-width, initial-scale=1.0">'.
-            '<meta name="description" content="'.$this->langFile::META_DESCRIPTION.'"/>';
+            '<meta name="description" content="'.$metaDescription.'"/>';
 
         if (isset($viewData->robotNoIndex) and $viewData->robotNoIndex == true) {
             $headText.= '<meta name="robots" content="noindex">';
@@ -47,7 +60,17 @@ class TpView_Head extends TpView
 
         }
 
-        $headText.= '<title>'.$this->langFile::PAGE_TITLE.'</title>'.
+        if($this->h1){
+            if($this->langFile::PAGE_TITLE){
+                $pageTitle = $this->langFile::PAGE_TITLE.' - '.$this->h1;
+            }else{
+                $pageTitle =$this->h1;
+            }
+        }else{
+            $pageTitle = $this->langFile::PAGE_TITLE;
+        }
+
+        $headText.= '<title>'.$pageTitle.'</title>'.
             '<link rel="SHORTCUT ICON" href="'.$this->shortcutIcon.'" type="image/png">';
 
         foreach ($this->css_set as $style) {

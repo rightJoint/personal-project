@@ -64,7 +64,11 @@ class TpView_Header extends TpView
         }
 
         if($this->h1){
-            $h1 = $this->langFile::H_1.' - '.$this->h1;
+            if($this->langFile::H_1){
+                $h1 = $this->langFile::H_1.' - '.$this->h1;
+            }else{
+                $h1 =$this->h1;
+            }
         }else{
             $h1 = $this->langFile::H_1;
         }

@@ -15,6 +15,7 @@ class SiteView extends WebView
     public string $logo = '/img/siteLogo/rightjoint-logo-150.png';
     public bool $modalMenuActive = false;
     public bool $modalUserActive = false;
+    public array $routes_ns = [];
 
     //user info
     public string $u_user_id = '';

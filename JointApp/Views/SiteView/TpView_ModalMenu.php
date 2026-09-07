@@ -13,6 +13,7 @@ class TpView_ModalMenu extends TpView
 
     public bool $modalMenuActive = false;
     public string $uri_pq = '';
+    public array $routes_ns = [];
 
     protected $css = array(
         'modals' => '/css/WebView/modals.css',
@@ -84,6 +85,13 @@ class TpView_ModalMenu extends TpView
 
     private function modalMenuTests():string
     {
+        $menu_style = ' folded';
+        $list_style = ' style="display: none"';
+        if(isset($this->routes_ns[1]) and strtolower($this->routes_ns[1]) == 'test'){
+            $menu_style = '';
+            $list_style = '';
+        }
+
         $testMenu = new TpView_Test_Menu();
         $testMenu->userLang = $this->userLang;
 
@@ -91,24 +99,38 @@ class TpView_ModalMenu extends TpView
         $httpLinks = $testMenu::getHttpLinks();
         $linksLang = $menu_lang::getLinks();
 
-        return "<div class='modal-line test-menu'>".
+        $return = "<div class='modal-line test-menu'>".
             '<div class="modal-line-img"><img src="/img/popimg/test-logo.png"></div>'.
             '<div class="modal-line-text">'.
             '<a href="'.$this->langSl.'/test">Tests</a>'.
             '<sup>web tests</sup>'.
-            '<span class="opnSubMenu folded">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
-            '<ul style="display: none">'.
-            '<li><a href="'.$this->langSl.$httpLinks['connection'].'" title="'.$linksLang['connection']['title'].'">'.$linksLang['connection']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['migrations'].'" title="'.$linksLang['migrations']['title'].'">'.$linksLang['migrations']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['records'].'" title="'.$linksLang['records']['title'].'">'.$linksLang['records']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['tables'].'" title="'.$linksLang['tables']['title'].'">'.$linksLang['tables']['text'].'</a></li>'.
-            '</ul>'.
+            '<span class="opnSubMenu'.$menu_style.'">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
+            '<ul'.$list_style.' >';
+        foreach ($httpLinks as $key=>$val){
+            if($key!='TestHome' and $key!='migrationslog'){
+                $href_style = '';
+                if(isset($this->routes_ns[2]) and strtolower($this->routes_ns[2]) == strtolower($key)){
+                    $href_style = ' class="selected"';
+                }
+                $return .= '<li><a href="'.$this->langSl.$httpLinks[$key].'" title="'.$linksLang[$key]['title'].'"'.$href_style.'>'.$linksLang[$key]['text'].'</a></li>';
+            }
+        }
+        $return .= '</ul>'.
             '</div>'.
             '</div>';
+
+        return $return;
     }
 
     private function modalMenuSitenam():string
     {
+        $menu_style = ' folded';
+        $list_style = ' style="display: none"';
+        if(isset($this->routes_ns[1]) and strtolower($this->routes_ns[1]) == 'siteman'){
+            $menu_style = '';
+            $list_style = '';
+        }
+
         $sitemanMenu = new TpView_Siteman_ModulesMenu();
         $sitemanMenu->userLang = $this->userLang;
 
@@ -116,20 +138,27 @@ class TpView_ModalMenu extends TpView
         $httpLinks = $sitemanMenu::getHttpLinks();
         $linksLang = $menu_lang::getLinks();
 
-        return "<div class='modal-line siteman-menu'>".
+        $return = "<div class='modal-line siteman-menu'>".
             '<div class="modal-line-img"><img src="/img/popimg/module-logo.png"></div>'.
             '<div class="modal-line-text">'.
             '<a href="'.$this->langSl.$httpLinks['home'].'" title="'.$linksLang['home']['title'].'">'.$linksLang['home']['text'].'</a>'.
             '<sup>siteman</sup>'.
-            '<span class="opnSubMenu folded">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
-            '<ul style="display: none">'.
-            '<li><a href="'.$this->langSl.$httpLinks['users'].'" title="'.$linksLang['users']['title'].'">'.$linksLang['users']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['sitemap'].'" title="'.$linksLang['sitemap']['title'].'">'.$linksLang['sitemap']['text'].'</a></li>'.
-            '<li><a href="'.$this->langSl.$httpLinks['robots'].'" title="'.$linksLang['robots']['title'].'">'.$linksLang['robots']['text'].'</a></li>'.
-            '</ul>'.
+            '<span class="opnSubMenu'.$menu_style.'">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
+            '<ul'.$list_style.'>';
+        foreach ($httpLinks as $key=>$val){
+            if($key!='home'){
+                $href_style = '';
+                if(isset($this->routes_ns[2]) and strtolower($this->routes_ns[2]) == strtolower($key)){
+                    $href_style = ' class="selected"';
+                }
+                $return .= '<li><a href="'.$this->langSl.$httpLinks[$key].'" title="'.$linksLang[$key]['title'].'"'.$href_style.'>'.$linksLang[$key]['text'].'</a></li>';
+            }
+        }
+        $return .= '</ul>'.
             '</div>'.
             '</div>';
 
+        return $return;
     }
 
 }

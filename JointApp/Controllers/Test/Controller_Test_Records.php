@@ -33,4 +33,9 @@ class Controller_Test_Records extends RecordsControllerWeb
     {
         $this->updateViewParams($this->view);
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

@@ -98,4 +98,9 @@ class Controller_Siteman_Blog_Tags extends RecordsControllerWeb
             ),
         );
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

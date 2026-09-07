@@ -43,4 +43,9 @@ class Controller_Test_Connection extends ControllerWeb
 
         $this->updateViewParams($this->view);
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

@@ -41,4 +41,9 @@ class Controller_Test_Log extends RecordsControllerWeb
             ],
         ];
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

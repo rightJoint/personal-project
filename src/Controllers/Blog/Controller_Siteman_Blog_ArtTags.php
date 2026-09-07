@@ -141,4 +141,8 @@ class Controller_Siteman_Blog_ArtTags extends RecordsControllerWeb
         );
     }
 
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

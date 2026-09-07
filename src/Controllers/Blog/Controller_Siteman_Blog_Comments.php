@@ -141,4 +141,9 @@ class Controller_Siteman_Blog_Comments extends RecordsControllerWeb
             ),
         );
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

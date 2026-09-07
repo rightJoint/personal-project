@@ -127,4 +127,9 @@ class Controller_Test_Tables extends ControllerWeb
                 $this->langFile::TEST_RUN_TIME.': ';
         }
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

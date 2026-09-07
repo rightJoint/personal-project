@@ -56,4 +56,9 @@ class RecordsControllerApi extends RecordsController
             'action_log' => $this->action_log,
         ];
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

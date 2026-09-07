@@ -138,4 +138,9 @@ class Controller_Siteman_Robots extends RecordsControllerWeb
     {
         $this->model->createRobotsTxt();
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

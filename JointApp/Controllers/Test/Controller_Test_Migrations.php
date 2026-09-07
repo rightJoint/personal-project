@@ -369,4 +369,9 @@ class Controller_Test_Migrations extends RecordsControllerWeb
     {
         $result = $this->model->execNew();
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

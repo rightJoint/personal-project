@@ -14,6 +14,7 @@ class TpView_ModalMenu extends TpView
     public bool $modalMenuActive = false;
     public string $uri_pq = '';
     public array $routes_ns = [];
+    public bool $u_isAdmin = false;
 
     protected $css = array(
         'modals' => '/css/WebView/modals.css',
@@ -85,6 +86,9 @@ class TpView_ModalMenu extends TpView
 
     private function modalMenuTests():string
     {
+        if(!$this->u_isAdmin){
+            return '';
+        }
         $menu_style = ' folded';
         $list_style = ' style="display: none"';
         if(isset($this->routes_ns[1]) and strtolower($this->routes_ns[1]) == 'test'){
@@ -124,6 +128,9 @@ class TpView_ModalMenu extends TpView
 
     private function modalMenuSitenam():string
     {
+        if(!$this->u_isAdmin){
+            return '';
+        }
         $menu_style = ' folded';
         $list_style = ' style="display: none"';
         if(isset($this->routes_ns[1]) and strtolower($this->routes_ns[1]) == 'siteman'){

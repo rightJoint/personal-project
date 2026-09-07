@@ -111,4 +111,8 @@ class Controller_Siteman_Users extends RecordsControllerWeb
         );
     }
 
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

@@ -190,4 +190,9 @@ class Controller_Siteman_Sitemap extends RecordsControllerWeb
     {
         $this->model->createSiteMap();
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

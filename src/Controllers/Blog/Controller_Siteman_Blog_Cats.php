@@ -186,4 +186,9 @@ class Controller_Siteman_Blog_Cats extends RecordsControllerWeb
             ),
         );
     }
+
+    protected function checkAccessController(): bool
+    {
+        return $this->user->isAdmin();
+    }
 }

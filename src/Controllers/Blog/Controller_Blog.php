@@ -88,8 +88,9 @@ class Controller_Blog extends ControllerWeb
         $this->responseJson['blogCountArts'] = $tpView_options->blogCountArts;
 
         $pagination = new TpView_Pagination();
-        $pagination->setUpCustomLang($pagination->getDefaultLang());
         $pagination->userLang = $this->userLang;
+        $pagination->setUpCustomLang($pagination->getDefaultLang());
+
         $pagination->count = $this->blogCountArts;
         $pagination->curPage = $this->curPage;
         $pagination->onPage = $this->onPage;
@@ -102,10 +103,9 @@ class Controller_Blog extends ControllerWeb
         $qBuilder = $this->blogSearchQuery();
 
         $tpView_table = new TpView_Blog_Table();
+        $this->artsList = $this->model->listRecords($qBuilder);
+        $this->setUpViewParams($tpView_table);
         $tpView_table->setUpCustomLang($tpView_table->getDefaultLang());
-        $tpView_table->artsList = $this->model->listRecords($qBuilder);
-
-        $tpView_table->inRow = $this->inRow;
 
         $this->responseJson['listView'] = $tpView_table->getResponseHtml();
 

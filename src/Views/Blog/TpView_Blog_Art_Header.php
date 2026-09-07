@@ -8,7 +8,7 @@ use JointApp\Views\TpView;
 
 class TpView_Blog_Art_Header extends TpView
 {
-    public $artRow = [];
+    public $artRow = ['artMeta' => '', 'artImg' => ''];
 
     const ART_COVERS = '/userdata/blog/covers';
 

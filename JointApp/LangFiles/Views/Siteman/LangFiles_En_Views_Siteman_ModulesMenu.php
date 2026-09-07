@@ -25,6 +25,10 @@ class LangFiles_En_Views_Siteman_ModulesMenu
                 'title' => 'No index pages',
                 'text' => 'Robots',
             ),
+            'blog' => array(
+                'title' => 'Blog management',
+                'text' => 'Blog',
+            ),
         );
     }
 }

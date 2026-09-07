@@ -8,7 +8,7 @@ use JointApp\Views\TpView;
 
 class TpView_Blog_Art_InfoBar extends TpView
 {
-    public $artRow = [];
+    public $artRow = ['pubDate' => '', 'refreshDate' => ''];
     public $artTags = [];
 
     public function getDefaultLang()

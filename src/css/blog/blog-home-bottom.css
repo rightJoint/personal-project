@@ -6,3 +6,7 @@
 .blog-home-bottom span{
 
 }
+#blog-see-more{
+    cursor: pointer;
+    color: midnightblue;
+}

@@ -11,7 +11,7 @@ use JointApp\Views\TpView;
 class TpView_Blog_Art_Comments extends TpView
 {
     public string $artRef = '';
-    public array $artRow = [];
+    public array $artRow = ['commentsFlag' => false, ];
     public int $countComments = 0;
     public int $onPage = 10;
     public int $curPage = 1;
@@ -60,8 +60,8 @@ class TpView_Blog_Art_Comments extends TpView
     public function printArtCommentsOptions():string
     {
         $pagination = new TpView_Pagination();
-        $pagination->setUpCustomLang($pagination->getDefaultLang());
         $pagination->userLang = $this->userLang;
+        $pagination->setUpCustomLang($pagination->getDefaultLang());
         $pagination->count = $this->countComments;
         $pagination->curPage = $this->curPage;
         $pagination->onPage = $this->onPage;
@@ -195,13 +195,12 @@ class TpView_Blog_Art_Comments extends TpView
                     '<div class="art-comment-container-bottom">';
                 if($this->u_isAuth){
                     $return .='<span class="respond" comment-id="'.$comment['comment_id'].'" onclick="commentRespond(this)">'.
-                        'reply'.
+                        $this->langFile::BLOG_COMMENTS_COMMENT_REPLY.
                         '</span>';
                 }
 
-
                 if(count($comment['recCm'])){
-                    $return .= '('.count($comment['recCm']).') '.'rep-testsss';
+                    $return .= '('.count($comment['recCm']).') '.$this->langFile::BLOG_COMMENTS_COMMENT_REPLIES;
                 }
 
                 if($this->commentP_id == $comment['comment_id']){
@@ -234,7 +233,7 @@ class TpView_Blog_Art_Comments extends TpView
         return $blogForm->getResponseHtml();
     }
 
-    public function printArtCommentsList(array $listComments = []): string
+    public function printArtCommentsList(array $listComments = [], bool $replyFlag = true): string
     {
         $return = '';
         if(count($listComments)){
@@ -249,7 +248,7 @@ class TpView_Blog_Art_Comments extends TpView
                 $return .= '<div class="art-comment-container quote">'.
                     '<div class="art-comment-container-top">'.
                     '<div class="art-comment-container-user">'.
-                    '<span class="quote-marker"><--quote--></span>'.
+                    '<span class="quote-marker">'.$this->langFile::BLOG_COMMENTS_COMMENT_QUOTE.'</span>'.
                     '<img src="'.$avatar.'">'.
                     '<span>'.$comment['alias'].'</span>'.
                     '</div>'.
@@ -259,7 +258,7 @@ class TpView_Blog_Art_Comments extends TpView
                     '</div>';
 
                 if(count($comment['recCm'])){
-                    $return .= $this->printArtCommentsList($comment['recCm']);
+                    $return .= $this->printArtCommentsList($comment['recCm'], false);
                 }
 
                 $return .= '<div class="art-comment-container-content">'.
@@ -267,16 +266,19 @@ class TpView_Blog_Art_Comments extends TpView
                     '<div class="comment-date">'.$comment['addDate'].'</div>'.
                     '</div>'.
                     '<div class="art-comment-container-bottom">';
-                if($this->u_isAuth){
-                    $return .='<span class="respond" comment-id="'.$comment['comment_id'].'" onclick="commentRespond(this)">'.
-                        'reply'.
-                        '</span>';
+
+                if($replyFlag){
+                    if($this->u_isAuth){
+                        $return .='<span class="respond" comment-id="'.$comment['comment_id'].'" onclick="commentRespond(this)">'.
+                            $this->langFile::BLOG_COMMENTS_COMMENT_REPLY.
+                            '</span>';
+                    }
+
+                    if($this->commentP_id == $comment['comment_id']){
+                        $return .= $this->printArtCommentsForm();
+                    }
                 }
 
-                if($this->commentP_id == $comment['comment_id']){
-                    $this->printArtCommentsForm();
-                    $return .= $this->printArtCommentsForm();
-                }
 
                 $return .= '</div>';
 

@@ -20,4 +20,7 @@ class LangFiles_Ru_Views_Blog_Comments
     const BLOG_COMMENTS_VIEW_TYPE_TREE = 'Дерево';
     const BLOG_COMMENTS_WRITE_FIRST = 'Напишите коммент первым';
     const BLOG_COMMENTS_NEW_COMMENT = 'Написать коммент';
+    const BLOG_COMMENTS_COMMENT_REPLY = 'Ответить';
+    const BLOG_COMMENTS_COMMENT_REPLIES = 'Ответов';
+    const BLOG_COMMENTS_COMMENT_QUOTE = 'Цитата';
 }

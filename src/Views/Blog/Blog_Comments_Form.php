@@ -87,11 +87,11 @@ class Blog_Comments_Form extends TpView
         }else{
             $return = '<div class="form-comments-check-in">'.
                 '<span onclick="$(\'.modal.menu, .modal.menu .overlay\').css({\'opacity\': 1, \'visibility\': \'visible\'})">'.
-                '<img src="/img/popimg/checkInNow-footer.png" title="xxxxxxxxxxx" '.
-                'alt="xxxxxxxxx">'.
+                '<img src="/img/popimg/checkInNow-footer.png" title="'.$this->langFile::BLOG_COMMENTS_AUTH_IMG.'" '.
+                'alt="'.$this->langFile::BLOG_COMMENTS_AUTH_IMG.'">'.
                 '</span>'.
                 '<span class="check-in" onclick="$(\'.modal.user, .modal.user .overlay\').css({\'opacity\': 1, \'visibility\': \'visible\'})">'.
-                'auth'.
+                $this->langFile::BLOG_COMMENTS_AUTH_TEXT.
                 '</span>'.
                 '</div>';
         }

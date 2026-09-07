@@ -19,7 +19,7 @@ class TpView_Blog_Bottom extends TpView
     {
         $return = '<div class="blog-home-bottom">';
         if($this->blogCountArts > $this->onPage){
-            $return .= '<span onclick="blogNextPage()" id="blog-see-more">See more ('.
+            $return .= '<span onclick="blogNextPage()" id="blog-see-more">'.$this->langFile::SEE_MORE_LABLE.' ('.
                 '<span id="blog-see-left">'.($this->blogCountArts - $this->onPage).'</span>'.
                 ')</span>'.
                 '<input type="hidden" id="blog-count-arts" value="'.$this->blogCountArts.'">'.
@@ -28,5 +28,11 @@ class TpView_Blog_Bottom extends TpView
         $return .= '</div>';
 
         return $return;
+    }
+
+    public function getDefaultLang()
+    {
+        $class_Name = 'Src\LangFiles\Views\Blog\HomePage\LangFiles_'.self::ucfirstLang($this->userLang).'_Views_Blog_Hp_Bottom';
+        return new $class_Name();
     }
 }

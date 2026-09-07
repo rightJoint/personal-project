@@ -11,13 +11,13 @@ class SiteView_Blog_Art extends SiteView
 {
     public string $artRef = '';
 
-    public string $h1 = 'wedwedwe';
+    public string $h1 = '';
 
     public string $logo = '/img/popimg/blog-logo.png';
     public string $shortcutIcon = '/img/popimg/blog-icon.png';
 
 
-    public $artRow = [];
+    public $artRow = ['artMeta' => '', 'artImg' => '', 'commentsFlag' => false, 'pubDate' => '', 'refreshDate' => ''];
 
     public $artTags = [];
 

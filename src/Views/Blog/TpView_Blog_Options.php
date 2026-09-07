@@ -24,8 +24,8 @@ class TpView_Blog_Options extends TpView
     public function getResponseHtml(): string
     {
         $pagination = new TpView_Pagination();
-        $pagination->setUpCustomLang($pagination->getDefaultLang());
         $pagination->userLang = $this->userLang;
+        $pagination->setUpCustomLang($pagination->getDefaultLang());
         $pagination->count = $this->blogCountArts;
         $pagination->curPage = $this->curPage;
         $pagination->onPage = $this->onPage;

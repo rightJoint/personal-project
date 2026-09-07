@@ -12,6 +12,12 @@ class TpView_Blog_Top extends TpView
 
     public function getResponseHtml(): string
     {
-        return '<div class="blog-home-top"><h2 class="">Блог</h2></div>';
+        return '<div class="blog-home-top"><h2 class="">'.$this->langFile::H2.'</h2></div>';
+    }
+
+    public function getDefaultLang()
+    {
+        $class_Name = 'Src\LangFiles\Views\Blog\HomePage\LangFiles_'.self::ucfirstLang($this->userLang).'_Views_Blog_Hp_Top';
+        return new $class_Name();
     }
 }

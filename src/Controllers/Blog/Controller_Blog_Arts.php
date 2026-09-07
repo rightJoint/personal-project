@@ -5,15 +5,15 @@ namespace Src\Controllers\Blog;
 
 
 use JointApp\Controllers\ControllerWeb;
-use JointApp\Factories\ModelFactory;
 use JointApp\JointAppQueryBuilder;
-use JointApp\Models\RecordsModel;
-use JointApp\Views\Records\RecordListView;
 use JointApp\Views\Records\TpView_Pagination;
 use Src\Models\Blog\Model_Blog_Comments;
 
 class Controller_Blog_Arts extends ControllerWeb
 {
+    public string $h1 = '';
+    public string $metaDescription = '';
+
     public string $artRef = '';
 
     public array $artRow = [];
@@ -37,6 +37,8 @@ class Controller_Blog_Arts extends ControllerWeb
     function actionIndex()
     {
         $this->artRow = $this->model->getBlogArt($this->artRef);
+        $this->h1 = $this->artRow['artName'];
+        $this->metaDescription = $this->artRow['artName'].'. '.$this->artRow['artMeta'];
         if(isset($this->artRow['art_id'])){
             $this->artTags = $this->model->getArtTags($this->artRow['art_id']);
             $this->listComments = $this->listComments();
@@ -44,7 +46,6 @@ class Controller_Blog_Arts extends ControllerWeb
         }else{
             $this->logger->error('article not found on actionIndex', $this->logger->logger_context);
         }
-
     }
 
     public function postComment()
@@ -141,6 +142,9 @@ class Controller_Blog_Arts extends ControllerWeb
     public function filterComments()
     {
         if($this->filterComments == 'y'){
+
+            $this->view->userLang = $this->userLang;
+            $this->view->setUpCustomLang($this->view->getDefaultLang());
 
             $this->artRow = $this->model->getBlogArt($this->artRef);
 

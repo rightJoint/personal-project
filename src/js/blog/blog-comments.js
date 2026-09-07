@@ -80,9 +80,7 @@ function filterBlog()
         setRelative: true
     });
 
-    jointAppLangSl = "/ru";
-
-    $.post(jointAppLangSl+"/blog/filter-comments",
+    $.post(langSl+"/blog/filter-comments",
         "filterComments=y&"+
         "artRef="+$("#blog-art-ref").val()+"&"+
         "curPage="+$(".blog-pagination span.active").attr("page")+"&"+

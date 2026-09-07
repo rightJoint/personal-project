@@ -27,6 +27,7 @@ class WebView extends View
     public $css_set = [];
 
     public string $h1 = '';
+    public string $metaDescription = '';
 
     public function __construct()
     {

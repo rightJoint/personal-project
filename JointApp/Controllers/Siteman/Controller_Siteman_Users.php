@@ -36,6 +36,7 @@ class Controller_Siteman_Users extends RecordsControllerWeb
                 'format' => 'datetime',
                 'search' => 1,
                 'sort' => 1,
+                'curVal' => null,
             ),
             'birthDay' => array(
                 'format' => 'date',

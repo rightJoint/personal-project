@@ -251,7 +251,7 @@ class Controller_Siteman_Blog extends RecordsControllerWeb
             'created_by' => array(
                 'format' => 'hidden',
             ),
-            'accAlias' => array(
+            'alias' => array(
                 'format' => 'varchar',
                 'custom' => false,
             ),
@@ -359,7 +359,4 @@ class Controller_Siteman_Blog extends RecordsControllerWeb
         }
         return $return;
     }
-
-
-
 }

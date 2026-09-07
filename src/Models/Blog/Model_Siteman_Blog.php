@@ -103,12 +103,12 @@ class Model_Siteman_Blog extends RecordsModel
             $this->tableName.'.refreshDate, '.
             $this->tableName.'.created_by, '.
             $this->tableName.'.commentsFlag, '.
-            'users_dt.accAlias, '.
+            'users.alias, '.
             'blogCats.catName_'.$this->userLang.' as catName'
         )
             ->from($this->tableName)
             ->join(
-                'left join users_dt on '.$this->tableName.'.created_by = users_dt.user_id '.
+                'left join users on '.$this->tableName.'.created_by = users.user_id '.
                 'left join blogCats on blogCats.cat_id = '.$this->tableName.'.artCat'
             );
 

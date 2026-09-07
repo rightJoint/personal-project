@@ -27,6 +27,8 @@ trait RoutesCollection_Blog
                     ->withAction('actionIndex');
                 if(strtolower($routes_ns[3]) == 'test-task-php-job'){
                     $route->withView('Src\Views\Blog\IT\SiteView_Blog_TestTaskPhpJob');
+                }elseif(strtolower($routes_ns[3]) == 'sql-cheat-sheet'){
+                    $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_FiftySqlQuestions');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

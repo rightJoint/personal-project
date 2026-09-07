@@ -172,6 +172,9 @@
     list-style: none;
     margin-bottom: 0.4em;
 }
+.modal-line.test-menu a.selected{
+    text-decoration: underline;
+}
 /*<--test menu*/
 /*siteman menu-->*/
 .modal-line.siteman-menu a{
@@ -186,5 +189,8 @@
 .modal-line.siteman-menu ul li{
     list-style: none;
     margin-bottom: 0.4em;
+}
+.modal-line.siteman-menu a.selected{
+    text-decoration: underline;
 }
 /*<--siteman menu*/

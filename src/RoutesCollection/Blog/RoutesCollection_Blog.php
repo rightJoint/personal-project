@@ -25,43 +25,8 @@ trait RoutesCollection_Blog
                     ->withController('Src\Controllers\Blog\Controller_Blog_Arts', ['artRef' => $routes_ns[3]])
                     ->withModel('Src\Models\Blog\Model_Blog_Arts',)
                     ->withAction('actionIndex');
-                if(strtolower($routes_ns[3]) == 'joint-pass'){
-                    //$route->withView('Src\Views\Blog\IT\View_Blog_IT_JointPass');
-                    //$route->withView('Src\Views\Blog\IT\View_Blog_IT_JointPass');
-                }
-                elseif(strtolower($routes_ns[3]) == 'right-joint-updated'){
-                    //$route->withView('Src\Views\Blog\IT\View_Blog_IT_RightJointUpdated');
-                }
-                elseif(strtolower($routes_ns[3]) == 'phpstorm-reset-trial'){
-                    //$route->withView('Src\Views\Blog\IT\View_Blog_IT_PhpStormResetTrial');
-                }
-                elseif(strtolower($routes_ns[3]) == 'polygraph-exam'){
-                    //$route->withView('Src\Views\Blog\Job\View_Blog_Job_Polygrath');
-                }
-                elseif(strtolower($routes_ns[3]) == 'looking-for-php-fullstack-job-in-2025'){
-                    if(isset($routes_ns[4]) and $routes_ns[4]=='hh-companies'){
-                        //$route->withView('Src\Views\Blog\IT\View_Blog_IT_PhpJobCompanies');
-                    }else{
-                        //$route->withView('Src\Views\Blog\IT\View_Blog_IT_PhpJob2025');
-                    }
-                }
-                elseif(strtolower($routes_ns[3]) == 'test-task-alvasar'){
-                    //$route->withView('Src\Views\Blog\IT\View_Blog_IT_TestTaskAlvasar');
-                }
-                elseif(strtolower($routes_ns[3]) == 'test-task-parse-brackets'){
-                    //$route->withView('Src\Views\Blog\IT\View_Blog_IT_TestTaskParseBrackets');
-                }
-                elseif(strtolower($routes_ns[3]) == 'censored'){
-                    //$route->withView('Src\Views\Blog\Other\View_Blog_Other_Censored');
-                }
-                elseif(strtolower($routes_ns[3]) == 'sql-cheat-sheet'){
-                    //$route->withView('Src\Views\Blog\IT\View_Blog_IT_FiftySqlQuestions');
-                }
-                elseif(strtolower($routes_ns[3]) == 'test-task-php-job'){
+                if(strtolower($routes_ns[3]) == 'test-task-php-job'){
                     $route->withView('Src\Views\Blog\IT\SiteView_Blog_TestTaskPhpJob');
-                }
-                elseif(strtolower($routes_ns[3]) == 'make-website-multi-language'){
-                    //$route->withView('Src\Views\Blog\IT\View_Blog_IT_MultiLang');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');
@@ -98,6 +63,7 @@ trait RoutesCollection_Blog
     static function postRoute_Blog($routes_ns):JointSiteRoute
     {
         $route = new JointSiteRoute();
+        //blog filter
         if (isset($routes_ns[2]) and $routes_ns[2] == 'filter') {
             $route
                 ->withController('Src\Controllers\Blog\Controller_Blog')
@@ -105,7 +71,9 @@ trait RoutesCollection_Blog
                 ->withAction('actionFilter')
                 ->withView('Src\Views\Blog\SiteView_Blog_Main')
                 ->responseFormat('json');
-        }elseif (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'filterhome'){
+        }
+        //homepage filter
+        elseif (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'filterhome'){
             $route
                 ->withController('Src\Controllers\Blog\Controller_Blog')
                 ->withModel('Src\Models\Blog\Model_Blog',)
@@ -113,6 +81,7 @@ trait RoutesCollection_Blog
                 ->withView('Src\Views\Blog\SiteView_Blog_Main')
                 ->responseFormat('json');
         }
+        //art comments filter
         elseif($routes_ns[2] == 'filter-comments'){
             $route
                 ->withController('Src\Controllers\Blog\Controller_Blog_Arts')
@@ -121,24 +90,15 @@ trait RoutesCollection_Blog
                 ->withView('Src\Views\Blog\TpView_Blog_Art_Comments')
                 ->responseFormat('json');
         }
+        //post add comment
         elseif (isset($routes_ns[2]) and strtolower($routes_ns[2]) == 'article') {
             if (isset($routes_ns[3])) {
                 $route
                     ->withController('Src\Controllers\Blog\Controller_Blog_Arts', ['artRef' => $routes_ns[3]])
                     ->withModel('Src\Models\Blog\Model_Blog_Arts',)
                     ->withAction('postComment')
-                    ->withAction('actionIndex');
-                /*if (strtolower($routes_ns[3]) == 'joint-pass') {
-                    $route->withView('Src\Views\Blog\IT\View_Blog_IT_JointPass');
-                } elseif (strtolower($routes_ns[3]) == 'right-joint-updated') {
-                    $route->withView('Src\Views\Blog\IT\View_Blog_IT_RightJointUpdated');
-                } elseif (strtolower($routes_ns[3]) == 'phpstorm-reset-trial') {
-                    $route->withView('Src\Views\Blog\IT\View_Blog_IT_PhpStormResetTrial');
-                } elseif (strtolower($routes_ns[3]) == 'polygraph-exam') {
-                    $route->withView('Src\Views\Blog\Job\View_Blog_Job_Polygrath');
-                } else {*/
-                    $route->withView('Src\Views\Blog\SiteView_Blog_Art');
-               // }
+                    ->withAction('actionIndex')
+                    ->withView('Src\Views\Blog\SiteView_Blog_Art');
             }
         }
         return $route;

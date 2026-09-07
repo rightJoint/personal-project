@@ -23,7 +23,6 @@ class Controller_Blog_Arts extends ControllerWeb
     public string $formCommentsContent = '';
     public string $commentP_id = 'new';
     public string $formCommentsErr = '';
-    public string $formCommentsRef = '';
     public string $addCommentFlag = '';
     public int $countComments = 0;
 
@@ -37,9 +36,9 @@ class Controller_Blog_Arts extends ControllerWeb
     function actionIndex()
     {
         $this->artRow = $this->model->getBlogArt($this->artRef);
-        $this->h1 = $this->artRow['artName'];
-        $this->metaDescription = $this->artRow['artName'].'. '.$this->artRow['artMeta'];
         if(isset($this->artRow['art_id'])){
+            $this->h1 = $this->artRow['artName'];
+            $this->metaDescription = $this->artRow['artName'].'. '.$this->artRow['artMeta'];
             $this->artTags = $this->model->getArtTags($this->artRow['art_id']);
             $this->listComments = $this->listComments();
             $this->countComments = $this->countComments();
@@ -63,19 +62,24 @@ class Controller_Blog_Arts extends ControllerWeb
                 if(strlen($insertContent) > 10){
                     $this->artRow = $this->model->getBlogArt($this->artRef);
                     if(isset($this->artRow['art_id'])){
-                        $insertComment = 'insert into blogComments '.
-                            '(comment_id, commentP_id, art_id, content, created_by, activeFlag, addDate) '.
-                            'values '.
-                            '("'.$this->model->createGUID().'", '.$insertParId.', "'.$this->artRow['art_id'].'", "'.$insertContent.'", '.
-                            '"'.$this->user->getId().'", true, "'.date('Y-m-d H:i:s').'")';
+                        if($this->artRow['commentsFlag']){
+                            $insertComment = 'insert into blogComments '.
+                                '(comment_id, commentP_id, art_id, content, created_by, activeFlag, addDate) '.
+                                'values '.
+                                '("'.$this->model->createGUID().'", '.$insertParId.', "'.$this->artRow['art_id'].'", "'.$insertContent.'", '.
+                                '"'.$this->user->getId().'", true, "'.date('Y-m-d H:i:s').'")';
 
-                        if($this->model->pdoQuery($insertComment)){
-                            $this->commentP_id = 'new';
-                            $this->formCommentsContent = '';
-                            $this->logger->redirect($this->langSl.'/blog/article/'.$this->artRef.
-                                '?curPage='.$this->curPage.'&onPage='.$this->onPage.'&sort='.$this->sort.
-                                '&viewType='.$this->viewType);
+                            if($this->model->pdoQuery($insertComment)){
+                                $this->commentP_id = 'new';
+                                $this->formCommentsContent = '';
+                                $this->logger->redirect($this->langSl.'/blog/article/'.$this->artRef.
+                                    '?curPage='.$this->curPage.'&onPage='.$this->onPage.'&sort='.$this->sort.
+                                    '&viewType='.$this->viewType);
+                            }
+                        }else{
+                            $this->logger->notice('comments not allowed', $this->context);
                         }
+
                     }else{
                         $this->logger->notice('wrong comment artRef', $this->context);
                     }
@@ -141,58 +145,51 @@ class Controller_Blog_Arts extends ControllerWeb
 
     public function filterComments()
     {
-        if($this->filterComments == 'y'){
 
-            $this->view->userLang = $this->userLang;
-            $this->view->setUpCustomLang($this->view->getDefaultLang());
+        $this->view->userLang = $this->userLang;
+        $this->view->setUpCustomLang($this->view->getDefaultLang());
 
-            $this->artRow = $this->model->getBlogArt($this->artRef);
+        $this->artRow = $this->model->getBlogArt($this->artRef);
 
-            $qBuilder = $this->commentsSearchQuery();
-            $qBuilder_count = clone($qBuilder);
+        $qBuilder = $this->commentsSearchQuery();
+        $qBuilder_count = clone($qBuilder);
 
-            $comments = new Model_Blog_Comments($this->user, $this->logger);
+        $comments = new Model_Blog_Comments($this->user, $this->logger);
 
-            if($this->viewType == 'tree'){
-                $listComments = $comments->treeRecordsRecursive($qBuilder);
-            }elseif ($this->viewType == 'list'){
-                $listComments = $comments->listRecordsRecursive($qBuilder);
-            }
+        if($this->viewType == 'tree'){
+            $listComments = $comments->treeRecordsRecursive($qBuilder);
+        }elseif ($this->viewType == 'list'){
+            $listComments = $comments->listRecordsRecursive($qBuilder);
+        }
 
-            $this->updateViewParams();
+        $this->updateViewParams();
 
-            if($this->viewType == 'tree'){
-                $listView = $this->view->printArtCommentsTree($listComments);
+        if($this->viewType == 'tree'){
+            $listView = $this->view->printArtCommentsTree($listComments);
 
-            }elseif ($this->viewType == 'list'){
-                $listView = $this->view->printArtCommentsList($listComments);
-            }
+        }elseif ($this->viewType == 'list'){
+            $listView = $this->view->printArtCommentsList($listComments);
+        }
 
-            $qBuilder_count->limit = '';
-            $qBuilder_count->order = '';
+        $qBuilder_count->limit = '';
+        $qBuilder_count->order = '';
 
-            if($this->viewType == 'tree'){
-                $this->countComments = $comments->countTreeRecords($qBuilder_count);
-            }elseif ($this->viewType == 'list'){
-                $this->countComments = $comments->countListRecords($qBuilder_count);
-            }
+        if($this->viewType == 'tree'){
+            $this->countComments = $comments->countTreeRecords($qBuilder_count);
+        }elseif ($this->viewType == 'list'){
+            $this->countComments = $comments->countListRecords($qBuilder_count);
+        }
 
-
-
-            $pagination = new TpView_Pagination();
-            $pagination->setUpCustomLang($pagination->getDefaultLang());
-            $pagination->userLang = $this->userLang;
-            $pagination->count = $this->countComments;
-            $pagination->curPage = $this->curPage;
-            $pagination->onPage = $this->onPage;
+        $pagination = new TpView_Pagination();
+        $pagination->setUpCustomLang($pagination->getDefaultLang());
+        $pagination->userLang = $this->userLang;
+        $pagination->count = $this->countComments;
+        $pagination->curPage = $this->curPage;
+        $pagination->onPage = $this->onPage;
 
 
-            $pg = $pagination->getResponseHtml();
+        $pg = $pagination->getResponseHtml();
 
-            $this->responseJson = array('listView' => $listView, 'count' => $this->countComments(), 'pg' => $pg);
-        }//else{
-         //   $this->view->responseJson = 'nnnn';
-        //}
-
+        $this->responseJson = array('listView' => $listView, 'count' => $this->countComments(), 'pg' => $pg);
     }
 }

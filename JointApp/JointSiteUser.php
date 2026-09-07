@@ -103,6 +103,7 @@ class JointSiteUser
             $this->avatar = $_SESSION['user']['avatar'];
             $this->isAuth = true;
             $this->isValid = $_SESSION['user']['isValid'];
+            $this->isAdmin = $_SESSION['user']['isAdmin'];
         }
     }
 
@@ -116,6 +117,7 @@ class JointSiteUser
             'blackList' => $this->blackList,
             'avatar' => $this->avatar,
             'isValid' => $this->isValid,
+            'isAdmin' => $this->isAdmin,
         ];
     }
 

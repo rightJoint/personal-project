@@ -98,15 +98,6 @@ class Model_Blog extends RecordsModel
         )
             ->from($this->tableName);
 
-        $addWhere = 'artRef not in ("censored", "looking-for-php-fullstack-job-in-2025", 
-        "test-task-alvasar", "polygraph-exam", "right-joint-updated")';
-
-        if($qBuilder->where){
-            $qBuilder->where($qBuilder->where.' and '.$addWhere);
-        }else{
-            $qBuilder->where($addWhere);
-        }
-
         return $this->fetchToArray($qBuilder->buildQuery());
     }
 

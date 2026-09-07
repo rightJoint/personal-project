@@ -43,7 +43,7 @@ trait ControllerWebTrait
         $this->u_login = $this->user->getLogin();
         $this->u_isAuth = $this->user->isAuth();
         $this->u_isValid = $this->user->isValid();
-        $this->u_isAdmin = $this->user->isBanned();
+        $this->u_isAdmin = $this->user->isAdmin();
     }
 
 }

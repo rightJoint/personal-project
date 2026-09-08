@@ -43,6 +43,8 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\Others\SiteView_Blog_Others_RightJointUpdated');
                 }elseif(strtolower($routes_ns[3]) == 'looking-for-php-fullstack-job-in-2025'){
                     $route->withView('Src\Views\Blog\Job\SiteView_Blog_Job_PhpJob2025');
+                }elseif(strtolower($routes_ns[3]) == 'censored'){
+                    $route->withView('Src\Views\Blog\Others\SiteView_Blog_Others_Censored');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

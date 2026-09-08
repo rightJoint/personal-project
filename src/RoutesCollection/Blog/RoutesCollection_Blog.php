@@ -33,6 +33,10 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_JointPass');
                 }elseif(strtolower($routes_ns[3]) == 'phpstorm-reset-trial'){
                     $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_PhpStormResetTrial');
+                }elseif(strtolower($routes_ns[3]) == 'polygraph-exam'){
+                    $route->withView('Src\Views\Blog\Job\SiteView_Blog_Job_Polygraph');
+                }elseif(strtolower($routes_ns[3]) == 'test-task-parse-brackets'){
+                    $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_ParseBrackets');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

@@ -29,6 +29,8 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\IT\SiteView_Blog_TestTaskPhpJob');
                 }elseif(strtolower($routes_ns[3]) == 'sql-cheat-sheet'){
                     $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_FiftySqlQuestions');
+                }elseif(strtolower($routes_ns[3]) == 'joint-pass'){
+                    $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_JointPass');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

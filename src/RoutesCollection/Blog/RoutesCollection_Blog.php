@@ -31,6 +31,8 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_FiftySqlQuestions');
                 }elseif(strtolower($routes_ns[3]) == 'joint-pass'){
                     $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_JointPass');
+                }elseif(strtolower($routes_ns[3]) == 'phpstorm-reset-trial'){
+                    $route->withView('Src\Views\Blog\IT\SiteView_Blog_IT_PhpStormResetTrial');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

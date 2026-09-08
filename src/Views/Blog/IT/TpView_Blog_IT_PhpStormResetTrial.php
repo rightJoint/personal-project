@@ -1,0 +1,158 @@
+<?php
+
+
+namespace Src\Views\Blog\IT;
+
+
+use JointApp\Views\TpView;
+
+class TpView_Blog_IT_PhpStormResetTrial extends TpView
+{
+    public function getDefaultLang()
+    {
+        $class_Name = 'Src\LangFiles\Views\Blog\Articles\PhpStormResetTrial\LangFiles_'.self::ucfirstLang($this->userLang).'_Views_B_A_PhpStormResetTrial';
+        return new $class_Name();
+    }
+
+    public function getResponseHtml(): string
+    {
+        return '<article>' .
+            '<h3>Сброс на Linux Ubuntu</h3>'.
+            '<h4>Версии для проверки</h4>'.
+            '<ul>'.
+            '<li>PhpStorm 2019.2.2 Build#PS-192.6603.42, built on September 12, 2019</li>'.
+            '<li>Linux w651 3.13.0-32-generic #57-Ubuntu SMP</li>'.
+            '</ul>'.
+            '<h4>Сброс тестового периода</h4>'.
+            '<p>'.
+            'Сбросить тестовый период можно из консоли, выполнив следующие команды:'.
+            '</p>'.
+
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>cd ~/.PhpStorm[version]</li>'.
+            '<li>rm config/eval/PhpStorm[version].evaluation.key</li>'.
+            '<li><b>rm config/options</b></li>'.
+            '<li>cd ~/.java/.userPrefs/jetbrains</li>'.
+            '<li>rm -rf phpstorm</li>'.
+            '</ul>'.
+            '</div>'.
+            '<p>Для перехода к директории .PhpStorm[version] наберите в консоле <b>cd ~/.</b> далее <b>tab</b></p>'.
+            '<p>'.
+            'Это решение скопировано с интернет и оно работает. Таким образом тестовый период 30 дней будет сброшен и можно начать новый.'.
+            '</p>'.
+            '<p>'.
+            'Для перемещения файлов лучше воспользоваться файл-менеджером <b>Dolphin</b> или каким-либо другим. '.
+            'Если вы собираетесь восстановить рабочее пространство, сохраните файлы из <b>config/options</b> отдельно для '.
+            'последующего использования'.
+            '</p>'.
+            '<h4>Восстановление проектов и подключений</h4>'.
+            '<p>'.
+            'Списки проектов и подключений находятся в двух файлах <b>webServers.xml</b> и <b>recentProjectDirectories.xml</b>'.
+            '</p>'.
+            '<p>'.
+            'Файл <b>recentProjectDirectories.xml</b> имеет примерно следующий вид:'.
+            '</p>'.
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>< entry key="$USER_HOME$/PhpstormProjects/CrmTest"></li>'.
+            '<li>< value></li>'.
+            '<li>< RecentProjectMetaInfo></li>'.
+            '<li>< option name="build" value="PS-192.6603.42" /></li>'.
+            '<li>< option name="productionCode" value="PS" /></li>'.
+            '<li>< option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" /></li>'.
+            '<li>< option name="<b>projectOpenTimestamp</b>" value="1571400758954" /></li>'.
+            '<li>< option name="<b>buildTimestamp</b>" value="1568298935318" /></li>'.
+            '<li>< /RecentProjectMetaInfo></li>'.
+            '<li>< /value></li>'.
+            '<li>< /entry></li>'.
+            '</ul>'.
+            '</div>'.
+            '<p>'.
+            'Для каждого, описанного в файле проекта, существуют свои <b>projectOpenTimestamp</b> и <b>buildTimestamp</b> которые необходимо '.
+            'заменить на актуальные. Например, после сброса тестового периода, создайте новый пустой проект и скопируйте '.
+            'актуальные значения параметров из нового файла'.
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>config/options/recentProjectDirectories.xml</li>'.
+            '</ul>'.
+            '</div>'.
+            '</p>'.
+            '<p>'.
+            'После этого осталось только переместить обратно в <b>config/options/</b> старый <b>webServers.xml</b> и обновленный '.
+            '<b>recentProjectDirectories.xml</b>. Восстановить цветовую схему и другие опци можно используя другие файлы каталога '.
+            '<b>config/options/</b>'.
+            '</p>'.
+            '</article>'.
+            '<hr style="margin: 2em 0">'.
+            '<article>'.
+            '<h3>Сброс на Windows-10</h3>'.
+            '<h4>Версии для проверки</h4>'.
+            '<ul>'.
+            '<li>PhpStorm 2020.1</li>'.
+            '<li>Windows-10 Pro Сборка 19041</li>'.
+            '</ul>'.
+            '<h4>Сброс тестового периода</h4>'.
+            '<p>'.
+            'На Windows, после истечения пробного периода, phpStorm показывает надоедливое окно с предупреждением, что время работы '.
+            'с программой ограничено 30 мин. Чтобы сбросить тестовый период необходимо выполнить следующие действия:'.
+            '</p>'.
+            '<p>Откройте редактор реестра и удалите ветку'.
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>KEY_CURRENT_USER\SOFTWARE\JavaSoft\Prefs\jetbrains</li>'.
+            '</ul>'.
+            '</div>'.
+            '</p>'.
+            '<p>Перейдите в папку <b>Пользователи</b> системы (CurrentUser - ваше имя пользователя). Удалите папку '.
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>C:\Users\<b>CurrentUser</b>\AppData\Local\JetBrains\PhpStorm2020.1</li>'.
+            '</ul>'.
+            '</div>'.
+            '</p>'.
+            '<p>'.
+            'Удалите папку:'.
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>C:\Users\<b>CurrentUser</b>\AppData\Roaming\JetBrains\PhpStorm2020.1\eval</li>'.
+            '</ul>'.
+            '</div>'.
+            '</p>'.
+            '<p>'.
+            'Скопируйте файлы отдельно из '.
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>C:\Users\<b>CurrentUser</b>\AppData\Roaming\JetBrains\PhpStorm2020.1\options</li>'.
+            '</ul>'.
+            '</div>'.
+            'для восстановления рабочего пространства, затем удалите папку.'.
+            '</p>'.
+            '</p>'.
+            '<p>После этих действий тестовый период будет сброшен и можно начать новый.</p>'.
+            '<h4>Восстановление проектов и подключений</h4>'.
+            '<p>'.
+            'PhpStorm хранит списки проектов в файле <b>recentProjects.xml</b>'.
+            '</p>'.
+            '<p>'.
+            'Как и на Linux, вам необходимо обновить параметры <b>projectOpenTimestamp</b> и <b>buildTimestamp</b> '.
+            'для каждого проекта, описанного в файле '.
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>C:\Users\<b>CurrentUser</b>\AppData\Roaming\JetBrains\PhpStorm2020.1\options\recentProjects.xml</li>'.
+            '</ul>'.
+            '</div>'.
+            'Далее вы создаете новый проект, phpStorm создает новый файл options\recentProjects.xml из которого вы копируете актуальные настройки параметров '.
+            'в старый options\recentProjects.xml.'.
+            '</p>'.
+            '<p>'.
+            'Теперь осталость только заменить новый recentProjects.xml на обновленный.'.
+            '</p>'.
+            '</article>'.
+            '<h3>Выводы:</h3>'.
+            '<p>'.
+            'Php Storm хорошая среда для разработки, конечно она стоит своих денег, потому что бестплатный netBeans настроить '.
+            'на работу по sftp так и не удалось. Но на сброс тестового периода уйдет всего минут пять.'.
+            '</p>';
+    }
+}

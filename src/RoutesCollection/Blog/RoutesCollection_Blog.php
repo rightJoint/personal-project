@@ -59,18 +59,18 @@ trait RoutesCollection_Blog
                 if(strtolower($routes_ns[3]) == 'parse-brackets'){
                     $route
                         ->withController('Src\Controllers\Blog\Controller_Blog_Test')
-                        ->withModel('Src\Models\Blog\Model_Blog_Test',)
+                        ->withModel('JointApp\Models\Model',)
                         ->withAction('parseBrackets')
-                        ->withView('Src\Views\Blog\IT\View_Blog_IT_TestTaskParseBrackets')
+                        ->withView('Src\Views\Blog\IT\TpView_Blog_IT_ParseBrackets')
                         ->responseFormat('json');
                 }
                 //blog/testTask/alvasarcode
                 elseif(strtolower($routes_ns[3]) == 'alvasarcode'){
                     $route
                         ->withController('Src\Controllers\Blog\Controller_Blog_Test')
-                        ->withModel('Src\Models\Blog\Model_Blog_Test',)
+                        ->withModel('JointApp\Models\Model',)
                         ->withAction('alvasarCode')
-                        ->withView('Src\Views\Blog\IT\View_Blog_IT_TestTaskParseBrackets')
+                        ->withView('JointApp\Views\TpView')
                         ->responseFormat('json');
                 }
             }

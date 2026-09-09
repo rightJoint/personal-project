@@ -9,6 +9,8 @@ use JointApp\Views\TpView;
 class TpView_Blog_IT_JointPass extends TpView
 {
     const JOINT_PASS_IMG = '/userdata/blog/IT/JointPass';
+    public $css = ['code-snippet'=>'/css/code-snippet.css',
+        'joint-pass'=>'/css/blog/joint-pass.css',];
 
     public function getDefaultLang()
     {
@@ -18,18 +20,11 @@ class TpView_Blog_IT_JointPass extends TpView
 
     public function getResponseHtml(): string
     {
-        return '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.
-            '<section class="prod-about">'.
+        return '<section class="prod-about">'.
             '<p>'.
             $this->langFile::PROD_ABOUT.
             '</p>'.
             '</section>'.
-            '</div></div></div>'.
-
-
-            '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.
             '<section class="prod-menu">'.
             '<h2>'.$this->langFile::PI_H2_CONTENT.'</h2>'.
             '<ul>'.
@@ -39,9 +34,6 @@ class TpView_Blog_IT_JointPass extends TpView
             '<li><a href="#product-feedback">'.$this->langFile::PI_H2_FEEDBACK.'</a></li>'.
             '</ul>'.
             '</section>'.
-            '</div></div></div>'.
-            '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.
             '<section>'.
             '<h2 id="product-downloads">'.$this->langFile::PI_H2_DWL.'</h2>'.
             '<p>'.
@@ -53,35 +45,24 @@ class TpView_Blog_IT_JointPass extends TpView
             '</p>'.
             '<p>'.$this->langFile::DWL_P2.' <strong>aa653c47a6b6925441fb7faf0689eb3a</strong>'.
             '</p>'.
-            '<div class="example">'.
-            '<div class="example-code">'.
-            'CertUtil -hashfile jointPass.exe MD5'.
+            '<div class="code-snippet">'.
+            '<ul><li>CertUtil -hashfile jointPass.exe MD5</li></ul>'.
             '</div>'.
-            '<div class="example-code">'.
-            'Хэш MD5 : jointPass.exe: aa653c47a6b6925441fb7faf0689eb3a'.
-            '</div>'.
-            '<div class="example-text">'.
-            $this->langFile::DWL_EX_TXT1.
-            '</div>'.
+            '<div class="code-comment">'.
+            $this->langFile::DWL_EX_TXT1.' jointPass.exe: aa653c47a6b6925441fb7faf0689eb3a'.
             '</div>'.
             '</p>'.
             '<p>'.$this->langFile::DWL_P3.'</p>'.
-            '<div class="example">'.
-            '<div class="example-code">'.
-            'git clone https://github.com/rightJoint/jointpass'.
+            '<div class="code-snippet">'.
+            '<ul>'.
+            '<li>git clone https://github.com/rightJoint/jointpass</li>'.
+            '<li>git checkout main</li>'.
+            '</ul>'.
             '</div>'.
-            '<div class="example-code">'.
-            'git checkout main'.
-            '</div>'.
-            '<div class="example-text">'.
+            '<div class="code-comment">'.
             $this->langFile::DWL_EX_TXT2.
             '</div>'.
-            '</div>'.
             '</section>'.
-            '</div></div></div>'.
-
-            '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.
             '<section>'.
             '<h2 id="product-info">'.$this->langFile::GUI_H2.'</h2>'.
 
@@ -188,9 +169,6 @@ class TpView_Blog_IT_JointPass extends TpView
             '</div>'.
             '</div>'.
             '</section>'.
-            '</div></div></div>'.
-            '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.
             '<section class="prod-deploy">'.
             '<h2 id="product-craft">'.$this->langFile::CF_H2.'</h2>'.
             '<p>'.
@@ -199,13 +177,13 @@ class TpView_Blog_IT_JointPass extends TpView
             '<p>'.
             $this->langFile::CF_P2.
             '</p>'.
-            '<div class="example">'.
-            '<div class="example-code">'.
+            '<div class="code-snippet">'.
+            '<ul><li>'.
             '4O5VjnGixFORFSNfwfZwSl+LDrkF3C98EiaY87EweKN7bKSSv3ER6U8rq03yx8rwsCCK5DrP6yrR0ED6oVttrlotC8Cqu4E4I8MCQqxwDu61U4PE/sOUrNkI9SSrAzqj'.
+            '</li></ul>'.
             '</div>'.
-            '<div class="example-text">'.
+            '<div class="code-comment">'.
             $this->langFile::CF_EX_TXT1.
-            '</div>'.
             '</div>'.
             '<p>'.
             $this->langFile::CF_P3.
@@ -224,15 +202,10 @@ class TpView_Blog_IT_JointPass extends TpView
             $this->langFile::CF_P5.
             '</p>'.
             '</section>'.
-            '</div></div></div>'.
-
-            '<div class="contentBlock-frame"><div class="contentBlock-center">'.
-            '<div class="contentBlock-wrap">'.
             '<section style="margin-bottom: 4em">'.
             '<h2 id="product-feedback">'.$this->langFile::PI_H2_FEEDBACK.'</h2>'.
             '<p>'.$this->langFile::FEEDBACK_P1.' <span class="ex-conf">rightjoint@yandex.ru</span>'.
             '</p>'.
-            '</section>'.
-            '</div></div></div>';
+            '</section>';
     }
 }

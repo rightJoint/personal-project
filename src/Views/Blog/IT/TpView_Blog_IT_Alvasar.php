@@ -11,6 +11,9 @@ class TpView_Blog_IT_Alvasar extends TpView
     public string $fio = 'Шишкова Ирина Валентиновна';
     public string $birthday = '1964-05-13';
 
+    public $css=['alvasar-code'=>'/css/blog/alvasar.css'];
+    public $js = ['test-ajax' => '/js/blog/testTasksAjax.js',];
+
     public function getDefaultLang()
     {
         $class_Name = 'Src\LangFiles\Views\Blog\Articles\Alvasar\LangFiles_'.self::ucfirstLang($this->userLang).'_Views_B_A_Alvasar';

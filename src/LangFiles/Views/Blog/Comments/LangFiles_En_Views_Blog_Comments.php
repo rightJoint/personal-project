@@ -18,7 +18,7 @@ class LangFiles_En_Views_Blog_Comments
     const BLOG_COMMENTS_VIEW_TYPE = 'View';
     const BLOG_COMMENTS_VIEW_TYPE_LIST = 'List';
     const BLOG_COMMENTS_VIEW_TYPE_TREE = 'Tree';
-    const BLOG_COMMENTS_WRITE_FIRST = 'Write first comments';
+    const BLOG_COMMENTS_WRITE_FIRST = 'Be the first to comment';
     const BLOG_COMMENTS_NEW_COMMENT = 'Write comment';
     const BLOG_COMMENTS_COMMENT_REPLY = 'Reply';
     const BLOG_COMMENTS_COMMENT_REPLIES = 'Replies';

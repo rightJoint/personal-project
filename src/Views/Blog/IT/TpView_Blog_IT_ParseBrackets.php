@@ -8,7 +8,12 @@ use JointApp\Views\TpView;
 
 class TpView_Blog_IT_ParseBrackets extends TpView
 {
-    private array $bracketsSigns = array(
+    public $css = ['code-snippet'=>'/css/code-snippet.css',
+        'brackets'=>'/css/blog/parse-brackets.css'];
+
+    public $js = ['test-ajax' => '/js/blog/testTasksAjax.js',];
+
+    public array $bracketsSigns = array(
         'br_1' => array(
             'start' => '<',
             'end' => '>',

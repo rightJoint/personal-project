@@ -23,6 +23,7 @@ class Controller implements LangInterface
     protected $langFile;
 
     public string $userLang = 'ru';
+    public string $langSl = '';
 
     protected JointSiteUser $user;
 

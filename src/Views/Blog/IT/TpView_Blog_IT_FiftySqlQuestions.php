@@ -8,6 +8,8 @@ use JointApp\Views\TpView;
 
 class TpView_Blog_IT_FiftySqlQuestions extends TpView
 {
+    public $css=['fifty-sql-questions' => '/css/blog/fifty-sql-questions.css',];
+
     public function getDefaultLang()
     {
         $class_Name = 'Src\LangFiles\Views\Blog\Articles\FiftySqlQuestions\LangFiles_'.self::ucfirstLang($this->userLang).'_Views_B_A_FiftySqlQuestions';

@@ -12,4 +12,7 @@ class LangFiles_En_Views_ModalMenu
     const LANG_PANEL_TEXT_RU = 'view in rus';
     const LANG_PANEL_TEXT_EN = 'смотреть на английском';
     const MODAL_MENU_SU_TEXT = 'Open';
+    const MODAL_MENU_BLOG_TEXT = 'Blog';
+    const MODAL_MENU_BLOG_TITLE = 'Discussion of topics';
+    const MODAL_MENU_BLOG_SUP = 'discussions';
 }

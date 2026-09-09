@@ -15,6 +15,9 @@ class TpView_ModalMenu extends TpView
     public string $uri_pq = '';
     public array $routes_ns = [];
 
+    //blog pop articles menu
+    public array $popArticles = [];
+
     protected $css = array(
         'modals' => '/css/WebView/modals.css',
     );
@@ -77,7 +80,8 @@ class TpView_ModalMenu extends TpView
             '</div>'.
             '</div>'.
             $this->modalMenuTests().
-            $this->modalMenuSitenam();
+            $this->modalMenuSitenam().
+            $this->modalMenuBlog();
 
         $modalMenu.= '</div></div></div></div>';
         return $modalMenu;
@@ -153,6 +157,36 @@ class TpView_ModalMenu extends TpView
                 }
                 $return .= '<li><a href="'.$this->langSl.$httpLinks[$key].'" title="'.$linksLang[$key]['title'].'"'.$href_style.'>'.$linksLang[$key]['text'].'</a></li>';
             }
+        }
+        $return .= '</ul>'.
+            '</div>'.
+            '</div>';
+
+        return $return;
+    }
+
+    private function modalMenuBlog():string
+    {
+        $menu_style = ' folded';
+        $list_style = ' style="display: none"';
+        if(isset($this->routes_ns[1]) and strtolower($this->routes_ns[1]) == 'blog'){
+            $menu_style = '';
+            $list_style = '';
+        }
+
+        $return = "<div class='modal-line siteman-menu'>".
+            '<div class="modal-line-img"><img src="/img/popimg/blog-logo.png"></div>'.
+            '<div class="modal-line-text">'.
+            '<a href="'.$this->langSl.'/blog" title="'.$this->langFile::MODAL_MENU_BLOG_TITLE.'">'.$this->langFile::MODAL_MENU_BLOG_TEXT.'</a>'.
+            '<sup>'.$this->langFile::MODAL_MENU_BLOG_SUP.'</sup>'.
+            '<span class="opnSubMenu'.$menu_style.'">'.$this->langFile::MODAL_MENU_SU_TEXT.'</span>'.
+            '<ul'.$list_style.'>';
+        foreach ($this->popArticles as $num=>$row){
+            $href_style = '';
+            if(isset($this->routes_ns[3]) and strtolower($this->routes_ns[3]) == strtolower($row['artRef'])){
+                $href_style = ' class="selected"';
+            }
+            $return .= '<li><a href="'.$this->langSl.'/blog/article/'.$row['artRef'].'" title="'.$row['artMeta'].'"'.$href_style.'>'.$row['artName'].'</a></li>';
         }
         $return .= '</ul>'.
             '</div>'.

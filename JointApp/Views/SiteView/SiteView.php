@@ -50,6 +50,9 @@ class SiteView extends WebView
     public bool $signInErrPass = false;
     public bool $signInErrWrongPass = false;
 
+    //blog pop articles menu
+    public array $popArticles = [];
+
 
     protected function handleTpHeader():string
     {

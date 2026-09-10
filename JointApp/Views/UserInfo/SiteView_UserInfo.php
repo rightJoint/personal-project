@@ -3,7 +3,6 @@
 namespace JointApp\Views\UserInfo;
 
 
-use JointApp\Views\PersonalPage\TpView_User_Info;
 use JointApp\Views\SiteView\SiteView;
 
 class SiteView_UserInfo extends SiteView
@@ -24,7 +23,7 @@ class SiteView_UserInfo extends SiteView
 
     protected function putCustomTemplates():void
     {
-        $this->tpSet->PpUserInfo = new TpView_User_Info();
+        $this->tpSet->PpUserInfo = new TpView_UserInfo();
     }
 
     protected function replaceDefaultHeadLang()

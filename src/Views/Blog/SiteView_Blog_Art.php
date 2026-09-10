@@ -4,7 +4,6 @@
 namespace Src\Views\Blog;
 
 
-use JointApp\Views\Records\RecordListView;
 use JointApp\Views\SiteView\SiteView;
 
 class SiteView_Blog_Art extends SiteView
@@ -66,6 +65,11 @@ class SiteView_Blog_Art extends SiteView
             '<div class="contentBlock-wrap">'.
             '<div class="blog-container">'.
             $this->tpSet->ArtHeader->getResponseHtml();
+    }
+
+    public function handleTpArticle():string
+    {
+        return '<div class="art-content">'.$this->tpSet->Article->getResponseHtml().'</div>';
     }
 
     public function handleTpArtComments():string

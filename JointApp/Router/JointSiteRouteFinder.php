@@ -84,7 +84,8 @@ class JointSiteRouteFinder
 
         //call to update view params automatically
         if ($returnRoute->responseFormat == 'text') {
-            $returnRoute->withAction('updateViewParams');
+            $returnRoute->withAction('getPopArticles')
+                ->withAction('updateViewParams');
         } else {
             $returnRoute->withAction('updateResponseJson');
         }

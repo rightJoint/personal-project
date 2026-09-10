@@ -33,62 +33,70 @@ class Controller_Blog_Arts extends ControllerWeb
 
     public bool $filterComments = false;
 
+    public bool $robotNoIndex = false;
+
     function actionIndex()
     {
         $this->artRow = $this->model->getBlogArt($this->artRef);
         if(isset($this->artRow['art_id'])){
-            $this->h1 = $this->artRow['artName'];
-            $this->metaDescription = $this->artRow['artName'].'. '.$this->artRow['artMeta'];
-            $this->artTags = $this->model->getArtTags($this->artRow['art_id']);
-            $this->listComments = $this->listComments();
-            $this->countComments = $this->countComments();
+            if($this->artRow['activeFlag']){
+                $this->robotNoIndex = !$this->artRow['indexFlag'];
+                $this->h1 = $this->artRow['artName'];
+                $this->metaDescription = $this->artRow['artName'].'. '.$this->artRow['artMeta'];
+                $this->artTags = $this->model->getArtTags($this->artRow['art_id']);
+                $this->listComments = $this->listComments();
+                $this->countComments = $this->countComments();
+            }else{
+                $this->logger->error('The article is temporarily unavailable', $this->context);
+            }
         }else{
-            $this->logger->error('article not found on actionIndex', $this->logger->logger_context);
+            $this->logger->error('article not found on actionIndex', $this->context);
         }
     }
 
     public function postComment()
     {
-        if($this->addCommentFlag == 'y'){
-            if($this->user->isAuth()){
-                if($this->commentP_id != 'new' and !empty($this->commentP_id)){
-                    $insertParId = '"'.$this->commentP_id.'"';
-                }else{
-                    $insertParId = 'NULL';
-                }
+        if($this->user->isAuth()){
+            if($this->commentP_id != 'new' and !empty($this->commentP_id)){
+                $insertParId = '"'.$this->commentP_id.'"';
+            }else{
+                $insertParId = 'NULL';
+            }
 
-                $insertContent = str_replace('"', '', $this->formCommentsContent);
+            $insertContent = str_replace('"', '', $this->formCommentsContent);
 
-                if(strlen($insertContent) > 10){
-                    $this->artRow = $this->model->getBlogArt($this->artRef);
-                    if(isset($this->artRow['art_id'])){
-                        if($this->artRow['commentsFlag']){
-                            $insertComment = 'insert into blogComments '.
-                                '(comment_id, commentP_id, art_id, content, created_by, activeFlag, addDate) '.
-                                'values '.
-                                '("'.$this->model->createGUID().'", '.$insertParId.', "'.$this->artRow['art_id'].'", "'.$insertContent.'", '.
-                                '"'.$this->user->getId().'", true, "'.date('Y-m-d H:i:s').'")';
+            if(strlen($insertContent) > 10){
+                $this->artRow = $this->model->getBlogArt($this->artRef);
+                if(isset($this->artRow['art_id'])){
+                    if($this->artRow['activeFlag']) {
+                        if ($this->artRow['commentsFlag']) {
+                            $insertComment = 'insert into blogComments ' .
+                                '(comment_id, commentP_id, art_id, content, created_by, activeFlag, addDate) ' .
+                                'values ' .
+                                '("' . $this->model->createGUID() . '", ' . $insertParId . ', "' . $this->artRow['art_id'] . '", "' . $insertContent . '", ' .
+                                '"' . $this->user->getId() . '", true, "' . date('Y-m-d H:i:s') . '")';
 
-                            if($this->model->pdoQuery($insertComment)){
+                            if ($this->model->pdoQuery($insertComment)) {
                                 $this->commentP_id = 'new';
                                 $this->formCommentsContent = '';
-                                $this->logger->redirect($this->langSl.'/blog/article/'.$this->artRef.
-                                    '?curPage='.$this->curPage.'&onPage='.$this->onPage.'&sort='.$this->sort.
-                                    '&viewType='.$this->viewType);
+                                $this->logger->redirect($this->langSl . '/blog/article/' . $this->artRef .
+                                    '?curPage=' . $this->curPage . '&onPage=' . $this->onPage . '&sort=' . $this->sort .
+                                    '&viewType=' . $this->viewType);
                             }
                         }else{
                             $this->logger->notice('comments not allowed', $this->context);
                         }
-
                     }else{
-                        $this->logger->notice('wrong comment artRef', $this->context);
+                        $this->logger->error('The article is temporarily unavailable', $this->context);
                     }
                 }else{
-                    $this->formCommentsErr = 'too few content';
+                    $this->logger->notice('wrong comment artRef', $this->context);
                 }
             }else{
-                $this->logger->notice('unknown user to post comment', $this->context);
+                $this->formCommentsErr = 'too few content';
             }
+        }else{
+            $this->logger->notice('unknown user to post comment', $this->context);
         }
     }
 

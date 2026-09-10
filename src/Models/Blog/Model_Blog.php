@@ -113,4 +113,11 @@ class Model_Blog extends RecordsModel
 
         return 0;
     }
+
+    public function getPopArticles(int $limit = 5):array
+    {
+        $qBuilder = new JointAppQueryBuilder();
+        $qBuilder->where($this->tableName.'.popFlag is true')->limit($limit);
+        return $this->listRecords($qBuilder);
+    }
 }

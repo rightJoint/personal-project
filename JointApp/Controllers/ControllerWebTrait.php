@@ -3,6 +3,8 @@
 namespace JointApp\Controllers;
 
 
+use Src\Models\Blog\Model_Blog;
+
 trait ControllerWebTrait
 {
     //user info
@@ -15,6 +17,9 @@ trait ControllerWebTrait
     public bool $u_isAuth = false;
     public bool $u_isValid = false;
     public bool $u_isAdmin = false;
+
+    public array $popArticles = [];
+    public int $limitPorArticles = 5;
 
     //automatically exec as final action when response format text
     public function updateViewParams()
@@ -46,4 +51,10 @@ trait ControllerWebTrait
         $this->u_isAdmin = $this->user->isAdmin();
     }
 
+    public function getPopArticles()
+    {
+        $modelBlog = new Model_Blog($this->user, $this->logger);
+        $modelBlog->userLang = $this->userLang;
+        $this->popArticles = $modelBlog->getPopArticles($this->limitPorArticles);
+    }
 }

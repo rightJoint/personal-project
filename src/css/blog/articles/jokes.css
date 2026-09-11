@@ -1,0 +1,34 @@
+.joke{
+    margin: 4em 0;
+}
+
+.joke p{
+    margin: 0;
+    padding: 0;
+}
+
+.joke img.joke-img{
+    height: 7em;
+    width: 7em;
+    border-radius: 0.5em;
+    margin: 1em;
+    display: block;
+
+}
+.joke img.joke-img.left{
+    float: left;
+}
+.joke img.joke-img.right{
+    float: right;
+}
+.joke ul.dialog{
+    list-style-type: none;
+}
+
+.joke ul.dialog li{
+    margin: 0.2em 0;
+}
+
+p.ps{
+    margin: 4em 0 3em 0;
+}

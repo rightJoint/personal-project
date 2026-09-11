@@ -45,6 +45,10 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\Job\SiteView_Blog_Job_PhpJob2025');
                 }elseif(strtolower($routes_ns[3]) == 'censored'){
                     $route->withView('Src\Views\Blog\Others\SiteView_Blog_Others_Censored');
+                }elseif(strtolower($routes_ns[3]) == 'my-fav-jokes'){
+                    $route->withView('Src\Views\Blog\Jokes\SiteView_Blog_Jokes_FavJokes');
+                }elseif(strtolower($routes_ns[3]) == 'my-fav-music'){
+                    $route->withView('Src\Views\Blog\Music\SiteView_Blog_Jokes_FavMusic');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

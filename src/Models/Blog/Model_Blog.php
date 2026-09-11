@@ -117,7 +117,7 @@ class Model_Blog extends RecordsModel
     public function getPopArticles(int $limit = 5):array
     {
         $qBuilder = new JointAppQueryBuilder();
-        $qBuilder->where($this->tableName.'.popFlag is true')->limit($limit);
+        $qBuilder->where($this->tableName.'.popFlag is true and activeFlag is true')->limit($limit);
         return $this->listRecords($qBuilder);
     }
 }

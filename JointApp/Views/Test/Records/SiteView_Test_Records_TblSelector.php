@@ -35,7 +35,7 @@ class SiteView_Test_Records_TblSelector extends SiteView_Test_Home
 
     protected function replaceDefaultHeaderLang()
     {
-        $class_Name = 'JointApp\LangFiles\Views\Test\records\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_T_R_TS_Header';
+        $class_Name = 'JointApp\LangFiles\Views\Test\Records\LangFiles_'.$this->ucfirstLang($this->userLang).'_'.'Views_T_R_TS_Header';
         return new $class_Name();
     }
 }

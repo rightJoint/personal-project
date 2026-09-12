@@ -115,7 +115,7 @@ class TpView_Blog_Jokes_FavMusic extends TpView
             ],
             'Let’s Get It Started' => [
                 'artist' => 'Black Eyed Peas',
-                'file'=>'BlackEyedPeas-Let’s Get It Started.mp3',
+                'file'=>'BlackEyedPeas-Lets Get It Started.mp3',
             ],
             'My Favourite Game' => [
                 'artist' => 'Cardigans',
@@ -143,7 +143,7 @@ class TpView_Blog_Jokes_FavMusic extends TpView
             ],
             'The Business' => [
                 'artist' => 'Tiësto',
-                'file'=>'Tiësto-The Business.mp3',
+                'file'=>'Tiesto-The Business.mp3',
             ],
             'La la la' => [
                 'artist' => 'Naughty Boy',
@@ -159,7 +159,7 @@ class TpView_Blog_Jokes_FavMusic extends TpView
             ],
             'Don’t Worry Be Happy' => [
                 'artist' => 'Bobby McFerrin',
-                'file'=>'Bobby McFerrin-Don’t Worry Be Happy.mp3',
+                'file'=>'Bobby McFerrin-Dont Worry Be Happy.mp3',
             ],
             'Sweet Dreams' => [
                 'artist' => 'Eurythmics',
@@ -187,7 +187,7 @@ class TpView_Blog_Jokes_FavMusic extends TpView
             ],
             'Don’t Think I Could Forgive You' => [
                 'artist' => 'Robin Berrygold',
-                'file'=>'Robin Berrygold - Don’t Think I Could Forgive You.mp3',
+                'file'=>'Robin Berrygold - Dont Think I Could Forgive You.mp3',
             ],
         ];
     }

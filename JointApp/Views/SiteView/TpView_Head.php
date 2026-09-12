@@ -50,9 +50,6 @@ class TpView_Head extends TpView
         if (isset($viewData->robotNoIndex) and $viewData->robotNoIndex == true) {
             $headText.= '<meta name="robots" content="noindex">';
         }else{
-            //yandex metrika
-            $headText.='<meta name="yandex-verification" content="xxx" />';
-
             //seo link canonical
             if($this->langSl == ''){
                 $headText .='<link rel="canonical" href="'.$this->siteName.$this->canonical.'" />';

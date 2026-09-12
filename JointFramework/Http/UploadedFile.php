@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JointApp;
+namespace JointFramework\Http;
 
 use InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;

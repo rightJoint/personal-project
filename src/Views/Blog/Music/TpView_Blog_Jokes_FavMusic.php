@@ -133,9 +133,9 @@ class TpView_Blog_Jokes_FavMusic extends TpView
                 'artist' => 'Daft Punk',
                 'file'=>'Daft Punk-Get Lucky.mp3',
             ],
-            'Sugar' => [
-                'artist' => 'Robin Schulz',
-                'file'=>'Robin Schulz-Sugar.mp3',
+            'Lemon Tree' => [
+                'artist' => 'Fools Garden',
+                'file'=>'Fools Garden - Lemon Tree.mp3',
             ],
             'Cheap thrills' => [
                 'artist' => 'Sia',
@@ -172,6 +172,10 @@ class TpView_Blog_Jokes_FavMusic extends TpView
             'Love Is Gone' => [
                 'artist' => 'David Guetta',
                 'file'=>'David Guetta-Love Is Gone.mp3',
+            ],
+            'Meet Me Halfway' => [
+                'artist' => 'Black Eyed Peas',
+                'file'=>'Black Eyed Peas - Meet Me Halfway.mp3',
             ],
             'When We Stand Together' => [
                 'artist' => 'Nickelback',

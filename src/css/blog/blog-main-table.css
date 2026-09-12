@@ -84,7 +84,7 @@ a.blog-art-button {
     }
     .blog-wrap-2 .blog-art-container, .blog-wrap .blog-art-container {
         display: inline-block;
-        width: 100%;
+        width: calc(100% - 0.4em);
         margin-bottom: 1em;
     }
 }

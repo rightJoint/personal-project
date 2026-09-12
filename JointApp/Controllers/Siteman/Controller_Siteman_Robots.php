@@ -50,7 +50,7 @@ class Controller_Siteman_Robots extends RecordsControllerWeb
             ),
             'created_by' => array(
                 'format' => 'varchar',
-                'curVal' => $this->user->getId(),
+                'curVal' => null,
             ),
         );
     }
@@ -132,6 +132,8 @@ class Controller_Siteman_Robots extends RecordsControllerWeb
         parent::htmlNewView();
         $this->editFields['use_flag']['curVal'] = true;
         $this->editFields['date_created']['curVal'] = date('Y-m-d');
+        $this->editFields['created_by']['format'] = 'hidden';
+        $this->editFields['created_by']['curVal'] = $this->user->getId();
     }
 
     public function robotsUpdate()

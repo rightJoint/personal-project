@@ -1,0 +1,149 @@
+body{
+    text-align: center;
+    font-size: 22px;
+}
+.page{
+    width: 1024px;
+    display: inline-block;
+    border: 1px solid black;
+}
+.page .p-left{
+    display: inline-block;
+    width: calc(70% - 0.5em);
+    /*border-right: 1px solid silver;*/
+    text-align: left;
+    padding-left: 0.5em;
+}
+.page .p-left .full-name{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.page .p-left .desired-position{
+    margin-top: 0.8em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgba(25,25,50,1);
+}
+.page .p-left .desired-position h1{
+    font-size: 1.2em;
+}
+.page .p-left .summary h2{
+    font-size: 1em;
+}
+/*
+.page .p-left .company-block{
+    border-top: 1px solid silver;
+}
+.page .p-left .company-block .exp-period{
+    padding-top: 0.5em;
+    display: inline-block;
+    width: calc(18% - 0.5em);
+    vertical-align: top;
+}
+.page .p-left .company-block .exp-info{
+    display: inline-block;
+    width: calc(82% - 1em);
+    padding-left: 0.5em;
+    border-left: 1px solid lightgray;
+}
+
+.page .p-left .company-block .exp-company{
+
+}
+.page .p-left .company-block .exp-company img{
+    height: 2em;
+    width: 2em;
+}
+.page .p-left .company-block .exp-company .company-name{
+    font-weight: bold;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.page .p-left .company-block .exp-company .company-logo{
+    vertical-align: middle;
+    display: inline-block;
+}
+.page .p-left .company-block .exp-company .company-logo img{
+    height: 1.8em;
+    width: 1.8em;
+    margin: 0.2em;
+}
+.page .p-left .company-block .exp-info .c-project{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+.page .p-left .company-block .exp-info .c-project .c-p-name{
+    font-weight: bold;
+}
+*/
+.page .p-right{
+    display: inline-block;
+    width: calc(30% - 1em);
+    vertical-align: top;
+    text-align: left;
+    border-left: 1px solid silver;
+    padding-left: 0.5em;
+}
+h3 span{
+    border-bottom: 2px solid black;
+}
+.page .p-right .photo{
+    margin: 1em 0;
+    text-align: center;
+}
+.page .p-right .photo img{
+    height: 8em;
+    width: 8em;
+    border-radius: 4em;
+}
+.page .p-right .contacts{
+
+}
+.page .p-right .contacts img{
+    height: 1.5em;
+    width: 1.5em;
+}
+.page .p-right .skills .level{
+    margin-bottom: 0.2em;
+}
+.page .p-right .skills .level.high{
+    border-bottom: 5px solid red;
+    width: 80%;
+}
+.page .p-right .skills .level.normal{
+    border-bottom: 5px solid blue;
+    width: 40%;
+}
+.page .p-right .skills .level.good{
+    border-bottom: 5px solid green;
+    width: 60%;
+}
+.contacts-line{
+    margin: 0.2em 0;
+}
+.contacts-line span{
+    vertical-align: middle;
+}
+.contacts-line img{
+    vertical-align: middle;
+}
+.c-p-role ul{
+    margin: 0;
+}
+.summary ul {
+    list-style: none;
+    padding: 0;
+}
+.summary ul li{
+    margin-left: 0.5em;
+}
+.companies {
+    border-top: 1px solid darkgray;
+}
+.companies span{
+    display: inline-block;
+    font-size: 0.8em;
+    margin: 0 0.8em;
+}

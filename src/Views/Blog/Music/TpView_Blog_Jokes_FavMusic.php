@@ -65,9 +65,17 @@ class TpView_Blog_Jokes_FavMusic extends TpView
                 'artist' => 'Bebe Rexha',
                 'file'=>'Bebe Rexha - I Am Good.mp3',
             ],
+            'Dont Stop' => [
+                'artist' => 'Rihanna',
+                'file'=>'Rihanna - Dont Stop.mp3',
+            ],
             'APT' => [
                 'artist' => 'Rose and Bruno Mars',
                 'file'=>'RoseAndBrunoMars-APT.mp3',
+            ],
+            'Unstoppable' => [
+                'artist' => 'Sia',
+                'file'=>'Sia-Unstoppable.mp3',
             ],
             'Till I collapse' => [
                 'artist' => 'Eminem',
@@ -77,9 +85,17 @@ class TpView_Blog_Jokes_FavMusic extends TpView
                 'artist' => 'Michael Jackson',
                 'file'=>'Michael Jackson - Bad.mp3',
             ],
+            'Don t speak' => [
+                'artist' => 'No Doubt',
+                'file'=>'No Doubt - Don t speak.mp3',
+            ],
             'Have a nice day' => [
                 'artist' => 'Bon Jovi',
                 'file'=>'BonJovi-HaveANiceDay.mp3',
+            ],
+            'Lovers on the Sun' => [
+                'artist' => 'David Guetta',
+                'file'=>'David Guetta - Lovers on the Sun.mp3',
             ],
             'Uhn tiss' => [
                 'artist' => 'Bloodhound gang',
@@ -92,6 +108,10 @@ class TpView_Blog_Jokes_FavMusic extends TpView
             'I kissed a girl' => [
                 'artist' => 'KatyPerry',
                 'file'=>'KatyPerry-IKissedAGirl.mp3',
+            ],
+            'Goodnight Moon' => [
+                'artist' => 'Shivaree',
+                'file'=>'Shivaree - Goodnight Moon.mp3',
             ],
             'Counting stars' => [
                 'artist' => 'One republic',

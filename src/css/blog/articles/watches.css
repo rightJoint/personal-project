@@ -1,0 +1,25 @@
+.art-gallery{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.art-gallery a{
+
+}
+
+.art-gallery a img{
+    width: calc(33% - 1em);
+    padding: 0.5em;
+    border-radius: 1em;
+}
+
+.art-video {
+    margin: 1em 0;
+    text-align: center;
+}
+
+.art-video video{
+
+}

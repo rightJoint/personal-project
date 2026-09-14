@@ -46,21 +46,21 @@ class TpView_Blog_Others_CasioMts extends TpView
             '<p>'.$this->langFile::S2_P2.'</p>'.
             '<p>'.$this->langFile::S2_P3.'</p>'.
             '<div class="art-video">'.
-            '<video width="400" height="300" controls="controls" poster="/img/blog/watches/video-1-poster.jpg">'.
+            '<video  style="height: 20em; width: auto;" controls="controls" poster="/img/blog/watches/video-1-poster.jpg">'.
             '<source src="/img/blog/watches/video-1.mp4">'.
             'Тег video не поддерживается вашим браузером.'.
             '<a href="/img/blog/watches/video-1.mp4">Скачайте видео</a>'.
             '</video>'.
             '</div>'.
             '<div class="art-video">'.
-            '<video width="400" height="300" controls="controls" poster="/img/blog/watches/video-2-poster.jpg">'.
+            '<video style="height: 20em; width: auto;" controls="controls" poster="/img/blog/watches/video-2-poster.jpg">'.
             '<source src="/img/blog/watches/video-2.mp4">'.
             'Тег video не поддерживается вашим браузером.'.
             '<a href="/img/blog/watches/video-2.mp4">Скачайте видео</a>'.
             '</video>'.
             '</div>'.
             '<div class="art-video">'.
-            '<video width="400" height="300" controls="controls" poster="/img/blog/watches/video-3-poster.jpg">'.
+            '<video style="height: 20em; width: auto;" controls="controls" poster="/img/blog/watches/video-3-poster.jpg">'.
             '<source src="/img/blog/watches/video-3.mp4">'.
             'Тег video не поддерживается вашим браузером.'.
             '<a href="/img/blog/watches/video-3.mp4">Скачайте видео</a>'.

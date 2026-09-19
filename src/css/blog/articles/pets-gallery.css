@@ -1,0 +1,18 @@
+.pet-img{
+    text-align: center;
+    margin: 2em 0;
+}
+
+.pet-img img{
+    border: 3px solid orange;
+    width: calc(50% - 6px);
+}
+
+p.pet-gallery{
+    text-align: center;
+}
+@media only screen and (max-width : 960px) and (orientation:portrait)  {
+    .pet-img img{
+        width: calc(80% - 6px);
+    }
+}

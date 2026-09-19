@@ -53,6 +53,8 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\Job\SiteView_Blog_Job_LookingForJob');
                 }elseif(strtolower($routes_ns[3]) == 'casio-mts-rs100'){
                     $route->withView('Src\Views\Blog\Others\SiteView_Blog_Others_CasioMts');
+                }elseif(strtolower($routes_ns[3]) == 'eleven-years-with-blonde-kitty'){
+                    $route->withView('Src\Views\Blog\Pets\SiteView_Blog_Pets_BlondKitty11Y');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

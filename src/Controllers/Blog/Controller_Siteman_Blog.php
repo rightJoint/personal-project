@@ -92,6 +92,10 @@ class Controller_Siteman_Blog extends RecordsControllerWeb
                 'format' => 'tinyint',
                 'curVal' => '',
             ),
+            'adultFlag' => array(
+                'format' => 'tinyint',
+                'curVal' => '',
+            ),
         );
     }
 
@@ -182,6 +186,12 @@ class Controller_Siteman_Blog extends RecordsControllerWeb
                 'sort' => 1,
                 'curVal' => null,
             ),
+            'adultFlag' => array(
+                'format' => 'tinyint',
+                'search' => 1,
+                'sort' => 1,
+                'curVal' => null,
+            ),
         );
     }
 
@@ -256,6 +266,9 @@ class Controller_Siteman_Blog extends RecordsControllerWeb
                 'custom' => false,
             ),
             'commentsFlag' => array(
+                'format' => 'tinyint',
+            ),
+            'adultFlag' => array(
                 'format' => 'tinyint',
             ),
         );
@@ -342,6 +355,10 @@ class Controller_Siteman_Blog extends RecordsControllerWeb
             'commentsFlag' => array(
                 'format' => 'tinyint',
                 'curVal' => $this->model->record['commentsFlag']['curVal'],
+            ),
+            'adultFlag' => array(
+                'format' => 'tinyint',
+                'curVal' => $this->model->record['adultFlag']['curVal'],
             )
         );
     }

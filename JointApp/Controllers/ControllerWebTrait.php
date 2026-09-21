@@ -55,6 +55,13 @@ trait ControllerWebTrait
     {
         $modelBlog = new Model_Blog($this->user, $this->logger);
         $modelBlog->userLang = $this->userLang;
+        if($this->user->isAuth()){
+            if(!$this->user->isAdult()){
+                $modelBlog->adultQuery = true;
+            }
+        }elseif(isset($this->cookieParams['isAdult']) and $this->cookieParams['isAdult']=='false'){
+            $modelBlog->adultQuery = true;
+        }
         $this->popArticles = $modelBlog->getPopArticles($this->limitPorArticles);
     }
 }

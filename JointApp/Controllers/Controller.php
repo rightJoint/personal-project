@@ -28,6 +28,7 @@ class Controller implements LangInterface
     protected JointSiteUser $user;
 
     public $requestParams = [];
+    public $cookieParams = [];
 
     function __construct(JointSiteUser $user, JointSiteLogger &$logger, $controller_params = [])
     {

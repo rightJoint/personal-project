@@ -19,6 +19,7 @@ class JointSiteUser
     private bool $isAuth = false;
     private bool $isValid = false;
     private bool $isAdmin = false;
+    private bool $isAdult = false;
 
     private string $userLang = 'ru';
 
@@ -46,7 +47,7 @@ class JointSiteUser
     {
         if($this->login_tmp) {
             if (self::checkUserPassword($password)) {
-                $qry = 'select user_id, alias, pw_hash, avatar, blackList, followed_by from users where login = "' . $this->login_tmp . '"';
+                $qry = 'select user_id, alias, pw_hash, avatar, blackList, followed_by, birthDay from users where login = "' . $this->login_tmp . '"';
                 if ($res = $this->pdoQuery($qry)) {
                     if($res->rowCount() == 1){
                         $row = $res->fetch(\PDO::FETCH_ASSOC);
@@ -66,6 +67,14 @@ class JointSiteUser
                                 //is admin user
                                 if($this->user_id == '1AB4C7D7-5315-4C9E-9F33-E1B250491589'){
                                     $this->isAdmin = true;
+                                }
+                                //is adult
+                                if($row['birthDay']){
+                                    $birthday = strtotime($row['birthDay']);
+                                    if(time() - $birthday > 18 * 31536000)  {
+                                        $this->isAdult = true;
+                                    }else{
+                                    }
                                 }
                             }
                             $this->isAuth = true;
@@ -89,6 +98,7 @@ class JointSiteUser
         $this->isAuth = false;
         $this->isValid = false;
         $this->isAdmin = false;
+        $this->isAdult = false;
         unset($_SESSION['user']);
     }
 
@@ -104,6 +114,7 @@ class JointSiteUser
             $this->isAuth = true;
             $this->isValid = $_SESSION['user']['isValid'];
             $this->isAdmin = $_SESSION['user']['isAdmin'];
+            $this->isAdult = $_SESSION['user']['isAdult'];
         }
     }
 
@@ -118,6 +129,7 @@ class JointSiteUser
             'avatar' => $this->avatar,
             'isValid' => $this->isValid,
             'isAdmin' => $this->isAdmin,
+            'isAdult' => $this->isAdult,
         ];
     }
 
@@ -206,5 +218,10 @@ class JointSiteUser
     public function getFollowedBy():bool
     {
         return $this->followed_by;
+    }
+
+    public function isAdult():bool
+    {
+        return $this->isAdult;
     }
 }

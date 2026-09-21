@@ -21,7 +21,7 @@ trait RoutesCollection_Siteman
             $route = new JointSiteRoute();
             $route->withModel('JointApp\Models\Model')
                 ->withController('JointApp\Controllers\ControllerWeb')
-                ->withView('JointApp\Views\Siteman\SiteView_Siteman_Main');
+                ->withView('JointApp\Views\Siteman\SiteView_SiteMan_Main');
 
             return $route;
         }

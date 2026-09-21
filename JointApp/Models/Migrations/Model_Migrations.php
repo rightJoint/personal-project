@@ -105,6 +105,8 @@ class Model_Migrations extends RecordsModel
             'replace_upper' => 'REPLACE ',
             'create_table' => 'create table ',
             'create_table_upper' => 'CREATE TABLE ',
+            'alter_table_upper' => 'ALTER TABLE ',
+            'alter_table' => 'alter table ',
         );
 
         $new_cmd_lines = array();

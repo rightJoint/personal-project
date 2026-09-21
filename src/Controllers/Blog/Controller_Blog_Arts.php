@@ -35,17 +35,36 @@ class Controller_Blog_Arts extends ControllerWeb
 
     public bool $robotNoIndex = false;
 
+    public bool $confirmAgeFlag = false;
+
     function actionIndex()
     {
         $this->artRow = $this->model->getBlogArt($this->artRef);
         if(isset($this->artRow['art_id'])){
             if($this->artRow['activeFlag']){
-                $this->robotNoIndex = !$this->artRow['indexFlag'];
-                $this->h1 = $this->artRow['artName'];
-                $this->metaDescription = $this->artRow['artName'].'. '.$this->artRow['artMeta'];
-                $this->artTags = $this->model->getArtTags($this->artRow['art_id']);
-                $this->listComments = $this->listComments();
-                $this->countComments = $this->countComments();
+                $adultErr = false;
+                if($this->artRow['adultFlag'] == true){
+                    if($this->user->isAuth()){
+                        if(!$this->user->isAdult()){
+                            $adultErr = true;
+                        }
+                    }elseif(isset($this->cookieParams['isAdult']) and $this->cookieParams['isAdult']=='false'){
+                        $adultErr = true;
+                    }elseif (!isset($this->cookieParams['isAdult'])){
+                        $this->confirmAgeFlag = true;
+                    }
+                }
+
+                if(!$adultErr){
+                    $this->robotNoIndex = !$this->artRow['indexFlag'];
+                    $this->h1 = $this->artRow['artName'];
+                    $this->metaDescription = $this->artRow['artName'].'. '.$this->artRow['artMeta'];
+                    $this->artTags = $this->model->getArtTags($this->artRow['art_id']);
+                    $this->listComments = $this->listComments();
+                    $this->countComments = $this->countComments();
+                }else{
+                    $this->logger->alert('denied cause of user age', $this->context);
+                }
             }else{
                 $this->logger->error('The article is temporarily unavailable', $this->context);
             }

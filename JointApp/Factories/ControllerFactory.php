@@ -21,6 +21,8 @@ class ControllerFactory extends FromRequestFactory
             $object->requestParams = $request->getQueryParams();
         }
 
+        $object->cookieParams = $request->getCookieParams();
+
         foreach ($object as $prop => $value){
             if(isset($object->requestParams[$prop])){
                 $object->$prop = $object->requestParams[$prop];

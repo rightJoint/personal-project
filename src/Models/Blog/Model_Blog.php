@@ -13,6 +13,8 @@ class Model_Blog extends RecordsModel
 
     const ART_COVERS = '/userdata/blog/covers';
 
+    public bool $adultQuery = false;
+
     public function getRecordStructure()
     {
         $this->record = array(
@@ -83,6 +85,14 @@ class Model_Blog extends RecordsModel
 
     public function listRecords(JointAppQueryBuilder $qBuilder): array
     {
+        if($this->adultQuery){
+            if($qBuilder->where){
+                $qBuilder->where.=' and adultFlag is not true';
+            }else{
+                $qBuilder->where.='adultFlag is not true';
+            }
+        }
+
         $qBuilder->select(
             $this->tableName.'.art_id, '.
             $this->tableName.'.artCat, '.
@@ -107,6 +117,14 @@ class Model_Blog extends RecordsModel
             ->select($this->tableName.'.artName_'.$this->userLang.' as artName ')
             ->from($this->tableName);
 
+        if($this->adultQuery){
+            if($qBuilder->where){
+                $qBuilder->where.=' and adultFlag is not true';
+            }else{
+                $qBuilder->where.='adultFlag is not true';
+            }
+        }
+
         if($res = $this->pdoQuery($qBuilder->buildQuery())){
             return $res->rowCount();
         }
@@ -116,8 +134,13 @@ class Model_Blog extends RecordsModel
 
     public function getPopArticles(int $limit = 5):array
     {
+        $adultWhere = '';
+        if($this->adultQuery){
+            $adultWhere =' and adultFlag is not true';
+        }
+
         $qBuilder = new JointAppQueryBuilder();
-        $qBuilder->where($this->tableName.'.popFlag is true and activeFlag is true')->limit($limit);
+        $qBuilder->where($this->tableName.'.popFlag is true and activeFlag is true'.$adultWhere)->limit($limit);
         return $this->listRecords($qBuilder);
     }
 }

@@ -24,8 +24,22 @@ class Controller_Blog extends ControllerWeb
 
     public array $filterCats = [];
 
+    private function modelAdultQuery():bool
+    {
+        if($this->user->isAuth()){
+            if(!$this->user->isAdult()){
+                return true;
+            }
+        }elseif(isset($this->cookieParams['isAdult']) and $this->cookieParams['isAdult']=='false'){
+            return true;
+        }
+        return false;
+    }
+
     public function actionIndex()
     {
+        $this->model->adultQuery = $this->modelAdultQuery();
+
         $qBuilder = $this->blogSearchQuery();
 
         $this->artsList = $this->model->listRecords($qBuilder);
@@ -66,6 +80,7 @@ class Controller_Blog extends ControllerWeb
 
     public function actionFilter()
     {
+        $this->model->adultQuery = $this->modelAdultQuery();
 
         $qBuilder = $this->actionFilterHome();
 

@@ -32,6 +32,7 @@ class SiteView_Blog_Art extends SiteView
     public string $sort = 'new-first';
     public string $viewType = 'tree';
 
+    public bool $confirmAgeFlag = false;
 
     protected function replaceDefaultHeadLang()
     {
@@ -48,6 +49,7 @@ class SiteView_Blog_Art extends SiteView
 
     protected function putCustomTemplates(): void
     {
+        $this->tpSet->AgeConfirmWin = new TpView_Blog_AgeConfirmation();
         $this->tpSet->ArtHeader = new TpView_Blog_Art_Header();
         $this->tpSet->ArtInfoBar = new TpView_Blog_Art_InfoBar();
         $this->putArticleTemplate();

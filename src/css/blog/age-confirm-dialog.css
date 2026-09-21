@@ -1,0 +1,50 @@
+.modal-age-dialog{
+
+}
+
+.modal-age-confirm{
+}
+
+.modal-age-dialog .contentBlock-frame{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+.modal-age-dialog .contentBlock-center{
+    z-index: 6;
+}
+
+.modal-age-dialog .modal-age-confirm{
+
+}
+
+.modal-age-dialog .confirm-age-question {
+    margin-top: 18%;
+    font-size: 3em;
+}
+
+.modal-age-dialog .confirm-buttons {
+    font-size: 2em;
+}
+.modal-age-dialog .confirm-buttons .confirm-buttons-yes,
+.modal-age-dialog .confirm-buttons .confirm-buttons-no{
+    display: inline-block;
+    margin: 1em;
+}
+.modal-age-dialog .confirm-buttons .confirm-buttons-yes input[type=button]{
+    font-size: 1em;
+    width: 3em;
+    height: 3em;
+    border-radius: 1.5em;
+    background-color: darkgreen;
+    color: white;
+}
+.modal-age-dialog .confirm-buttons .confirm-buttons-no input[type=button]{
+    font-size: 1em;
+    width: 3em;
+    height: 3em;
+    border-radius: 1.5em;
+    background-color: firebrick;
+    color: white;
+}

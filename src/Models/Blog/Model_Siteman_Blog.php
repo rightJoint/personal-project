@@ -82,6 +82,10 @@ class Model_Siteman_Blog extends RecordsModel
                 'format' => 'tinyint',
                 'custom' => false,
             ),
+            'adultFlag' => array(
+                'format' => 'tinyint',
+                'custom' => false,
+            ),
         );
     }
 
@@ -103,6 +107,7 @@ class Model_Siteman_Blog extends RecordsModel
             $this->tableName.'.refreshDate, '.
             $this->tableName.'.created_by, '.
             $this->tableName.'.commentsFlag, '.
+            $this->tableName.'.adultFlag, '.
             'users.alias, '.
             'blogCats.catName_'.$this->userLang.' as catName'
         )

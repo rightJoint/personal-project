@@ -1,0 +1,33 @@
+section.bydlo{
+    margin-bottom: 2em;
+}
+section.bydlo p.quote{
+    text-align: right;
+    margin: 4em 0;
+}
+section.bydlo p.quote span.law{
+    display: block;
+    margin-top: 1em;
+}
+span.b-num{
+    font-size: 1.2em;
+    margin-right: 1em;
+}
+span.correct-response{
+    display: block;
+    margin-bottom: 0.5em;
+}
+img.bydlo-img{
+    height: 7em;
+    width: 7em;
+    border-radius: 0.5em;
+    margin: 1em;
+    display: block;
+
+}
+img.bydlo-img.left{
+    float: left;
+}
+img.bydlo-img.right{
+    float: right;
+}

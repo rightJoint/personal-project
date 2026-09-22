@@ -55,6 +55,8 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\Others\SiteView_Blog_Others_CasioMts');
                 }elseif(strtolower($routes_ns[3]) == 'eleven-years-with-blonde-kitty'){
                     $route->withView('Src\Views\Blog\Pets\SiteView_Blog_Pets_BlondKitty11Y');
+                }elseif(strtolower($routes_ns[3]) == 'teach-you-bydlo'){
+                    $route->withView('Src\Views\Blog\Job\SiteView_Blog_Job_Bydlo');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

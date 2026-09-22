@@ -117,6 +117,8 @@ class Controller_Blog extends ControllerWeb
     {
         $qBuilder = $this->blogSearchQuery();
 
+        $this->model->adultQuery = $this->modelAdultQuery();
+
         $tpView_table = new TpView_Blog_Table();
         $this->artsList = $this->model->listRecords($qBuilder);
         $this->setUpViewParams($tpView_table);

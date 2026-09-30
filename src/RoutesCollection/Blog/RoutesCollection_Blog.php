@@ -57,6 +57,8 @@ trait RoutesCollection_Blog
                     $route->withView('Src\Views\Blog\Pets\SiteView_Blog_Pets_BlondKitty11Y');
                 }elseif(strtolower($routes_ns[3]) == 'teach-you-bydlo'){
                     $route->withView('Src\Views\Blog\Job\SiteView_Blog_Job_Bydlo');
+                }elseif(strtolower($routes_ns[3]) == 'my-last-engineer-job'){
+                    $route->withView('Src\Views\Blog\Job\SiteView_Blog_Job_LastEngineerJob');
                 }
                 else{
                     $route->withView('Src\Views\Blog\SiteView_Blog_Art');

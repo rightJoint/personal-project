@@ -1,0 +1,13 @@
+.art-content ul li img{
+    height: 1.6em;
+    width: 1.6em;
+    border-radius: 0.8em;
+}
+.art-content ul{
+    margin: 0;
+    padding: 0;
+}
+.art-content ul li{
+    list-style: none;
+
+}

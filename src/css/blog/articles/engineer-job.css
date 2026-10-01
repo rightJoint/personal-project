@@ -1,7 +1,8 @@
 .art-content ul li img{
-    height: 1.6em;
-    width: 1.6em;
-    border-radius: 0.8em;
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 0.2em;
+    margin-right: 0.5em;
 }
 .art-content ul{
     margin: 0;
@@ -9,5 +10,33 @@
 }
 .art-content ul li{
     list-style: none;
+    margin-bottom: 0.5em;
+}
+.art-content ul li.engineer{
+    margin-left: 2em;
+
+}
+
+span.show-dialog {
+    cursor: pointer;
+    margin-bottom: 2em;
+    display: inline-block;
+    color: midnightblue;
+}
+
+span.show-dialog.active::before {
+    content: "-";
+}
+span.show-dialog::before {
+    content: "+";
+}
+
+
+.art-video {
+    margin: 1em 0;
+    text-align: center;
+}
+
+.art-video video{
 
 }

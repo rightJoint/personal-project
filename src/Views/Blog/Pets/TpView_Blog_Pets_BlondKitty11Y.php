@@ -18,85 +18,55 @@ class TpView_Blog_Pets_BlondKitty11Y extends TpView
 
     public function getResponseHtml(): string
     {
-        return '<p>'.
-            'Эту кошку мне отдали во дворе малосемейки, туда часто подкидывают животных, которые больше не нужны, и одна '.
-            'женшина ее приютила на время. Не представляю, кто бы мог выбросить такую красотку.'.
-            '</p>'.
+        return '<p>'.$this->langFile::P1.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-02.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Когда я ее взял, она уже не была совсем котенком, кажется ей было около года.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P2.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-03.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Кошка не была совсем домашней, и первое время часто просилась на улицу и даже выпрыгивала с балкона 5го этажа.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P3.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-04.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'На ней были блохи и ушной клещ. Помогли ошеник от блох, мытье и капли.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P4.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-05.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Она не срелизованая и я ни разу за все время не носил ее к ветеринару.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P5.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-06.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Последние несколько лет она совсем не выходит на улицу. Ей не надо много, она встречает меня у двери '.
-            'и иногда играет с шиншиллой.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P6.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-07.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'У меня не очень хорошо получается придумывать клички животным. Сначала я звал ее лапкой, теперь я '.
-            'зову ее дрянью. Ни на ту, ни на другую она не отзывается.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P7.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-08.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Маленькая белая дрянь.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P8.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-09.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Она всегда спит со мной, обычно ложиться в ноги.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P9.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-10.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Дрянюсика абсолютно белая, без единого цветного пятна или полоски.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P10.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-11.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Чаще всего она спит, но иногда ностится по комнате как сумашедшая.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P11.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-12.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Она не переедает. В среднем ей хватает пакета 85г. консервированного корма и немного сухого на день. '.
-            'Иногда я даю ей мяса, куриную грудку или говядину.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P12.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-13.jpg">'.
             '</div>'.
-            '<p class="pet-gallery">'.
-            'Кошка довольно ревнивая. Ей не нравится когда не один и она начинает требовать внимания.'.
-            '</p>'.
+            '<p class="pet-gallery">'.$this->langFile::P13.'</p>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-14.jpg">'.
             '</div>'.
@@ -108,6 +78,14 @@ class TpView_Blog_Pets_BlondKitty11Y extends TpView
             '</div>'.
             '<div class="pet-img">'.
             '<img src="/img/blog/blond-cat-11y/img-01.jpg">'.
-            '</div>';
+            '</div>'.
+            '<div class="pets-video">'.
+            '<video style="height: 20em; width: auto;" controls="controls" poster="/img/blog/blond-cat-11y/video-poster.jpg">'.
+            '<source src="/img/blog/blond-cat-11y/cat-and-chinchilla.mp4">'.
+            'Тег video не поддерживается вашим браузером.'.
+            '<a href="/img/blog/blond-cat-11y/cat-and-chinchilla.mp4">Скачайте видео</a>'.
+            '</video>'.
+            '</div>'.
+            '<p class="pet-gallery">'.$this->langFile::P14.'</p>';
     }
 }

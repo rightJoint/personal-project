@@ -11,8 +11,23 @@
 p.pet-gallery{
     text-align: center;
 }
+
 @media only screen and (max-width : 960px) and (orientation:portrait)  {
     .pet-img img{
         width: calc(80% - 6px);
     }
+    .pets-video video{
+        width: calc(80% - 6px);
+    }
+}
+
+.pets-video {
+    text-align: center;
+}
+
+.pets-video video {
+    margin: 1em 0;
+    text-align: center;
+    border: 3px solid orange;
+    width: calc(50% - 6px);
 }

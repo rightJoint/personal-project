@@ -74,6 +74,7 @@ class TpView_Blog_Others_CasioMts extends TpView
             '<p>'.$this->langFile::S3_P1.'</p>'.
             '<p>'.$this->langFile::S3_P2.'</p>'.
             '<p>'.$this->langFile::S3_P3.'</p>'.
+            '<p>'.$this->langFile::S3_P3_X.'</p>'.
             '<p>'.
             '<ul>'.
             '<li>'.$this->langFile::S3_P3_LI1.'</li>'.

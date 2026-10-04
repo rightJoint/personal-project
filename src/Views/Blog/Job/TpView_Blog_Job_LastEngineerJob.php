@@ -22,6 +22,9 @@ class TpView_Blog_Job_LastEngineerJob extends TpView
             '</section>'.
             '<section>'.
             '<h3>Анекдот №1</h3>'.
+            '<p class="quote">Сделать нормально «Из говна и палок» не получится.'.
+            '<span class="law">- инженер</span>'.
+            '</p>'.
             '<div class="art-video">'.
             '<video style="height: 20em; width: auto;" controls="controls" poster="/userdata/blog/engineer-job/poster-1.jpg">'.
             '<source src="/userdata/blog/engineer-job/anecdote-1.mp4">'.
@@ -239,8 +242,12 @@ class TpView_Blog_Job_LastEngineerJob extends TpView
             '</ul>'.
             '</div>'.
             '</section>'.
+
             '<section>'.
             '<h3>Анекдот №2</h3>'.
+            '<p class="quote">«People this, bitch»'.
+            '<span class="law">- Полотенчик (южный парк)</span>'.
+            '</p>'.
             '<div class="art-video">'.
             '<video style="height: 20em; width: auto;" controls="controls" poster="/userdata/blog/engineer-job/poster-2.jpg">'.
             '<source src="/userdata/blog/engineer-job/anecdote-2.mp4">'.
@@ -323,8 +330,12 @@ class TpView_Blog_Job_LastEngineerJob extends TpView
             '</ul>'.
             '</div>'.
             '</section>'.
+
             '<section>'.
             '<h3>Анекдот №3</h3>'.
+            '<p class="quote">«Это дело не годится, раздвигайка ягодицы»'.
+            '<span class="law">- с моего старого района</span>'.
+            '</p>'.
             '<p>'.
             'Я люблю хорошие шутки, но мне кажется, что это уже совсем чернуха.'.
             '</p>'.

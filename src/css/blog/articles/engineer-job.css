@@ -38,5 +38,14 @@ span.show-dialog::before {
 }
 
 .art-video video{
+    max-width: 100%;
+}
 
+p.quote{
+    text-align: right;
+    margin: 4em 0;
+}
+p.quote span.law{
+    display: block;
+    margin-top: 1em;
 }
